@@ -1,0 +1,6 @@
+require: rubocop-custom
+
+AllCops:
+  DisabledByDefault: true
+  Exclude:
+    - 'app/cops/**/*'
