@@ -2,7 +2,7 @@ require "rubocop"
 
 module RuboCop
   module Cop
-    module Performance
+    module SketchupPerformance
       # Weak warning. (Question?)
       class Typename < Cop
         MSG = '.typename is very slow, prefer .is_a? instead.'.freeze

@@ -2,7 +2,7 @@ require "rubocop"
 
 module RuboCop
   module Cop
-    module Performance
+    module SketchupPerformance
       # Weak warning. (Question?)
       class OperationDisableUI < Cop
         MSG = 'Operations should disable the UI for performance gain.'.freeze

@@ -1,8 +1,8 @@
-require "rubocop"
+# frozen_string_literal: true
 
 module RuboCop
   module Cop
-    module Lint
+    module SketchupDeprecations
       # Weak warning. (Question?)
       class OperationNextTransparent < Cop
         MSG = 'Third argument is deprecated.'.freeze

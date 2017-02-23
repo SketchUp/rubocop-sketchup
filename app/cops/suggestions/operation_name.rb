@@ -2,7 +2,7 @@ require "rubocop"
 
 module RuboCop
   module Cop
-    module Lint
+    module SketchupSuggestions
       # Weak warning. (Question?)
       class OperationName < Cop
         MSG = 'Operation name should be a short capitalized description.'.freeze
