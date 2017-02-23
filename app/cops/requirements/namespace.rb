@@ -6,6 +6,7 @@ module RuboCop
       class ExtensionNamespace < Cop
         include OnMethodDef
         include SketchupExtensionNamespace
+        include NoCommentDisable
 
         def on_class(node)
           check_class_or_module(node)

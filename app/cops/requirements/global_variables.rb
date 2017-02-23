@@ -10,6 +10,7 @@ module RuboCop
       #
       # Note that backreferences like $1, $2, etc are not global variables.
       class GlobalVariables < Cop
+        include NoCommentDisable
         MSG = 'Do not introduce global variables.'.freeze
 
         # predefined global variables their English aliases

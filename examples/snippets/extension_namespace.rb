@@ -1,10 +1,12 @@
 module Examples
 
+  # rubocop:disable SketchupRequirements/GlobalVariables
   def self.global_variables
     $global_var = 'naughty'
     value = $read_global
   end
 
+  # rubocop:disable SketchupRequirements/GlobalVariables
   def self.known_global_variables
     mode = $VERBOSE
   end
