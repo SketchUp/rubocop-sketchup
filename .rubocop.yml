@@ -1,9 +1,9 @@
-require: rubocop-custom
+require: rubocop-sketchup
 
 AllCops:
   DisabledByDefault: true
   Exclude:
-    - 'app/cops/**/*'
+    - 'lib/**/*'
 
 # SketchupDeprecations:
 #   Enabled: false
