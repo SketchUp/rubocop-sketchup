@@ -1,9 +1,8 @@
-require "rubocop"
+# frozen_string_literal: true
 
 module RuboCop
   module Cop
     module SketchupSuggestions
-      # Weak warning. (Question?)
       class ModelEntities < Cop
         MSG = 'Typically one should use model.active_entites instead of model.entities.'.freeze
         

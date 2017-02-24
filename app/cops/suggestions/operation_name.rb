@@ -1,9 +1,8 @@
-require "rubocop"
+# frozen_string_literal: true
 
 module RuboCop
   module Cop
     module SketchupSuggestions
-      # Weak warning. (Question?)
       class OperationName < Cop
         MSG = 'Operation name should be a short capitalized description.'.freeze
         
