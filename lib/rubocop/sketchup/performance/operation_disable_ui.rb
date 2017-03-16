@@ -6,7 +6,7 @@ module RuboCop
       # Weak warning. (Question?)
       class OperationDisableUI < Cop
         MSG = 'Operations should disable the UI for performance gain.'.freeze
-        
+
         def on_send(node)
           _, method_name, *args = *node
           return unless method_name == :start_operation
