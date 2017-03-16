@@ -20,7 +20,7 @@ module RuboCop
         # TODO(thomthom): Make this smarter - do not store any top level
         # namespaces if they are part of the core Ruby API or SketchUp API.
         # puts "Setting TLN to: #{top} (#{namespace})" if  @@namespace.nil?
-        @@namespace ||= top
+        @@namespace ||= top unless top == 'Object'
         # puts "Namespace: #{@@namespace} vs #{top} (#{namespace})"
         return if @@namespace == top
         add_offense(node, :name, message, severity)

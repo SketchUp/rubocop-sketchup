@@ -21,6 +21,13 @@ module RuboCop
           check_namespace(node, method_name, parent_name)
         end
 
+        # Constant assignment.
+        def on_casgn(node)
+          _scope, const_name, _value = *node
+          parent_name = node.parent_module_name
+          check_namespace(node, const_name, parent_name)
+        end
+
         # TODO(thomthom): Consider adding other sets of cops that checks
         # specifically for overrides of the Ruby core API and the SketchUp API.
         # This would allow us to add exceptions on a more granular level.
