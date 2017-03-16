@@ -3,13 +3,14 @@
 module RuboCop
   module Cop
     module SketchupPerformance
-      # Weak warning. (Question?)
       class Typename < Cop
         MSG = '.typename is very slow, prefer .is_a? instead.'.freeze
-        
+
         def on_send(node)
           _, method_name = *node
           return unless method_name == :typename
+          # TODO(thomthom): Should we try to detect use of #typename
+          # in context of comparing against a string?
           add_offense(node, :expression)
         end
       end
