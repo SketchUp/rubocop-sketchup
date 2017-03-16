@@ -4,8 +4,8 @@ module RuboCop
   module Cop
     module SketchupSuggestions
       class ModelEntities < Cop
-        MSG = 'Typically one should use model.active_entites instead of model.entities.'.freeze
-        
+        MSG = 'Typically one should use model.active_entities instead of model.entities.'.freeze
+
         def on_send(node)
           receiver, method_name = *node
           return unless method_name == :entities
