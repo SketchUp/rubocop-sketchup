@@ -1,10 +1,10 @@
-require: rubocop-sketchup
+# require: rubocop-sketchup
 
 AllCops:
   DisabledByDefault: true
-  Exclude:
-    - 'lib/**/*'
-    - 'specs/**/*'
+  # Exclude:
+    # - 'lib/**/*'
+    # - 'spec/**/*'
 
 # SketchupDeprecations:
 #   Enabled: false
@@ -12,8 +12,8 @@ AllCops:
 # SketchupPerformance:
 #   Enabled: false
 
-# SketchupRequirements:
-#   Enabled: true
+SketchupRequirements:
+  Enabled: true
 
 # SketchupSuggestions:
 #   Enabled: false
