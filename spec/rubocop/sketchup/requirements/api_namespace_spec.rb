@@ -6,7 +6,7 @@ describe RuboCop::Cop::SketchupRequirements::ApiNamespace do
 
   subject(:cop) { described_class.new }
 
-  described_class::API_NAMESPACES.each do |var|
+  described_class::NAMESPACES.each do |var|
 
     it "registers an offense for adding an instance method to Sketchup module" do
       inspect_source(cop, ["module #{var}",
