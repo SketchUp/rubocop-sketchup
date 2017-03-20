@@ -4,7 +4,7 @@ AllCops:
   DisabledByDefault: true
   Exclude:
     - 'lib/**/*'
-    - 'specs/**/*'
+    - 'spec/**/*'
 
 # SketchupDeprecations:
 #   Enabled: false
