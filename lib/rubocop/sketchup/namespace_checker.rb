@@ -30,9 +30,7 @@ module RuboCop
 
         def in_namespace?(node)
           namespace = SketchUp::Namespace.new(node.parent_module_name)
-          # This checks ignores items added to 'Object' as that is considered
-          # global namespace and have separate cops for that.
-          !namespace.top_level? && namespaces.include?(namespace.first)
+          namespaces.include?(namespace.first)
         end
 
         def namespaces

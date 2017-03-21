@@ -10,6 +10,9 @@ module RuboCop
 
         MSG = 'Do not modify Ruby core functionality.'.freeze
 
+        # We check only against the top level namespaces. The core define more
+        # objects, but they are under one of the top level namespaces listed.
+
         NAMESPACES_RUBY_186 = %w(
           ArgumentError
           Array
@@ -26,8 +29,6 @@ module RuboCop
           Exception
           FalseClass
           File
-          File::Constants
-          File::Stat
           FileTest
           Fixnum
           Float
@@ -48,7 +49,6 @@ module RuboCop
           Method
           Module
           NameError
-          NameError::message
           NilClass
           NoMemoryError
           NoMethodError
@@ -59,10 +59,6 @@ module RuboCop
           Precision
           Proc
           Process
-          Process::GID
-          Process::Status
-          Process::Sys
-          Process::UID
           Range
           RangeError
           Regexp
@@ -106,35 +102,22 @@ module RuboCop
           ENV
           EOFError
           Encoding
-          Encoding::CompatibilityError
-          Encoding::Converter
-          Encoding::ConverterNotFoundError
-          Encoding::InvalidByteSequenceError
-          Encoding::UndefinedConversionError
           EncodingError
           Enumerable
           Enumerator
-          Enumerator::Generator
-          Enumerator::Lazy
-          Enumerator::Yielder
           Errno
           Exception
           FalseClass
           Fiber
           FiberError
           File
-          File::Constants
-          File::Stat
           FileTest
           Fixnum
           Float
           FloatDomainError
           GC
-          GC::Profiler
           Hash
           IO
-          IO::WaitReadable
-          IO::WaitWritable
           IOError
           IndexError
           Integer
@@ -146,7 +129,6 @@ module RuboCop
           Marshal
           MatchData
           Math
-          Math::DomainError
           Method
           Module
           Mutex
@@ -158,23 +140,15 @@ module RuboCop
           Numeric
           Object
           ObjectSpace
-          ObjectSpace::WeakMap
           Proc
           Process
-          Process::GID
-          Process::Status
-          Process::Sys
-          Process::UID
           Random
           Range
           RangeError
           Rational
-          Rational::compatible
           Regexp
           RegexpError
           RubyVM
-          RubyVM::Env
-          RubyVM::InstructionSequence
           RuntimeError
           ScriptError
           SecurityError
@@ -190,8 +164,6 @@ module RuboCop
           SystemExit
           SystemStackError
           Thread
-          Thread::Backtrace
-          Thread::Backtrace::Location
           ThreadError
           ThreadGroup
           Time
@@ -218,41 +190,22 @@ module RuboCop
           ENV
           EOFError
           Encoding
-          Encoding::CompatibilityError
-          Encoding::Converter
-          Encoding::ConverterNotFoundError
-          Encoding::InvalidByteSequenceError
-          Encoding::UndefinedConversionError
           EncodingError
           Enumerable
           Enumerator
-          Enumerator::Generator
-          Enumerator::Lazy
-          Enumerator::Yielder
           Errno
           Exception
           FalseClass
           Fiber
           FiberError
           File
-          File::Constants
-          File::Stat
           FileTest
           Fixnum
           Float
           FloatDomainError
           GC
-          GC::Profiler
           Hash
           IO
-          IO::EAGAINWaitReadable
-          IO::EAGAINWaitWritable
-          IO::EINPROGRESSWaitReadable
-          IO::EINPROGRESSWaitWritable
-          IO::EWOULDBLOCKWaitReadable
-          IO::EWOULDBLOCKWaitWritable
-          IO::WaitReadable
-          IO::WaitWritable
           IOError
           IndexError
           Integer
@@ -264,7 +217,6 @@ module RuboCop
           Marshal
           MatchData
           Math
-          Math::DomainError
           Method
           Module
           Mutex
@@ -276,25 +228,16 @@ module RuboCop
           Numeric
           Object
           ObjectSpace
-          ObjectSpace::WeakMap
           Proc
           Process
-          Process::GID
-          Process::Status
-          Process::Sys
-          Process::UID
-          Process::Waiter
           Queue
           Random
           Range
           RangeError
           Rational
-          Rational::compatible
           Regexp
           RegexpError
           RubyVM
-          RubyVM::Env
-          RubyVM::InstructionSequence
           RuntimeError
           ScriptError
           SecurityError
@@ -311,8 +254,6 @@ module RuboCop
           SystemExit
           SystemStackError
           Thread
-          Thread::Backtrace
-          Thread::Backtrace::Location
           ThreadError
           ThreadGroup
           Time
@@ -324,13 +265,11 @@ module RuboCop
           ZeroDivisionError
         ).freeze
 
-        NAMESPACES = ((
+        NAMESPACES = (
           NAMESPACES_RUBY_186 |
           NAMESPACES_RUBY_200 |
           NAMESPACES_RUBY_220
-        ) - ['Object']).freeze
-        # This checks ignores items added to 'Object' as that is considered
-        # global namespace and have separate cops for that.
+        ).freeze
 
         def namespaces
           NAMESPACES
