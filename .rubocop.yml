@@ -5,6 +5,7 @@ AllCops:
   Exclude:
     - 'lib/**/*'
     - 'spec/**/*'
+    - 'tools/**/*'
 
 # SketchupDeprecations:
 #   Enabled: false
