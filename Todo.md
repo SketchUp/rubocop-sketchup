@@ -24,3 +24,8 @@ strings. To work around this use `.force_encoding('UTF-8')`
 We can use YARD to provide lists of new features in each SketchUp version.
 Developers can then declare minimum compatibilty and have RuboCop validate
 against it. Similar to how RuboCop already can check Ruby compatibilty.
+
+# Prefer bulk selection changes
+
+Performance: detect use of model.selection and .add/.remove/.toggle inside
+of loops. Recommend bulk actions.

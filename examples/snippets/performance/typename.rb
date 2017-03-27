@@ -5,7 +5,4 @@ module Examples
     faces = model.active_entities.select { |entity| entity.typename == 'Face' }
   end
 
-  # TODO(thomthom): detect use of model.selection and .add/.remove/.toggle
-  # inside of loops. Recommend bulk actions.
-
 end
