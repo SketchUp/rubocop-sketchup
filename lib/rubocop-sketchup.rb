@@ -1,7 +1,6 @@
 require 'rubocop'
 require 'rubocop/sketchup/version'
 
-require 'rubocop/sketchup/extension_namespace'
 require 'rubocop/sketchup/namespace'
 require 'rubocop/sketchup/namespace_checker'
 require 'rubocop/sketchup/no_comment_disable'

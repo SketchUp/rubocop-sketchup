@@ -266,9 +266,13 @@ module RuboCop
         ).freeze
 
         NAMESPACES = (
-          NAMESPACES_RUBY_186 |
-          NAMESPACES_RUBY_200 |
-          NAMESPACES_RUBY_220
+          (
+            NAMESPACES_RUBY_186 |
+            NAMESPACES_RUBY_200 |
+            NAMESPACES_RUBY_220
+          # Remove Object because this is the global namespace and there are
+          # other checks for this.
+          ) - ['Object']
         ).freeze
 
         def namespaces

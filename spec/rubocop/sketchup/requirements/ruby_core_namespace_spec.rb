@@ -8,11 +8,6 @@ describe RuboCop::Cop::SketchupRequirements::RubyCoreNamespace do
 
   described_class::NAMESPACES.each do |var|
 
-    # Skip `Object` as this is the global namespace and we have separate cops
-    # for that. Doing this distinction allows us to make exceptions on a more
-    # granular level.
-    next if var == 'Object'
-
     # The namespace objects are either modules or classes, but we don't know
     # what. We'll try to infer this based on the current Ruby installation
     # running the tests, defaulting back to `module`.
@@ -30,9 +25,7 @@ describe RuboCop::Cop::SketchupRequirements::RubyCoreNamespace do
                           '  def example',
                           '  end',
                           'end'])
-      # This trigger two offences because it triggers on defining a module/class
-      # that is part of the core as well as the method.
-      expect(cop.offenses.size).to eq(2)
+      expect(cop.offenses.size).to eq(1)
     end
 
     it "registers an offense for adding a module method to #{var} #{type}" do
@@ -40,14 +33,14 @@ describe RuboCop::Cop::SketchupRequirements::RubyCoreNamespace do
                           '  def self.example',
                           '  end',
                           'end'])
-      expect(cop.offenses.size).to eq(2)
+      expect(cop.offenses.size).to eq(1)
     end
 
     it "registers an offense for adding a constant to #{var} #{type}" do
       inspect_source(cop, ["#{type} #{var}",
                           '  EXAMPLE = 123',
                           'end'])
-      expect(cop.offenses.size).to eq(2)
+      expect(cop.offenses.size).to eq(1)
     end
 
     it "registers an offense for adding a module to #{var} #{type}" do
@@ -55,7 +48,7 @@ describe RuboCop::Cop::SketchupRequirements::RubyCoreNamespace do
                           '  module Example',
                           '  end',
                           'end'])
-      expect(cop.offenses.size).to eq(2)
+      expect(cop.offenses.size).to eq(1)
     end
 
     it "registers an offense for adding a class to #{var} #{type}" do
@@ -63,8 +56,14 @@ describe RuboCop::Cop::SketchupRequirements::RubyCoreNamespace do
                           '  class Example',
                           '  end',
                           'end'])
-      expect(cop.offenses.size).to eq(2)
+      expect(cop.offenses.size).to eq(1)
     end
+
+    it 'does not register an offense for namespaced objects' do
+    inspect_source(cop, ['module Example',
+                         'end'])
+    expect(cop.offenses).to be_empty
+  end
   end
 
 end

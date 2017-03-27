@@ -7,6 +7,8 @@ module RuboCop
 
         attr_reader :namespace
 
+        SEPARATOR = '::'.freeze
+
         # @param [String] namespace
         def initialize(namespace)
           @namespace = namespace
@@ -19,16 +21,20 @@ module RuboCop
         end
 
         # Get a namespace string that is relative to Object.
-        def from_root(namespace)
+        def from_root
           items = parts
           items.shift if items.size > 1 && items.first == 'Object'
-          items.join('::')
+          items.join(SEPARATOR)
+        end
+
+        def join(other)
+          self.class.new("#{@namespace}#{SEPARATOR}#{other}")
         end
 
         # Get the first component of a namespace relative to Object.
         # May return 'Object' if the namespace is in the global namespace.
         def parts
-          namespace.split('::')
+          namespace.split(SEPARATOR)
         end
 
         def top_level?
