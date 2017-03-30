@@ -53,7 +53,7 @@ module RuboCop
 
         def message(node)
           namespace = Namespace.new(node.defined_module_name).from_root
-          format('Use a single root namespace. (Expected %s; found %s)', @@namespace, namespace)
+          format('Use a single root namespace. (Found %s; Previously found %s)', namespace, @@namespace)
         end
 
       end
