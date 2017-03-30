@@ -23,6 +23,8 @@ module RuboCop
         def check_class_or_module(node)
           name = node.defined_module_name
           parent = Namespace.new(node.parent_module_name)
+          # Don't want to process anything that aren't top level namespaces.
+          return unless parent.top_level?
           check_namespace(node, parent.join(name))
         end
 

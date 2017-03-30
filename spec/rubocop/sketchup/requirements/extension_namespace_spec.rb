@@ -30,6 +30,16 @@ describe RuboCop::Cop::SketchupRequirements::ExtensionNamespace do
     expect(cop.offenses).to be_empty
   end
 
+  it 'does not register an offense for nested namespace objects' do
+    inspect_source(cop, ['module Example',
+                         'end',
+                         'module FooBar',
+                         '  module BizBaz',
+                         '  end',
+                         'end'])
+    expect(cop.offenses.size).to eq(1)
+  end
+
   it 'does not register an offense for Ruby StdLib namespace objects' do
     inspect_source(cop, ['module Example',
                          'end',
