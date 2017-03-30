@@ -2,18 +2,18 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupRequirements::GlobalMethods do
+describe RuboCop::Cop::SketchupRequirements::GlobalConstants do
 
   subject(:cop) { described_class.new }
 
-  it 'registers an offense for global methods' do
-    inspect_source(cop, 'def example; end')
+  it 'registers an offense for global constants' do
+    inspect_source(cop, 'GLOBAL_EXAMPLE = 123')
     expect(cop.offenses.size).to eq(1)
   end
 
-  it 'does not register an offense for namespaced methods' do
+  it 'does not register an offense for namespaced constants' do
     inspect_source(cop, ['module Example',
-                         '  def example; end',
+                         '  NAMESPACED_EXAMPLE = 123',
                          'end'])
     expect(cop.offenses).to be_empty
   end
