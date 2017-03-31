@@ -21,6 +21,7 @@ module RuboCop
         )
 
         MUTATORS = %i(
+          <<
           []=
           clear
           collect!

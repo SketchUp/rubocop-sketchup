@@ -23,12 +23,16 @@ describe RuboCop::Cop::SketchupRequirements::LoadPath do
     end
   end
 
+  it 'registers an offense when modifying $LOAD_PATH with <<' do
+    inspect_source(cop, '$LOAD_PATH << "dummy"')
+    expect(cop.offenses.size).to eq(1)
+  end
+
   %i(
     &
     *
     +
     -
-    <<
     <=>
     ==
     []
