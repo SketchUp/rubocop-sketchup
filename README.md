@@ -7,7 +7,18 @@ Tool intended to assist with development of SketchUp extension by providing stat
 
 ## Installation
 
-Requires [RuboCop](http://batsov.com/rubocop/) to be installed.
+### Requirements
+
+* Standalone Ruby installation on the system. This is not intended to be used
+  inside of SketchUp. Mac users should have Ruby already on the system, Windows
+  users need to install it from https://rubyinstaller.org/.
+
+* The [RuboCop](http://batsov.com/rubocop/) gem must also be installed.
+
+### Install
+
+**NOTE: The gem is currently not available on rubygems.org.**
+See the [Building](#building) section further down this page for details.
 
 Install the `rubocop-sketchup` gem:
 
@@ -107,6 +118,41 @@ Note that the complete technical requirements for Extension Warehouse is not ful
 `SketchupSuggestions` might be the more noisy of the departments. These are more general gentle suggestions for common improvements to raise the quality of your extension and source code. No need to address everything this reports, evaluate to the context of your extension. In general this department will be a collection of established best practices.
 
 
+## Building
+
+### Development Requirements
+
+Building this gem requires [bundler](http://bundler.io/).
+
+```bash
+gem install bundler
+```
+
+### Initialize Developer Environment
+
+From the folder where you [cloned](https://help.github.com/articles/cloning-a-repository/) the repository:
+
+```bash
+bundle install
+```
+
+This will install all the developer dependencies to build the gem.
+
+### Build
+
+```bash
+bundle exec rake install
+```
+
+After running this command `rubocop-sketchup` should be available on your system.
+
+### Test
+
+```bash
+bundle exec rake
+```
+
+
 ## Contributing
 
 1. Fork it
@@ -114,6 +160,7 @@ Note that the complete technical requirements for Extension Warehouse is not ful
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
 
 ## License
 
