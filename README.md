@@ -86,6 +86,18 @@ SketchupSuggestions:
 rubocop --require rubocop-sketchup --only SketchupRequirements
 ```
 
+### Formatters
+
+RuboCop comes with a set of different formatters that let you control how the results are presented.
+
+If you want to output the result in machine readable JSON;
+
+```bash
+rubocop --out results.json --format json
+```
+
+See [RuboCop's documentation](https://rubocop.readthedocs.io/en/latest/formatters/) for more examples.
+
 ### Rake task
 
 ```ruby
