@@ -45,7 +45,7 @@ Now you can run `rubocop` and it will automatically load the RuboCop SketchUp co
 
 #### Running only cops for Extension Warehouse Technical requirements
 
-If you want to focus on only the technical requirements for having your extension hosted on [Extension Warehouse](http://extensions.sketchup.com/) then you can limit the cop to only the `SketchupRequirements` department. This is the most important department which you should ignore.
+If you want to focus on only the technical requirements for having your extension hosted on [Extension Warehouse](http://extensions.sketchup.com/) then you can limit the cop to only the `SketchupRequirements` department. This is the most important department which you should not ignore.
 
 ```yaml
 require: rubocop-sketchup
