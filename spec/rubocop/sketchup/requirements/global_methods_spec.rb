@@ -45,4 +45,14 @@ describe RuboCop::Cop::SketchupRequirements::GlobalMethods do
     expect(cop.offenses).to be_empty
   end
 
+  it 'does not register an offense for block local methods' do
+    inspect_source(cop, ['module Example',
+                        '  10.times do',
+                        '    def hello',
+                        '    end',
+                        '  end',
+                        'end'])
+    expect(cop.offenses.size).to eq(0)
+  end
+
 end

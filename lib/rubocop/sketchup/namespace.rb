@@ -11,6 +11,7 @@ module RuboCop
 
         # @param [String] namespace
         def initialize(namespace)
+          raise TypeError unless namespace.is_a?(String)
           @namespace = namespace
         end
 

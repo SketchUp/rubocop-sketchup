@@ -42,6 +42,9 @@ module RuboCop
           if class_method_parent
             namespace = Namespace.new(class_method_parent.to_s)
           else
+            # If a method is defined inside a block then parent_module_name
+            # will return nil.
+            return if node.parent_module_name.nil?
             namespace = Namespace.new(node.parent_module_name)
           end
           add_offense(node, :name, nil, :error) if namespace.top_level?

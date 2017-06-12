@@ -46,6 +46,16 @@ describe RuboCop::Cop::SketchupRequirements::ApiNamespace do
                           'end'])
       expect(cop.offenses.size).to eq(1)
     end
+
+    it 'does not register an offense for block local methods' do
+      inspect_source(cop, ['module Example',
+                          '  10.times do',
+                          '    def hello',
+                          '    end',
+                          '  end',
+                          'end'])
+      expect(cop.offenses.size).to eq(0)
+    end
   end
 
 end
