@@ -6,7 +6,6 @@ module RuboCop
       class GlobalMethods < Cop
 
         include NoCommentDisable
-        # include OnMethodDef
         include SketchUp
 
         MSG = 'Do not introduce global methods.'.freeze
