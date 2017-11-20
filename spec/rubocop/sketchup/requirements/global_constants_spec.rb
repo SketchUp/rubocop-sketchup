@@ -18,4 +18,11 @@ describe RuboCop::Cop::SketchupRequirements::GlobalConstants do
     expect(cop.offenses).to be_empty
   end
 
+  it 'does not register an offense for qualified namespaced constants' do
+    inspect_source(['module Example',
+                    'end',
+                    'Example::NAMESPACED_EXAMPLE = 123'])
+    expect(cop.offenses).to be_empty
+  end
+
 end
