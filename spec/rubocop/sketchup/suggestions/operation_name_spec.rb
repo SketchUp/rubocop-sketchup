@@ -31,4 +31,10 @@ describe RuboCop::Cop::SketchupSuggestions::OperationName do
     expect(cop.offenses).to be_empty
   end
 
+  it 'ignores arguments which are not string literals' do
+    inspect_source(['operation_name = "Hello World"',
+                    'model.start_operation(operation_name)'])
+    expect(cop.offenses).to be_empty
+  end
+
 end

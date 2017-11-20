@@ -15,7 +15,9 @@ module RuboCop
         end
 
         def acceptable_operation_name?(name)
-          # Capitalization, no programmer name, no punctuation
+          # Capitalization, no programmer name, no punctuation.
+          # We can only inspect string literals.
+          return true unless name.is_a?(String)
           return false if name.size > 25 # TODO: Separate Cop?
           return false if name.end_with?('.')
           return false if titleize(name) != name
