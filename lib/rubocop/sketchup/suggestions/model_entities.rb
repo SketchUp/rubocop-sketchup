@@ -18,14 +18,14 @@ module RuboCop
         def_node_matcher :model_entities?, <<-PATTERN
           (send
             {
-              (send (const nil :Sketchup) :active_model)
+              (send (const nil? :Sketchup) :active_model)
               (lvar {:model :mod})
             }
             :entities)
         PATTERN
 
         def on_send(node)
-          add_offense(node, :expression) if model_entities?(node)
+          add_offense(node, location: :expression) if model_entities?(node)
         end
       end
     end

@@ -11,41 +11,41 @@ describe RuboCop::Cop::SketchupRequirements::RubyStdLibNamespace do
     type, var = namespace.split(' ')
 
     it "registers an offense for adding an instance method to #{var} #{type}" do
-      inspect_source(cop, ["#{type} #{var}",
-                          '  def example',
-                          '  end',
-                          'end'])
+      inspect_source(["#{type} #{var}",
+                      '  def example',
+                      '  end',
+                      'end'])
       expect(cop.offenses.size).to eq(1)
     end
 
     it "registers an offense for adding a module method to #{var} #{type}" do
-      inspect_source(cop, ["#{type} #{var}",
-                          '  def self.example',
-                          '  end',
-                          'end'])
+      inspect_source(["#{type} #{var}",
+                      '  def self.example',
+                      '  end',
+                      'end'])
       expect(cop.offenses.size).to eq(1)
     end
 
     it "registers an offense for adding a constant to #{var} #{type}" do
-      inspect_source(cop, ["#{type} #{var}",
-                          '  EXAMPLE = 123',
-                          'end'])
+      inspect_source(["#{type} #{var}",
+                      '  EXAMPLE = 123',
+                      'end'])
       expect(cop.offenses.size).to eq(1)
     end
 
     it "registers an offense for adding a module to #{var} #{type}" do
-      inspect_source(cop, ["#{type} #{var}",
-                          '  module Example',
-                          '  end',
-                          'end'])
+      inspect_source(["#{type} #{var}",
+                      '  module Example',
+                      '  end',
+                      'end'])
       expect(cop.offenses.size).to eq(1)
     end
 
     it "registers an offense for adding a class to #{var} #{type}" do
-      inspect_source(cop, ["#{type} #{var}",
-                          '  class Example',
-                          '  end',
-                          'end'])
+      inspect_source(["#{type} #{var}",
+                       '  class Example',
+                       '  end',
+                       'end'])
       expect(cop.offenses.size).to eq(1)
     end
   end

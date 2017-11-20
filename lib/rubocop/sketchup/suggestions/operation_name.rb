@@ -11,7 +11,7 @@ module RuboCop
           return unless method_name == :start_operation
           operation_name = args.first.children.first
           return if acceptable_operation_name?(operation_name)
-          add_offense(args.first, :expression)
+          add_offense(args.first, location: :expression)
         end
 
         def acceptable_operation_name?(name)

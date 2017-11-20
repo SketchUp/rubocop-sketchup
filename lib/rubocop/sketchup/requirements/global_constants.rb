@@ -13,7 +13,7 @@ module RuboCop
         # Constant assignment.
         def on_casgn(node)
           namespace = Namespace.new(node.parent_module_name)
-          add_offense(node, :name, nil, :error) if namespace.top_level?
+          add_offense(node, location: :name, severity: :error) if namespace.top_level?
         end
 
       end

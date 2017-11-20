@@ -7,7 +7,7 @@ describe RuboCop::Cop::SketchupPerformance::Typename do
   subject(:cop) { described_class.new }
 
   it 'registers an offense for use of Sketchup::Entity#typename' do
-    inspect_source(cop, 'entity.typename == "Face"')
+    inspect_source('entity.typename == "Face"')
     expect(cop.offenses.size).to eq(1)
   end
 

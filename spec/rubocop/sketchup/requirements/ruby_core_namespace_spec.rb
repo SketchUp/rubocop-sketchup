@@ -21,47 +21,47 @@ describe RuboCop::Cop::SketchupRequirements::RubyCoreNamespace do
     end
 
     it "registers an offense for adding an instance method to #{var} #{type}" do
-      inspect_source(cop, ["#{type} #{var}",
-                          '  def example',
-                          '  end',
-                          'end'])
+      inspect_source(["#{type} #{var}",
+                      '  def example',
+                      '  end',
+                      'end'])
       expect(cop.offenses.size).to eq(1)
     end
 
     it "registers an offense for adding a module method to #{var} #{type}" do
-      inspect_source(cop, ["#{type} #{var}",
-                          '  def self.example',
-                          '  end',
-                          'end'])
+      inspect_source(["#{type} #{var}",
+                      '  def self.example',
+                      '  end',
+                      'end'])
       expect(cop.offenses.size).to eq(1)
     end
 
     it "registers an offense for adding a constant to #{var} #{type}" do
-      inspect_source(cop, ["#{type} #{var}",
-                          '  EXAMPLE = 123',
-                          'end'])
+      inspect_source(["#{type} #{var}",
+                      '  EXAMPLE = 123',
+                      'end'])
       expect(cop.offenses.size).to eq(1)
     end
 
     it "registers an offense for adding a module to #{var} #{type}" do
-      inspect_source(cop, ["#{type} #{var}",
-                          '  module Example',
-                          '  end',
-                          'end'])
+      inspect_source(["#{type} #{var}",
+                      '  module Example',
+                      '  end',
+                      'end'])
       expect(cop.offenses.size).to eq(1)
     end
 
     it "registers an offense for adding a class to #{var} #{type}" do
-      inspect_source(cop, ["#{type} #{var}",
-                          '  class Example',
-                          '  end',
-                          'end'])
+      inspect_source(["#{type} #{var}",
+                      '  class Example',
+                      '  end',
+                      'end'])
       expect(cop.offenses.size).to eq(1)
     end
 
     it 'does not register an offense for namespaced objects' do
-    inspect_source(cop, ['module Example',
-                         'end'])
+    inspect_source(['module Example',
+                    'end'])
     expect(cop.offenses).to be_empty
   end
   end

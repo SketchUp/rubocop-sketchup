@@ -11,13 +11,13 @@ module RuboCop
           _, method_name, *args = *node
           return unless method_name == :start_operation
           if args.size < 2
-            add_offense(node, :expression)
+            add_offense(node, location: :expression)
             return
           end
           argument = args[1]
           disable_ui = argument.children.first
           return if disable_ui
-          add_offense(argument, :expression)
+          add_offense(argument, location: :expression)
         end
       end
     end

@@ -7,7 +7,7 @@ describe RuboCop::Cop::SketchupPerformance::OperationDisableUI do
   subject(:cop) { described_class.new }
 
   it 'registers an offense when starting an operation without disabling the UI' do
-    inspect_source(cop, 'model.start_operation("Hello")')
+    inspect_source('model.start_operation("Hello")')
     expect(cop.offenses.size).to eq(1)
   end
 

@@ -160,9 +160,18 @@ After running this command `rubocop-sketchup` should be available on your system
 
 ### Test
 
+Running all tests:
+
 ```bash
 bundle exec rake
 ```
+
+Running single spec:
+
+```bash
+bundle exec rake spec SPEC=spec/rubocop/sketchup/requirements/global_methods_spec.rb
+```
+
 
 ### Release
 
