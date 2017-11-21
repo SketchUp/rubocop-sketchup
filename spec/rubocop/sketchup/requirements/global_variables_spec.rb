@@ -11,7 +11,7 @@ describe RuboCop::Cop::SketchupRequirements::GlobalVariables do
     expect(cop.offenses.size).to eq(1)
   end
 
-  described_class::BUILT_IN_VARS.each do |var|
+  described_class::ALLOWED_VARS.each do |var|
     it "does not register an offense for built-in variable #{var}" do
       inspect_source("puts #{var}")
       expect(cop.offenses).to be_empty
