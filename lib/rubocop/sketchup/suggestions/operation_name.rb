@@ -4,6 +4,7 @@ module RuboCop
   module Cop
     module SketchupSuggestions
       class OperationName < Cop
+
         MSG = 'Operation name should be a short capitalized description.'.freeze
 
         def on_send(node)
@@ -24,10 +25,24 @@ module RuboCop
           true
         end
 
+        TITLEIZE_EXCLUDE = %w[
+          from of to
+          and or if
+        ]
+
         # TODO(thomthom): Might need to ignore words like 'and/or'
         def titleize(string)
-          string.split.map(&:capitalize).join(' ')
+          # string.split.map(&:capitalize).join(' ')
+          words = string.split.map { |word|
+            if TITLEIZE_EXCLUDE.include?(word)
+              word
+            else
+              word.capitalize
+            end
+          }
+          words.join(' ')
         end
+
       end
     end
   end

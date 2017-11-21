@@ -21,6 +21,11 @@ describe RuboCop::Cop::SketchupSuggestions::OperationName do
     expect(cop.offenses.size).to eq(1)
   end
 
+  it 'does not register an offense when operation name with prepositions or conjunctions' do
+    inspect_source('model.start_operation("Short and Sweet")')
+    expect(cop.offenses).to be_empty
+  end
+
   it 'registers an offense when operation name is not capitalized' do
     inspect_source('model.start_operation("doing stuff")')
     expect(cop.offenses.size).to eq(1)
