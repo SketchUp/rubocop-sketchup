@@ -1,4 +1,8 @@
 ---
+SketchupRequirements/Exit:
+  Description: Exit attempts to kill the Ruby interpreter.
+  Enabled: true
+
 SketchupSuggestions/OperationName:
   Description: Check that operation names are human friendly and consistent with SketchUp.
   Enabled: true
