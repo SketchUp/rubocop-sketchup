@@ -11,3 +11,7 @@ SketchupSuggestions/OperationName:
   Description: Check that operation names are human friendly and consistent with SketchUp.
   Enabled: true
   Max: 25
+
+SketchupSuggestions/SketchupRequire:
+  Description: Omit file extensions when using Sketchup.require to allow encrypted files to be loaded.
+  Enabled: true
