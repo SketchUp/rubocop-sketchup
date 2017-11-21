@@ -19,14 +19,21 @@ module RuboCop
           # Capitalization, no programmer name, no punctuation.
           # We can only inspect string literals.
           return true unless name.is_a?(String)
-          return false if name.size > 25 # TODO: Separate Cop?
+          return false if name.size > max_operation_name_length
           return false if name.end_with?('.')
           return false if titleize(name) != name
           true
         end
 
+        def max_operation_name_length
+          length = cop_config['Max'] || 25
+          return length if length.is_a?(Integer) && length > 0
+
+          raise 'Max needs to be a positive integer!'
+        end
+
         TITLEIZE_EXCLUDE = %w[
-          from of to
+          by for from in of to
           and or if
         ]
 

@@ -2,13 +2,25 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupSuggestions::OperationName do
+describe RuboCop::Cop::SketchupSuggestions::OperationName, :config do
 
-  subject(:cop) { described_class.new }
+  subject(:cop) { described_class.new(config) }
+  let(:cop_config) { { 'Max' => 25 } }
 
   it 'registers an offense when operations name is too long' do
     inspect_source('model.start_operation("Some Really Long Operation Name")')
     expect(cop.offenses.size).to eq(1)
+  end
+
+  context 'Max: 32' do
+    let(:cop_config) do
+      { 'Max' => 32 }
+    end
+
+    it 'allows Max operation name to be adjusted' do
+      inspect_source('model.start_operation("Some Really Long Operation Name")')
+      expect(cop.offenses).to be_empty
+    end
   end
 
   it 'does not register an offense when operation name is short' do

@@ -1,19 +1,5 @@
-# require: rubocop-sketchup
-
-AllCops:
-  DisabledByDefault: true
-  # Exclude:
-    # - 'lib/**/*'
-    # - 'spec/**/*'
-
-# SketchupDeprecations:
-#   Enabled: false
-
-# SketchupPerformance:
-#   Enabled: false
-
-SketchupRequirements:
+---
+SketchupSuggestions/OperationName:
+  Description: Check that operation names are human friendly and consistent with SketchUp.
   Enabled: true
-
-# SketchupSuggestions:
-#   Enabled: false
+  Max: 25
