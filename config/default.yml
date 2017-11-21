@@ -12,6 +12,14 @@ SketchupSuggestions/OperationName:
   Enabled: true
   Max: 25
 
+SketchupSuggestions/SketchupFindSupportFile:
+  Description: >-
+                 Avoid Sketchup.find_support_file to find your extension's files.
+                 Extensions might be installed outside the SketchUp Plugins folder.
+                 Use __FILE__ and __dir__ to locate your files relative to the
+                 executing file.
+  Enabled: true
+
 SketchupSuggestions/SketchupRequire:
   Description: Omit file extensions when using Sketchup.require to allow encrypted files to be loaded.
   Enabled: true
