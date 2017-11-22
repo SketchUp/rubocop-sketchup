@@ -8,7 +8,7 @@ SketchupPerformance/SelectionBulkChanges:
 SketchupPerformance/OpenSSL:
   Description: >-
                  Avoid using Ruby's OpenSSL within SketchUp. A flaw in how it
-                 obtain random bits under Windows can severly affect
+                 obtain random bits under Windows can severely affect
                  performance, freezing SketchUp for many minutes.
                  This also affects SecureRandom and anything else
                  that depend on OpenSSL. Net::HTTP is affected if connecting via
@@ -21,6 +21,12 @@ SketchupRequirements/Exit:
 
 SketchupRequirements/ShippedExtensionsNamespace:
   Description: ShippedExtensionsNamespace
+  Enabled: true
+
+SketchupSuggestions/DynamicComponentInternals:
+  Description: >-
+                 Avoid relying on internal logic of Dynamic Components. It's
+                 behavior might change between versions.
   Enabled: true
 
 SketchupSuggestions/OperationName:
