@@ -1,4 +1,10 @@
 ---
+SketchupPerformance/SelectionBulkChanges:
+  Description: >-
+                 Avoid modifying the selection set within loops. It's much
+                 faster to change the selection in bulk.
+  Enabled: true
+
 SketchupRequirements/Exit:
   Description: Exit attempts to kill the Ruby interpreter.
   Enabled: true
