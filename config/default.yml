@@ -5,6 +5,16 @@ SketchupPerformance/SelectionBulkChanges:
                  faster to change the selection in bulk.
   Enabled: true
 
+SketchupPerformance/OpenSSL:
+  Description: >-
+                 Avoid using Ruby's OpenSSL within SketchUp. A flaw in how it
+                 obtain random bits under Windows can severly affect
+                 performance, freezing SketchUp for many minutes.
+                 This also affects SecureRandom and anything else
+                 that depend on OpenSSL. Net::HTTP is affected if connecting via
+                 HTTPS. Connecting via plain HTTP is unaffected.
+  Enabled: true
+
 SketchupRequirements/Exit:
   Description: Exit attempts to kill the Ruby interpreter.
   Enabled: true
