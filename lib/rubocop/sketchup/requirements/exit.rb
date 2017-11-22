@@ -5,6 +5,9 @@ module RuboCop
     module SketchupRequirements
       # Don't attempt to kill the Ruby interpreter by calling exit or exit!.
       class Exit < Cop
+
+        include NoCommentDisable
+
         MSG = 'Exit attempts to kill the Ruby interpreter.'.freeze
 
         # Reference: http://rubocop.readthedocs.io/en/latest/development/
