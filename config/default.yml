@@ -19,7 +19,7 @@ SketchupRequirements/Exit:
   Description: Exit attempts to kill the Ruby interpreter.
   Enabled: true
 
-SketchupSuggestions/LanguageHandlerGlobals:
+SketchupRequirements/LanguageHandlerGlobals:
   Description: >-
                  Avoid using globals in general, but  especially these which are
                  known to be in use by other extensions made by SketchUp.
@@ -29,6 +29,18 @@ SketchupSuggestions/LanguageHandlerGlobals:
 SketchupRequirements/ShippedExtensionsNamespace:
   Description: ShippedExtensionsNamespace
   Enabled: true
+
+SketchupRequirements/SketchupExtension:
+  Description: >-
+                 Register a single instance of SketchupExtension per extension.
+                 This should be done by the root .rb file in the extension
+                 package.
+  Enabled: true
+
+SketchupSuggestions/SketchupExtension:
+  Description: Check that extension registers a SketchupExtension object.
+  Enabled: true
+  SourcePath: src
 
 SketchupSuggestions/DynamicComponentInternals:
   Description: >-
