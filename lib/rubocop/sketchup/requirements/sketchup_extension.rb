@@ -9,6 +9,7 @@ module RuboCop
       # This should be done by the root .rb file in the extension package.
       class SketchupExtension < Cop
 
+        include Sketchup::ExtensionProject
         include NoCommentDisable
 
         MSG = 'Create and register one SketchupExtension instance per extension.'.freeze
@@ -16,8 +17,6 @@ module RuboCop
         MSG_CREATE_MISSING = 'SketchupExtension.new not found.'.freeze
         MSG_REGISTER_ONE = 'Only register one SketchupExtension instance per extension.'.freeze
         MSG_REGISTER_MISSING = 'Registration of SketchupExtension not found. Expected %s'.freeze
-
-        # TODO: Lots of logic here can be extracted into a mix-in module.
 
         # Reference: http://rubocop.readthedocs.io/en/latest/node_pattern/
         def_node_search :sketchup_extension_new, <<-PATTERN
@@ -34,36 +33,6 @@ module RuboCop
             {({:lvar :ivar :cvar :gvar} $_)(const nil? $_)}
             _)
         PATTERN
-
-        def project_path
-          Pathname.new(Dir.pwd)
-        end
-
-        def relative_source_path
-          Pathname.new(cop_config['SourcePath'] || 'src')
-        end
-
-        def source_path
-          project_path.join(relative_source_path)
-        end
-
-        def root_file?(filename)
-          filename.extname.downcase == '.rb' &&
-            filename.parent.to_s == '.'
-        end
-
-        def filename_relative_to_project_source(processed_source)
-          # Get filename for processed source.
-          source_filename = processed_source.buffer.name
-          # TODO: Get this working.
-          #   Similar to RuboCop::Cop::Naming::Filename (file_name.rb)
-          # return if config.file_to_include?(source_path)
-          # Get absolute filename from project root.
-          filename = Pathname.new(source_filename)
-          filename = project_path.join(filename) if filename.relative?
-          # Get filename relative to project source.
-          filename.relative_path_from(source_path)
-        end
 
         def investigate(processed_source)
           filename = filename_relative_to_project_source(processed_source)

@@ -3,6 +3,7 @@ require 'rubocop/sketchup'
 require 'rubocop/sketchup/version'
 require 'rubocop/sketchup/inject'
 
+require 'rubocop/sketchup/extension_project'
 require 'rubocop/sketchup/namespace'
 require 'rubocop/sketchup/namespace_checker'
 require 'rubocop/sketchup/no_comment_disable'
