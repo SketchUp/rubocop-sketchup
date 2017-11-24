@@ -23,9 +23,19 @@ describe RuboCop::Cop::SketchupSuggestions::OperationName, :config do
     end
   end
 
-  it 'does not register an offense when operation name is short' do
+  it 'does not register an offense when operation name is short double quoted' do
     inspect_source('model.start_operation("Short")')
     expect(cop.offenses).to be_empty
+  end
+
+  it 'does not register an offense when operation name is short single quoted' do
+    inspect_source("model.start_operation('Short')")
+    expect(cop.offenses).to be_empty
+  end
+
+  it 'registers an offense when operations name is empty' do
+    inspect_source('model.start_operation("")')
+    expect(cop.offenses.size).to eq(1)
   end
 
   it 'registers an offense when operations name ends with a period' do
