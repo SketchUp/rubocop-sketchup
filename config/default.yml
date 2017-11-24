@@ -26,6 +26,12 @@ SketchupRequirements/LanguageHandlerGlobals:
                  They are still in use due to compatibility reasons.
   Enabled: true
 
+SketchupRequirements/RegisterExtension:
+  Description: >-
+                 Always register extensions to load by default. Otherwise it
+                 might confuse users to think the extension isn't working.
+  Enabled: true
+
 SketchupRequirements/ShippedExtensionsNamespace:
   Description: ShippedExtensionsNamespace
   Enabled: true
