@@ -26,6 +26,13 @@ SketchupRequirements/LanguageHandlerGlobals:
                  They are still in use due to compatibility reasons.
   Enabled: true
 
+SketchupRequirements/MinimalRegistration:
+  Description: >-
+                 Don't load extension files in the root file registering the
+                 extension. Extensions should not load additional files when
+                 it's disabled.
+  Enabled: true
+
 SketchupRequirements/RegisterExtension:
   Description: >-
                  Always register extensions to load by default. Otherwise it
