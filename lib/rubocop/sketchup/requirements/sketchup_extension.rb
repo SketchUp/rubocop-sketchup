@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'pathname'
-
 module RuboCop
   module Cop
     module SketchupRequirements
