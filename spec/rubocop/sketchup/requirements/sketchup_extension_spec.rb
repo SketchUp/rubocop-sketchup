@@ -4,7 +4,12 @@ require 'spec_helper'
 
 describe RuboCop::Cop::SketchupRequirements::SketchupExtension do
 
-  subject(:cop) { described_class.new }
+  subject(:cop) { described_class.new(config) }
+
+  # Based on file_name_spec.rb
+  let(:config) do
+    RuboCop::Config.new({}, '.rubocop.yml')
+  end
 
   it 'registers an offense for missing SketchupExtension in root file' do
     inspect_source('foo(123)', './src/hello.rb')

@@ -5,34 +5,34 @@ module RuboCop
     module Sketchup
       module ExtensionProject
 
-        def project_path
-          Pathname.new(Dir.pwd)
+        # @return [Pathname]
+        def config_path
+          path = config.path_relative_to_config('.')
+          Pathname.new(path)
         end
 
+        # @return [Pathname]
         def relative_source_path
           Pathname.new(cop_config['SourcePath'] || 'src')
         end
 
+        # @return [Pathname]
         def source_path
-          project_path.join(relative_source_path)
+          config_path.join(relative_source_path)
         end
 
-        def root_file?(filename)
+        # @param [RuboCop::ProcessedSource] processed_source
+        def path_relative_to_source(processed_source)
+          source_filename = processed_source.buffer.name
+          path = config.path_relative_to_config(source_filename)
+          Pathname.new(path).relative_path_from(source_path)
+        end
+
+        # @param [RuboCop::ProcessedSource] processed_source
+        def root_file?(processed_source)
+          filename = path_relative_to_source(processed_source)
           filename.extname.downcase == '.rb' &&
             filename.parent.to_s == '.'
-        end
-
-        def filename_relative_to_project_source(processed_source)
-          # Get filename for processed source.
-          source_filename = processed_source.buffer.name
-          # TODO: Get this working.
-          #   Similar to RuboCop::Cop::Naming::Filename (file_name.rb)
-          # return if config.file_to_include?(source_path)
-          # Get absolute filename from project root.
-          filename = Pathname.new(source_filename)
-          filename = project_path.join(filename) if filename.relative?
-          # Get filename relative to project source.
-          filename.relative_path_from(source_path)
         end
 
       end

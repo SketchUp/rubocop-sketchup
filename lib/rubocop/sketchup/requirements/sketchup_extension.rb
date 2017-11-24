@@ -35,8 +35,7 @@ module RuboCop
         PATTERN
 
         def investigate(processed_source)
-          filename = filename_relative_to_project_source(processed_source)
-          return unless root_file?(filename)
+          return unless root_file?(processed_source)
 
           source_node = processed_source.ast
           # Using range similar to RuboCop::Cop::Naming::Filename (file_name.rb)
