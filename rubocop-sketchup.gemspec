@@ -17,11 +17,12 @@ Gem::Specification.new do |spec|
 
   spec.require_paths = ['lib']
   spec.files = Dir[
+    'config/**/*',
     'lib/**/*',
     '*.gemspec',
     'Gemfile'
   ]
 
-  spec.add_dependency 'rubocop', '~> 0.47.0'
+  spec.add_dependency 'rubocop', '~> 0.51.0'
   spec.add_development_dependency 'bundler', '~> 1.13'
 end

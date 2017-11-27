@@ -11,11 +11,23 @@ module Examples
     model.active_entities.add_face([0,0,0], [9,0,0], [9,9,0], [0,9,0])
     model.commit_operation
 
+    model.start_operation('', true)
+    model.active_entities.add_face([0,0,0], [9,0,0], [9,9,0], [0,9,0])
+    model.commit_operation
+
     model.start_operation('programmer_name', true)
     model.active_entities.add_face([0,0,0], [9,0,0], [9,9,0], [0,9,0])
     model.commit_operation
 
     model.start_operation('Way too long description for menu item', true)
+    model.active_entities.add_face([0,0,0], [9,0,0], [9,9,0], [0,9,0])
+    model.commit_operation
+
+    model.start_operation("Way too long description for menu item", true)
+    model.active_entities.add_face([0,0,0], [9,0,0], [9,9,0], [0,9,0])
+    model.commit_operation
+
+    model.start_operation(%[Way too long description for menu item], true)
     model.active_entities.add_face([0,0,0], [9,0,0], [9,9,0], [0,9,0])
     model.commit_operation
   end

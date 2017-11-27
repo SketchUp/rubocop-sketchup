@@ -1,19 +1,95 @@
-# require: rubocop-sketchup
-
-AllCops:
-  DisabledByDefault: true
-  # Exclude:
-    # - 'lib/**/*'
-    # - 'spec/**/*'
-
-# SketchupDeprecations:
-#   Enabled: false
-
-# SketchupPerformance:
-#   Enabled: false
-
-SketchupRequirements:
+---
+SketchupPerformance/SelectionBulkChanges:
+  Description: >-
+                 Avoid modifying the selection set within loops. It's much
+                 faster to change the selection in bulk.
   Enabled: true
 
-# SketchupSuggestions:
-#   Enabled: false
+SketchupPerformance/OpenSSL:
+  Description: >-
+                 Avoid using Ruby's OpenSSL within SketchUp. A flaw in how it
+                 obtain random bits under Windows can severely affect
+                 performance, freezing SketchUp for many minutes.
+                 This also affects SecureRandom and anything else
+                 that depend on OpenSSL. Net::HTTP is affected if connecting via
+                 HTTPS. Connecting via plain HTTP is unaffected.
+  Enabled: true
+
+SketchupRequirements/Exit:
+  Description: Exit attempts to kill the Ruby interpreter.
+  Enabled: true
+
+SketchupRequirements/FileStructure:
+  Description: >-
+                 Check that the extension conform to expected file structure
+                 with a single root .rb file and a support folder with matching
+                 name.
+  Enabled: true
+
+SketchupRequirements/LanguageHandlerGlobals:
+  Description: >-
+                 Avoid using globals in general, but  especially these which are
+                 known to be in use by other extensions made by SketchUp.
+                 They are still in use due to compatibility reasons.
+  Enabled: true
+
+SketchupRequirements/MinimalRegistration:
+  Description: >-
+                 Don't load extension files in the root file registering the
+                 extension. Extensions should not load additional files when
+                 it's disabled.
+  Enabled: true
+
+SketchupRequirements/RegisterExtension:
+  Description: >-
+                 Always register extensions to load by default. Otherwise it
+                 might confuse users to think the extension isn't working.
+  Enabled: true
+
+SketchupRequirements/ShippedExtensionsNamespace:
+  Description: ShippedExtensionsNamespace
+  Enabled: true
+
+SketchupRequirements/SketchupExtension:
+  Description: >-
+                 Register a single instance of SketchupExtension per extension.
+                 This should be done by the root .rb file in the extension
+                 package.
+  Enabled: true
+
+SketchupSuggestions/FileEncoding:
+  Description: >-
+                 When using __FILE__ and __dir__, beware that Ruby doesn't apply
+                 the correct encoding to the strings under Windows. When they
+                 contain non-english characters it will lead to exceptions being
+                 raised when the strings are used. Force encoding to work around
+                 this.
+  Enabled: true
+
+SketchupSuggestions/SketchupExtension:
+  Description: Check that extension registers a SketchupExtension object.
+  Enabled: true
+  SourcePath: src
+
+SketchupSuggestions/DynamicComponentInternals:
+  Description: >-
+                 Avoid relying on internal logic of Dynamic Components. It's
+                 behavior might change between versions.
+  Enabled: true
+
+SketchupSuggestions/OperationName:
+  Description: Check that operation names are human friendly and consistent with SketchUp.
+  Enabled: true
+  Max: 25
+
+SketchupSuggestions/SketchupFindSupportFile:
+  Description: >-
+                 Avoid Sketchup.find_support_file to find your extension's files.
+                 Extensions might be installed outside the SketchUp Plugins folder.
+                 Use __FILE__ and __dir__ to locate your files relative to the
+                 executing file.
+  Enabled: true
+
+SketchupSuggestions/SketchupRequire:
+  Description: Omit file extensions when using Sketchup.require to allow encrypted files to be loaded.
+  Enabled: true

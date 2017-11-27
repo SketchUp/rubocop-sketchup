@@ -6,7 +6,6 @@ module RuboCop
       class GlobalMethods < Cop
 
         include NoCommentDisable
-        include OnMethodDef
         include SketchUp
 
         MSG = 'Do not introduce global methods.'.freeze
@@ -30,16 +29,16 @@ module RuboCop
         def_node_matcher :class_method, <<-PATTERN
           (defs
             {
-              (const nil $_)
-              (const (const nil $_) ...)
+              (const nil? $_)
+              (const (const nil? $_) ...)
             }
             ...
           )
         PATTERN
 
-        def on_method_def(node, method_name, _args, _body)
-          class_method_parent = class_method(node)
-          if class_method_parent
+        def on_def(node)
+          if class_method?(node)
+            class_method_parent = class_method(node)
             namespace = Namespace.new(class_method_parent.to_s)
           else
             # If a method is defined inside a block then parent_module_name
@@ -47,8 +46,9 @@ module RuboCop
             return if node.parent_module_name.nil?
             namespace = Namespace.new(node.parent_module_name)
           end
-          add_offense(node, :name, nil, :error) if namespace.top_level?
+          add_offense(node, location: :name, severity: :error) if namespace.top_level?
         end
+        alias on_defs on_def
 
       end
     end

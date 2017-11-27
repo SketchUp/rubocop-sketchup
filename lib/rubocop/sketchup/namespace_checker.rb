@@ -5,8 +5,6 @@ module RuboCop
     module Sketchup
       module NamespaceChecker
 
-        include OnMethodDef
-
         def on_class(node)
           check_namespace(node)
         end
@@ -15,9 +13,10 @@ module RuboCop
           check_namespace(node)
         end
 
-        def on_method_def(node, method_name, _args, _body)
+        def on_def(node)
           check_namespace(node)
         end
+        alias on_defs on_def
 
         # Constant assignment.
         def on_casgn(node)
@@ -25,7 +24,7 @@ module RuboCop
         end
 
         def check_namespace(node)
-          add_offense(node, :name, nil, :error) if in_namespace?(node)
+          add_offense(node, location:  :name, severity: :error) if in_namespace?(node)
         end
 
         def in_namespace?(node)

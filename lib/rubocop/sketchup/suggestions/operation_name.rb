@@ -4,28 +4,80 @@ module RuboCop
   module Cop
     module SketchupSuggestions
       class OperationName < Cop
+
         MSG = 'Operation name should be a short capitalized description.'.freeze
+        MSG_MAX = "Operation names should not be short and concise. [%d/%d]".freeze
 
         def on_send(node)
           _, method_name, *args = *node
           return unless method_name == :start_operation
-          operation_name = args.first.children.first
-          return if acceptable_operation_name?(operation_name)
-          add_offense(args.first, :expression)
+          return unless args.first.str_type?
+          operation_name = args.first.str_content
+          # We can only inspect string literals.
+          return unless operation_name.is_a?(String)
+          # Check the format of the operation name.
+          unless acceptable_operation_name?(operation_name)
+            msg = %[#{MSG} Expected: "#{titleize(operation_name)}"]
+            add_offense(args.first, location: :expression, message: msg)
+          end
+          # Check the length of the operation name.
+          unless operation_name.size <= max_operation_name_length
+            message = format(MSG_MAX, operation_name.size, max_operation_name_length)
+            add_offense(args.first,
+              location: excess_range(args.first, operation_name),
+              message: message)
+          end
+          # Ensure operation name is not empty.
+          if operation_name.empty?
+            msg = 'Operation names should not be empty.'
+            add_offense(args.first, location: :expression, message: msg)
+          end
+        end
+
+        private
+
+        def excess_range(node, operation_name)
+          string_start = node.source.index(operation_name)
+          range = node.loc.expression
+          if string_start
+            excess_start = range.begin_pos + string_start + max_operation_name_length
+            excess_end = range.begin_pos + string_start + operation_name.size
+            range_between(excess_start, excess_end)
+          else
+            range_between(range.begin_pos, range.end_pos)
+          end
         end
 
         def acceptable_operation_name?(name)
-          # Capitalization, no programmer name, no punctuation
-          return false if name.size > 25 # TODO: Separate Cop?
+          # Capitalization, no programmer name, no punctuation.
           return false if name.end_with?('.')
           return false if titleize(name) != name
           true
         end
 
-        # TODO(thomthom): Might need to ignore words like 'and/or'
-        def titleize(string)
-          string.split.map(&:capitalize).join(' ')
+        def max_operation_name_length
+          length = cop_config['Max'] || 25
+          return length if length.is_a?(Integer) && length > 0
+
+          raise 'Max needs to be a positive integer!'
         end
+
+        TITLEIZE_EXCLUDE = %w[
+          by for from in of to
+          and or if
+        ]
+
+        def titleize(string)
+          words = string.split.map { |word|
+            if TITLEIZE_EXCLUDE.include?(word)
+              word
+            else
+              word.capitalize
+            end
+          }
+          words.join(' ')
+        end
+
       end
     end
   end

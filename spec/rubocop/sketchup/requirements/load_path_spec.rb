@@ -7,24 +7,24 @@ describe RuboCop::Cop::SketchupRequirements::LoadPath do
   subject(:cop) { described_class.new }
 
   it 'registers an offense when setting $LOAD_PATH' do
-    inspect_source(cop, '$LOAD_PATH = ["dummy"]')
+    inspect_source('$LOAD_PATH = ["dummy"]')
     expect(cop.offenses.size).to eq(1)
   end
 
   it 'does not register an offense for reading $LOAD_PATH' do
-    inspect_source(cop, 'dummy = $LOAD_PATH')
+    inspect_source('dummy = $LOAD_PATH')
     expect(cop.offenses).to be_empty
   end
 
   described_class::MUTATORS.each do |var|
     it "registers an offense when modifying $LOAD_PATH with #{var.inspect}" do
-      inspect_source(cop, "$LOAD_PATH.#{var}('dummy')")
+      inspect_source("$LOAD_PATH.#{var}('dummy')")
       expect(cop.offenses.size).to eq(1)
     end
   end
 
   it 'registers an offense when modifying $LOAD_PATH with <<' do
-    inspect_source(cop, '$LOAD_PATH << "dummy"')
+    inspect_source('$LOAD_PATH << "dummy"')
     expect(cop.offenses.size).to eq(1)
   end
 
@@ -93,7 +93,7 @@ describe RuboCop::Cop::SketchupRequirements::LoadPath do
     |
   ).each do |var|
     it "does not register an offense when not modifying $LOAD_PATH with #{var.inspect}" do
-      inspect_source(cop, "$LOAD_PATH.#{var}('dummy')")
+      inspect_source("$LOAD_PATH.#{var}('dummy')")
       expect(cop.offenses).to be_empty
     end
   end

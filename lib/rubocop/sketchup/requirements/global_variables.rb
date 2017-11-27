@@ -44,8 +44,15 @@ module RuboCop
           $CLASSPATH $JRUBY_VERSION $JRUBY_REVISION $ENV_JAVA
         ).map(&:to_sym)
 
+        # TODO: This should probably be read only.
+        SKETCHUP_VARS = %w(
+          $loaded_files
+        ).map(&:to_sym)
+
+        ALLOWED_VARS = BUILT_IN_VARS | SKETCHUP_VARS
+
         def allowed_var?(global_var)
-          BUILT_IN_VARS.include?(global_var)
+          ALLOWED_VARS.include?(global_var)
         end
 
         def on_gvar(node)
@@ -59,7 +66,7 @@ module RuboCop
         def check(node)
           global_var, = *node
 
-          add_offense(node, :name, nil, :error) unless allowed_var?(global_var)
+          add_offense(node, location: :name, severity: :error) unless allowed_var?(global_var)
         end
       end
     end
