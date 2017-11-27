@@ -19,6 +19,13 @@ SketchupRequirements/Exit:
   Description: Exit attempts to kill the Ruby interpreter.
   Enabled: true
 
+SketchupRequirements/FileStructure:
+  Description: >-
+                 Check that the extension conform to expected file structure
+                 with a single root .rb file and a support folder with matching
+                 name.
+  Enabled: true
+
 SketchupRequirements/LanguageHandlerGlobals:
   Description: >-
                  Avoid using globals in general, but  especially these which are
