@@ -57,6 +57,15 @@ SketchupRequirements/SketchupExtension:
                  package.
   Enabled: true
 
+SketchupSuggestions/FileEncoding:
+  Description: >-
+                 When using __FILE__ and __dir__, beware that Ruby doesn't apply
+                 the correct encoding to the strings under Windows. When they
+                 contain non-english characters it will lead to exceptions being
+                 raised when the strings are used. Force encoding to work around
+                 this.
+  Enabled: true
+
 SketchupSuggestions/SketchupExtension:
   Description: Check that extension registers a SketchupExtension object.
   Enabled: true
