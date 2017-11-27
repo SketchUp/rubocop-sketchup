@@ -15,9 +15,6 @@ module RuboCop
         ].freeze
 
         def investigate(processed_source)
-          # TODO: Only process root files? Then this will fail if there are
-          # only Ruby files in sub-directories.
-          # return unless root_file?(processed_source)
           return if already_run?
 
           # Using range similar to RuboCop::Cop::Naming::Filename (file_name.rb)
@@ -30,7 +27,7 @@ module RuboCop
           # Ensure there is only one root Ruby file.
           if root_ruby_files.size != 1
             msg = "Extensions must have exactly one root Ruby (.rb) file. Found: %d"
-            add_offense(nil, location: range, message: format(msg, root_ruby_files))
+            add_offense(nil, location: range, message: format(msg, root_ruby_files.size))
             return
           end
 
@@ -45,7 +42,7 @@ module RuboCop
           # Ensure there is only one sub-directory.
           if sub_folders.size != 1
             msg = "Extensions must have exactly one support directory. Found %d"
-            add_offense(nil, location: range, message: format(msg, sub_folders))
+            add_offense(nil, location: range, message: format(msg, sub_folders.size))
             return
           end
 

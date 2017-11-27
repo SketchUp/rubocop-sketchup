@@ -9,10 +9,12 @@ module RuboCop
 
         # @return [Pathname]
         def config_path
-          # TODO: Restore the search for the config file.
-          # path = config.path_relative_to_config('.')
-          # Pathname.new(path).expand_path
-          Pathname.new(Dir.pwd).expand_path
+          path = config.instance_variable_get(:@loaded_path)
+          if path
+            Pathname.new(path).expand_path.dirname
+          else
+            Pathname.new(Dir.pwd).expand_path
+          end
         end
 
         # @return [Pathname]
@@ -30,15 +32,6 @@ module RuboCop
           source_filename = processed_source.buffer.name
           rel_path = config.path_relative_to_config(source_filename)
           path = Pathname.new(rel_path).expand_path
-          # puts '---'
-          # puts 'path_relative_to_source'
-          # puts "> source_filename: #{source_filename}"
-          # puts "> path (relative to config): #{rel_path}"
-          # puts "> path (absolute): #{path}"
-          # puts "> config_path: #{config_path}"
-          # puts "> source_path: #{source_path}"
-          # puts '==='
-          # Pathname.new(path).relative_path_from(source_path)
           path.relative_path_from(source_path)
         end
 
