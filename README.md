@@ -17,9 +17,6 @@ Tool intended to assist with development of SketchUp extension by providing stat
 
 ### Install
 
-**NOTE: The gem is currently not available on rubygems.org.**
-See the [Building](#building) section further down this page for details.
-
 Install the `rubocop-sketchup` gem:
 
     gem install rubocop-sketchup
