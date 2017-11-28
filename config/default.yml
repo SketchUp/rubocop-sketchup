@@ -25,6 +25,7 @@ SketchupRequirements/FileStructure:
                  with a single root .rb file and a support folder with matching
                  name.
   Enabled: true
+  SourcePath: src
 
 SketchupRequirements/LanguageHandlerGlobals:
   Description: >-
