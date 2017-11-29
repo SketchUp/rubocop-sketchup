@@ -53,6 +53,11 @@ describe RuboCop::Cop::SketchupSuggestions::OperationName, :config do
     expect(cop.offenses.size).to eq(1)
   end
 
+  it 'expects underscore to be empty spaces' do
+    inspect_source('model.start_operation("Foo_bar")')
+    expect(cop.offenses.size).to eq(1)
+  end
+
   it 'does not register an offense operation when name is capitalized' do
     inspect_source('model.start_operation("Doing Stuff")')
     expect(cop.offenses).to be_empty
@@ -61,6 +66,16 @@ describe RuboCop::Cop::SketchupSuggestions::OperationName, :config do
   it 'ignores arguments which are not string literals' do
     inspect_source(['operation_name = "Hello World"',
                     'model.start_operation(operation_name)'])
+    expect(cop.offenses).to be_empty
+  end
+
+  it 'only transform the first character allowing words like HTML' do
+    inspect_source('model.start_operation("Doing HTML")')
+    expect(cop.offenses).to be_empty
+  end
+
+  it 'only transform the first character allowing words like SketchUp' do
+    inspect_source('model.start_operation("Doing SketchUp")')
     expect(cop.offenses).to be_empty
   end
 
