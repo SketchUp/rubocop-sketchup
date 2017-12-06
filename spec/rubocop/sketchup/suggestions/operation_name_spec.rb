@@ -58,6 +58,26 @@ describe RuboCop::Cop::SketchupSuggestions::OperationName, :config do
     expect(cop.offenses.size).to eq(1)
   end
 
+  it 'expects period to be empty spaces' do
+    inspect_source('model.start_operation("Foo.bar")')
+    expect(cop.offenses.size).to eq(1)
+  end
+
+  it 'trims white-space at start and end' do
+    inspect_source('model.start_operation("  Foo Bar  ")')
+    expect(cop.offenses.size).to eq(1)
+  end
+
+  it 'collapses whitespace' do
+    inspect_source('model.start_operation("Foo  Bar")')
+    expect(cop.offenses.size).to eq(1)
+  end
+
+  it 'does not allow tabs' do
+    inspect_source('model.start_operation("Foo\tBar")')
+    expect(cop.offenses.size).to eq(1)
+  end
+
   it 'does not register an offense operation when name is capitalized' do
     inspect_source('model.start_operation("Doing Stuff")')
     expect(cop.offenses).to be_empty

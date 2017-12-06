@@ -68,7 +68,7 @@ module RuboCop
         ]
 
         def titleize(string)
-          string = string.tr('_', ' ')
+          string = string.gsub(/[_.]/, ' ')
           words = string.split.map { |word|
             if TITLEIZE_EXCLUDE.include?(word)
               word
