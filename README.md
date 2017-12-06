@@ -32,7 +32,7 @@ You need to tell RuboCop to load the `rubocop-sketchup` extension. There are thr
 
 ### RuboCop configuration file
 
-Put this into your `.rubocop.yml`:
+Put this into your `.rubocop.yml` in your project root:
 
 ```yaml
 require: rubocop-sketchup
