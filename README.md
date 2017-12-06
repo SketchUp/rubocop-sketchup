@@ -15,13 +15,15 @@ Tool intended to assist with development of SketchUp extension by providing stat
 
 * The [RuboCop](http://batsov.com/rubocop/) gem must also be installed.
 
+        gem install rubocop
+
 ### Install
 
 Install the `rubocop-sketchup` gem:
 
     gem install rubocop-sketchup
 
-Or if you use bundler put this in your Gemfile:
+Or, if you use [bundler](http://bundler.io/) put this in your Gemfile:
 
     gem 'rubocop-sketchup'
 
