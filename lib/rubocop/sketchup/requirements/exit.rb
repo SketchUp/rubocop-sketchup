@@ -3,12 +3,16 @@
 module RuboCop
   module Cop
     module SketchupRequirements
-      # Don't attempt to kill the Ruby interpreter by calling exit or exit!.
+      # Don't attempt to kill the Ruby interpreter by calling `exit` or `exit!`.
+      # SketchUp will trap `exit` and prevent that, with a message in the
+      # console. But `exit!` is not trapped and with terminate SketchUp without
+      # shutting down cleanly.
+      # Use `return`, `next` or `break` instead.
       class Exit < Cop
 
         include NoCommentDisable
 
-        MSG = 'Exit attempts to kill the Ruby interpreter.'.freeze
+        MSG = 'Exit attempts to kill the Ruby interpreter. Use return, next or break instead.'.freeze
 
         # Reference: http://rubocop.readthedocs.io/en/latest/development/
         def_node_matcher :exit?, <<-PATTERN
