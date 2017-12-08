@@ -8,15 +8,18 @@ AllCops:
     - 'lib/**/*'
     - 'spec/**/*'
     - 'tools/**/*'
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  ExtraDetails: true
 
-# SketchupDeprecations:
-#   Enabled: false
+SketchupDeprecations:
+  Enabled: true
 
-# SketchupPerformance:
-#   Enabled: false
+SketchupPerformance:
+  Enabled: true
 
-# SketchupRequirements:
-#   Enabled: true
+SketchupRequirements:
+  Enabled: true
 
-# SketchupSuggestions:
-#   Enabled: false
+SketchupSuggestions:
+  Enabled: true

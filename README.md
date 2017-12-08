@@ -79,6 +79,17 @@ SketchupSuggestions:
   Enabled: true
 ```
 
+#### Extra Details
+
+Several cops have additional details to explain what they are checking. You can
+enable this by using the `-D` command line parameter or modifying your
+`.rubocop.yml` file by adding `ExtraDetails: true` under `AllCops`.
+
+```yml
+AllCops:
+  ExtraDetails: true
+```
+
 ### Command line
 
 ```bash
