@@ -209,17 +209,20 @@
   <body>
     <div id="header">
       <img class="logo" src="data:image/png;base64,<%= base64_encoded_logo_image %>" alt="">
-      <h1 class="title">RuboCop Inspection Report</h1>
+      <h1 class="title">SketchUp Extension RuboCop Inspection Report</h1>
     </div>
     <div class="information">
       <div class="infobox">
         <div class="total">
+          <%= pluralize(files.count, 'file') %> inspected,
           <%= pluralize(summary.offense_count, 'offense', no_for_zero: true) %> detected:
         </div>
         <ul class="offenses-list">
           <% categories.each do |category, offenses| %>
             <li>
-              <%= category %> <%= pluralize(offenses.count, 'offense') %>
+              <a href="#<%= cop_anchor(category) %>">
+                <%= category %> <%= pluralize(offenses.count, 'offense') %>
+              </a>
             </li>
           <% end %>
         </ul>
@@ -227,7 +230,7 @@
     </div>
     <div id="offenses">
       <% categories.each do |category, offenses| %>
-      <div class="offense-box" id="offense_<%= category.tr(' ', '') %>">
+      <div class="offense-box" id="<%= cop_anchor(category) %>">
         <div class="box-title-placeholder"><h3>&nbsp;</h3></div>
         <div class="box-title"><h3><%= category %> - <%= pluralize(offenses.count, 'offense') %></h3></div>
         <div class="offense-reports">

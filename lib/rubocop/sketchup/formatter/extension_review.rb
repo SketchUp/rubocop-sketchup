@@ -26,13 +26,12 @@ module RuboCop
         end
       end
 
-      # attr_reader :files, :summary
-      attr_reader :categories, :summary
+      attr_reader :categories, :files, :summary
 
       def initialize(output, options = {})
         super
         @categories = {}
-        # @files = []
+        @files = []
         @summary = OpenStruct.new(offense_count: 0)
       end
 
@@ -41,10 +40,11 @@ module RuboCop
       end
 
       def file_finished(file, offenses)
-        # files << OpenStruct.new(path: file, offenses: offenses)
+        files << file
         offenses.each { |offense|
+          report = OpenStruct.new(path: file, offense: offense)
           categories[offense.cop_name] ||= []
-          categories[offense.cop_name] << OpenStruct.new(path: file, offense: offense)
+          categories[offense.cop_name] << report
         }
         summary.offense_count += offenses.count
       end
@@ -56,8 +56,7 @@ module RuboCop
       end
 
       def render_html
-        # context = ERBContext.new(files, summary)
-        context = ERBContext.new(categories, summary)
+        context = ERBContext.new(categories, files, summary)
 
         template = File.read(TEMPLATE_PATH, encoding: Encoding::UTF_8)
         erb = ERB.new(template, nil, '-')
@@ -82,17 +81,11 @@ module RuboCop
         LOGO_IMAGE_PATH =
           File.expand_path('../../../../../assets/logo.png', __FILE__)
 
-        # attr_reader :files, :summary
+        attr_reader :categories, :files, :summary
 
-        # def initialize(files, summary)
-        #   @files = files.sort_by(&:path)
-        #   @summary = summary
-        # end
-        attr_reader :categories, :summary
-
-        def initialize(categories, summary)
-          # @categories = categories.sort_by(&:path)
+        def initialize(categories, files, summary)
           @categories = categories.sort.to_h
+          @files = files.sort
           @summary = summary
         end
 
@@ -132,6 +125,12 @@ module RuboCop
 
         def possible_ellipses(location)
           location.first_line == location.last_line ? '' : " #{ELLIPSES}"
+        end
+
+        def cop_anchor(cop_name)
+          title = cop_name.downcase
+          title.tr!('/', '_')
+          "offense_#{title}"
         end
 
         def escape(s)
