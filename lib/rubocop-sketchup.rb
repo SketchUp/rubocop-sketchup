@@ -14,7 +14,7 @@ RuboCop::SketchUp::Inject.defaults!
 # Monkey patching the built in formatter list to add a short alias for custom
 # formatters. Naughty! Naughty!
 class RuboCop::Formatter::FormatterSet
-  formatters = Hash.new(BUILTIN_FORMATTERS_FOR_KEYS)
+  formatters = BUILTIN_FORMATTERS_FOR_KEYS.dup
   formatters['extension_review'] =
       RuboCop::Formatter::ExtensionReviewFormatter
   verbose = $VERBOSE
