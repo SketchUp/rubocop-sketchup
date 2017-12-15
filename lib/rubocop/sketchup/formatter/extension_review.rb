@@ -88,12 +88,76 @@ module RuboCop
           SketchupSuggestions
         ]
 
+        DEPARTMENT_DESCRIPTIONS = {
+          'SketchupRequirements' => <<-DESCRIPTION,
+            This is the most important set of checks. They represent a large
+            part of the technical requirements an extension must pass in order
+            to be hosted on Extension Warehouse.
+
+            They have been designed to prevent extensions from conflicting with
+            each other as well as avoiding bad side-effects for the end user.
+
+            Please address these as soon as possible.
+          DESCRIPTION
+          'SketchupDeprecations' => <<-DESCRIPTION,
+            This department checks for usage of deprecated features. It's
+            recommended that you migrate your code away from deprecated features
+            of the SketchUp API.
+
+            This department is not a requirement for submission to
+            Extension Warehouse.
+          DESCRIPTION
+          'SketchupPerformance' => <<-DESCRIPTION,
+            This department looks for known patterns that have noticeable
+            performance impact on SketchUp and/or your extension. It's worth
+            looking into these warnings and investigate whether performance
+            can be improved.
+
+            This department is not a requirement for submission to
+            Extension Warehouse.
+          DESCRIPTION
+          'SketchupSuggestions' => <<-DESCRIPTION,
+            This department is a collection of suggestions for best practices
+            that aim to improve the general quality of your extension. Some of
+            these might be more noisy than the rest of the cops. Disable as
+            needed after reviewing the suggestions.
+
+            This department is not a requirement for submission to
+            Extension Warehouse.
+          DESCRIPTION
+        }
+
         attr_reader :categories, :files, :summary
 
         def initialize(categories, files, summary)
           @categories = sort_categories(categories)
           @files = files.sort
           @summary = summary
+        end
+
+        def department(cop_name)
+          cop_name.split('/').first
+        end
+
+        def department_description(cop_name)
+          dep = department(cop_name)
+          text = DEPARTMENT_DESCRIPTIONS[dep] || 'MISSING DESCRIPTION'
+          format_plain_text(text)
+        end
+
+        def new_department?(cop_name)
+          @processed_departments ||= Set.new
+          dep = department(cop_name)
+          unless @processed_departments.include?(dep)
+            @processed_departments << dep
+            return true
+          end
+          false
+        end
+
+        def format_plain_text(text)
+          paragraphs = text.split(/(\n\r|\r\n|\r|\n){2,}/m)
+          "<p>#{paragraphs.join('</p><p>')}</p>"
         end
 
         def sort_categories(categories)

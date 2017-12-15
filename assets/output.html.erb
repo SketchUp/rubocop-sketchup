@@ -163,6 +163,16 @@
     .extra-code {
       color: #ED9C28
     }
+    #offenses .offense-box.department {
+    background-color: #feb;
+    }
+    #offenses .offense-box.department .box-title h3,
+    #offenses .offense-box.department .box-title-placeholder h3 {
+    background-color: #f2e2b2;
+    }
+    #offenses .offense-box.department .offense-reports .report {
+      padding: 0 0 5px 0;
+    }
     </style>
 
     <script>
@@ -230,6 +240,20 @@
     </div>
     <div id="offenses">
       <% categories.each do |category, offenses| %>
+      <% if new_department?(category) %>
+        <div class="offense-box department">
+          <div class="box-title">
+            <h3><%= department(category) %></h3>
+          </div>
+          <div class="offense-reports">
+            <div class="report">
+              <span class="message">
+                <%= department_description(category) %>
+              </span>
+            </div>
+          </div>
+        </div>
+      <% end %>
       <div class="offense-box" id="<%= cop_anchor(category) %>">
         <div class="box-title-placeholder"><h3>&nbsp;</h3></div>
         <div class="box-title"><h3><%= category %> - <%= pluralize(offenses.count, 'offense') %></h3></div>
