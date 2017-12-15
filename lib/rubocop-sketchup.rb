@@ -11,6 +11,21 @@ require 'rubocop/sketchup/no_comment_disable'
 
 RuboCop::SketchUp::Inject.defaults!
 
+# Monkey patching the built in formatter list to add a short alias for custom
+# formatters. Naughty! Naughty!
+class RuboCop::Formatter::FormatterSet
+  formatters = Hash.new(BUILTIN_FORMATTERS_FOR_KEYS)
+  formatters['extension_review'] =
+      RuboCop::Formatter::ExtensionReviewFormatter
+  verbose = $VERBOSE
+  begin
+    $VERBOSE = nil
+    BUILTIN_FORMATTERS_FOR_KEYS = formatters.freeze
+  ensure
+    $VERBOSE = verbose
+  end
+end
+
 # Load all custom cops.
 pattern = File.join(__dir__, 'rubocop', 'sketchup', '**/*rb')
 Dir.glob(pattern) { |file|
