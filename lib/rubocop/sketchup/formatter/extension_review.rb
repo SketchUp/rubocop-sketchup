@@ -145,6 +145,16 @@ module RuboCop
           format_plain_text(text)
         end
 
+        def department_offense_count(cop_name)
+          dep = department(cop_name)
+          count = 0
+          categories.each { |category, offenses|
+            next unless department(category) == dep
+            count += offenses.size
+          }
+          count
+        end
+
         def new_department?(cop_name)
           @processed_departments ||= Set.new
           dep = department(cop_name)

@@ -243,7 +243,10 @@
       <% if new_department?(category) %>
         <div class="offense-box department">
           <div class="box-title">
-            <h3><%= department(category) %></h3>
+            <h3>
+              <%= department(category) %> -
+              <%= pluralize(department_offense_count(category), 'offense') %>
+            </h3>
           </div>
           <div class="offense-reports">
             <div class="report">
