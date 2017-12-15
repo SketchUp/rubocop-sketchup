@@ -238,8 +238,10 @@
           <% offense = report.offense %>
           <div class="report">
             <div class="meta">
-              <span class="location">Line #<%= offense.location.line %></span> –
               <span class="severity <%= offense.severity %>"><%= offense.severity %>:</span>
+              <span class="location">
+                <%= relative_path(report.path) %>:<%= offense.location.line %>
+              </span> –
               <span class="message"><%= decorated_message(offense) %></span>
             </div>
             <% unless offense.location.source_line.strip.empty? %>
