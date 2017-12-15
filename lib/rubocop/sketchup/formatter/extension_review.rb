@@ -81,12 +81,30 @@ module RuboCop
         LOGO_IMAGE_PATH =
           File.expand_path('../../../../../assets/logo.png', __FILE__)
 
+        SORT_ORDER = %w[
+          SketchupRequirements
+          SketchupDeprecations
+          SketchupPerformance
+          SketchupSuggestions
+        ]
+
         attr_reader :categories, :files, :summary
 
         def initialize(categories, files, summary)
-          @categories = categories.sort.to_h
+          @categories = sort_categories(categories)
           @files = files.sort
           @summary = summary
+        end
+
+        def sort_categories(categories)
+          categories.sort { |a, b|
+            # First sort departments by custom ordering (of importance).
+            # Then sort by cop name.
+            a_department, a_name = a[0].split('/')
+            b_department, b_name = b[0].split('/')
+            n = SORT_ORDER.index(a_department) <=> SORT_ORDER.index(b_department)
+            n == 0 ? a_name <=> b_name : n
+          }.to_h
         end
 
         # Make Kernel#binding public.
