@@ -42,12 +42,18 @@ module RuboCop
           # Look for SketchupExtension.new.
           extension_nodes = sketchup_extension_new(source_node).to_a
           if extension_nodes.size > 1
-            add_offense(nil, location: range, message: MSG_CREATE_ONE)
+            add_offense(nil,
+                location: range,
+                message: MSG_CREATE_ONE,
+                severity: :error)
             return
           end
           extension_node = extension_nodes.first
           if extension_node.nil?
-            add_offense(nil, location: range, message: MSG_CREATE_MISSING)
+            add_offense(nil,
+                location: range,
+                message: MSG_CREATE_MISSING,
+                severity: :error)
             return
           end
 
@@ -64,13 +70,19 @@ module RuboCop
           # TODO: The offences here should probably highlight the line where
           #       Sketchup.register_extension is.
           if registered_vars.size > 1
-            add_offense(nil, location: range, message: MSG_REGISTER_ONE)
+            add_offense(nil,
+                location: range,
+                message: MSG_REGISTER_ONE,
+                severity: :error)
             return
           end
           registered_var = sketchup_register_extension(source_node).first
           unless registered_var == extension_var
             msg = MSG_REGISTER_MISSING % extension_var.to_s
-            add_offense(nil, location: range, message: msg)
+            add_offense(nil,
+                location: range,
+                message: msg,
+                severity: :error)
           end
         end
 
