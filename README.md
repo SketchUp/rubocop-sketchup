@@ -21,7 +21,7 @@ Tool intended to assist with development of SketchUp extension by providing stat
 
 Install the `rubocop-sketchup` gem:
 
-    gem install rubocop-sketchup
+    gem install rubocop-sketchup --pre
 
 Or, if you use [bundler](http://bundler.io/) put this in your Gemfile:
 
