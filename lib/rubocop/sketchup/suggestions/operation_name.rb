@@ -17,7 +17,7 @@ module RuboCop
           return unless operation_name.is_a?(String)
           # Check the format of the operation name.
           unless acceptable_operation_name?(operation_name)
-            msg = %[#{MSG} Expected: "#{titleize(operation_name)}"]
+            msg = %[#{MSG} Expected: `"#{titleize(operation_name)}"`]
             add_offense(args.first, location: :expression, message: msg)
           end
           # Check the length of the operation name.

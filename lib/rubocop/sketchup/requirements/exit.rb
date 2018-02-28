@@ -20,7 +20,7 @@ module RuboCop
         PATTERN
 
         def on_send(node)
-          add_offense(node, location: :expression) if exit?(node)
+          add_offense(node, location: :expression, severity: :error) if exit?(node)
         end
       end
     end

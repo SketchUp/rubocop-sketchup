@@ -106,6 +106,12 @@ If you want to output the result in machine readable JSON;
 rubocop --out results.json --format json
 ```
 
+The `rubocop-sketchup` gem provides a custom formatter designed for SketchUp related cops. It explains which cops to focus your attention on.
+
+```bash
+rubocop -f extension_review -o report.html
+```
+
 See [RuboCop's documentation](https://rubocop.readthedocs.io/en/latest/formatters/) for more examples.
 
 ### Rake task

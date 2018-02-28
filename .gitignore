@@ -1,6 +1,7 @@
 # Ignore generated reports.
 rubocop\.html
 rubocop\.json
+*.html
 
 # Ignore gem related files.
 Gemfile\.lock
