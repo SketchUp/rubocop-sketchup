@@ -7,6 +7,8 @@ module RuboCop
     module Sketchup
       module ExtensionProject
 
+        include Sketchup::Config
+
         # @return [Pathname]
         def config_path
           path = config.instance_variable_get(:@loaded_path)
@@ -19,7 +21,7 @@ module RuboCop
 
         # @return [Pathname]
         def relative_source_path
-          Pathname.new(cop_config['SourcePath'] || 'src')
+          Pathname.new(sketchup_source_path_config)
         end
 
         # @return [Pathname]

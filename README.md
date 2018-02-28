@@ -81,6 +81,20 @@ SketchupSuggestions:
   Enabled: true
 ```
 
+#### Source Path
+
+By default `rubocop-sketchup` expects to find the source for the SketchUp extension within a `src` directory relative to your `.rubocop.yml` config file.
+
+This can be configured to match your own project structure by overwriting `AllCops/SketchUp/SourcePath` in your `.rubocop.yml`:
+
+```yml
+AllCops:
+  SketchUp:
+    SourcePath: src
+```
+
+If this isn't configured correctly then some cops, such as `SketchupRequirements/FileStructure` will fail as extension file structure is part of the Extension Warehouse technical requirements. Additionally, SketchUp expects this particular file structure to fully manage the extension.
+
 #### Extra Details
 
 Several cops have additional details to explain what they are checking. You can

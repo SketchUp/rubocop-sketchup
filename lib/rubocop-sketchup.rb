@@ -4,6 +4,7 @@ require 'rubocop/sketchup/version'
 require 'rubocop/sketchup/inject'
 
 require 'rubocop/sketchup/formatter/extension_review'
+require 'rubocop/sketchup/config'
 require 'rubocop/sketchup/extension_project'
 require 'rubocop/sketchup/namespace'
 require 'rubocop/sketchup/namespace_checker'

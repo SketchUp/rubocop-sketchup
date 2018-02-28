@@ -1,4 +1,8 @@
 ---
+AllCops:
+  SketchUp:
+    SourcePath: src
+
 SketchupDeprecations/OperationNextTransparent:
   Description: Third argument in `model.start_operation` is deprecated.
   Details: >-
@@ -60,7 +64,6 @@ SketchupRequirements/FileStructure:
              Check that the extension conform to expected file structure with a
              single root .rb file and a support folder with matching name.
   Enabled: true
-  SourcePath: src
 
 SketchupRequirements/GlobalConstants:
   Description: Do not introduce global constants.
@@ -120,7 +123,6 @@ SketchupRequirements/SketchupExtension:
                  This should be done by the root .rb file in the extension
                  package.
   Enabled: true
-  SourcePath: src
 
 
 SketchupSuggestions/DynamicComponentInternals:
