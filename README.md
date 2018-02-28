@@ -1,6 +1,6 @@
 # RuboCop SketchUp
 
-[![Gem Version](https://badge.fury.io/rb/rubocop-sketchup.svg)](https://badge.fury.io/rb/rubocop-sketchup) ![Build Status](https://ci.appveyor.com/api/projects/status/idwviv2nkal1gp7g/branch/master?svg=true)
+[![Gem Version](https://badge.fury.io/rb/rubocop-sketchup.svg)](https://badge.fury.io/rb/rubocop-sketchup) [![Build status](https://ci.appveyor.com/api/projects/status/idwviv2nkal1gp7g?svg=true)](https://ci.appveyor.com/project/thomthom/rubocop-sketchup)
 
 Code analysis for SketchUp extensions using the [SketchUp Ruby API](http://ruby.sketchup.com/).
 
