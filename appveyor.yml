@@ -1,5 +1,9 @@
 version: "{build}-{branch}"
 
+branches:
+  only:
+    - master
+
 cache:
   - vendor/bundle
 
