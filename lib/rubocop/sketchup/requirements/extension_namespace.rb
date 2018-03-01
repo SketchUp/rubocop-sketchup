@@ -9,7 +9,7 @@ module RuboCop
     module SketchupRequirements
       class ExtensionNamespace < Cop
 
-        include NoCommentDisable
+        include SketchUp::NoCommentDisable
         include SketchUp
 
         def on_class(node)

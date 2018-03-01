@@ -11,8 +11,8 @@ module RuboCop
       # Note that backreferences like $1, $2, etc are not global variables.
       class GlobalVariables < Cop
 
-        include NoCommentDisable
-        include Sketchup::DynamicComponentGlobals
+        include SketchUp::NoCommentDisable
+        include SketchUp::DynamicComponentGlobals
 
         MSG = 'Do not introduce global variables.'.freeze
 

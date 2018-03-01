@@ -8,6 +8,8 @@ module RuboCop
       # They are still in use due to compatibility reasons.
       class LanguageHandlerGlobals < Cop
 
+        include SketchUp::NoCommentDisable
+
         MSG = "Avoid globals in general, but especially these which are known to be in use.".freeze
 
         LH_GLOBALS = %i[

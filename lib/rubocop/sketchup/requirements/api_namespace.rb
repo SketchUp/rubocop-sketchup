@@ -5,8 +5,8 @@ module RuboCop
     module SketchupRequirements
       class ApiNamespace < Cop
 
-        include NoCommentDisable
-        include Sketchup::NamespaceChecker
+        include SketchUp::NoCommentDisable
+        include SketchUp::NamespaceChecker
 
         MSG = 'Do not modify the SketchUp API.'.freeze
 

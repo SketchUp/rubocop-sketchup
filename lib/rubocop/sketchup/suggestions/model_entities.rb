@@ -4,6 +4,7 @@ module RuboCop
   module Cop
     module SketchupSuggestions
       class ModelEntities < Cop
+
         MSG = 'Typically one should use model.active_entities instead of model.entities.'.freeze
 
         # Reference: http://www.rubydoc.info/gems/rubocop/RuboCop/NodePattern

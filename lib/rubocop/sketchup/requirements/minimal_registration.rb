@@ -9,8 +9,8 @@ module RuboCop
       # Extensions should not load additional files when it's disabled.
       class MinimalRegistration < Cop
 
-        include Sketchup::ExtensionProject
-        include NoCommentDisable
+        include SketchUp::NoCommentDisable
+        include SketchUp::ExtensionProject
 
         MSG = "Don't load extension files in the root file registering the extension.".freeze
 

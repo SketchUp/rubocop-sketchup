@@ -7,8 +7,8 @@ module RuboCop
       # single root .rb file and a support folder with matching name.
       class FileStructure < Cop
 
-        include Sketchup::ExtensionProject
-        include NoCommentDisable
+        include SketchUp::NoCommentDisable
+        include SketchUp::ExtensionProject
 
         IGNORED_DIRECTORIES = %w[
           __MACOSX

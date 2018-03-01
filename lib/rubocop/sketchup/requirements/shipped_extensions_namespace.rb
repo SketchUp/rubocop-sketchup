@@ -6,8 +6,8 @@ module RuboCop
       # Don't modify SketchUp's shipped extensions.
       class ShippedExtensionsNamespace < Cop
 
-        include NoCommentDisable
-        include Sketchup::NamespaceChecker
+        include SketchUp::NoCommentDisable
+        include SketchUp::NamespaceChecker
 
         MSG = 'Do not modify shipped extensions.'.freeze
 

@@ -5,7 +5,7 @@ module RuboCop
     module SketchupRequirements
       class GlobalConstants < Cop
 
-        include NoCommentDisable
+        include SketchUp::NoCommentDisable
         include SketchUp
 
         MSG = 'Do not introduce global constants.'.freeze

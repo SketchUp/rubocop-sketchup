@@ -5,8 +5,8 @@ module RuboCop
     module SketchupRequirements
       class RubyCoreNamespace < Cop
 
-        include NoCommentDisable
-        include Sketchup::NamespaceChecker
+        include SketchUp::NoCommentDisable
+        include SketchUp::NamespaceChecker
 
         MSG = 'Do not modify Ruby core functionality.'.freeze
 

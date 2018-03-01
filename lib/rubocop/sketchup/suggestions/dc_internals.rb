@@ -7,7 +7,7 @@ module RuboCop
       # change at any time.
       class DynamicComponentInternals < Cop
 
-        include Sketchup::DynamicComponentGlobals
+        include SketchUp::DynamicComponentGlobals
 
         MSG = "Avoid relying on internal logic of Dynamic Components.".freeze
 

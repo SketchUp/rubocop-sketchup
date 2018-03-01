@@ -5,7 +5,7 @@ module RuboCop
     module SketchupRequirements
       class LoadPath < Cop
 
-        include NoCommentDisable
+        include SketchUp::NoCommentDisable
 
         MSG = 'Do not modify the load path.'.freeze
 

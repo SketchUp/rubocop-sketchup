@@ -7,8 +7,8 @@ module RuboCop
       # This should be done by the root .rb file in the extension package.
       class SketchupExtension < Cop
 
-        include Sketchup::ExtensionProject
-        include NoCommentDisable
+        include SketchUp::NoCommentDisable
+        include SketchUp::ExtensionProject
 
         MSG = 'Create and register one SketchupExtension instance per extension.'.freeze
         MSG_CREATE_ONE = 'Create only SketchupExtension instance per extension.'.freeze

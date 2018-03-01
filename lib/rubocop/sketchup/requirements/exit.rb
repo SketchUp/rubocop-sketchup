@@ -10,7 +10,7 @@ module RuboCop
       # Use `return`, `next` or `break` instead.
       class Exit < Cop
 
-        include NoCommentDisable
+        include SketchUp::NoCommentDisable
 
         MSG = 'Exit attempts to kill the Ruby interpreter. Use return, next or break instead.'.freeze
 

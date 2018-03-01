@@ -7,7 +7,7 @@ module RuboCop
       # confuse users to think the extension isn't working.
       class RegisterExtension < Cop
 
-        include NoCommentDisable
+        include SketchUp::NoCommentDisable
 
         MSG = 'Always register extensions to load by default.'.freeze
 
