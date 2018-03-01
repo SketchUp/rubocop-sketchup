@@ -10,12 +10,15 @@ module RuboCop
       #
       # Note that backreferences like $1, $2, etc are not global variables.
       class GlobalVariables < Cop
+
         include NoCommentDisable
+        include Sketchup::DynamicComponentGlobals
+
         MSG = 'Do not introduce global variables.'.freeze
 
         # predefined global variables their English aliases
         # http://www.zenspider.com/Languages/Ruby/QuickRef.html
-        BUILT_IN_VARS = %w(
+        BUILT_IN_VARS = %i[
           $: $LOAD_PATH
           $" $LOADED_FEATURES
           $0 $PROGRAM_NAME
@@ -42,21 +45,30 @@ module RuboCop
           $DEBUG $FILENAME $VERBOSE $SAFE
           $-0 $-a $-d $-F $-i $-I $-l $-p $-v $-w
           $CLASSPATH $JRUBY_VERSION $JRUBY_REVISION $ENV_JAVA
-        ).map(&:to_sym)
+        ]
 
-        # TODO: This should probably be read only.
-        SKETCHUP_VARS = %w(
+        SKETCHUP_VARS = %i[
           $loaded_files
-        ).map(&:to_sym)
+        ]
+
+        # Some globals, like DC's, are being read from so often that it's better
+        # to ignore these to reduce noise.
+        READ_ONLY_VARS = DC_GLOBALS
 
         ALLOWED_VARS = BUILT_IN_VARS | SKETCHUP_VARS
+
 
         def allowed_var?(global_var)
           ALLOWED_VARS.include?(global_var)
         end
 
+        def read_allowed?(global_var)
+          READ_ONLY_VARS.include?(global_var)
+        end
+
         def on_gvar(node)
-          check(node)
+          global_var, = *node
+          check(node) unless read_allowed?(global_var)
         end
 
         def on_gvasgn(node)

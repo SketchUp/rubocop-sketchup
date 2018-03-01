@@ -7,20 +7,9 @@ module RuboCop
       # change at any time.
       class DynamicComponentInternals < Cop
 
+        include Sketchup::DynamicComponentGlobals
+
         MSG = "Avoid relying on internal logic of Dynamic Components.".freeze
-
-        DC_GLOBALS = %i[
-          $dc_strings
-          $dc_extension
-          $dc_CONFIGURATOR_NAME
-          $dc_REPORTER_NAME
-          $dc_MANAGER_NAME
-          $dc_observers
-        ]
-
-        def dc_global_var?(global_var)
-          DC_GLOBALS.include?(global_var)
-        end
 
         def on_gvar(node)
           check(node)
