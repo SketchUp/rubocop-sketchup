@@ -11,7 +11,7 @@ Tool intended to assist with development of SketchUp extension by providing stat
 
 ### Requirements
 
-* Standalone Ruby installation on the system. This is not intended to be used
+* Standalone Ruby 2.1+ installation on the system. This is not intended to be used
   inside of SketchUp. Mac users should have Ruby already on the system, Windows
   users need to install it from https://rubyinstaller.org/.
 
@@ -23,7 +23,7 @@ Tool intended to assist with development of SketchUp extension by providing stat
 
 Install the `rubocop-sketchup` gem:
 
-    gem install rubocop-sketchup --pre
+    gem install rubocop-sketchup
 
 Or, if you use [bundler](http://bundler.io/) put this in your Gemfile:
 
