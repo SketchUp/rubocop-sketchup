@@ -105,6 +105,14 @@ SketchupRequirements/RegisterExtension:
                  might confuse users to think the extension isn't working.
   Enabled: true
 
+SketchupRequirements/RequireToolsRubyFiles:
+  Description: >-
+                 Due to how require and Sketchup.require checks whether a file
+                 has been loaded, files from SketchUp's Tools folder should be
+                 required in using `require` and with their file extension to
+                 avoid duplicate loading.
+  Enabled: true
+
 SketchupRequirements/RubyCoreNamespace:
   Description: Do not modify Ruby core functionality.
   Enabled: true
