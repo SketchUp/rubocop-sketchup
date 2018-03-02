@@ -23,6 +23,8 @@ Gem::Specification.new do |spec|
     'Gemfile'
   ]
 
-  spec.add_dependency 'rubocop', '~> 0.51.0'
+  # NOTE: Remember to update the README.md instructions on how to install
+  #       compatible RuboCop version.
+  spec.add_dependency 'rubocop', '~> 0.52.0'
   spec.add_development_dependency 'bundler', '~> 1.13'
 end
