@@ -4,11 +4,12 @@ require 'set'
 
 require 'rubocop'
 require 'rubocop-sketchup'
+
 RUBY_CORE_NAMESPACES = Set.new(RuboCop::Cop::SketchupRequirements::RubyCoreNamespace::NAMESPACES)
 
 # Folder with downloaded StdLib documentation. (Extracted from Zips)
 # http://ruby-doc.org/
-# 
+#
 # 1. ruby_1_8_6_stdlib_rdocs.tgz
 # 2. ruby_2_0_0_stdlib_rdocs.tgz
 # 3. ruby_2_2_6_stdlib_rdocs.tgz
@@ -79,7 +80,7 @@ ruby_versions.each { |path|
       }
     }
   }
-  
+
   # Output a Ruby array with the namespaces.
   lib_name = path.basename.to_s.upcase
   puts "NAMESPACES_#{lib_name} = ["
