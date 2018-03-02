@@ -10,6 +10,12 @@ SketchupDeprecations/OperationNextTransparent:
               making the next operation transparent.
   Enabled: true
 
+SketchupDeprecations/ShowRubyPanel:
+  Description: The `show_ruby_panel` method is deprecated.
+  Details: >-
+              Use `SKETCHUP_CONSOLE.show` instead.
+  Enabled: true
+
 SketchupPerformance/OpenSSL:
   Description: Avoid using Ruby's OpenSSL within SketchUp.
   Details: >-
