@@ -213,6 +213,12 @@ http://guides.rubygems.org/publishing/
 
 You need the API key for an account that have ownership of the gem to push a new version. Make sure the API key is set up in `~/.gem/credentials` before running `bundle exec rake release`.
 
+#### HTTPS GitHub Credentials under Windows
+
+> As of 22 Feb 2018, GitHub has disabled support for weak encryption which means many users will suddenly find themselves unable to authenticate using a Git for Windows which (impacts versions older than v2.16.0). DO NOT PANIC, there's a fix. Update Git for Windows to the latest (or at least v2.16.0).
+
+https://github.com/Microsoft/Git-Credential-Manager-for-Windows
+
 
 ## Contributing
 
