@@ -209,6 +209,10 @@ bundle exec rake spec SPEC=spec/rubocop/sketchup/requirements/global_methods_spe
 
 To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
+http://guides.rubygems.org/publishing/
+
+You need the API key for an account that have ownership of the gem to push a new version. Make sure the API key is set up in `~/.gem/credentials` before running `bundle exec rake release`.
+
 
 ## Contributing
 
