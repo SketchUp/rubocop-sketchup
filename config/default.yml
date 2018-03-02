@@ -10,6 +10,13 @@ SketchupDeprecations/OperationNextTransparent:
               making the next operation transparent.
   Enabled: true
 
+SketchupDeprecations/RequireAll:
+  Description: The `require_all` method is deprecated.
+  Details: >-
+              This method adds the path given to `$LOAD_PATH` which can affect
+              other extensions.
+  Enabled: true
+
 SketchupDeprecations/ShowRubyPanel:
   Description: The `show_ruby_panel` method is deprecated.
   Details: >-
