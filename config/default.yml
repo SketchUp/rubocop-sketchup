@@ -30,6 +30,13 @@ SketchupDeprecations/ShowRubyPanel:
               Use `SKETCHUP_CONSOLE.show` instead.
   Enabled: true
 
+SketchupDeprecations/SketchupSet:
+  Description: The class `Sketchup::Set` is deprecated.
+  Details: >-
+              It's slow and with limited functionality. Use the `Set` class in
+              the Ruby StdLib instead.
+  Enabled: true
+
 SketchupPerformance/OpenSSL:
   Description: Avoid using Ruby's OpenSSL within SketchUp.
   Details: >-
