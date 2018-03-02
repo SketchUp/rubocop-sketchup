@@ -24,6 +24,13 @@ SketchupDeprecations/RequireAll:
               other extensions.
   Enabled: true
 
+SketchupDeprecations/SetTextureProjection:
+  Description: The method `Sketchup::Face#set_texture_projection` is deprecated.
+  Details: >-
+              This method never worked right. It's not possible to control the
+              position and orientation of the texture.
+  Enabled: true
+
 SketchupDeprecations/ShowRubyPanel:
   Description: The method `show_ruby_panel` is deprecated.
   Details: >-
