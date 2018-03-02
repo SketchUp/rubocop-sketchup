@@ -18,14 +18,14 @@ SketchupDeprecations/OperationNextTransparent:
   Enabled: true
 
 SketchupDeprecations/RequireAll:
-  Description: The `require_all` method is deprecated.
+  Description: The method `require_all` is deprecated.
   Details: >-
               This method adds the path given to `$LOAD_PATH` which can affect
               other extensions.
   Enabled: true
 
 SketchupDeprecations/ShowRubyPanel:
-  Description: The `show_ruby_panel` method is deprecated.
+  Description: The method `show_ruby_panel` is deprecated.
   Details: >-
               Use `SKETCHUP_CONSOLE.show` instead.
   Enabled: true
