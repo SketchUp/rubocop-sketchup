@@ -3,6 +3,13 @@ AllCops:
   SketchUp:
     SourcePath: src
 
+SketchupDeprecations/AddSeparatorToMenu:
+  Description: The method `add_separator_to_menu` is deprecated.
+  Details: >-
+              Avoid adding separators to top level menus. If you require
+              grouping use a sub-menu instead.
+  Enabled: true
+
 SketchupDeprecations/OperationNextTransparent:
   Description: Third argument in `model.start_operation` is deprecated.
   Details: >-
