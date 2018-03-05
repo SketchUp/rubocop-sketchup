@@ -43,6 +43,18 @@
         "${workspaceRoot}",
         "${file}"
       ]
+    },
+    {
+      "name": "RSpec - active test only",
+      "type": "Ruby",
+      "request": "launch",
+      "cwd": "${workspaceRoot}",
+      "program": "${workspaceRoot}/bin/rspec",
+      "args": [
+        "-I",
+        "${workspaceRoot}",
+        "${file}:${lineNumber}"
+      ]
     }
   ]
 }

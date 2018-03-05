@@ -13,11 +13,20 @@
       "group": "test"
     },
     {
-      "label": "Active Test",
+      "label": "Active Testcase",
       "type": "shell",
       "command": "bundle",
       "args": [
         "exec", "rake", "spec", "SPEC=${relativeFile}"
+      ],
+      "group": "test"
+    },
+    {
+      "label": "Active Test",
+      "type": "shell",
+      "command": "bundle",
+      "args": [
+        "exec", "rake", "spec", "SPEC=${relativeFile}:${lineNumber}"
       ],
       "group": "test"
     }
