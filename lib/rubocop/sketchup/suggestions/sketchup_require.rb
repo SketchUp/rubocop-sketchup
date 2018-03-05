@@ -25,9 +25,30 @@ module RuboCop
           )
         PATTERN
 
+
+        def_node_matcher :sketchup_extension_new, <<-PATTERN
+          (:send
+            (:const nil? :SketchupExtension) :new
+            _
+            (str $_))
+        PATTERN
+
+        def_node_search :sketchup_extension_new?, <<-PATTERN
+          (:send
+            (:const nil? :SketchupExtension) :new
+            _
+            (str _))
+        PATTERN
+
+
         def on_send(node)
-          return unless sketchup_require?(node)
-          filename = sketchup_require(node)
+          if sketchup_require?(node)
+            filename = sketchup_require(node)
+          elsif sketchup_extension_new?(node)
+            filename = sketchup_extension_new(node)
+          else
+            return
+          end
           add_offense(node, location: :expression) unless valid_filename?(filename)
         end
 
@@ -36,6 +57,7 @@ module RuboCop
         def valid_filename?(filename)
           File.extname(filename).empty?
         end
+
       end
     end
   end
