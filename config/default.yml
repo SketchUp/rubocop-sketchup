@@ -133,6 +133,13 @@ SketchupRequirements/MinimalRegistration:
                  it's disabled.
   Enabled: true
 
+SketchupRequirements/ObserversStartOperation:
+  Description: Observers should create transparent operations.
+  Details: >-
+             When making model changes within an observer event, start a
+             transparent operation to ensure a clean undo-stack.
+  Enabled: true
+
 SketchupRequirements/RegisterExtension:
   Description: >-
                  Always register extensions to load by default. Otherwise it
