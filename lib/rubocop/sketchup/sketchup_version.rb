@@ -36,7 +36,6 @@ module RuboCop
       VERSION_NUMBER_REGEX = /^(?:SketchUp )?([0-9.]+)(?: M(\d+))?$/
 
       VALID_VERSIONS = [
-        [2019, 0],
         [2018, 0],
         [2017, 0],
         [2016, 1],
