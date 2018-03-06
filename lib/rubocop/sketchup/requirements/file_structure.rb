@@ -9,6 +9,7 @@ module RuboCop
 
         include SketchUp::NoCommentDisable
         include SketchUp::ExtensionProject
+        include RangeHelp
 
         IGNORED_DIRECTORIES = %w[
           __MACOSX

@@ -9,6 +9,7 @@ module RuboCop
 
         include SketchUp::NoCommentDisable
         include SketchUp::ExtensionProject
+        include RangeHelp
 
         MSG = 'Create and register one SketchupExtension instance per extension.'.freeze
         MSG_CREATE_ONE = 'Create only SketchupExtension instance per extension.'.freeze

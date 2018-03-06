@@ -6,6 +6,7 @@ module RuboCop
       class ObserversStartOperation < Cop
 
         include SketchUp::NoCommentDisable
+        include RangeHelp
 
         MSG = 'Observers should create transparent operations.'.freeze
 
@@ -109,7 +110,7 @@ module RuboCop
 
         private
 
-        def source_range(node)
+        def range(node)
           range_between(node.begin_pos, node.end_pos)
         end
 
@@ -118,7 +119,7 @@ module RuboCop
           # name.
           transparent_argument = node.arguments[3]
           if transparent_argument
-            source_range(transparent_argument.loc.expression)
+            range(transparent_argument.loc.expression)
           else
             :selector
           end

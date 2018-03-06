@@ -5,6 +5,8 @@ module RuboCop
     module SketchupSuggestions
       class OperationName < Cop
 
+        include RangeHelp
+
         MSG = 'Operation name should be a short capitalized description.'.freeze
         MSG_MAX = "Operation names should not be short and concise. [%d/%d]".freeze
 
