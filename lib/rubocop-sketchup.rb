@@ -7,9 +7,11 @@ require 'rubocop/sketchup/formatter/extension_review'
 require 'rubocop/sketchup/config'
 require 'rubocop/sketchup/dc_globals'
 require 'rubocop/sketchup/extension_project'
+require 'rubocop/sketchup/features'
 require 'rubocop/sketchup/namespace'
 require 'rubocop/sketchup/namespace_checker'
 require 'rubocop/sketchup/no_comment_disable'
+require 'rubocop/sketchup/sketchup_version'
 
 RuboCop::SketchUp::Inject.defaults!
 

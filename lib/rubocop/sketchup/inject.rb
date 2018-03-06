@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RuboCop
   # Ripped directly from rubocop-rspec.
   module SketchUp
