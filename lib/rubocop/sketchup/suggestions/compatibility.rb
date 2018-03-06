@@ -10,18 +10,25 @@ module RuboCop
 
         MSG = "Incompatible feature with target SketchUp version".freeze
 
+        def on_def(node)
+          return unless observer_method?(node)
+          feature_name = "##{node.method_name}"
+          check_feature(node, :method, feature_name)
+        end
+
         def on_send(node)
           if module_method?(node)
             feature_name = "#{node.receiver.const_name}.#{node.method_name}"
             check_feature(node, :method, feature_name)
           else
-            # TODO: Instance methods are harder. It's difficult to infer the
-            #       type of the receiver. If we only check the method name in
-            #       isolation we will get too many false positives with method
-            #       names matching methods in Ruby itself and other older
-            #       features.
-            #       We can try to match names that are unlikely to cause much
-            #       noise.
+            # Instance methods are harder. It's difficult to infer the type of
+            # the receiver. If we only check the method name in isolation we
+            # will get too many false positives with method names matching
+            # methods in Ruby itself and other older features.
+            # We try to match names that are unlikely to cause much noise.
+            return unless checkable_instance_method?(node)
+            feature_name = "##{node.method_name}"
+            check_feature(node, :method, feature_name)
           end
         end
 
@@ -40,7 +47,13 @@ module RuboCop
             feature_version = SketchUp::SketchUpVersion.new(feature_set[:version])
             next unless feature_version > sketchup_target_version
             objects = feature_set[:types][type] || []
-            next unless objects.include?(feature_name)
+            if type == :method && instance_method?(feature_name)
+              # Instance methods are simply matching the method name since it's
+              # very difficult to determine the type of the receiver.
+              next unless objects.find { |object| object.end_with?(feature_name) }
+            else
+              next unless objects.include?(feature_name)
+            end
             report(node, feature_name, feature_version, type)
           }
         end
@@ -54,6 +67,18 @@ module RuboCop
 
         def module_method?(node)
           node.receiver && node.receiver.const_type?
+        end
+
+        def instance_method?(feature_name)
+          feature_name.start_with?('#')
+        end
+
+        def checkable_instance_method?(node)
+          INSTANCE_METHODS.include?(node.method_name)
+        end
+
+        def observer_method?(node)
+          OBSERVER_METHODS.include?(node.method_name)
         end
 
       end

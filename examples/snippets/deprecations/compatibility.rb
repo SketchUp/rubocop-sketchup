@@ -28,4 +28,16 @@ module Examples
     Sketchup.send_to_layout("hexaflexagon.layout")
   end
 
+
+  def self.incompatible_instance_method_2018
+    animate = page.include_in_animation?
+  end
+
+
+  class ExampleObserver < Sketchup::ModelObserver
+    def onPidChanged(model, old_pid, new_pid)
+      p [model, old_pid, new_pid]
+    end
+  end
+
 end

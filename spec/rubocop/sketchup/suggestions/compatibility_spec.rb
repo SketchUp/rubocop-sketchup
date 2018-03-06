@@ -27,6 +27,19 @@ describe RuboCop::Cop::SketchupSuggestions::Compatibility do
       expect(cop.offenses.size).to eq(1)
     end
 
+    it 'registers an offense when using incompatible instance method' do
+      inspect_source('page.include_in_animation = true')
+      expect(cop.offenses.size).to eq(1)
+    end
+
+    it 'registers an register an offense when using incompatible observer method' do
+      inspect_source(['class ExampleObserver < Sketchup::Entities',
+                      '  def onActiveSectionPlaneChanged(entities)',
+                      '  end',
+                      'end'])
+                      expect(cop.offenses.size).to eq(1)
+    end
+
   end
 
 
@@ -50,6 +63,19 @@ describe RuboCop::Cop::SketchupSuggestions::Compatibility do
 
     it 'does not register an offense when using compatible module method' do
       inspect_source('UI.scale_factor')
+      expect(cop.offenses).to be_empty
+    end
+
+    it 'does not register an offense when using compatible instance method' do
+      inspect_source('page.include_in_animation = true')
+      expect(cop.offenses).to be_empty
+    end
+
+    it 'does not register an offense when using compatible observer method' do
+      inspect_source(['class ExampleObserver < Sketchup::Entities',
+                      '  def onActiveSectionPlaneChanged(entities)',
+                      '  end',
+                      'end'])
       expect(cop.offenses).to be_empty
     end
 
