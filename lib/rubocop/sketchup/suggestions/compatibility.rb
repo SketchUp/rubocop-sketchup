@@ -10,6 +10,21 @@ module RuboCop
 
         MSG = "Incompatible feature with target SketchUp version".freeze
 
+        def on_send(node)
+          if module_method?(node)
+            feature_name = "#{node.receiver.const_name}.#{node.method_name}"
+            check_feature(node, :method, feature_name)
+          else
+            # TODO: Instance methods are harder. It's difficult to infer the
+            #       type of the receiver. If we only check the method name in
+            #       isolation we will get too many false positives with method
+            #       names matching methods in Ruby itself and other older
+            #       features.
+            #       We can try to match names that are unlikely to cause much
+            #       noise.
+          end
+        end
+
         def on_const(node)
           feature_name = node.const_name
           [:class, :module, :constant].each { |type|
@@ -22,17 +37,23 @@ module RuboCop
         def check_feature(node, type, feature_name)
           return unless sketchup_target_version?
           FEATURES.each { |feature_set|
-            version = SketchUp::SketchUpVersion.new(feature_set[:version])
-            next unless version > sketchup_target_version
+            feature_version = SketchUp::SketchUpVersion.new(feature_set[:version])
+            next unless feature_version > sketchup_target_version
             objects = feature_set[:types][type] || []
             next unless objects.include?(feature_name)
-            report(node, version)
+            report(node, feature_name, feature_version, type)
           }
         end
 
-        def report(node, version)
-          # TODO: Customize message?
-          add_offense(node)
+        def report(node, feature_name, feature_version, feature_type)
+          message = "The #{feature_type} `#{feature_name}` was added in "\
+                    "#{feature_version} which is incompatible with target "\
+                    "#{sketchup_target_version}."
+          add_offense(node, message: message)
+        end
+
+        def module_method?(node)
+          node.receiver && node.receiver.const_type?
         end
 
       end
