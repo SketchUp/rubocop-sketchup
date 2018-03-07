@@ -201,6 +201,15 @@ SketchupSuggestions/ModelEntities:
              model root.
   Enabled: true
 
+SketchupSuggestions/MonkeyPatchedApi:
+  Description: >-
+                 Avoid using monkey-patched methods from SketchUp's shipped
+                 extensions.
+  Details: >-
+             These methods stops working when the extensions are disabled and
+             may change or be removed.
+  Enabled: true
+
 SketchupSuggestions/OperationName:
   Description: >-
                  Check that operation names are human friendly and consistent

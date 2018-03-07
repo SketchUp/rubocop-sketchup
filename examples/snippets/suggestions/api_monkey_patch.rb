@@ -1,6 +1,6 @@
 module Examples
 
-  def self.dc_monkey_patched_method
+  def self.monkey_patched_method
     tr = Geom::Transformation.scaling(5)
     x = tr.xscale
   end
@@ -11,7 +11,7 @@ module Examples
   end
 
 
-  def self.dc_monkey_patched_method_with_variable_filter
+  def self.monkey_patched_method_with_variable_filter
     entities = Sketchup.active_model.entities
     instance = entities.grep(Sketchup::ComponentInstance)
     description = instance.description
