@@ -17,6 +17,7 @@ module RuboCop
         config.for_all_cops.fetch('SketchUp', DEFAULT_CONFIGURATION)
       end
 
+
       def sketchup_source_path_config?
         return unless all_cops_config.key?('SketchUp')
         all_cops_config.fetch('SketchUp').key?('SourcePath')
@@ -24,6 +25,17 @@ module RuboCop
 
       def sketchup_source_path_config
         sketchup_cops_config.fetch('SourcePath')
+      end
+
+
+      def sketchup_target_version?
+        return unless all_cops_config.key?('SketchUp')
+        all_cops_config.fetch('SketchUp').key?('TargetSketchUpVersion')
+      end
+
+      def sketchup_target_version
+        version = sketchup_cops_config.fetch('TargetSketchUpVersion')
+        version ? SketchUpVersion.new(version) : nil
       end
 
     end
