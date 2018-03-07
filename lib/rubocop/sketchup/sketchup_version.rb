@@ -35,6 +35,12 @@ module RuboCop
 
       VERSION_NUMBER_REGEX = /^(?:SketchUp )?([0-9.]+)(?: M(\d+))?$/
 
+      # This list is compiled from the list of versions reported by YARD when
+      # running the `versions` template;
+      #
+      #   yardoc -t versions -f text
+      #
+      # TODO(thomthom): Push the version template to the API stubs repository.
       VALID_VERSIONS = [
         [2018, 0],
         [2017, 0],

@@ -1,5 +1,36 @@
 # frozen_string_literal: true
 
+# How to update this file:
+#
+# FEATURES constant:
+#
+# 1. Run the `rubocop-changelog` YARD template:
+#    (https://github.com/SketchUp/rubocop-sketchup/issues/4#issuecomment-370753043)
+#
+#    yardoc -c -t rubocop-changelog -f text > rubocop-changelog.txt
+#
+# 2. Prune out any unreleased versions.
+#
+# TODO(thomthom): Push the rubocop-changelog template to the API stubs
+#                 repository.
+#
+#
+# INSTANCE_METHODS constant:
+#
+# Manually curated list of method names which are believed to yield few false
+# positives. The method names should be names that are not commonly used in
+# general context.
+#
+# When a new version is released and FEATURES is updated the new methods from
+# the new version should be considered for this list.
+#
+#
+# OBSERVER_METHODS constant:
+#
+# Currently manually curated.
+#
+# TODO(thomthom): Tag observer methods in YARD for automatic extraction.
+
 module RuboCop
   module SketchUp
     module Features
