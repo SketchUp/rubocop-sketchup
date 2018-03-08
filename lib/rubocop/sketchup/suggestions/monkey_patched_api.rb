@@ -21,7 +21,8 @@ module RuboCop
           dc_method = DC_METHODS.find { |m| m[:name] == name }
           return unless dc_method
 
-          if dc_method.key?(:variables) && node.receiver.variable?
+          if dc_method.key?(:variables)
+            return unless node.receiver && node.receiver.variable?
             receiver_name = node.receiver.children.first
             # Account for instance and class variables.
             receiver_name = receiver_name.to_s.tr('@', '').to_sym

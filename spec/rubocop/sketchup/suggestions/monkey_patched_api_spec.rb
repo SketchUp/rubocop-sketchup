@@ -64,6 +64,17 @@ describe RuboCop::Cop::SketchupSuggestions::MonkeyPatchedApi do
       expect(cop.offenses).to be_empty
     end
 
+    it 'does not register an offense without variable context' do
+      inspect_source(['class Example',
+                      '  def typename; end',
+                      '  def example',
+                      '    foo = typename',
+                      '    bar = typename()',
+                      '  end',
+                      'end'])
+      expect(cop.offenses).to be_empty
+    end
+
     it 'does not register an offense when calling a module method' do
       inspect_source('description = Example.description')
       expect(cop.offenses).to be_empty
