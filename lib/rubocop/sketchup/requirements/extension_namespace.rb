@@ -23,9 +23,12 @@ module RuboCop
         def check_class_or_module(node)
           name = node.defined_module_name
           parent = Namespace.new(node.parent_module_name)
+          namespace = parent.join(name)
           # Don't want to process anything that aren't top level namespaces.
           return unless parent.top_level?
-          check_namespace(node, parent.join(name))
+          # Don't check excluded namespaces.
+          return if exempted?(namespace)
+          check_namespace(node, namespace)
         end
 
         # Class variables are normally frowned upon since they leak through all
@@ -56,6 +59,17 @@ module RuboCop
         def message(node)
           namespace = Namespace.new(node.defined_module_name).from_root
           format('Use a single root namespace. (Found `%s`; Previously found `%s`)', namespace, @@namespace)
+        end
+
+        def exempted?(namespace)
+          namespace_exceptions.include?(namespace.first)
+        end
+
+        def namespace_exceptions
+          exceptions = cop_config['Exceptions'] || []
+          return exceptions if exceptions.is_a?(Array)
+
+          raise 'exceptions needs to be an array of strings!'
         end
 
       end

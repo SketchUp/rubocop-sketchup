@@ -2,9 +2,9 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupRequirements::ExtensionNamespace do
+describe RuboCop::Cop::SketchupRequirements::ExtensionNamespace, :config do
 
-  subject(:cop) { described_class.new }
+  subject(:cop) { described_class.new(config) }
 
   it 'registers an offense for multiple top level namespaces' do
     inspect_source(['module Example',
@@ -55,5 +55,35 @@ describe RuboCop::Cop::SketchupRequirements::ExtensionNamespace do
                     'end'])
     expect(cop.offenses).to be_empty
   end
+
+  context 'configured exception' do
+
+    let(:cop_config) do
+      { 'Exceptions' => ['Foo', 'Bar'] }
+    end
+
+    it 'does not register an offense for exempted objects' do
+      inspect_source(['module Example',
+                      'end',
+                      'module Foo',
+                      'end'])
+      expect(cop.offenses).to be_empty
+    end
+
+    it 'registers an offense for multiple top level namespaces' do
+      inspect_source(['module Foo',
+                      'end',
+                      'module Example',
+                      'end',
+                      'module FooBar',
+                      'end',
+                      'module Bar',
+                      'end',
+                      'module Bar::Biz::Baz',
+                      'end'])
+      expect(cop.offenses.size).to eq(1)
+    end
+
+  end # context
 
 end

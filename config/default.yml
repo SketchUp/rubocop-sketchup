@@ -92,6 +92,7 @@ SketchupRequirements/ExtensionNamespace:
              To avoid clashing with other extensions a single root namespace
              should all the extension's code.
   Enabled: true
+  Exceptions: []
 
 SketchupRequirements/FileStructure:
   Description: Expected extension file structure not found.
