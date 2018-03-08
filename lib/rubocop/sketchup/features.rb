@@ -630,7 +630,6 @@ module RuboCop
         active_path
         active_section_plane
         active_section_plane=
-        add_action_callback
         add_classification
         add_dimension_linear
         add_dimension_radial
@@ -641,7 +640,6 @@ module RuboCop
         arc_curve
         arc_curve=
         boundingbox_pick
-        bring_to_front
         center_2d
         classifications
         colorize_deltas
@@ -651,7 +649,6 @@ module RuboCop
         days_remaining
         edit_transform
         error_description
-        execute_script
         expectsStartupModelNotifications
         extension_path
         find_entity_by_id
@@ -699,21 +696,15 @@ module RuboCop
         refresh_thumbnail
         remove_classification
         same_direction?
-        save_thumbnail
         scale_2d
         screen_scale_factor
         set_can_close
         set_classification_value
         set_download_progress_callback
-        set_file
         set_full_security
-        set_html
         set_on_closed
-        set_position
-        set_size
         set_texture_projection
         set_upload_progress_callback
-        set_url
         set_uv
         show_differences
         sketch_plane
