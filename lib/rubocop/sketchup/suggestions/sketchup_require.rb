@@ -33,7 +33,7 @@ module RuboCop
             (str $_))
         PATTERN
 
-        def_node_search :sketchup_extension_new?, <<-PATTERN
+        def_node_matcher :sketchup_extension_new?, <<-PATTERN
           (:send
             (:const nil? :SketchupExtension) :new
             _
