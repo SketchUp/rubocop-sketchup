@@ -3,6 +3,7 @@ version: "{build}-{branch}"
 branches:
   only:
     - master
+    - dev-appveyor
 
 cache:
   - vendor/bundle
