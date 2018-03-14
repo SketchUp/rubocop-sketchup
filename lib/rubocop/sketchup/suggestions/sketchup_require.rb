@@ -18,12 +18,14 @@ module RuboCop
           )
         PATTERN
 
-        def_node_matcher :sketchup_require?, <<-PATTERN
-          (send
-            (const nil? :Sketchup) :require
-            (str _)
-          )
-        PATTERN
+        # Temporarily disabled due to RuboCop bug:
+        # https://github.com/bbatsov/rubocop/issues/5656
+        # def_node_matcher :sketchup_require?, <<-PATTERN
+        #   (send
+        #     (const nil? :Sketchup) :require
+        #     (str _)
+        #   )
+        # PATTERN
 
 
         def_node_matcher :sketchup_extension_new, <<-PATTERN
@@ -33,12 +35,14 @@ module RuboCop
             (str $_))
         PATTERN
 
-        def_node_matcher :sketchup_extension_new?, <<-PATTERN
-          (:send
-            (:const nil? :SketchupExtension) :new
-            _
-            (str _))
-        PATTERN
+        # Temporarily disabled due to RuboCop bug:
+        # https://github.com/bbatsov/rubocop/issues/5656
+        # def_node_matcher :sketchup_extension_new?, <<-PATTERN
+        #   (:send
+        #     (:const nil? :SketchupExtension) :new
+        #     _
+        #     (str _))
+        # PATTERN
 
 
         def on_send(node)
@@ -56,6 +60,18 @@ module RuboCop
 
         def valid_filename?(filename)
           File.extname(filename).empty?
+        end
+
+        # Workaround for RuboCop bug:
+        # https://github.com/bbatsov/rubocop/issues/5656
+        def sketchup_require?(node)
+          node.method_name == :require && sketchup_require(node)
+        end
+
+        # Workaround for RuboCop bug:
+        # https://github.com/bbatsov/rubocop/issues/5656
+        def sketchup_extension_new?(node)
+          node.method_name == :new && sketchup_extension_new(node)
         end
 
       end
