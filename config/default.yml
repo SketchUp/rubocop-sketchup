@@ -105,6 +105,10 @@ SketchupRequirements/GlobalConstants:
   Description: Do not introduce global constants.
   Enabled: true
 
+SketchupRequirements/GlobalInclude:
+  Description: Do not include modules into global namespace.
+  Enabled: true
+
 SketchupRequirements/GlobalMethods:
   Description: Extensions should not define global methods.
   Enabled: true
