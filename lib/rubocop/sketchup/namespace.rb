@@ -38,7 +38,7 @@ module RuboCop
       end
 
       def top_level?
-        parts.last == 'Object'
+        %w[Kernel Object].include?(parts.first)
       end
 
     end

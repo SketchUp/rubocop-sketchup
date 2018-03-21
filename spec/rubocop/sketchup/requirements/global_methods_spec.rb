@@ -18,6 +18,15 @@ describe RuboCop::Cop::SketchupRequirements::GlobalMethods do
     expect(cop.offenses).to be_empty
   end
 
+  it 'does not register an offense for namespaced Object methods' do
+    inspect_source(['module Example',
+                    '  class Object',
+                    '    def namespaced_example; end',
+                    '  end',
+                    'end'])
+    expect(cop.offenses).to be_empty
+  end
+
   # TODO(thomthom): Move this to RubyCoreNamespace cop since it's a class
   # method?
   it 'register an offense for Object methods' do
