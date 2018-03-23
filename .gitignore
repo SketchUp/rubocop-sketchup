@@ -6,3 +6,6 @@ rubocop\.json
 # Ignore gem related files.
 Gemfile\.lock
 *.gem
+
+# Ignore RubyMine files.
+.idea
