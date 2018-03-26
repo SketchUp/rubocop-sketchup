@@ -12,6 +12,18 @@ describe RuboCop::Cop::SketchupSuggestions::ModelEntities do
     expect(cop.offenses.size).to eq(1)
   end
 
+  it 'registers an offense when fetching @model.entities' do
+    inspect_source(['@model = Sketchup.active_model',
+                    'entities = @model.entities'])
+    expect(cop.offenses.size).to eq(1)
+  end
+
+  it 'registers an offense when fetching @@model.entities' do
+    inspect_source(['@@model = Sketchup.active_model',
+                    'entities = @@model.entities'])
+    expect(cop.offenses.size).to eq(1)
+  end
+
   it 'does not register an offense when fetching model.active_entities' do
     inspect_source(['model = Sketchup.active_model',
                     'entities = model.active_entities'])
