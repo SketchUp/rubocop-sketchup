@@ -41,6 +41,9 @@ module RuboCop
         PATTERN
 
 
+        TOOLS_RUBY_FILES = %w[extensions.rb langhandler.rb sketchup.rb]
+
+
         def on_send(node)
           if sketchup_require?(node)
             filename = sketchup_require(node)
@@ -55,7 +58,7 @@ module RuboCop
         private
 
         def valid_filename?(filename)
-          File.extname(filename).empty?
+          File.extname(filename).empty? || TOOLS_RUBY_FILES.include?(filename)
         end
 
       end

@@ -67,4 +67,16 @@ describe RuboCop::Cop::SketchupSuggestions::SketchupRequire do
 
   end
 
+
+  context 'requiring files from Tools folder' do
+
+    described_class::TOOLS_RUBY_FILES.each { |filename|
+      it "does not register an offense requiring `#{filename}`" do
+        inspect_source("Sketchup.require '#{filename}'")
+        expect(cop.offenses).to be_empty
+      end
+    }
+
+  end
+
 end
