@@ -89,6 +89,15 @@ describe RuboCop::Cop::SketchupRequirements::SketchupExtension do
       expect(cop.offenses).to be_empty
     end
 
+    it 'does not throw an error when inspecting source' do
+      inspect_source(['module Example',
+                      '  msg = "Hello World"',
+                      '  msg += "Foo Bar"',
+                      'end'],
+                      './src/hello.rb')
+      expect(cop.offenses.size).to eq(1)
+    end
+
   end # context
 
   context 'Custom source path' do

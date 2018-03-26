@@ -19,17 +19,14 @@ module RuboCop
 
         # Reference: http://rubocop.readthedocs.io/en/latest/node_pattern/
         def_node_search :sketchup_extension_new, <<-PATTERN
-          ({:lvasgn :ivasgn :cvasgn :gvasgn :casgn} ...
-            (:send
-              (:const nil? :SketchupExtension) :new
-              _
-              _))
+          (send
+            (const nil? :SketchupExtension) :new _ _)
         PATTERN
 
         def_node_search :sketchup_register_extension, <<-PATTERN
-          (:send
+          (send
             (const nil? :Sketchup) :register_extension
-            {({:lvar :ivar :cvar :gvar} $_)(const nil? $_)}
+            {({lvar ivar cvar gvar} $_)(const nil? $_)}
             _)
         PATTERN
 
@@ -42,6 +39,13 @@ module RuboCop
 
           # Look for SketchupExtension.new.
           extension_nodes = sketchup_extension_new(source_node).to_a
+
+          # Threat instances not assigned to anything as non-existing.
+          extension_nodes.select! { |node|
+            node.parent && node.parent.assignment?
+          }
+
+          # There should not be multiple instances.
           if extension_nodes.size > 1
             add_offense(nil,
                 location: range,
@@ -49,6 +53,8 @@ module RuboCop
                 severity: :error)
             return
           end
+
+          # There should be exactly one.
           extension_node = extension_nodes.first
           if extension_node.nil?
             add_offense(nil,
@@ -59,24 +65,25 @@ module RuboCop
           end
 
           # Find the name of the value SketchupExtension.new was assigned to.
-          if extension_node.casgn_type?
-            extension_var = extension_node.to_a[1]
+          assignment_node = extension_node.parent
+          if assignment_node.casgn_type?
+            extension_var = assignment_node.to_a[1]
           else
-            extension_var = extension_node.to_a[0]
+            extension_var = assignment_node.to_a[0]
           end
 
           # Look for Sketchup.register and make sure it register the extension
           # object detected earlier.
           registered_vars = sketchup_register_extension(source_node).to_a
-          # TODO: The offences here should probably highlight the line where
-          #       Sketchup.register_extension is.
+
+          # Make sure there is only one call to `register_extension`.
           if registered_vars.size > 1
-            add_offense(nil,
-                location: range,
+            add_offense(registered_vars[1],
                 message: MSG_REGISTER_ONE,
                 severity: :error)
             return
           end
+
           registered_var = sketchup_register_extension(source_node).first
           unless registered_var == extension_var
             msg = MSG_REGISTER_MISSING % extension_var.to_s
