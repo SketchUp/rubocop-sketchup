@@ -45,9 +45,7 @@ module RuboCop
 
 
         def_node_search :force_encoding, <<-PATTERN
-          (send
-            (_ $_)
-            :force_encoding ...)
+          (send ({lvar ivar cvar} $_) :force_encoding ...)
         PATTERN
 
         def on_assign(node)
@@ -61,7 +59,6 @@ module RuboCop
           add_offense(node)
         end
 
-        # TODO: Review this list of aliases.
         alias on_lvasgn   on_assign
         alias on_masgn    on_assign
         alias on_casgn    on_assign

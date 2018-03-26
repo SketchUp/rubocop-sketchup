@@ -43,7 +43,22 @@ describe RuboCop::Cop::SketchupSuggestions::FileEncoding, :config do
 
   it 'does not register an offense when assigning __FILE__ to variable and forcing encoding' do
     inspect_source(['file = __FILE__',
-                    'file.force_encoding("UTF-8")'])
+                    'file.force_encoding("UTF-8")',
+                    'path = File.dirname(file)'])
+    expect(cop.offenses).to be_empty
+  end
+
+  it 'does not register an offense when assigning __FILE__ to an instance variable and forcing encoding' do
+    inspect_source(['@file = __FILE__',
+                    '@file.force_encoding("UTF-8")',
+                    'path = File.dirname(@file)'])
+    expect(cop.offenses).to be_empty
+  end
+
+  it 'does not register an offense when assigning __FILE__ to an class variable and forcing encoding' do
+    inspect_source(['@@file = __FILE__',
+                    '@@file.force_encoding("UTF-8")',
+                    'path = File.dirname(@@file)'])
     expect(cop.offenses).to be_empty
   end
 
@@ -56,6 +71,14 @@ describe RuboCop::Cop::SketchupSuggestions::FileEncoding, :config do
   it 'register an offense when assigning __FILE__ to instance variable without forcing encoding' do
     inspect_source(['@file = __FILE__',
                     'path = File.dirname(@file)'])
+    expect(cop.offenses.size).to eq(1)
+  end
+
+  it 'does not raise an error with module attr_accessor' do
+    inspect_source(['module Example',
+                    '  class << self; attr_accessor :foo; end',
+                    '  file = __FILE__',
+                    'end'])
     expect(cop.offenses.size).to eq(1)
   end
 
