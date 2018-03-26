@@ -12,7 +12,7 @@ module RuboCop
         MSG = 'Always register extensions to load by default.'.freeze
 
         def_node_search :sketchup_register_extension, <<-PATTERN
-          (:send
+          (send
             (const nil? :Sketchup) :register_extension
             $...)
         PATTERN

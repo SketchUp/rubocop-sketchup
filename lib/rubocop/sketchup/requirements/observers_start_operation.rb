@@ -11,7 +11,7 @@ module RuboCop
         MSG = 'Observers should create transparent operations.'.freeze
 
         def_node_search :start_operation, <<-PATTERN
-          (:send
+          (send
             _ :start_operation
             ...)
         PATTERN

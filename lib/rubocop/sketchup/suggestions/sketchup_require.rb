@@ -29,8 +29,8 @@ module RuboCop
 
 
         def_node_matcher :sketchup_extension_new, <<-PATTERN
-          (:send
-            (:const nil? :SketchupExtension) :new
+          (send
+            (const nil? :SketchupExtension) :new
             _
             (str $_))
         PATTERN

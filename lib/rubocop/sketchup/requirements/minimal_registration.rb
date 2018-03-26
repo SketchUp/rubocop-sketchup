@@ -16,7 +16,7 @@ module RuboCop
 
         # Reference: http://rubocop.readthedocs.io/en/latest/node_pattern/
         def_node_matcher :require_filename, <<-PATTERN
-          (:send
+          (send
             {(const nil? :Sketchup) nil?} :require
             (str $_))
         PATTERN
