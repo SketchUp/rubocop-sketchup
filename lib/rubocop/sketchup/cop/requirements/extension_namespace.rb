@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'rubocop/sketchup/requirements/api_namespace'
-require 'rubocop/sketchup/requirements/ruby_core_namespace'
-require 'rubocop/sketchup/requirements/ruby_stdlib_namespace'
+require 'rubocop/sketchup/cop/requirements/api_namespace'
+require 'rubocop/sketchup/cop/requirements/ruby_core_namespace'
+require 'rubocop/sketchup/cop/requirements/ruby_stdlib_namespace'
 
 module RuboCop
   module Cop

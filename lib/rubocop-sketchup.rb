@@ -33,7 +33,7 @@ class RuboCop::Formatter::FormatterSet
 end
 
 # Load all custom cops.
-pattern = File.join(__dir__, 'rubocop', 'sketchup', '**/*rb')
+pattern = File.join(__dir__, 'rubocop', 'sketchup', 'cop', '**/*rb')
 Dir.glob(pattern) { |file|
   require file
 }
