@@ -16,9 +16,10 @@ module RuboCop
 
         # Reference: http://rubocop.readthedocs.io/en/latest/node_pattern/
         def_node_matcher :require_filename, <<-PATTERN
-          (send
-            {(const nil? :Sketchup) nil?} :require
-            (str $_))
+          {
+            (send {(const nil? :Sketchup) nil?} {:require :load} (str $_))
+            (send nil? :require_relative (str $_))
+          }
         PATTERN
 
         def investigate(processed_source)

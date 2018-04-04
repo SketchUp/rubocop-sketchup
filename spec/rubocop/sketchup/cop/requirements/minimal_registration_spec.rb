@@ -15,11 +15,13 @@ describe RuboCop::Cop::SketchupRequirements::MinimalRegistration do
     inspect_source(['module Example',
                     '  require "hello/foo"',
                     '  Sketchup.require "hello/bar"',
+                    '  load "hello/biz"',
+                    '  Sketchup.load "hello/baz"',
                     '  extension = SketchupExtension.new("Extension Name", filename)',
                     '  Sketchup.register_extension(extension, true)',
                     'end'],
                     './src/hello.rb')
-    expect(cop.offenses.size).to eq(2)
+    expect(cop.offenses.size).to eq(4)
   end
 
   it 'does not register an offense for requiring files not in the extension' do
@@ -36,6 +38,8 @@ describe RuboCop::Cop::SketchupRequirements::MinimalRegistration do
     inspect_source(['module Example',
                     '  require "hello/foo"',
                     '  Sketchup.require "hello/bar"',
+                    '  load "hello/biz"',
+                    '  Sketchup.load "hello/baz"',
                     '  extension = SketchupExtension.new("Extension Name", filename)',
                     '  Sketchup.register_extension(extension, true)',
                     'end'],
