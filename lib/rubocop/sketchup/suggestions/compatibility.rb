@@ -3,9 +3,8 @@
 module RuboCop
   module Cop
     module SketchupSuggestions
-      class Compatibility < Cop
+      class Compatibility < SketchUp::Cop
 
-        include SketchUp::Config
         include SketchUp::Features
 
         MSG = "Incompatible feature with target SketchUp version".freeze

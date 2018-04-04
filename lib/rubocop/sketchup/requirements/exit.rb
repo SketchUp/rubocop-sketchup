@@ -8,7 +8,7 @@ module RuboCop
       # console. But `exit!` is not trapped and with terminate SketchUp without
       # shutting down cleanly.
       # Use `return`, `next` or `break` instead.
-      class Exit < Cop
+      class Exit < SketchUp::Cop
 
         include SketchUp::NoCommentDisable
 

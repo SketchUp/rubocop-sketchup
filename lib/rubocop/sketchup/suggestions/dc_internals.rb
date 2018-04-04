@@ -5,7 +5,7 @@ module RuboCop
     module SketchupSuggestions
       # Tapping into the internals of Dynamic Components is risky. It could
       # change at any time.
-      class DynamicComponentInternals < Cop
+      class DynamicComponentInternals < SketchUp::Cop
 
         include SketchUp::DynamicComponentGlobals
 

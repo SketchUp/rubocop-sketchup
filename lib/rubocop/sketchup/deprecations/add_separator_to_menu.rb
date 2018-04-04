@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module SketchupDeprecations
-      class AddSeparatorToMenu < Cop
+      class AddSeparatorToMenu < SketchUp::Cop
 
         MSG = 'Method is deprecated.'.freeze
 

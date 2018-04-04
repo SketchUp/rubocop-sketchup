@@ -5,7 +5,7 @@ module RuboCop
     module SketchupSuggestions
       # Omit file extensions when using Sketchup.require to allow encrypted
       # files to be loaded.
-      class SketchupRequire < Cop
+      class SketchupRequire < SketchUp::Cop
 
         MSG = "Don't hard code file extensions with Sketchup.require".freeze
 

@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module SketchupDeprecations
-      class SetTextureProjection < Cop
+      class SetTextureProjection < SketchUp::Cop
 
         MSG = 'Method is deprecated. It creates invalid UV mapping.'.freeze
 

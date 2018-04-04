@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module SketchupRequirements
-      class GlobalInclude < Cop
+      class GlobalInclude < SketchUp::Cop
 
         include SketchUp::NoCommentDisable
         include SketchUp

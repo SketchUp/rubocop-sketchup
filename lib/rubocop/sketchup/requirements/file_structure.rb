@@ -5,7 +5,7 @@ module RuboCop
     module SketchupRequirements
       # Check that the extension conform to expected file structure with a
       # single root .rb file and a support folder with matching name.
-      class FileStructure < Cop
+      class FileStructure < SketchUp::Cop
 
         include SketchUp::NoCommentDisable
         include SketchUp::ExtensionProject

@@ -15,7 +15,7 @@ module RuboCop
       #   file = __FILE__.dup
       #   file.force_encoding('UTF-8') if file.respond_to?(:force_encoding)
       #   basename = File.basename(file, '.*')
-      class FileEncoding < Cop
+      class FileEncoding < SketchUp::Cop
 
         MSG = 'Beware encoding bug with `__FILE__` and `__dir__`.'.freeze
 

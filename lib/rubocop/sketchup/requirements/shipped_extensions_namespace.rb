@@ -4,7 +4,7 @@ module RuboCop
   module Cop
     module SketchupRequirements
       # Don't modify SketchUp's shipped extensions.
-      class ShippedExtensionsNamespace < Cop
+      class ShippedExtensionsNamespace < SketchUp::Cop
 
         include SketchUp::NoCommentDisable
         include SketchUp::NamespaceChecker

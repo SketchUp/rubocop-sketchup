@@ -4,7 +4,7 @@ module RuboCop
   module Cop
     module SketchupDeprecations
       # Weak warning. (Question?)
-      class OperationNextTransparent < Cop
+      class OperationNextTransparent < SketchUp::Cop
         MSG = 'Third argument is deprecated.'.freeze
 
         def on_send(node)

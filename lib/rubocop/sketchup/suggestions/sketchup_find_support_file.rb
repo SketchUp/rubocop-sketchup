@@ -4,7 +4,7 @@ module RuboCop
   module Cop
     module SketchupSuggestions
       # Avoid Sketchup.find_support_file to find your extension's files.
-      class SketchupFindSupportFile < Cop
+      class SketchupFindSupportFile < SketchUp::Cop
 
         MSG = "Avoid Sketchup.find_support_file to find your extension's files.".freeze
 

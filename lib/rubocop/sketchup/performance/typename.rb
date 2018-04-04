@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module SketchupPerformance
-      class Typename < Cop
+      class Typename < SketchUp::Cop
         MSG = '`.typename` is very slow, prefer `.is_a?` instead.'.freeze
 
         def on_send(node)

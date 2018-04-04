@@ -23,7 +23,7 @@ module RuboCop
       #   model = Sketchup.active_model
       #   faces = model.active_entities.grep(Sketchup::Face)
       #   model.selection.add(faces)
-      class SelectionBulkChanges < Cop
+      class SelectionBulkChanges < SketchUp::Cop
         MSG = 'Avoid modifying selecting within loops.'.freeze
 
         # http://www.rubydoc.info/gems/rubocop/RuboCop/NodePattern

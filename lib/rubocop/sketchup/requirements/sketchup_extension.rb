@@ -5,7 +5,7 @@ module RuboCop
     module SketchupRequirements
       # Register a single instance of SketchupExtension per extension.
       # This should be done by the root .rb file in the extension package.
-      class SketchupExtension < Cop
+      class SketchupExtension < SketchUp::Cop
 
         include SketchUp::NoCommentDisable
         include SketchUp::ExtensionProject

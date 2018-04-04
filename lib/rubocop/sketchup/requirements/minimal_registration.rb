@@ -7,7 +7,7 @@ module RuboCop
     module SketchupRequirements
       # Don't load extension files in the root file registering the extension.
       # Extensions should not load additional files when it's disabled.
-      class MinimalRegistration < Cop
+      class MinimalRegistration < SketchUp::Cop
 
         include SketchUp::NoCommentDisable
         include SketchUp::ExtensionProject

@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module SketchupSuggestions
-      class ModelEntities < Cop
+      class ModelEntities < SketchUp::Cop
 
         MSG = 'Typically one should use model.active_entities instead of model.entities.'.freeze
 

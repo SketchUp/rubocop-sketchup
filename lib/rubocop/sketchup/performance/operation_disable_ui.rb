@@ -4,7 +4,7 @@ module RuboCop
   module Cop
     module SketchupPerformance
       # Weak warning. (Question?)
-      class OperationDisableUI < Cop
+      class OperationDisableUI < SketchUp::Cop
         MSG = 'Operations should disable the UI for performance gain.'.freeze
 
         def on_send(node)

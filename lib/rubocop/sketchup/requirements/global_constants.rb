@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module SketchupRequirements
-      class GlobalConstants < Cop
+      class GlobalConstants < SketchUp::Cop
 
         include SketchUp::NoCommentDisable
         include SketchUp

@@ -149,6 +149,22 @@ Available versions are:
 6.0
 ```
 
+#### Department Excludes
+
+Current version of RuboCop doesn't support exclude filters for departments. To make it easier to exclude certain files for the SketchUp departments this can be configured in the SketchUp config section:
+
+```yml
+AllCops:
+  SketchUp:
+    SketchupPerformance:
+      - src/example/biz.rb
+    SketchupSuggestions:
+      Exclude:
+      - src/example/foo.rb
+      - src/example/bar.rb
+      - ^test/
+```
+
 #### Extra Details
 
 Several cops have additional details to explain what they are checking. You can

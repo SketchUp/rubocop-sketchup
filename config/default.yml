@@ -3,6 +3,14 @@ AllCops:
   SketchUp:
     SourcePath: src
     TargetSketchUpVersion: 2016
+    SketchupDeprecations:
+      Exclude: []
+    SketchupPerformance:
+      Exclude: []
+    SketchupRequirements:
+      Exclude: []
+    SketchupSuggestions:
+      Exclude: []
 
 SketchupDeprecations/AddSeparatorToMenu:
   Description: The method `add_separator_to_menu` is deprecated.

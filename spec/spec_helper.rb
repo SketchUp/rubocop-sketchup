@@ -21,6 +21,7 @@ RSpec.configure do |config|
   end
 
   config.include Helpers::Config
+  config.include RuboCop::RSpec::ExpectOffense
 end
 
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))

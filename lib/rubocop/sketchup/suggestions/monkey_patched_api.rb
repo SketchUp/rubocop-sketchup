@@ -8,7 +8,7 @@ module RuboCop
       # before the extension best-practices were established. These functions
       # might change or be removed at any time. They will also not work when
       # the extensions are disabled. Avoid using these methods.
-      class MonkeyPatchedApi < Cop
+      class MonkeyPatchedApi < SketchUp::Cop
 
         include SketchUp::DynamicComponentMethods
 

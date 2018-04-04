@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module SketchupDeprecations
-      class RequireAll < Cop
+      class RequireAll < SketchUp::Cop
 
         MSG = 'Method is deprecated because it adds the given path to $LOAD_PATH.'.freeze
 

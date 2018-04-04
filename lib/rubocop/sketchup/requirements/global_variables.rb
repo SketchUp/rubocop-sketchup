@@ -9,7 +9,7 @@ module RuboCop
       # users can allow additional variables via the AllowedVariables option.
       #
       # Note that backreferences like $1, $2, etc are not global variables.
-      class GlobalVariables < Cop
+      class GlobalVariables < SketchUp::Cop
 
         include SketchUp::NoCommentDisable
         include SketchUp::DynamicComponentGlobals

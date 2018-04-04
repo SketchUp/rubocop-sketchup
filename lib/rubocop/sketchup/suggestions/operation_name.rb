@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module SketchupSuggestions
-      class OperationName < Cop
+      class OperationName < SketchUp::Cop
 
         include RangeHelp
 

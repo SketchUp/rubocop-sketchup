@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module SketchupRequirements
-      class LoadPath < Cop
+      class LoadPath < SketchUp::Cop
 
         include SketchUp::NoCommentDisable
 

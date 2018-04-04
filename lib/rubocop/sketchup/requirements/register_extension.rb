@@ -5,7 +5,7 @@ module RuboCop
     module SketchupRequirements
       # Always register extensions to load by default. Otherwise it might
       # confuse users to think the extension isn't working.
-      class RegisterExtension < Cop
+      class RegisterExtension < SketchUp::Cop
 
         include SketchUp::NoCommentDisable
 

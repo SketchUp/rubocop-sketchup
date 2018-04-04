@@ -7,7 +7,7 @@ require 'rubocop/sketchup/requirements/ruby_stdlib_namespace'
 module RuboCop
   module Cop
     module SketchupRequirements
-      class ExtensionNamespace < Cop
+      class ExtensionNamespace < SketchUp::Cop
 
         include SketchUp::NoCommentDisable
         include SketchUp

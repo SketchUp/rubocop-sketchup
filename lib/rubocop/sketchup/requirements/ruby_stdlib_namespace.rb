@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module SketchupRequirements
-      class RubyStdLibNamespace < Cop
+      class RubyStdLibNamespace < SketchUp::Cop
 
         include SketchUp::NoCommentDisable
         include SketchUp::NamespaceChecker

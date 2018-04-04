@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module SketchupDeprecations
-      class SketchupSet < Cop
+      class SketchupSet < SketchUp::Cop
 
         MSG = 'Class is deprecated.'.freeze
 

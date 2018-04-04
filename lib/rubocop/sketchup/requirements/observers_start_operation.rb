@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module SketchupRequirements
-      class ObserversStartOperation < Cop
+      class ObserversStartOperation < SketchUp::Cop
 
         include SketchUp::NoCommentDisable
         include RangeHelp
