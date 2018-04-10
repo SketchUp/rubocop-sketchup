@@ -157,12 +157,13 @@ Current version of RuboCop doesn't support exclude filters for departments. To m
 AllCops:
   SketchUp:
     SketchupPerformance:
+      Exclude:
       - src/example/biz.rb
     SketchupSuggestions:
       Exclude:
       - src/example/foo.rb
       - src/example/bar.rb
-      - ^test/
+      - test/
 ```
 
 #### Extra Details
