@@ -99,4 +99,10 @@ describe RuboCop::Cop::SketchupSuggestions::OperationName, :config do
     expect(cop.offenses).to be_empty
   end
 
+  it 'handles start_operation without arguments' do
+    inspect_source(['CustomClass.start_operation do',
+                    'end'])
+    expect(cop.offenses).to be_empty
+  end
+
 end

@@ -13,7 +13,7 @@ module RuboCop
         def on_send(node)
           _, method_name, *args = *node
           return unless method_name == :start_operation
-          return unless args.first.str_type?
+          return if args.empty? || !args.first.str_type?
           operation_name = args.first.str_content
           # We can only inspect string literals.
           return unless operation_name.is_a?(String)
