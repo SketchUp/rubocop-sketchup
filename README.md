@@ -11,7 +11,7 @@ Tool intended to assist with development of SketchUp extension by providing stat
 
 ### Requirements
 
-* Standalone Ruby 2.1+ installation on the system. This is not intended to be used
+* Standalone Ruby 2.2+ installation on the system. This is not intended to be used
   inside of SketchUp. Mac users should have Ruby already on the system, Windows
   users need to install it from https://rubyinstaller.org/.
 
