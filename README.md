@@ -17,7 +17,7 @@ Tool intended to assist with development of SketchUp extension by providing stat
 
 * The [RuboCop](http://batsov.com/rubocop/) gem must also be installed.
 
-        gem install rubocop -v 0.54
+        gem install rubocop -v 0.58.1
 
 ### Install
 
