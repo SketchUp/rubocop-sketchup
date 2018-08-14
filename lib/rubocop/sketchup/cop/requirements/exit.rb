@@ -16,7 +16,7 @@ module RuboCop
 
         # Reference: http://rubocop.readthedocs.io/en/latest/development/
         def_node_matcher :exit?, <<-PATTERN
-          (send nil? {:exit :exit!})
+          (send {(const nil? :Kernel) nil?} {:exit :exit!} ...)
         PATTERN
 
         def on_send(node)
