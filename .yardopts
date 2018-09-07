@@ -1,0 +1,3 @@
+--title "RubyCop for SketchUp"
+--no-private
+lib/**/*.rb

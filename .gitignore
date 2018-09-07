@@ -9,3 +9,7 @@ Gemfile\.lock
 
 # Ignore RubyMine files.
 .idea
+
+# Ignore YARD docs
+.yardoc/
+doc/
