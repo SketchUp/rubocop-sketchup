@@ -2,7 +2,9 @@
 
 # This file is based of the same file in RuboCop's own repository.
 
+require 'yaml'
 require 'yard'
+require 'stringio'
 require 'rubocop'
 require 'rubocop-sketchup'
 
@@ -224,6 +226,58 @@ task generate_cops_documentation: :yard_for_generate_documentation do
     end
   end
 
+  def update_default_yml_reference_links
+    manual_url = 'https://github.com/SketchUp/rubocop-sketchup/manual'
+    file_name = "#{Dir.pwd}/config/enabled.yml"
+    config = YAML.load_file(file_name)
+    # Generate reference URI for all cops.
+    config.each { |cop, cop_config|
+      department_name, cop_name = cop.split('/').map(&:downcase)
+      url = "#{manual_url}/cops_#{department_name}.md##{cop_name}"
+      cop_config['Reference'] = url
+      # Ensure 'Enabled' is at the end.
+      enabled = cop_config['Enabled']
+      cop_config.delete('Enabled')
+      cop_config['Enabled'] = enabled
+    }
+    # Pretty-format YAML.
+    yml_config = StringIO.new
+    yml_config.puts '# These are all the cops that are enabled in the default configuration.'
+    last_department = nil
+    config.each { |cop, cop_config|
+      department_name, cop_name = cop.split('/')
+      yml_config.puts if last_department && last_department != department_name
+      yml_config.puts
+      yml_config.puts "#{cop}:"
+      cop_config.each { |key, value|
+        value = yaml_format(key, value) if ['Details', 'Description'].include?(key)
+        yml_config.puts "  #{key}: #{value}"
+      }
+      last_department = department_name
+    }
+    File.write(file_name, yml_config.string)
+  end
+
+  def yaml_format(key, value)
+    value_margin = 2 + key.size + ": >-".size
+    margin = ' ' * value_margin
+    max_length = 80 - value_margin
+    return value if value.size <= 80 - (2 + key.size + 2)
+    formatted = ''
+    line = ''
+    value.split(' ').each { |word|
+      if line.size + word.size >= max_length
+        formatted << "\n" unless formatted.empty?
+        formatted << "#{margin}#{line.rstrip}"
+        line = ''
+      end
+      line << "#{word} "
+    }
+    formatted << "\n" unless formatted.empty?
+    formatted << "#{margin}#{line.rstrip}"
+    ">-\n#{formatted}\n"
+  end
+
   def sketchup_departments(cops)
     cops.departments.select { |department|
       department.to_s.start_with?('Sketchup')
@@ -231,9 +285,11 @@ task generate_cops_documentation: :yard_for_generate_documentation do
   end
 
   def main
+    update_default_yml_reference_links
+
     cops   = RuboCop::Cop::Cop.registry
     config = RuboCop::ConfigLoader.default_configuration
-    config['Rails']['Enabled'] = true
+    # TODO: Load SketchUp config?
 
     YARD::Registry.load!
     sketchup_departments(cops).each do |department|
