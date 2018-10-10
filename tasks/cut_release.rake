@@ -3,6 +3,7 @@
 # This file is based of the same file in RuboCop's own repository.
 
 require 'bump'
+require 'rubocop'
 
 namespace :cut_release do
   %w[major minor patch pre].each do |release_type|
@@ -13,24 +14,27 @@ namespace :cut_release do
     end
   end
 
-  def update_readme(old_version, new_version)
+  def update_readme(old_version, new_version, rubocop_version)
     readme = File.read('README.md')
 
     File.open('README.md', 'w') do |f|
       f << readme.sub(
-        "gem 'rubocop', '~> #{old_version}', require: false",
-        "gem 'rubocop', '~> #{new_version}', require: false"
+        /gem install rubocop -v \d+\.\d+\.\d+/,
+        "gem install rubocop -v #{rubocop_version}",
       )
     end
   end
 
-  def update_manual(old_version, new_version)
+  def update_manual(old_version, new_version, rubocop_version)
     manual = File.read('manual/installation.md')
 
     File.open('manual/installation.md', 'w') do |f|
       f << manual.sub(
-        "gem 'rubocop', '~> #{old_version}', require: false",
-        "gem 'rubocop', '~> #{new_version}', require: false"
+        /gem install rubocop -v \d+\.\d+\.\d+/,
+        "gem install rubocop -v #{rubocop_version}",
+      ).sub(
+        "gem 'rubocop-sketchup', '~> #{old_version}",
+        "gem 'rubocop-sketchup', '~> #{new_version}",
       )
     end
   end
@@ -71,15 +75,16 @@ namespace :cut_release do
   end
 
   def run(release_type)
-    raise 'TODO!'
+    rubocop_version = RuboCop::Version.version
+
     old_version = Bump::Bump.current
     Bump::Bump.run(release_type, commit: false, bundle: false, tag: false)
     new_version = Bump::Bump.current
 
-    update_readme(old_version, new_version)
-    update_manual(old_version, new_version)
-    add_header_to_changelog(new_version)
-    create_release_notes(new_version)
+    update_readme(old_version, new_version, rubocop_version)
+    update_manual(old_version, new_version, rubocop_version)
+    # add_header_to_changelog(new_version)
+    # create_release_notes(new_version)
 
     puts "Changed version from #{old_version} to #{new_version}."
   end
