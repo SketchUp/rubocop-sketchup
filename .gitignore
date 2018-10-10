@@ -1,4 +1,5 @@
 # Ignore generated reports.
+coverage/
 rubocop\.html
 rubocop\.json
 *.html
