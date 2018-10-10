@@ -6,11 +6,14 @@
   "configurations": [
 
     {
-      "name": "Debug Local File",
+      "name": "Debug Doc Generation",
       "type": "Ruby",
       "request": "launch",
       "cwd": "${workspaceRoot}",
-      "program": "${workspaceRoot}/main.rb"
+      "program": "${workspaceRoot}/bin/rake",
+      "args": [
+        "generate_cops_documentation"
+      ]
     },
     {
       "name": "Listen for rdebug-ide",
