@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 gemspec
@@ -9,5 +11,8 @@ group :test do
 end
 
 group :development do
+  gem 'bump', require: false
   gem 'nokogiri', '~> 1.8', require: false
+  gem 'thor', '~> 0.20', require: false
+  gem 'yard', '~> 0.9'
 end

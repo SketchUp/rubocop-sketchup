@@ -3,6 +3,11 @@
 module RuboCop
   module Cop
     module SketchupRequirements
+      # Do not modify the Sketch API. This will affect other extensions and
+      # very likely cause them to fail.
+      # This requirement also include adding things into the SketchUp API
+      # namespace. The API namespace is reserved for future additions to the
+      # API.
       class ApiNamespace < SketchUp::Cop
 
         include SketchUp::NoCommentDisable
