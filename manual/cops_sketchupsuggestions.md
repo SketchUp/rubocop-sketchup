@@ -71,6 +71,12 @@ Enabled | No
 
 No documentation
 
+### Configurable attributes
+
+Name | Default value | Configurable values
+--- | --- | ---
+Max | `25` | Integer
+
 ## SketchupSuggestions/SketchupFindSupportFile
 
 Enabled by default | Supports autocorrection

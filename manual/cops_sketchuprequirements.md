@@ -32,6 +32,12 @@ Enabled | No
 
 No documentation
 
+### Configurable attributes
+
+Name | Default value | Configurable values
+--- | --- | ---
+Exceptions | `[]` | Array
+
 ## SketchupRequirements/FileStructure
 
 Enabled by default | Supports autocorrection

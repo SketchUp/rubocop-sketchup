@@ -17,3 +17,9 @@ AllCops:
       Exclude: []
     SketchupSuggestions:
       Exclude: []
+
+SketchupRequirements/ExtensionNamespace:
+  Exceptions: []
+
+SketchupSuggestions/OperationName:
+  Max: 25
