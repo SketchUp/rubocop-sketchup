@@ -1,106 +1,172 @@
-## Basic Usage
+# Basic Usage
 
-Running `rubocop` with no arguments will check all Ruby source files
-in the current directory:
+Refer to [RuboCop's own documentation](https://docs.rubocop.org/en/latest/basic_usage/) for general information on how to use and configure it.
+
+## Enabling the `rubocop-sketchup` Extension
+
+You need to tell RuboCop to load the `rubocop-sketchup` extension. There are a few ways to do this:
+
+### RuboCop Configuration File (Recommended)
+
+Put this into your `.rubocop.yml` in your project root:
+
+```yaml
+require: rubocop-sketchup
+```
+
+Now you can run `rubocop` and it will automatically load the RuboCop SketchUp cops together with the standard cops.
+
+### Command Line Argument
+
+You can also load it via the command line:
 
 ```sh
-$ rubocop
+rubocop -r rubocop-sketchup
 ```
 
-Alternatively you can pass `rubocop` a list of files and directories to check:
+That will run RuboCop with all of it's own cops along with the SketchUp cops.
+
+You can tell it to run specific departments:
 
 ```sh
-$ rubocop app spec lib/something.rb
+rubocop -r rubocop-sketchup --only SketchupRequirements,SketchupDeprecations
 ```
 
-Here's RuboCop in action. Consider the following Ruby source code:
+## Running only cops for Extension Warehouse Technical requirements
 
-```ruby
-def badName
-  if something
-    test
-    end
-end
+If you want to focus on only the technical requirements for having your extension hosted on [Extension Warehouse](http://extensions.sketchup.com/) then you can limit the cops to only the `SketchupRequirements` department. This is the most important department which you should not ignore.
+
+```yaml
+require: rubocop-sketchup
+
+AllCops:
+  DisabledByDefault: true
+
+SketchupRequirements:
+  Enabled: true
 ```
 
-Running RuboCop on it (assuming it's in a file named `test.rb`) would produce the following report:
+## Running all SketchUp Cops
+
+In addition to the requirements for the Extension Warehouse we have additional cops that looks for common patterns which have room for improvements. To run all of them, without all the RuboCop default cops use this configuration:
+
+```yaml
+require: rubocop-sketchup
+
+AllCops:
+  DisabledByDefault: true
+
+SketchupDeprecations:
+  Enabled: true
+
+SketchupPerformance:
+  Enabled: true
+
+SketchupRequirements:
+  Enabled: true
+
+SketchupSuggestions:
+  Enabled: true
+```
+
+## Source Path
+
+By default `rubocop-sketchup` expects to find the source for the SketchUp extension within a `src` directory relative to your `.rubocop.yml` config file.
+
+This can be configured to match your own project structure by overwriting `AllCops/SketchUp/SourcePath` in your `.rubocop.yml`:
+
+```yml
+AllCops:
+  SketchUp:
+    SourcePath: src
+```
+
+If this isn't configured correctly then some cops, such as `SketchupRequirements/FileStructure` will fail as extension file structure is part of the Extension Warehouse technical requirements. Additionally, SketchUp expects this particular file structure to fully manage the extension.
+
+## Target SketchUp Version
+
+The `SketchupSuggestions/Compatibility` cop checks for usage of the SketchUp API against a configured target version.
+
+Currently the default is `SketchUp 2016`.
 
 ```
-Inspecting 1 file
-W
+rubocop --only SketchupSuggestions/Compatibility
+Inspecting 30 files
+.....................C........
 
 Offenses:
 
-test.rb:1:1: C: Style/FrozenStringLiteralComment: Missing magic comment # frozen_string_literal: true.
-def badName
-^
-test.rb:1:5: C: Naming/MethodName: Use snake_case for method names.
-def badName
-    ^^^^^^^
-test.rb:2:3: C: Style/GuardClause: Use a guard clause instead of wrapping the code inside a conditional expression.
-  if something
-  ^^
-test.rb:2:3: C: Style/IfUnlessModifier: Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
-  if something
-  ^^
-test.rb:4:5: W: Layout/EndAlignment: end at 4, 4 is not aligned with if at 2, 2.
-    end
-    ^^^
+examples/snippets/deprecations/compatibility.rb:9:13: C: SketchupSuggestions/Compatibility: The class Sketchup::ImageRep was added in SketchUp 2018 which is incompatible with target SketchUp 2014.
+    image = Sketchup::ImageRep.new
+            ^^^^^^^^^^^^^^^^^^
+examples/snippets/deprecations/compatibility.rb:23:13: C: SketchupSuggestions/Compatibility: The constant Geom::PolygonMesh::MESH_POINTS was added in SketchUp 2018 which is incompatible with target SketchUp 2014.
+    flags = Geom::PolygonMesh::MESH_POINTS | Geom::PolygonMesh::MESH_NORMALS
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+examples/snippets/deprecations/compatibility.rb:38:5: C: SketchupSuggestions/Compatibility: The method #onPidChanged was added in SketchUp 2017 which is incompatible with target SketchUp 2014.
+    def onPidChanged(model, old_pid, new_pid) ...
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1 file inspected, 5 offenses detected
+30 files inspected, 3 offenses detected
 ```
 
-For more details check the available command-line options:
+This can be configured to match your own project structure by overwriting `AllCops/SketchUp/SourcePath` in your `.rubocop.yml`:
 
-```sh
-$ rubocop -h
+```yml
+AllCops:
+  SketchUp:
+    TargetSketchUpVersion: 2016 M1
 ```
 
-Command flag                    | Description
---------------------------------|------------------------------------------------------------
-`-v/--version`                  | Displays the current version and exits.
-`-V/--verbose-version`          | Displays the current version plus the version of Parser and Ruby.
-`-L/--list-target-files`        | List all files RuboCop will inspect.
-`-F/--fail-fast`                | Inspects in modification time order and stops after first file with offenses.
-`-C/--cache`                    | Store and reuse results for faster operation.
-`-d/--debug`                    | Displays some extra debug output.
-`-D/--[no-]display-cop-names`   | Displays cop names in offense messages. Default is true.
-`-E/--extra-details`            | Displays extra details in offense messages.
-`-c/--config`                   | Run with specified config file.
-`-f/--format`                   | Choose a formatter.
-`-o/--out`                      | Write output to a file instead of STDOUT.
-`-r/--require`                  | Require Ruby file (see [Loading Extensions](#loading-extensions)).
-`-R/--rails`                    | Run extra Rails cops.
-`-l/--lint`                     | Run only lint cops.
-`-a/--auto-correct`             | Auto-correct certain offenses. *Note:* Experimental - use with caution.
-`--only`                        | Run only the specified cop(s) and/or cops in the specified departments.
-`--except`                      | Run all cops enabled by configuration except the specified cop(s) and/or departments.
-`--auto-gen-config`             | Generate a configuration file acting as a TODO list.
-`--no-offense-counts`           | Don't show offense counts in config file generated by --auto-gen-config
-`--no-auto-gen-timestamp`       | Don't include the date and time when --auto-gen-config was run in the config file it generates
-`--exclude-limit`               | Limit how many individual files `--auto-gen-config` can list in `Exclude` parameters, default is 15.
-`--show-cops`                   | Shows available cops and their configuration.
-`--fail-level`                  | Minimum [severity](#severity) for exit with error code. Full severity name or upper case initial can be given. Normally, auto-corrected offenses are ignored. Use `A` or `autocorrect` if you'd like them to trigger failure.
-`-s/--stdin`                    | Pipe source from STDIN. This is useful for editor integration.
-`--[no-]color`                  | Force color output on or off.
-`--parallel`                    | Use available CPUs to execute inspection in parallel.
-`--ignore-parent-exlusion`      | Ignores all Exclude: settings from all .rubocop.yml files present in parent folders. This is useful when you are importing submodules when you want to test them without being affected by the parent module's rubocop settings.
+Available versions are:
 
-Default command-line options are loaded from `.rubocop` and `RUBOCOP_OPTS` and are combined with command-line options that are explicitly passed to `rubocop`.
-Thus, the options have the following order of precedence (from highest to lowest):
+```
+2018
+2017
+2016 M1
+2016
+2015
+2014
+2013
+8.0 M2
+8.0 M1
+8.0
+7.1 M1
+7.1
+7.0 M1
+7.0
+6.0
+```
 
-1. Explicit command-line options
-2. Options from `RUBOCOP_OPTS` environment variable
-3. Options from `.rubocop` file.
+## Department Excludes
 
-## Exit codes
+Current version of RuboCop doesn't support exclude filters for departments. To make it easier to exclude certain files for the SketchUp departments this can be configured in the SketchUp config section:
 
-RuboCop exits with the following status codes:
+```yml
+AllCops:
+  SketchUp:
+    SketchupPerformance:
+      Exclude:
+      - src/example/biz.rb
+    SketchupSuggestions:
+      Exclude:
+      - src/example/foo.rb
+      - src/example/bar.rb
+      - test/
+```
 
-- 0 if no offenses are found, or if the severity of all offenses are less than
-  `--fail-level`. (By default, if you use `--auto-correct`, offenses which are
-  auto-corrected do not cause RuboCop to fail.)
-- 1 if one or more offenses equal or greater to `--fail-level` are found. (By
-  default, this is any offense which is not auto-corrected.)
-- 2 if RuboCop terminates abnormally due to invalid configuration, invalid CLI
-  options, or an internal error.
+## Extra Details
+
+Several cops have additional details to explain what they are checking. You can
+enable this by using the `-D` command line parameter or modifying your
+`.rubocop.yml` file by adding `ExtraDetails: true` under `AllCops`.
+
+```yml
+AllCops:
+  ExtraDetails: true
+```
+
+### Command line
+
+```bash
+rubocop --require rubocop-sketchup --only SketchupRequirements
+```

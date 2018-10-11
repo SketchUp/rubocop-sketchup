@@ -1,89 +1,35 @@
-## Cops
+# Cops
 
 In RuboCop lingo the various checks performed on the code are called cops.
 Each cop is responsible for detecting one particular offense. There are several
 cop departments, grouping the cops by class of offense. A short description of
 the different departments is provided below.
 
-Many of the Style and Layout cops have configuration options, allowing them to
-enforce different coding conventions.
+Read more about RuboCop's [cops and departments](https://docs.rubocop.org/en/latest/cops/).
 
-You can also load [custom cops](extensions.md#custom-cops).
+## SketchUp's Cops and Departments
 
-### Style
+`rubocop-sketchup` adds new departments and cops that are specific to extension development for SketchUp.
 
-Style cops check for stylistic consistency of your code. Many of the them are
-based on the [Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide).
+All cops are located under [`lib/rubocop/sketchup`](lib/rubocop/sketchup), and contain examples/documentation.
 
-### Layout
+### SketchupRequirements
 
-Layout cops inspect your code for consistent use of indentation, alignment,
-and white space.
+`SketchupRequirements` is the most important department. This one checks for the technical requirements that extensions need to meet in order to be hosted on Extension Warehouse. Address flagged issues from this department as soon as possible.
 
-### Lint
+Note that the complete technical requirements for Extension Warehouse is not fully covered by these cops. But they get you a long way if you pass their control.
 
-Lint cops check for ambiguities and possible errors in your code.
+### SketchupDeprecations
 
-RuboCop implements, in a portable way, all built-in MRI lint checks
-(`ruby -wc`) and adds a lot of extra lint checks of its own.
+`SketchupDeprecations` is also an important department. Not rejection cause at Extension Warehouse, but worth paying attention to as it describe features of the API we would like to discourage the use of. Eventually some of them might be removed.
 
-You can run only the Lint cops like this:
+### SketchupPerformance
 
-```sh
-$ rubocop -l
-```
+`SketchupPerformance` looks for common issues that impact performance. It's highly recommended to review what these cops report and evaluate if there are improvements that can be made to your extension.
 
-The `-l`/`--lint` option can be used together with `--only` to run all the
-enabled Lint cops plus a selection of other cops.
+### SketchupSuggestions
 
-Disabling Lint cops is generally a bad idea.
-
-### Metrics
-
-Metrics cops deal with properties of the source code that can be measured,
-such as class length, method length, etc. Generally speaking, they have a
-configuration parameter called `Max` and when running
-`rubocop --auto-gen-config`, this parameter will be set to the highest value
-found for the inspected code.
-
-### Naming
-
-Naming cops check for naming issue of your code, such as method name, constant
-name, file name, etc.
-
-### Performance
-
-Performance cops catch Ruby idioms which are known to be slower than another,
-semantically equivalent idiom.
-
-### Security
-
-Security cops checks for method calls and constructs which are known to be
-associated with potential security issues.
-
-### Rails
-
-Rails cops are specific to the Ruby on Rails framework. Unlike all other cop
-types they are not used by default, and you have to request them explicitly:
-
-```sh
-$ rubocop -R
-```
-
-or add the following directive to your `.rubocop.yml`:
-
-```yaml
-Rails:
-  Enabled: true
-```
-
-### Bundler
-
-Bundler cops check for style or bad practices in Bundler files, e.g. `Gemfile`.
-
-### Gemspec
-
-Gemspec cops check for style or bad practices in gemspec files, e.g. `rubocop.gemspec`.
+`SketchupSuggestions` might be the more noisy of the departments. These are more general gentle suggestions for common improvements to raise the quality of your extension and source code. No need to address everything this reports, evaluate to the context of your extension. In general this department will be a collection of established best practices.
 
 ### Available cops
 
