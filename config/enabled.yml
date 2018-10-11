@@ -5,7 +5,7 @@ SketchupDeprecations/AddSeparatorToMenu:
   Details: >-
              Avoid adding separators to top level menus. If you require
              grouping use a sub-menu instead.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_sketchupdeprecations.md#addseparatortomenu
+  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_deprecations.md#addseparatortomenu
   Enabled: true
 
 SketchupDeprecations/OperationNextTransparent:
@@ -13,7 +13,7 @@ SketchupDeprecations/OperationNextTransparent:
   Details: >-
              It is not possible to predict what operation will come next. Avoid
              making the next operation transparent.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_sketchupdeprecations.md#operationnexttransparent
+  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_deprecations.md#operationnexttransparent
   Enabled: true
 
 SketchupDeprecations/RequireAll:
@@ -21,7 +21,7 @@ SketchupDeprecations/RequireAll:
   Details: >-
              This method adds the path given to `$LOAD_PATH` which can affect
              other extensions.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_sketchupdeprecations.md#requireall
+  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_deprecations.md#requireall
   Enabled: true
 
 SketchupDeprecations/SetTextureProjection:
@@ -29,13 +29,13 @@ SketchupDeprecations/SetTextureProjection:
   Details: >-
              This method never worked right. It's not possible to control the
              position and orientation of the texture.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_sketchupdeprecations.md#settextureprojection
+  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_deprecations.md#settextureprojection
   Enabled: true
 
 SketchupDeprecations/ShowRubyPanel:
   Description: The method `show_ruby_panel` is deprecated.
   Details: Use `SKETCHUP_CONSOLE.show` instead.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_sketchupdeprecations.md#showrubypanel
+  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_deprecations.md#showrubypanel
   Enabled: true
 
 SketchupDeprecations/SketchupSet:
@@ -43,7 +43,7 @@ SketchupDeprecations/SketchupSet:
   Details: >-
              It's slow and with limited functionality. Use the `Set` class in
              the Ruby StdLib instead.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_sketchupdeprecations.md#sketchupset
+  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_deprecations.md#sketchupset
   Enabled: true
 
 
@@ -55,24 +55,24 @@ SketchupPerformance/OpenSSL:
              affects SecureRandom and anything else that depend on OpenSSL.
              Net::HTTP is affected if connecting via HTTPS. Connecting via
              plain HTTP is unaffected.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_sketchupperformance.md#openssl
+  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_performance.md#openssl
   Enabled: true
 
 SketchupPerformance/OperationDisableUI:
   Description: Operations should disable the UI for performance gain.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_sketchupperformance.md#operationdisableui
+  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_performance.md#operationdisableui
   Enabled: true
 
 SketchupPerformance/SelectionBulkChanges:
   Description: >-
                  Avoid modifying the selection set within loops. It's much
                  faster to change the selection in bulk.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_sketchupperformance.md#selectionbulkchanges
+  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_performance.md#selectionbulkchanges
   Enabled: true
 
 SketchupPerformance/Typename:
   Description: Using `.typename` is very slow, prefer `.is_a?` instead.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_sketchupperformance.md#typename
+  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_performance.md#typename
   Enabled: true
 
 
@@ -81,7 +81,7 @@ SketchupRequirements/ApiNamespace:
   Details: >-
              Modifying the API namespace could affect other extensions - making
              it hard for other developers to determine what is going on.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_sketchuprequirements.md#apinamespace
+  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_requirements.md#apinamespace
   Enabled: true
 
 SketchupRequirements/Exit:
@@ -91,7 +91,7 @@ SketchupRequirements/Exit:
              console. But `exit!` is not trapped and with terminate SketchUp
              without shutting down cleanly. Use `return`, `next` or `break`
              instead.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_sketchuprequirements.md#exit
+  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_requirements.md#exit
   Enabled: true
 
 SketchupRequirements/ExtensionNamespace:
@@ -99,7 +99,7 @@ SketchupRequirements/ExtensionNamespace:
   Details: >-
              To avoid clashing with other extensions a single root namespace
              should all the extension's code.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_sketchuprequirements.md#extensionnamespace
+  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_requirements.md#extensionnamespace
   Exceptions: []
   Enabled: true
 
@@ -108,27 +108,27 @@ SketchupRequirements/FileStructure:
   Details: >-
              Check that the extension conform to expected file structure with a
              single root .rb file and a support folder with matching name.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_sketchuprequirements.md#filestructure
+  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_requirements.md#filestructure
   Enabled: true
 
 SketchupRequirements/GlobalConstants:
   Description: Do not introduce global constants.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_sketchuprequirements.md#globalconstants
+  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_requirements.md#globalconstants
   Enabled: true
 
 SketchupRequirements/GlobalInclude:
   Description: Do not include modules into global namespace.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_sketchuprequirements.md#globalinclude
+  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_requirements.md#globalinclude
   Enabled: true
 
 SketchupRequirements/GlobalMethods:
   Description: Extensions should not define global methods.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_sketchuprequirements.md#globalmethods
+  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_requirements.md#globalmethods
   Enabled: true
 
 SketchupRequirements/GlobalVariables:
   Description: Do not introduce global variables.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_sketchuprequirements.md#globalvariables
+  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_requirements.md#globalvariables
   Enabled: true
 
 SketchupRequirements/LanguageHandlerGlobals:
@@ -137,7 +137,7 @@ SketchupRequirements/LanguageHandlerGlobals:
              Avoid using globals in general, but especially these which are
              known to be in use by other extensions made by SketchUp. They are
              still in use due to compatibility reasons.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_sketchuprequirements.md#languagehandlerglobals
+  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_requirements.md#languagehandlerglobals
   Enabled: true
 
 SketchupRequirements/LoadPath:
@@ -145,7 +145,7 @@ SketchupRequirements/LoadPath:
   Details: >-
              This can cause other extensions from not loading correctly. Always
              load files relative to the installation path for the extension.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_sketchuprequirements.md#loadpath
+  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_requirements.md#loadpath
   Enabled: true
 
 SketchupRequirements/MinimalRegistration:
@@ -153,7 +153,7 @@ SketchupRequirements/MinimalRegistration:
                  Don't load extension files in the root file registering the
                  extension. Extensions should not load additional files when
                  it's disabled.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_sketchuprequirements.md#minimalregistration
+  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_requirements.md#minimalregistration
   Enabled: true
 
 SketchupRequirements/ObserversStartOperation:
@@ -161,14 +161,14 @@ SketchupRequirements/ObserversStartOperation:
   Details: >-
              When making model changes within an observer event, start a
              transparent operation to ensure a clean undo-stack.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_sketchuprequirements.md#observersstartoperation
+  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_requirements.md#observersstartoperation
   Enabled: true
 
 SketchupRequirements/RegisterExtension:
   Description: >-
                  Always register extensions to load by default. Otherwise it
                  might confuse users to think the extension isn't working.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_sketchuprequirements.md#registerextension
+  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_requirements.md#registerextension
   Enabled: true
 
 SketchupRequirements/RequireToolsRubyFiles:
@@ -177,22 +177,22 @@ SketchupRequirements/RequireToolsRubyFiles:
                  has been loaded, files from SketchUp's Tools folder should be
                  required in using `require` and with their file extension to
                  avoid duplicate loading.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_sketchuprequirements.md#requiretoolsrubyfiles
+  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_requirements.md#requiretoolsrubyfiles
   Enabled: true
 
 SketchupRequirements/RubyCoreNamespace:
   Description: Do not modify Ruby core functionality.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_sketchuprequirements.md#rubycorenamespace
+  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_requirements.md#rubycorenamespace
   Enabled: true
 
 SketchupRequirements/RubyStdLibNamespace:
   Description: Do not modify Ruby stdlib functionality.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_sketchuprequirements.md#rubystdlibnamespace
+  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_requirements.md#rubystdlibnamespace
   Enabled: true
 
 SketchupRequirements/ShippedExtensionsNamespace:
   Description: Don't use the namespace of SketchUp's shipped extensions.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_sketchuprequirements.md#shippedextensionsnamespace
+  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_requirements.md#shippedextensionsnamespace
   Enabled: true
 
 SketchupRequirements/SketchupExtension:
@@ -200,7 +200,7 @@ SketchupRequirements/SketchupExtension:
                  Register a single instance of SketchupExtension per extension.
                  This should be done by the root .rb file in the extension
                  package.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_sketchuprequirements.md#sketchupextension
+  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_requirements.md#sketchupextension
   Enabled: true
 
 
@@ -208,7 +208,7 @@ SketchupSuggestions/DynamicComponentInternals:
   Description: >-
                  Avoid relying on internal logic of Dynamic Components. It's
                  behavior might change between versions.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_sketchupsuggestions.md#dynamiccomponentinternals
+  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_suggestions.md#dynamiccomponentinternals
   Enabled: true
 
 SketchupSuggestions/FileEncoding:
@@ -219,7 +219,7 @@ SketchupSuggestions/FileEncoding:
              contain non-english characters it will lead to exceptions being
              raised when the strings are used. Force encoding to work around
              this.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_sketchupsuggestions.md#fileencoding
+  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_suggestions.md#fileencoding
   Enabled: true
 
 SketchupSuggestions/ModelEntities:
@@ -230,7 +230,7 @@ SketchupSuggestions/ModelEntities:
              In SketchUp the norm is that editing is performed in the opened
              instance (`model.active_entities`). `model.entities` refer to the
              model root.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_sketchupsuggestions.md#modelentities
+  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_suggestions.md#modelentities
   Enabled: true
 
 SketchupSuggestions/MonkeyPatchedApi:
@@ -240,7 +240,7 @@ SketchupSuggestions/MonkeyPatchedApi:
   Details: >-
              These methods stops working when the extensions are disabled and
              may change or be removed.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_sketchupsuggestions.md#monkeypatchedapi
+  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_suggestions.md#monkeypatchedapi
   Enabled: true
 
 SketchupSuggestions/OperationName:
@@ -250,7 +250,7 @@ SketchupSuggestions/OperationName:
   Details: >-
              This check is very naive and might produce false positives. Use as
              guidance only.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_sketchupsuggestions.md#operationname
+  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_suggestions.md#operationname
   Max: 25
   Enabled: true
 
@@ -262,12 +262,12 @@ SketchupSuggestions/SketchupFindSupportFile:
              Extensions might be installed outside the SketchUp Plugins folder.
              Use `__FILE__` and `__dir__` to locate your files relative to the
              executing file.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_sketchupsuggestions.md#sketchupfindsupportfile
+  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_suggestions.md#sketchupfindsupportfile
   Enabled: true
 
 SketchupSuggestions/SketchupRequire:
   Description: >-
                  Omit file extensions when using `Sketchup.require` to allow
                  encrypted files to be loaded.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_sketchupsuggestions.md#sketchuprequire
+  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_suggestions.md#sketchuprequire
   Enabled: true

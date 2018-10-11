@@ -154,11 +154,12 @@ task generate_cops_documentation: :yard_for_generate_documentation do
 
   def print_cops_of_department(cops, department, config)
     selected_cops = cops_of_department(cops, department)
+    department_name = sketchup_department_name(department)
     content = "# #{department}\n".dup
     selected_cops.each do |cop|
       content << print_cop_with_doc(cop, config)
     end
-    file_name = "#{Dir.pwd}/manual/cops_#{department.downcase}.md"
+    file_name = "#{Dir.pwd}/manual/cops_#{department_name}.md"
     File.open(file_name, 'w') do |file|
       puts "* generated #{file_name}"
       file.write(content.strip + "\n")
@@ -182,7 +183,8 @@ task generate_cops_documentation: :yard_for_generate_documentation do
 
   def table_of_content_for_department(cops, department)
     type_title = department[0].upcase + department[1..-1]
-    filename = "cops_#{department.downcase}.md"
+    department_name = sketchup_department_name(department)
+    filename = "cops_#{department_name}.md"
     content = "#### Department [#{type_title}](#{filename})\n\n".dup
     cops_of_department(cops, department.to_sym).each do |cop|
       anchor = cop.cop_name.sub('/', '').downcase
@@ -235,6 +237,7 @@ task generate_cops_documentation: :yard_for_generate_documentation do
     # Generate reference URI for all cops.
     config.each { |cop, cop_config|
       department_name, cop_name = cop.split('/').map(&:downcase)
+      department_name = sketchup_department_name(department_name)
       url = "#{manual_url}/cops_#{department_name}.md##{cop_name}"
       cop_config['Reference'] = url
       # Ensure 'Enabled' is at the end.
@@ -284,6 +287,10 @@ task generate_cops_documentation: :yard_for_generate_documentation do
     cops.departments.select { |department|
       department.to_s.start_with?('Sketchup')
     }.sort!
+  end
+
+  def sketchup_department_name(department)
+    department.to_s.downcase.sub(/^sketchup/, '')
   end
 
   def main
