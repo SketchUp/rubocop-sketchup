@@ -6,7 +6,19 @@ Enabled by default | Supports autocorrection
 --- | ---
 Enabled | No
 
-No documentation
+It's easy to lose track of what API feature was added in what version or
+SketchUp. You can configure your target SketchUp version and be notified
+if you use features introduced in newer versions.
+
+### Examples
+
+#### Add this to your .rubocop.yml
+
+```ruby
+AllCops:
+  SketchUp:
+    TargetSketchUpVersion: 2016 M1
+```
 
 ## SketchupSuggestions/DynamicComponentInternals
 
@@ -15,7 +27,9 @@ Enabled by default | Supports autocorrection
 Enabled | No
 
 Tapping into the internals of Dynamic Components is risky. It could
-change at any time.
+change at any time. If you create an extension that depend on the
+internal logic of another extension you are at the mercy of change and
+luck!
 
 ## SketchupSuggestions/FileEncoding
 
@@ -49,7 +63,12 @@ Enabled by default | Supports autocorrection
 --- | ---
 Enabled | No
 
-No documentation
+Prefer `model.active_entities` over `model.entities`.
+
+Most tools/actions act upon the active entities context. This could be
+an opened group or component instance. Because of this, prefer
+`model.active_entities` by default over `model.entities` unless you
+have an explicit reason to work in the root model context.
 
 ## SketchupSuggestions/MonkeyPatchedApi
 
@@ -69,7 +88,13 @@ Enabled by default | Supports autocorrection
 --- | ---
 Enabled | No
 
-No documentation
+Operation name should be a short capitalized description. It will be
+visible to the user in the Edit > Undo menu. Make sure to give it a
+short human readable name, similar to SketchUp's own operation names.
+
+This cop make some very naive assumptions and will have more false
+positives than most of the other cops. It's purpose is mainly to enable
+awareness.
 
 ### Configurable attributes
 
@@ -83,7 +108,16 @@ Enabled by default | Supports autocorrection
 --- | ---
 Enabled | No
 
-Avoid Sketchup.find_support_file to find your extension's files.
+Avoid `Sketchup.find_support_file` to find your extension's files.
+
+Users might install your extension to locations other than the default
+Plugins directory. If you use `Sketchup.find_support_file` to build
+a path for files in your extension it will fail in these scenarios.
+
+Instead prefer to use `__FILE__` or `__dir__` to build paths relative
+to your source files. This have the added benefit of allowing you to
+load your extensions directly from external directories under version
+control.
 
 ## SketchupSuggestions/SketchupRequire
 
@@ -91,5 +125,18 @@ Enabled by default | Supports autocorrection
 --- | ---
 Enabled | No
 
-Omit file extensions when using Sketchup.require to allow encrypted
+Omit file extensions when using `Sketchup.require` to allow encrypted
 files to be loaded.
+
+### Examples
+
+#### Bad - This will fail if extension is encrypted
+
+```ruby
+Sketchup.require 'hello/world.rb'
+```
+#### Good - This will work for `.rbe`, `.rbs` and `rb` files.
+
+```ruby
+Sketchup.require 'hello/world'
+```

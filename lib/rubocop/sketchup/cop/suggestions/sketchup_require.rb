@@ -3,8 +3,14 @@
 module RuboCop
   module Cop
     module SketchupSuggestions
-      # Omit file extensions when using Sketchup.require to allow encrypted
+      # Omit file extensions when using `Sketchup.require` to allow encrypted
       # files to be loaded.
+      #
+      # @example Bad - This will fail if extension is encrypted
+      #   Sketchup.require 'hello/world.rb'
+      #
+      # @example Good - This will work for `.rbe`, `.rbs` and `rb` files.
+      #   Sketchup.require 'hello/world'
       class SketchupRequire < SketchUp::Cop
 
         MSG = "Don't hard code file extensions with Sketchup.require".freeze

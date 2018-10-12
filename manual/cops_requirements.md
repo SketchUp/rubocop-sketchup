@@ -209,7 +209,29 @@ Enabled by default | Supports autocorrection
 --- | ---
 Enabled | No
 
-No documentation
+Observers that perform model changes must create transparent operations
+to ensure the user can easily undo.
+
+An important part of SketchUp's user experience is to be able to easily
+undo any modification to the model. This is important to prevent
+accidental loss of work.
+
+If you for example have an observer that assigns a material to new faces
+then the user would still expect to undo this in a single operation.
+
+To achieve this, set the fourth argument in `model.start_operation` to
+`true` in order to chain your observer operation to the previous
+operation.
+
+class ExampleObserver < Sketchup::EntitiesObserver
+  def onElementAdded(entities, entity)
+    return unless entity.valid?
+    return unless entity.is_a?(Sketchup::Face)
+    entity.model.start_operation('Paint Face', true, false, true)
+    entity.material = 'red'
+    entity.model.commit_operation
+  end
+end
 
 ## SketchupRequirements/RegisterExtension
 
