@@ -3,9 +3,9 @@
 module RuboCop
   module Cop
     module SketchupPerformance
-      # Avoid modifying the selection set within loops. It's much faster to
-      # change the selection in bulk. UI updates are triggered when you update
-      # the selection, so reduce the amount of calls.
+      # Prefer changing selection in bulk instead of modifying selection within
+      # loops. It's much faster to change the selection in bulk. UI updates are
+      # triggered when you update the selection, so reduce the amount of calls.
       #
       # @example Poor performance
       #   model = Sketchup.active_model
@@ -25,7 +25,7 @@ module RuboCop
       #   faces = model.active_entities.grep(Sketchup::Face)
       #   model.selection.add(faces)
       class SelectionBulkChanges < SketchUp::Cop
-        MSG = 'Avoid modifying selecting within loops.'.freeze
+        MSG = 'Prefer changing selection in bulk instead of modifying selection within loops.'.freeze
 
         # http://www.rubydoc.info/gems/rubocop/RuboCop/NodePattern
         # https://rubocop.readthedocs.io/en/latest/node_pattern/

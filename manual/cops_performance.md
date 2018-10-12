@@ -48,9 +48,9 @@ Enabled by default | Supports autocorrection
 --- | ---
 Enabled | No
 
-Avoid modifying the selection set within loops. It's much faster to
-change the selection in bulk. UI updates are triggered when you update
-the selection, so reduce the amount of calls.
+Prefer changing selection in bulk instead of modifying selection within
+loops. It's much faster to change the selection in bulk. UI updates are
+triggered when you update the selection, so reduce the amount of calls.
 
 ### Examples
 
