@@ -3,9 +3,15 @@
 module RuboCop
   module Cop
     module SketchupSuggestions
+      # Prefer `model.active_entities` over `model.entities`.
+      #
+      # Most tools/actions act upon the active entities context. This could be
+      # an opened group or component instance. Because of this, prefer
+      # `model.active_entities` by default over `model.entities` unless you
+      # have an explicit reason to work in the root model context.
       class ModelEntities < SketchUp::Cop
 
-        MSG = 'Typically one should use model.active_entities instead of model.entities.'.freeze
+        MSG = 'Prefer model.active_entities over model.entities.'.freeze
 
         # Reference: http://www.rubydoc.info/gems/rubocop/RuboCop/NodePattern
         def_node_matcher :active_model_entities?, <<-PATTERN

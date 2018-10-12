@@ -3,6 +3,12 @@
 module RuboCop
   module Cop
     module SketchupRequirements
+      # Extensions in SketchUp all share the same Ruby environment on the user's
+      # machine. Because of this it's important that each extension isolate
+      # itself to avoid clashing with other extensions.
+      #
+      # Extensions submitted to Extension Warehouse is expected to not pollute
+      # the global namespace by including mix-in modules.
       class GlobalInclude < SketchUp::Cop
 
         include SketchUp::NoCommentDisable

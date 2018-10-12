@@ -3,6 +3,8 @@
 module RuboCop
   module Cop
     module SketchupDeprecations
+      # Avoid adding separators to top level menus. If you require grouping use
+      # a sub-menu instead.
       class AddSeparatorToMenu < SketchUp::Cop
 
         MSG = 'Method is deprecated.'.freeze

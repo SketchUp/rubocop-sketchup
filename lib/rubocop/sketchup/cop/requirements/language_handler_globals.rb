@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module SketchupRequirements
-      # Avoid using globals in general, but  especially these which are known to
+      # Avoid using globals in general, but especially these which are known to
       # be in use by other extensions made by SketchUp.
       # They are still in use due to compatibility reasons.
       class LanguageHandlerGlobals < SketchUp::Cop

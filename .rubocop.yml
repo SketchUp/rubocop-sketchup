@@ -1,25 +1,30 @@
-# This rubocop configuration is set up to check the examples folder.
-
 require: rubocop-sketchup
 
 AllCops:
-  DisabledByDefault: true
-  Exclude:
+  DisabledByDefault: true # TODO: Enable after configuring.
+  Include:
     - 'lib/**/*'
     - 'spec/**/*'
     - 'tools/**/*'
+  Exclude:
+    - 'bin/**/*'
   DisplayCopNames: true
   DisplayStyleGuide: true
   ExtraDetails: true
 
+
+# Need to explicitly disable the SketchUp cops here because Rake tasks will
+# load the gem and cause them to be run.
+# (Not sure why DisabledByDefault isn't enough.)
+
 SketchupDeprecations:
-  Enabled: true
+  Enabled: false
 
 SketchupPerformance:
-  Enabled: true
+  Enabled: false
 
 SketchupRequirements:
-  Enabled: true
+  Enabled: false
 
 SketchupSuggestions:
-  Enabled: true
+  Enabled: false

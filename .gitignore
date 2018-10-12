@@ -1,4 +1,5 @@
 # Ignore generated reports.
+coverage/
 rubocop\.html
 rubocop\.json
 *.html
@@ -13,3 +14,6 @@ Gemfile\.lock
 # Ignore YARD docs
 .yardoc/
 doc/
+
+# Ignore Mkdocs files
+site/

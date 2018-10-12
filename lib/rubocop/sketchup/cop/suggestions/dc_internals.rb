@@ -4,7 +4,9 @@ module RuboCop
   module Cop
     module SketchupSuggestions
       # Tapping into the internals of Dynamic Components is risky. It could
-      # change at any time.
+      # change at any time. If you create an extension that depend on the
+      # internal logic of another extension you are at the mercy of change and
+      # luck!
       class DynamicComponentInternals < SketchUp::Cop
 
         include SketchUp::DynamicComponentGlobals

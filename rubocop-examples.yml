@@ -1,0 +1,23 @@
+# This rubocop configuration is set up to check the examples folder.
+
+require: rubocop-sketchup
+
+AllCops:
+  DisabledByDefault: true
+  Include:
+    - 'examples/**/*'
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  ExtraDetails: true
+
+SketchupDeprecations:
+  Enabled: true
+
+SketchupPerformance:
+  Enabled: true
+
+SketchupRequirements:
+  Enabled: true
+
+SketchupSuggestions:
+  Enabled: true

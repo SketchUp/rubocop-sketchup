@@ -3,6 +3,13 @@
 module RuboCop
   module Cop
     module SketchupSuggestions
+      # Operation name should be a short capitalized description. It will be
+      # visible to the user in the Edit > Undo menu. Make sure to give it a
+      # short human readable name, similar to SketchUp's own operation names.
+      #
+      # This cop make some very naive assumptions and will have more false
+      # positives than most of the other cops. It's purpose is mainly to enable
+      # awareness.
       class OperationName < SketchUp::Cop
 
         include RangeHelp

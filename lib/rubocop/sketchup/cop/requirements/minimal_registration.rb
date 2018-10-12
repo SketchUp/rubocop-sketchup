@@ -7,6 +7,26 @@ module RuboCop
     module SketchupRequirements
       # Don't load extension files in the root file registering the extension.
       # Extensions should not load additional files when it's disabled.
+      #
+      # @example Bad - Extension will always load.
+      #   module Example
+      #     require 'example/main' # BAD! This will load even when extension
+      #                            #      is disabled.
+      #     unless file_loaded?(__FILE__)
+      #       extension = SketchupExtension.new('Hello World', 'example/main')
+      #       Sketchup.register_extension(extension, true)
+      #       file_loaded(__FILE__)
+      #     end
+      #   end
+      #
+      # @example Good - Extension doesn't load anything unless its enabled.
+      #   module Example
+      #     unless file_loaded?(__FILE__)
+      #       extension = SketchupExtension.new('Hello World', 'example/main')
+      #       Sketchup.register_extension(extension, true)
+      #       file_loaded(__FILE__)
+      #     end
+      #   end
       class MinimalRegistration < SketchUp::Cop
 
         include SketchUp::NoCommentDisable

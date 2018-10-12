@@ -5,6 +5,15 @@ module RuboCop
     module SketchupRequirements
       # Always register extensions to load by default. Otherwise it might
       # confuse users to think the extension isn't working.
+      #
+      # @example Good - Extension will load upon first run.
+      #   module Example
+      #     unless file_loaded?(__FILE__)
+      #       extension = SketchupExtension.new('Hello World', 'example/main')
+      #       Sketchup.register_extension(extension, true)
+      #       file_loaded(__FILE__)
+      #     end
+      #   end
       class RegisterExtension < SketchUp::Cop
 
         include SketchUp::NoCommentDisable

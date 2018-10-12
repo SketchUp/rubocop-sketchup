@@ -3,6 +3,9 @@
 module RuboCop
   module Cop
     module SketchupDeprecations
+      # Method is deprecated because it adds the given path to `$LOAD_PATH`.
+      # Modifying `$LOAD_PATH` is bad practice because it can cause extensions
+      # to inadvertently load the wrong file.
       class RequireAll < SketchUp::Cop
 
         MSG = 'Method is deprecated because it adds the given path to $LOAD_PATH.'.freeze

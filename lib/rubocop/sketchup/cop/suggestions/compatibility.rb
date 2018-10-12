@@ -3,6 +3,14 @@
 module RuboCop
   module Cop
     module SketchupSuggestions
+      # It's easy to lose track of what API feature was added in what version or
+      # SketchUp. You can configure your target SketchUp version and be notified
+      # if you use features introduced in newer versions.
+      #
+      # @example Add this to your .rubocop.yml
+      #   AllCops:
+      #     SketchUp:
+      #       TargetSketchUpVersion: 2016 M1
       class Compatibility < SketchUp::Cop
 
         include SketchUp::Features

@@ -4,7 +4,8 @@ module RuboCop
   module Cop
     module SketchupPerformance
       # Avoid modifying the selection set within loops. It's much faster to
-      # change the selection in bulk.
+      # change the selection in bulk. UI updates are triggered when you update
+      # the selection, so reduce the amount of calls.
       #
       # @example Poor performance
       #   model = Sketchup.active_model
