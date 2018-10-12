@@ -13,7 +13,6 @@ a sub-menu instead.
 
 Name | Default value | Configurable values
 --- | --- | ---
-Details | `Avoid adding separators to top level menus. If you require grouping use a sub-menu instead.` | String
 
 ### References
 
@@ -39,7 +38,6 @@ around bug in how `Sketchup::Model#place_component` starts operations.
 
 Name | Default value | Configurable values
 --- | --- | ---
-Details | `It is not possible to predict what operation will come next. Avoid making the next operation transparent.` | String
 
 ### References
 
@@ -59,7 +57,6 @@ to inadvertently load the wrong file.
 
 Name | Default value | Configurable values
 --- | --- | ---
-Details | `This method adds the path given to `$LOAD_PATH` which can affect other extensions.` | String
 
 ### References
 
@@ -79,7 +76,6 @@ repaired. Once repaired the UV mapping will visually change.
 
 Name | Default value | Configurable values
 --- | --- | ---
-Details | `This method never worked right. It's not possible to control the position and orientation of the texture.` | String
 
 ### References
 
@@ -97,7 +93,6 @@ Method is deprecated. Use `SKETCHUP_CONSOLE.show` instead.
 
 Name | Default value | Configurable values
 --- | --- | ---
-Details | `Use `SKETCHUP_CONSOLE.show` instead.` | String
 
 ### References
 
@@ -121,7 +116,6 @@ and less versatile.
 
 Name | Default value | Configurable values
 --- | --- | ---
-Details | `It's slow and with limited functionality. Use the `Set` class in the Ruby StdLib instead.` | String
 
 ### References
 

@@ -69,7 +69,6 @@ basename = File.basename(file, '.*')
 
 Name | Default value | Configurable values
 --- | --- | ---
-Details | `When using `__FILE__` and `__dir__`, beware that Ruby doesn't apply the correct encoding to the strings under Windows. When they contain non-english characters it will lead to exceptions being raised when the strings are used. Force encoding to work around this.` | String
 
 ### References
 
@@ -92,7 +91,6 @@ have an explicit reason to work in the root model context.
 
 Name | Default value | Configurable values
 --- | --- | ---
-Details | `In SketchUp the norm is that editing is performed in the opened instance (`model.active_entities`). `model.entities` refer to the model root.` | String
 
 ### References
 
@@ -114,7 +112,6 @@ the extensions are disabled. Avoid using these methods.
 
 Name | Default value | Configurable values
 --- | --- | ---
-Details | `These methods stops working when the extensions are disabled and may change or be removed.` | String
 
 ### References
 
@@ -138,7 +135,6 @@ awareness.
 
 Name | Default value | Configurable values
 --- | --- | ---
-Details | `This check is very naive and might produce false positives. Use as guidance only.` | String
 Max | `25` | Integer
 
 ### References
@@ -166,7 +162,6 @@ control.
 
 Name | Default value | Configurable values
 --- | --- | ---
-Details | `Extensions might be installed outside the SketchUp Plugins folder. Use `__FILE__` and `__dir__` to locate your files relative to the executing file.` | String
 
 ### References
 

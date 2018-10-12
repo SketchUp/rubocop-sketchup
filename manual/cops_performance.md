@@ -21,7 +21,6 @@ It also affects `Net::HTTP` if making HTTPS connections.
 
 Name | Default value | Configurable values
 --- | --- | ---
-Details | `A flaw in how it obtain random bits under Windows can severely affect performance, freezing SketchUp for many minutes. This also affects SecureRandom and anything else that depend on OpenSSL. Net::HTTP is affected if connecting via HTTPS. Connecting via plain HTTP is unaffected.` | String
 
 ### References
 

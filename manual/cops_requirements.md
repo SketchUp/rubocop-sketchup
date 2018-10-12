@@ -17,7 +17,6 @@ API.
 
 Name | Default value | Configurable values
 --- | --- | ---
-Details | `Modifying the API namespace could affect other extensions - making it hard for other developers to determine what is going on.` | String
 
 ### References
 
@@ -40,7 +39,6 @@ Use `return`, `next`, `break` or `raise` instead.
 
 Name | Default value | Configurable values
 --- | --- | ---
-Details | `SketchUp will trap `exit` and prevent that, with a message in the console. But `exit!` is not trapped and with terminate SketchUp without shutting down cleanly. Use `return`, `next` or `break` instead.` | String
 
 ### References
 
@@ -88,7 +86,6 @@ end
 
 Name | Default value | Configurable values
 --- | --- | ---
-Details | `To avoid clashing with other extensions a single root namespace should all the extension's code.` | String
 Exceptions | `[]` | Array
 
 ### References
@@ -118,7 +115,6 @@ SketchUp/Plugins
 
 Name | Default value | Configurable values
 --- | --- | ---
-Details | `Check that the extension conform to expected file structure with a single root .rb file and a support folder with matching name.` | String
 
 ### References
 
@@ -213,7 +209,6 @@ They are still in use due to compatibility reasons.
 
 Name | Default value | Configurable values
 --- | --- | ---
-Details | `Avoid using globals in general, but especially these which are known to be in use by other extensions made by SketchUp. They are still in use due to compatibility reasons.` | String
 
 ### References
 
@@ -232,7 +227,6 @@ because it can cause extensions to inadvertently load the wrong file.
 
 Name | Default value | Configurable values
 --- | --- | ---
-Details | `This can cause other extensions from not loading correctly. Always load files relative to the installation path for the extension.` | String
 
 ### References
 
@@ -316,7 +310,6 @@ end
 
 Name | Default value | Configurable values
 --- | --- | ---
-Details | `When making model changes within an observer event, start a transparent operation to ensure a clean undo-stack.` | String
 
 ### References
 
