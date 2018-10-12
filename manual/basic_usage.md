@@ -165,6 +165,17 @@ AllCops:
   ExtraDetails: true
 ```
 
+## Reference URLs
+
+For even more details, enable `DisplayStyleGuide` to display an URL to a more
+detailed explanation for each cop. Add `-S` to the command line or modify
+your `.rubocop.yml` file to set it permanently.
+
+```yml
+AllCops:
+  DisplayStyleGuide: true
+```
+
 ### Command line
 
 ```bash
