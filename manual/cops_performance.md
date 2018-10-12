@@ -17,11 +17,6 @@ loaded the lag will be minutes.
 
 It also affects `Net::HTTP` if making HTTPS connections.
 
-### Configurable attributes
-
-Name | Default value | Configurable values
---- | --- | ---
-
 ### References
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_performance.md#openssl](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_performance.md#openssl)

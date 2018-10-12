@@ -82,6 +82,8 @@ task generate_cops_documentation: :yard_for_generate_documentation do
       key == 'Details' ||
       key.start_with?('Supported')
     }
+    return '' if configs.empty?
+
     content = configs.map do |name|
       configurable = configurable_values(pars, name)
       default = format_table_value(pars[name])

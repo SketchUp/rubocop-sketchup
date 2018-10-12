@@ -13,11 +13,6 @@ This requirement also include adding things into the SketchUp API
 namespace. The API namespace is reserved for future additions to the
 API.
 
-### Configurable attributes
-
-Name | Default value | Configurable values
---- | --- | ---
-
 ### References
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#apinamespace](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#apinamespace)
@@ -34,11 +29,6 @@ console. But `exit!` is not trapped and with terminate SketchUp without
 shutting down cleanly.
 
 Use `return`, `next`, `break` or `raise` instead.
-
-### Configurable attributes
-
-Name | Default value | Configurable values
---- | --- | ---
 
 ### References
 
@@ -110,11 +100,6 @@ SketchUp/Plugins
   + main.rb
   + ...
 ```
-
-### Configurable attributes
-
-Name | Default value | Configurable values
---- | --- | ---
 
 ### References
 
@@ -189,7 +174,7 @@ It does not report offenses for built-in global variables.
 Built-in global variables are allowed by default. Additionally
 users can allow additional variables via the AllowedVariables option.
 
-Note that backreferences like $1, $2, etc are not global variables.
+Note that backreferences like `$1`, `$2`, etc are not global variables.
 
 ### References
 
@@ -205,11 +190,6 @@ Avoid using globals in general, but especially these which are known to
 be in use by other extensions made by SketchUp.
 They are still in use due to compatibility reasons.
 
-### Configurable attributes
-
-Name | Default value | Configurable values
---- | --- | ---
-
 ### References
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#languagehandlerglobals](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#languagehandlerglobals)
@@ -222,11 +202,6 @@ Enabled | No
 
 Do not modify the load path. Modifying `$LOAD_PATH` is bad practice
 because it can cause extensions to inadvertently load the wrong file.
-
-### Configurable attributes
-
-Name | Default value | Configurable values
---- | --- | ---
 
 ### References
 
@@ -305,11 +280,6 @@ class ExampleObserver < Sketchup::EntitiesObserver
   end
 end
 ```
-
-### Configurable attributes
-
-Name | Default value | Configurable values
---- | --- | ---
 
 ### References
 

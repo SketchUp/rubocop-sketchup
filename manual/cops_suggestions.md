@@ -65,11 +65,6 @@ file.force_encoding('UTF-8') if file.respond_to?(:force_encoding)
 basename = File.basename(file, '.*')
 ```
 
-### Configurable attributes
-
-Name | Default value | Configurable values
---- | --- | ---
-
 ### References
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#fileencoding](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#fileencoding)
@@ -87,11 +82,6 @@ an opened group or component instance. Because of this, prefer
 `model.active_entities` by default over `model.entities` unless you
 have an explicit reason to work in the root model context.
 
-### Configurable attributes
-
-Name | Default value | Configurable values
---- | --- | ---
-
 ### References
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#modelentities](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#modelentities)
@@ -107,11 +97,6 @@ namespace. This is an unfortunate no-no that was done a long time ago
 before the extension best-practices were established. These functions
 might change or be removed at any time. They will also not work when
 the extensions are disabled. Avoid using these methods.
-
-### Configurable attributes
-
-Name | Default value | Configurable values
---- | --- | ---
 
 ### References
 
@@ -157,11 +142,6 @@ Instead prefer to use `__FILE__` or `__dir__` to build paths relative
 to your source files. This have the added benefit of allowing you to
 load your extensions directly from external directories under version
 control.
-
-### Configurable attributes
-
-Name | Default value | Configurable values
---- | --- | ---
 
 ### References
 
