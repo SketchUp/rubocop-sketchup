@@ -7,7 +7,8 @@ module RuboCop
       # SketchUp will trap `exit` and prevent that, with a message in the
       # console. But `exit!` is not trapped and with terminate SketchUp without
       # shutting down cleanly.
-      # Use `return`, `next` or `break` instead.
+      #
+      # Use `return`, `next`, `break` or `raise` instead.
       class Exit < SketchUp::Cop
 
         include SketchUp::NoCommentDisable

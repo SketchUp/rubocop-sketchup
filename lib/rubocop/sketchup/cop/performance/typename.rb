@@ -3,6 +3,10 @@
 module RuboCop
   module Cop
     module SketchupPerformance
+      # `.typename` is very slow, prefer `.is_a?` instead.
+      #
+      # `entity.typename == 'Face'` is slow because it performs a string
+      # comparison. `is_a?` is much faster because it's a simple type check.
       class Typename < SketchUp::Cop
         MSG = '`.typename` is very slow, prefer `.is_a?` instead.'.freeze
 

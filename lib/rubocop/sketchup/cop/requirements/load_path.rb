@@ -3,6 +3,8 @@
 module RuboCop
   module Cop
     module SketchupRequirements
+      # Do not modify the load path. Modifying `$LOAD_PATH` is bad practice
+      # because it can cause extensions to inadvertently load the wrong file.
       class LoadPath < SketchUp::Cop
 
         include SketchUp::NoCommentDisable

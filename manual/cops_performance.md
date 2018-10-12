@@ -15,7 +15,7 @@ loaded the lag will be minutes.
 
 `SecureRandom` is  also affected by this, as it uses OpenSSL to seed.
 
-It also affects Net::HTTP if making HTTPS connections.
+It also affects `Net::HTTP` if making HTTPS connections.
 
 ## SketchupPerformance/OperationDisableUI
 
@@ -23,7 +23,16 @@ Enabled by default | Supports autocorrection
 --- | ---
 Enabled | No
 
-Weak warning. (Question?)
+Operations should disable the UI for performance gain.
+
+### Examples
+
+```ruby
+model = Sketchup.active_model
+model.start_operation('Operation Name', true)
+# <model changes>
+model.commit_operation
+```
 
 ## SketchupPerformance/SelectionBulkChanges
 
@@ -32,7 +41,8 @@ Enabled by default | Supports autocorrection
 Enabled | No
 
 Avoid modifying the selection set within loops. It's much faster to
-change the selection in bulk.
+change the selection in bulk. UI updates are triggered when you update
+the selection, so reduce the amount of calls.
 
 ### Examples
 
@@ -67,4 +77,7 @@ Enabled by default | Supports autocorrection
 --- | ---
 Enabled | No
 
-No documentation
+`.typename` is very slow, prefer `.is_a?` instead.
+
+`entity.typename == 'Face'` is slow because it performs a string
+comparison. `is_a?` is much faster because it's a simple type check.

@@ -3,6 +3,7 @@
 module RuboCop
   module Cop
     module SketchupDeprecations
+      # Method is deprecated. Use `SKETCHUP_CONSOLE.show` instead.
       class ShowRubyPanel < SketchUp::Cop
 
         MSG = 'Method is deprecated. Use `SKETCHUP_CONSOLE.show` instead.'.freeze

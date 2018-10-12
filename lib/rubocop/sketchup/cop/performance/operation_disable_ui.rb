@@ -3,7 +3,13 @@
 module RuboCop
   module Cop
     module SketchupPerformance
-      # Weak warning. (Question?)
+      # Operations should disable the UI for performance gain.
+      #
+      # @example
+      #   model = Sketchup.active_model
+      #   model.start_operation('Operation Name', true)
+      #   # <model changes>
+      #   model.commit_operation
       class OperationDisableUI < SketchUp::Cop
         MSG = 'Operations should disable the UI for performance gain.'.freeze
 

@@ -7,6 +7,30 @@ require 'rubocop/sketchup/cop/requirements/ruby_stdlib_namespace'
 module RuboCop
   module Cop
     module SketchupRequirements
+      # Extensions in SketchUp all share the same Ruby environment on the user's
+      # machine. Because of this it's important that each extension isolate
+      # itself to avoid clashing with other extensions.
+      #
+      # Extensions submitted to Extension Warehouse is expected to use only one
+      # root module.
+      #
+      # @example Good - this contains everything in the extension.
+      #   module MyExtension
+      #     class Foo
+      #     end
+      #     class Bar
+      #     end
+      #   end
+      #
+      # @example Better - this further reduce chance of clashing.
+      #   module MyCompany
+      #     module MyExtension
+      #       class Foo
+      #       end
+      #       class Bar
+      #       end
+      #     end
+      #   end
       class ExtensionNamespace < SketchUp::Cop
 
         include SketchUp::NoCommentDisable
