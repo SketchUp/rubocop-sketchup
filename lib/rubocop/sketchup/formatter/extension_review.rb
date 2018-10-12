@@ -176,7 +176,18 @@ module RuboCop
             # Then sort by cop name.
             a_department, a_name = a[0].split('/')
             b_department, b_name = b[0].split('/')
-            n = SORT_ORDER.index(a_department) <=> SORT_ORDER.index(b_department)
+            # Sort SketchUp cops at the top, then all the rest comes after.
+            # First sorting by department.
+            sort_order_a = SORT_ORDER.index(a_department)
+            sort_order_b = SORT_ORDER.index(b_department)
+            if sort_order_a.nil? && sort_order_b.nil?
+              n = a_department <=> b_department
+            else
+              sort_order_a ||= SORT_ORDER.size
+              sort_order_b ||= SORT_ORDER.size
+              n = sort_order_a <=> sort_order_b
+            end
+            # Them sort by name if departments match.
             n == 0 ? a_name <=> b_name : n
           }.to_h
         end

@@ -17,6 +17,7 @@ Gem::Specification.new do |spec|
 
   spec.require_paths = ['lib']
   spec.files = Dir[
+    'assets/**/*',
     'config/**/*',
     'lib/**/*',
     '*.gemspec',
