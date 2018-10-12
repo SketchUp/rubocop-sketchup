@@ -283,6 +283,31 @@ task generate_cops_documentation: :yard_for_generate_documentation do
     ">-\n#{formatted}\n"
   end
 
+  def configured_cops
+    cops = Set.new
+    config_files = [
+      "#{Dir.pwd}/config/enabled.yml",
+      "#{Dir.pwd}/config/disabled.yml"
+    ]
+    config_files.each { |config_file|
+      config = YAML.load_file(config_file)
+      next unless config
+      cops.merge(config.keys)
+    }
+    cops
+  end
+
+  def assert_all_cops_have_config(cops)
+    config_cops = configured_cops
+    sketchup_departments(cops).each do |department|
+      sketchup_cops = cops_of_department(cops, department)
+      sketchup_cops.each { |cop|
+        next if config_cops.include?(cop.cop_name)
+        warn "Cop with missing config: #{cop.cop_name}"
+      }
+    end
+  end
+
   def sketchup_departments(cops)
     cops.departments.select { |department|
       department.to_s.start_with?('Sketchup')
@@ -299,6 +324,8 @@ task generate_cops_documentation: :yard_for_generate_documentation do
     cops   = RuboCop::Cop::Cop.registry
     config = RuboCop::ConfigLoader.default_configuration
     # TODO: Load SketchUp config?
+
+    assert_all_cops_have_config(cops)
 
     YARD::Registry.load!
     sketchup_departments(cops).each do |department|
