@@ -204,6 +204,11 @@ SketchupRequirements/SketchupExtension:
   Enabled: true
 
 
+SketchupSuggestions/Compatibility:
+  Description: Incompatible feature with target SketchUp version.
+  Reference: https://github.com/SketchUp/rubocop-sketchup/manual/cops_suggestions.md#compatibility
+  Enabled: true
+
 SketchupSuggestions/DynamicComponentInternals:
   Description: >-
                  Avoid relying on internal logic of Dynamic Components. It's
