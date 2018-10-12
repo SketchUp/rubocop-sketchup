@@ -200,9 +200,14 @@ module RuboCop
         end
 
         def decorated_message(offense)
-          offense.message.gsub(/`(.+?)`/) do
-            "<code>#{Regexp.last_match(1)}</code>"
-          end
+          offense.message
+            .gsub(/`(.+?)`/) do
+              "<code>#{Regexp.last_match(1)}</code>"
+            end
+            .gsub(/\((http[^ ]+)\)/) do
+              url = Regexp.last_match(1)
+              "<br><a href=\"#{url}\">#{url}</a>"
+            end
         end
 
         def highlighted_source_line(offense)

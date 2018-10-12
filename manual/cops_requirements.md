@@ -13,6 +13,16 @@ This requirement also include adding things into the SketchUp API
 namespace. The API namespace is reserved for future additions to the
 API.
 
+### Configurable attributes
+
+Name | Default value | Configurable values
+--- | --- | ---
+Details | `Modifying the API namespace could affect other extensions - making it hard for other developers to determine what is going on.` | String
+
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#apinamespace](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#apinamespace)
+
 ## SketchupRequirements/Exit
 
 Enabled by default | Supports autocorrection
@@ -25,6 +35,16 @@ console. But `exit!` is not trapped and with terminate SketchUp without
 shutting down cleanly.
 
 Use `return`, `next`, `break` or `raise` instead.
+
+### Configurable attributes
+
+Name | Default value | Configurable values
+--- | --- | ---
+Details | `SketchUp will trap `exit` and prevent that, with a message in the console. But `exit!` is not trapped and with terminate SketchUp without shutting down cleanly. Use `return`, `next` or `break` instead.` | String
+
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#exit](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#exit)
 
 ## SketchupRequirements/ExtensionNamespace
 
@@ -68,7 +88,12 @@ end
 
 Name | Default value | Configurable values
 --- | --- | ---
+Details | `To avoid clashing with other extensions a single root namespace should all the extension's code.` | String
 Exceptions | `[]` | Array
+
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#extensionnamespace](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#extensionnamespace)
 
 ## SketchupRequirements/FileStructure
 
@@ -89,6 +114,16 @@ SketchUp/Plugins
   + ...
 ```
 
+### Configurable attributes
+
+Name | Default value | Configurable values
+--- | --- | ---
+Details | `Check that the extension conform to expected file structure with a single root .rb file and a support folder with matching name.` | String
+
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#filestructure](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#filestructure)
+
 ## SketchupRequirements/GlobalConstants
 
 Enabled by default | Supports autocorrection
@@ -101,6 +136,10 @@ itself to avoid clashing with other extensions.
 
 Extensions submitted to Extension Warehouse is expected to not define
 global constants.
+
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#globalconstants](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#globalconstants)
 
 ## SketchupRequirements/GlobalInclude
 
@@ -115,6 +154,10 @@ itself to avoid clashing with other extensions.
 Extensions submitted to Extension Warehouse is expected to not pollute
 the global namespace by including mix-in modules.
 
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#globalinclude](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#globalinclude)
+
 ## SketchupRequirements/GlobalMethods
 
 Enabled by default | Supports autocorrection
@@ -127,6 +170,10 @@ itself to avoid clashing with other extensions.
 
 Extensions submitted to Extension Warehouse is expected to not define
 global methods.
+
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#globalmethods](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#globalmethods)
 
 ## SketchupRequirements/GlobalVariables
 
@@ -148,6 +195,10 @@ users can allow additional variables via the AllowedVariables option.
 
 Note that backreferences like $1, $2, etc are not global variables.
 
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#globalvariables](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#globalvariables)
+
 ## SketchupRequirements/LanguageHandlerGlobals
 
 Enabled by default | Supports autocorrection
@@ -158,6 +209,16 @@ Avoid using globals in general, but especially these which are known to
 be in use by other extensions made by SketchUp.
 They are still in use due to compatibility reasons.
 
+### Configurable attributes
+
+Name | Default value | Configurable values
+--- | --- | ---
+Details | `Avoid using globals in general, but especially these which are known to be in use by other extensions made by SketchUp. They are still in use due to compatibility reasons.` | String
+
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#languagehandlerglobals](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#languagehandlerglobals)
+
 ## SketchupRequirements/LoadPath
 
 Enabled by default | Supports autocorrection
@@ -166,6 +227,16 @@ Enabled | No
 
 Do not modify the load path. Modifying `$LOAD_PATH` is bad practice
 because it can cause extensions to inadvertently load the wrong file.
+
+### Configurable attributes
+
+Name | Default value | Configurable values
+--- | --- | ---
+Details | `This can cause other extensions from not loading correctly. Always load files relative to the installation path for the extension.` | String
+
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#loadpath](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#loadpath)
 
 ## SketchupRequirements/MinimalRegistration
 
@@ -203,6 +274,10 @@ module Example
 end
 ```
 
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#minimalregistration](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#minimalregistration)
+
 ## SketchupRequirements/ObserversStartOperation
 
 Enabled by default | Supports autocorrection
@@ -223,6 +298,9 @@ To achieve this, set the fourth argument in `model.start_operation` to
 `true` in order to chain your observer operation to the previous
 operation.
 
+### Examples
+
+```ruby
 class ExampleObserver < Sketchup::EntitiesObserver
   def onElementAdded(entities, entity)
     return unless entity.valid?
@@ -232,6 +310,17 @@ class ExampleObserver < Sketchup::EntitiesObserver
     entity.model.commit_operation
   end
 end
+```
+
+### Configurable attributes
+
+Name | Default value | Configurable values
+--- | --- | ---
+Details | `When making model changes within an observer event, start a transparent operation to ensure a clean undo-stack.` | String
+
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#observersstartoperation](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#observersstartoperation)
 
 ## SketchupRequirements/RegisterExtension
 
@@ -256,6 +345,10 @@ module Example
 end
 ```
 
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#registerextension](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#registerextension)
+
 ## SketchupRequirements/RubyCoreNamespace
 
 Enabled by default | Supports autocorrection
@@ -268,6 +361,10 @@ itself to avoid clashing with other extensions.
 
 Extensions submitted to Extension Warehouse is expected to not modify
 core Ruby functionality.
+
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#rubycorenamespace](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#rubycorenamespace)
 
 ## SketchupRequirements/RubyStdLibNamespace
 
@@ -282,6 +379,10 @@ itself to avoid clashing with other extensions.
 Extensions submitted to Extension Warehouse is expected to not modify
 Ruby StdLib functionality.
 
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#rubystdlibnamespace](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#rubystdlibnamespace)
+
 ## SketchupRequirements/ShippedExtensionsNamespace
 
 Enabled by default | Supports autocorrection
@@ -289,6 +390,10 @@ Enabled by default | Supports autocorrection
 Enabled | No
 
 Don't modify SketchUp's shipped extensions.
+
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#shippedextensionsnamespace](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#shippedextensionsnamespace)
 
 ## SketchupRequirements/SketchupExtension
 
@@ -312,3 +417,7 @@ module Example
   end
 end
 ```
+
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#sketchupextension](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#sketchupextension)

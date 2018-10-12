@@ -17,15 +17,16 @@ module RuboCop
       # `true` in order to chain your observer operation to the previous
       # operation.
       #
-      # class ExampleObserver < Sketchup::EntitiesObserver
-      #   def onElementAdded(entities, entity)
-      #     return unless entity.valid?
-      #     return unless entity.is_a?(Sketchup::Face)
-      #     entity.model.start_operation('Paint Face', true, false, true)
-      #     entity.material = 'red'
-      #     entity.model.commit_operation
+      # @example
+      #   class ExampleObserver < Sketchup::EntitiesObserver
+      #     def onElementAdded(entities, entity)
+      #       return unless entity.valid?
+      #       return unless entity.is_a?(Sketchup::Face)
+      #       entity.model.start_operation('Paint Face', true, false, true)
+      #       entity.material = 'red'
+      #       entity.model.commit_operation
+      #     end
       #   end
-      # end
       class ObserversStartOperation < SketchUp::Cop
 
         include SketchUp::NoCommentDisable

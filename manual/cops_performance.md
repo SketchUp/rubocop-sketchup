@@ -17,6 +17,16 @@ loaded the lag will be minutes.
 
 It also affects `Net::HTTP` if making HTTPS connections.
 
+### Configurable attributes
+
+Name | Default value | Configurable values
+--- | --- | ---
+Details | `A flaw in how it obtain random bits under Windows can severely affect performance, freezing SketchUp for many minutes. This also affects SecureRandom and anything else that depend on OpenSSL. Net::HTTP is affected if connecting via HTTPS. Connecting via plain HTTP is unaffected.` | String
+
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_performance.md#openssl](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_performance.md#openssl)
+
 ## SketchupPerformance/OperationDisableUI
 
 Enabled by default | Supports autocorrection
@@ -33,6 +43,10 @@ model.start_operation('Operation Name', true)
 # <model changes>
 model.commit_operation
 ```
+
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_performance.md#operationdisableui](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_performance.md#operationdisableui)
 
 ## SketchupPerformance/SelectionBulkChanges
 
@@ -71,6 +85,10 @@ faces = model.active_entities.grep(Sketchup::Face)
 model.selection.add(faces)
 ```
 
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_performance.md#selectionbulkchanges](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_performance.md#selectionbulkchanges)
+
 ## SketchupPerformance/Typename
 
 Enabled by default | Supports autocorrection
@@ -81,3 +99,7 @@ Enabled | No
 
 `entity.typename == 'Face'` is slow because it performs a string
 comparison. `is_a?` is much faster because it's a simple type check.
+
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_performance.md#typename](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_performance.md#typename)

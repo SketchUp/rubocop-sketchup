@@ -231,9 +231,12 @@ task generate_cops_documentation: :yard_for_generate_documentation do
   end
 
   def update_default_yml_reference_links
-    manual_url = 'https://github.com/SketchUp/rubocop-sketchup/manual'
-    file_name = "#{Dir.pwd}/config/enabled.yml"
+    manual_url = 'https://github.com/SketchUp/rubocop-sketchup/tree/master/manual'
+    file_name = "#{Dir.pwd}/config/default.yml"
     config = YAML.load_file(file_name)
+    # AllCops is treated separately.
+    all_cops_config = { 'AllCops' => config['AllCops'].dup }
+    config.delete('AllCops')
     # Generate reference URI for all cops.
     config.each { |cop, cop_config|
       department_name, cop_name = cop.split('/').map(&:downcase)
@@ -248,6 +251,9 @@ task generate_cops_documentation: :yard_for_generate_documentation do
     # Pretty-format YAML.
     yml_config = StringIO.new
     yml_config.puts '# These are all the cops that are enabled in the default configuration.'
+    yml_config.puts
+    yml_config.puts all_cops_config.to_yaml
+    yml_config.puts
     last_department = nil
     config.each { |cop, cop_config|
       department_name, cop_name = cop.split('/')
@@ -285,15 +291,9 @@ task generate_cops_documentation: :yard_for_generate_documentation do
 
   def configured_cops
     cops = Set.new
-    config_files = [
-      "#{Dir.pwd}/config/enabled.yml",
-      "#{Dir.pwd}/config/disabled.yml"
-    ]
-    config_files.each { |config_file|
-      config = YAML.load_file(config_file)
-      next unless config
-      cops.merge(config.keys)
-    }
+    config_file = "#{Dir.pwd}/config/default.yml"
+    config = YAML.load_file(config_file)
+    cops.merge(config.keys) if config
     cops
   end
 

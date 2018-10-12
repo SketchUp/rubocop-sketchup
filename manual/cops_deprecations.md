@@ -9,6 +9,16 @@ Enabled | No
 Avoid adding separators to top level menus. If you require grouping use
 a sub-menu instead.
 
+### Configurable attributes
+
+Name | Default value | Configurable values
+--- | --- | ---
+Details | `Avoid adding separators to top level menus. If you require grouping use a sub-menu instead.` | String
+
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_deprecations.md#addseparatortomenu](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_deprecations.md#addseparatortomenu)
+
 ## SketchupDeprecations/OperationNextTransparent
 
 Enabled by default | Supports autocorrection
@@ -25,6 +35,16 @@ SketchUp user can interrupt a given operation with one of their own.
 Only use this flag if you have no other option, for instance to work
 around bug in how `Sketchup::Model#place_component` starts operations.
 
+### Configurable attributes
+
+Name | Default value | Configurable values
+--- | --- | ---
+Details | `It is not possible to predict what operation will come next. Avoid making the next operation transparent.` | String
+
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_deprecations.md#operationnexttransparent](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_deprecations.md#operationnexttransparent)
+
 ## SketchupDeprecations/RequireAll
 
 Enabled by default | Supports autocorrection
@@ -34,6 +54,16 @@ Enabled | No
 Method is deprecated because it adds the given path to `$LOAD_PATH`.
 Modifying `$LOAD_PATH` is bad practice because it can cause extensions
 to inadvertently load the wrong file.
+
+### Configurable attributes
+
+Name | Default value | Configurable values
+--- | --- | ---
+Details | `This method adds the path given to `$LOAD_PATH` which can affect other extensions.` | String
+
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_deprecations.md#requireall](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_deprecations.md#requireall)
 
 ## SketchupDeprecations/SetTextureProjection
 
@@ -45,6 +75,16 @@ Method is deprecated because it creates invalid UV mapping. Saving the
 model will display a dialog indicating that the model needs to be
 repaired. Once repaired the UV mapping will visually change.
 
+### Configurable attributes
+
+Name | Default value | Configurable values
+--- | --- | ---
+Details | `This method never worked right. It's not possible to control the position and orientation of the texture.` | String
+
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_deprecations.md#settextureprojection](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_deprecations.md#settextureprojection)
+
 ## SketchupDeprecations/ShowRubyPanel
 
 Enabled by default | Supports autocorrection
@@ -52,6 +92,16 @@ Enabled by default | Supports autocorrection
 Enabled | No
 
 Method is deprecated. Use `SKETCHUP_CONSOLE.show` instead.
+
+### Configurable attributes
+
+Name | Default value | Configurable values
+--- | --- | ---
+Details | `Use `SKETCHUP_CONSOLE.show` instead.` | String
+
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_deprecations.md#showrubypanel](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_deprecations.md#showrubypanel)
 
 ## SketchupDeprecations/SketchupSet
 
@@ -66,3 +116,13 @@ order to avoid conflict with the Ruby Standard Library.
 
 The `Sketchup::Set` class is much slower than Ruby's own `Set` class
 and less versatile.
+
+### Configurable attributes
+
+Name | Default value | Configurable values
+--- | --- | ---
+Details | `It's slow and with limited functionality. Use the `Set` class in the Ruby StdLib instead.` | String
+
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_deprecations.md#sketchupset](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_deprecations.md#sketchupset)
