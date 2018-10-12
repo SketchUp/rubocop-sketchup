@@ -8,6 +8,7 @@ AllCops:
     - 'tools/**/*'
   Exclude:
     - 'bin/**/*'
+    - 'vendor/**/*'
   DisplayCopNames: true
   DisplayStyleGuide: true
   ExtraDetails: true
