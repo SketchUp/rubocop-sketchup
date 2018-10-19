@@ -58,7 +58,7 @@ module RuboCop
       end
 
       def relevant_rubocop_sketchup_file?(file)
-        !(department_exclude_pattern =~ file)
+        department_exclude_pattern !~ file
       end
 
       def department_exclude_pattern
