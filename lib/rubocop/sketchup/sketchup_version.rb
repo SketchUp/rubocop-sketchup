@@ -71,7 +71,8 @@ module RuboCop
             m = (result.captures[1] || '0').to_i
           end
         elsif version.is_a?(Numeric)
-          v, m = [version, 0]
+          v = version
+          m = 0
         end
         version_parts = [v, m]
         unless VALID_VERSIONS.include?(version_parts)
