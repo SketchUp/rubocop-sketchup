@@ -17,11 +17,11 @@ Gem::Specification.new do |spec|
 
   spec.require_paths = ['lib']
   spec.files = Dir[
-    'assets/**/*',
-    'config/**/*',
-    'lib/**/*',
-    '*.gemspec',
-    'Gemfile'
+      'assets/**/*',
+      'config/**/*',
+      'lib/**/*',
+      '*.gemspec',
+      'Gemfile'
   ]
 
   # NOTE: Remember to update the README.md instructions on how to install

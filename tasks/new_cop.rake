@@ -11,23 +11,23 @@ class SketchupCopGenerator < RuboCop::Cop::Generator
 
   def spec_path
     File.join(
-      'spec',
-      'rubocop',
-      'sketchup',
-      'cop',
-      short_department_name(badge.department.to_s),
-      "#{snake_case(badge.cop_name.to_s)}_spec.rb"
+        'spec',
+        'rubocop',
+        'sketchup',
+        'cop',
+        short_department_name(badge.department.to_s),
+        "#{snake_case(badge.cop_name.to_s)}_spec.rb"
     )
   end
 
   def source_path
     File.join(
-      'lib',
-      'rubocop',
-      'sketchup',
-      'cop',
-      short_department_name(badge.department.to_s),
-      "#{snake_case(badge.cop_name.to_s)}.rb"
+        'lib',
+        'rubocop',
+        'sketchup',
+        'cop',
+        short_department_name(badge.department.to_s),
+        "#{snake_case(badge.cop_name.to_s)}.rb"
     )
   end
 

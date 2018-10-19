@@ -20,14 +20,14 @@ namespace :cut_release do
       content = File.read(filename)
       File.open(filename, 'w') do |file|
         file << content.gsub(
-          /gem install rubocop -v \d+\.\d+\.\d+/,
-          "gem install rubocop -v #{rubocop_version}",
+            /gem install rubocop -v \d+\.\d+\.\d+/,
+            "gem install rubocop -v #{rubocop_version}",
         ).gsub(
-          /gem 'rubocop', '~> \d+\.\d+\.\d+/,
-          "gem 'rubocop', '~> #{rubocop_version}",
+            /gem 'rubocop', '~> \d+\.\d+\.\d+/,
+            "gem 'rubocop', '~> #{rubocop_version}",
         ).gsub(
-          "gem 'rubocop-sketchup', '~> #{old_version}",
-          "gem 'rubocop-sketchup', '~> #{new_version}",
+            "gem 'rubocop-sketchup', '~> #{old_version}",
+            "gem 'rubocop-sketchup', '~> #{new_version}",
         )
       end
     end
