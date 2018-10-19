@@ -18,11 +18,11 @@ module RuboCop
           )
         PATTERN
 
-        LOAD_PATH_ALIASES = %i(
+        LOAD_PATH_ALIASES = %i[
           $: $LOAD_PATH
-        )
+        ]
 
-        MUTATORS = %i(
+        MUTATORS = %i[
           <<
           []=
           clear
@@ -53,7 +53,7 @@ module RuboCop
           sort_by!
           uniq!
           unshift
-        )
+        ]
 
         def load_path?(sym)
           LOAD_PATH_ALIASES.include?(sym)

@@ -14,7 +14,7 @@ module RuboCop
         # We check only against the top level namespaces. The core define more
         # objects, but they are under one of the top level namespaces listed.
 
-        NAMESPACES_ADVANCED_CAMERA_TOOLS = %w(
+        NAMESPACES_ADVANCED_CAMERA_TOOLS = %w[
           ACTUtil
           CameraAppObserver
           CameraEntityObserver
@@ -28,9 +28,9 @@ module RuboCop
           FSGeomUtils
           FSValidate
           PageNameChangeObserver
-        ).freeze
+        ].freeze
 
-        NAMESPACES_DYNAMIC_COMPONENTS = %w(
+        NAMESPACES_DYNAMIC_COMPONENTS = %w[
           DCConverter
           DCDownloader
           DCFunctionsV1
@@ -39,11 +39,11 @@ module RuboCop
           DCProgressBar
           DynamicComponents
           DynamicComponentsV1
-        ).freeze
+        ].freeze
 
-        NAMESPACES_TRIMBLE_CONNECT = %w(
+        NAMESPACES_TRIMBLE_CONNECT = %w[
           Trimble
-        ).freeze
+        ].freeze
 
         NAMESPACES = (
           NAMESPACES_ADVANCED_CAMERA_TOOLS |

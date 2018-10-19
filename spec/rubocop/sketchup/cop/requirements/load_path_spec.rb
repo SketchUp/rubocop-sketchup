@@ -28,7 +28,7 @@ describe RuboCop::Cop::SketchupRequirements::LoadPath do
     expect(cop.offenses.size).to eq(1)
   end
 
-  %i(
+  %i[
     &
     *
     +
@@ -91,7 +91,7 @@ describe RuboCop::Cop::SketchupRequirements::LoadPath do
     values_at
     zip
     |
-  ).each do |var|
+  ].each do |var|
     it "does not register an offense when not modifying $LOAD_PATH with #{var.inspect}" do
       inspect_source("$LOAD_PATH.#{var}('dummy')")
       expect(cop.offenses).to be_empty

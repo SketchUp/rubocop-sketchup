@@ -16,9 +16,9 @@ module RuboCop
 
         MSG = 'Do not modify the SketchUp API.'.freeze
 
-        NAMESPACES = %w(
+        NAMESPACES = %w[
           Geom Layout Sketchup SketchupExtension UI
-        ).freeze
+        ].freeze
 
         def namespaces
           NAMESPACES

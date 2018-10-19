@@ -19,7 +19,7 @@ module RuboCop
         # We check only against the top level namespaces. The core define more
         # objects, but they are under one of the top level namespaces listed.
 
-        NAMESPACES_RUBY_186 = %w(
+        NAMESPACES_RUBY_186 = %w[
           ArgumentError
           Array
           Bignum
@@ -90,9 +90,9 @@ module RuboCop
           TypeError
           UnboundMethod
           ZeroDivisionError
-        ).freeze
+        ].freeze
 
-        NAMESPACES_RUBY_200 = %w(
+        NAMESPACES_RUBY_200 = %w[
           ARGF
           ArgumentError
           Array
@@ -178,9 +178,9 @@ module RuboCop
           TypeError
           UnboundMethod
           ZeroDivisionError
-        ).freeze
+        ].freeze
 
-        NAMESPACES_RUBY_220 = %w(
+        NAMESPACES_RUBY_220 = %w[
           ArgumentError
           Array
           BasicObject
@@ -269,7 +269,7 @@ module RuboCop
           UnboundMethod
           UncaughtThrowError
           ZeroDivisionError
-        ).freeze
+        ].freeze
 
         NAMESPACES = (
           (

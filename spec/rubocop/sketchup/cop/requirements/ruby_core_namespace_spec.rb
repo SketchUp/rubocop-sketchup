@@ -17,7 +17,7 @@ describe RuboCop::Cop::SketchupRequirements::RubyCoreNamespace do
     if Object.constants.include?(var.intern)
       const = Object.const_get(var)
       type = const.class.name.downcase
-      next unless %w(class module).include?(type)
+      next unless %w[class module].include?(type)
     end
 
     it "registers an offense for adding an instance method to #{var} #{type}" do
