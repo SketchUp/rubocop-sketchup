@@ -52,13 +52,16 @@ module RuboCop
           return unless sketchup_target_version?
           full_feature_name = feature_name
           FEATURES.each { |feature_set|
-            feature_version = SketchUp::SketchUpVersion.new(feature_set[:version])
+            version = feature_set[:version]
+            feature_version = SketchUp::SketchUpVersion.new(version)
             next unless feature_version > sketchup_target_version
             objects = feature_set[:types][type] || []
             if type == :method && instance_method?(feature_name)
               # Instance methods are simply matching the method name since it's
               # very difficult to determine the type of the receiver.
-              full_feature_name = objects.find { |object| object.end_with?(feature_name) }
+              full_feature_name = objects.find { |object|
+                object.end_with?(feature_name)
+              }
               next unless full_feature_name
             else
               next unless objects.include?(feature_name)

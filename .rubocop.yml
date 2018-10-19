@@ -61,6 +61,7 @@ Metrics/ClassLength:
 
 Metrics/LineLength:
   Exclude:
+    - lib/rubocop/sketchup/cop/suggestions/operation_name.rb
     - spec/**/*
     - tools/**/*
 

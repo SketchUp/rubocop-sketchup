@@ -25,7 +25,8 @@ module RuboCop
       #   faces = model.active_entities.grep(Sketchup::Face)
       #   model.selection.add(faces)
       class SelectionBulkChanges < SketchUp::Cop
-        MSG = 'Prefer changing selection in bulk instead of modifying selection within loops.'.freeze
+        MSG = 'Prefer changing selection in bulk instead of modifying '\
+              'selection within loops.'.freeze
 
         # http://www.rubydoc.info/gems/rubocop/RuboCop/NodePattern
         # https://rubocop.readthedocs.io/en/latest/node_pattern/

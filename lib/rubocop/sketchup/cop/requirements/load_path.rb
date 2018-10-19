@@ -65,8 +65,8 @@ module RuboCop
 
         def on_gvasgn(node)
           global_var, = *node
-
-          add_offense(node, location: :name, severity: :error) if load_path?(global_var)
+          return unless load_path?(global_var)
+          add_offense(node, location: :name, severity: :error)
         end
 
         def on_send(node)

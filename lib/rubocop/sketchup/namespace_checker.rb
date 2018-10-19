@@ -23,7 +23,8 @@ module RuboCop
       end
 
       def check_namespace(node)
-        add_offense(node, location: :name, severity: :error) if in_namespace?(node)
+        return unless in_namespace?(node)
+        add_offense(node, location: :name, severity: :error)
       end
 
       def in_namespace?(node)

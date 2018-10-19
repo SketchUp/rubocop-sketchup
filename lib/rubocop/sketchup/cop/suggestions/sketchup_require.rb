@@ -58,7 +58,8 @@ module RuboCop
           else
             return
           end
-          add_offense(node, location: :expression) unless valid_filename?(filename)
+          return if valid_filename?(filename)
+          add_offense(node, location: :expression)
         end
 
         private

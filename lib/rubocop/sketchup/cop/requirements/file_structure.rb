@@ -34,7 +34,8 @@ module RuboCop
 
           # Ensure there is only one root Ruby file.
           if root_ruby_files.size != 1
-            msg = 'Extensions must have exactly one root Ruby (.rb) file. Found: %d'
+            msg = 'Extensions must have exactly one root Ruby (.rb) file. '
+                  'Found: %d'
             add_offense(nil,
                 location: range,
                 message: format(msg, root_ruby_files.size),
@@ -63,7 +64,8 @@ module RuboCop
           # Ensure support directory's name match the root Ruby file.
           support_directory = sub_folders.first
           unless support_directory.basename.to_s == extension_basename
-            msg = 'Extensions must have a support directory matching the name of the root Ruby file. Expected %s, found %s'
+            msg = 'Extensions must have a support directory matching the name '\
+                  'of the root Ruby file. Expected %s, found %s'
             msg = format(msg, extension_basename, support_directory.basename)
             add_offense(nil,
                 location: range,

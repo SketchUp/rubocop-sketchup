@@ -26,7 +26,8 @@ module RuboCop
         def on_casgn(node)
           return if namespaced_constant?(node)
           namespace = Namespace.new(node.parent_module_name)
-          add_offense(node, location: :name, severity: :error) if namespace.top_level?
+          return unless namespace.top_level?
+          add_offense(node, location: :name, severity: :error)
         end
 
       end

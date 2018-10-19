@@ -52,7 +52,8 @@ module RuboCop
             return if node.parent_module_name.nil?
             namespace = Namespace.new(node.parent_module_name)
           end
-          add_offense(node, location: :name, severity: :error) if namespace.top_level?
+          return unless namespace.top_level?
+          add_offense(node, location: :name, severity: :error)
         end
         alias on_defs on_def
 

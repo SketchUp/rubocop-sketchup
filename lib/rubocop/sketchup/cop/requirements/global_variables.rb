@@ -85,7 +85,8 @@ module RuboCop
         def check(node)
           global_var, = *node
 
-          add_offense(node, location: :name, severity: :error) unless allowed_var?(global_var)
+          return if allowed_var?(global_var)
+          add_offense(node, location: :name, severity: :error)
         end
       end
     end
