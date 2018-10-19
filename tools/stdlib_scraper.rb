@@ -41,8 +41,8 @@ ruby_versions.each { |path|
   libdoc_path = path.join('libdoc')
 
   top_level_namespaces = {
-    :class => Set.new,
-    :module => Set.new,
+    class: Set.new,
+    module: Set.new,
   }
 
   modules = libdoc_path.children.select(&:directory?)
