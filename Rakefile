@@ -28,4 +28,3 @@ task default: %i[
   spec
   internal_investigation
 ]
-

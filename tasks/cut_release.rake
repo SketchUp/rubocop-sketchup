@@ -15,7 +15,7 @@ namespace :cut_release do
   end
 
   def update_versions(old_version, new_version, rubocop_version)
-    files = %w(README.md manual/installation.md)
+    files = %w[README.md manual/installation.md]
     files.each do |filename|
       content = File.read(filename)
       File.open(filename, 'w') do |file|

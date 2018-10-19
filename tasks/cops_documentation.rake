@@ -41,7 +41,7 @@ task generate_cops_documentation: :yard_for_generate_documentation do
     enabled_by_default = config.for_cop(cop).fetch('Enabled')
     content = [[
       enabled_by_default ? 'Enabled' : 'Disabled',
-      cop.new.support_autocorrect? ? 'Yes' : 'No'
+      cop.new.support_autocorrect? ? 'Yes' : 'No',
     ]]
     to_table(header, content) + "\n"
   end
@@ -79,8 +79,7 @@ task generate_cops_documentation: :yard_for_generate_documentation do
 
     header = ['Name', 'Default value', 'Configurable values']
     configs = pars.each_key.reject { |key|
-      key == 'Details' ||
-      key.start_with?('Supported')
+      key == 'Details' || key.start_with?('Supported')
     }
     return '' if configs.empty?
 
@@ -93,7 +92,6 @@ task generate_cops_documentation: :yard_for_generate_documentation do
     h3('Configurable attributes') + to_table(header, content)
   end
 
-  # rubocop:disable Metrics/CyclomaticComplexity,Metrics/MethodLength
   def configurable_values(pars, name)
     case name
     when /^Enforced/
@@ -120,12 +118,11 @@ task generate_cops_documentation: :yard_for_generate_documentation do
       end
     end
   end
-  # rubocop:enable Metrics/CyclomaticComplexity,Metrics/MethodLength
 
   def to_table(header, content)
     table = [
       header.join(' | '),
-      Array.new(header.size, '---').join(' | ')
+      Array.new(header.size, '---').join(' | '),
     ]
     table.concat(content.map { |c| c.join(' | ') })
     table.join("\n") + "\n"
@@ -261,12 +258,12 @@ task generate_cops_documentation: :yard_for_generate_documentation do
     yml_config.puts
     last_department = nil
     config.each { |cop, cop_config|
-      department_name, cop_name = cop.split('/')
+      department_name, _cop_name = cop.split('/')
       yml_config.puts if last_department && last_department != department_name
       yml_config.puts
       yml_config.puts "#{cop}:"
       cop_config.each { |key, value|
-        value = yaml_format(key, value) if ['Details', 'Description'].include?(key)
+        value = yaml_format(key, value) if %w[Details Description].include?(key)
         yml_config.puts "  #{key}: #{value}"
       }
       last_department = department_name

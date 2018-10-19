@@ -36,6 +36,15 @@ Layout/AlignArray:
 Layout/AlignParameters:
   Exclude:
     - spec/**/*
+    - tasks/**/*
+
+Layout/FirstParameterIndentation:
+  Exclude:
+    - tasks/**/*
+
+Layout/IndentAssignment:
+  Exclude:
+    - tasks/cops_documentation.rake
 
 Layout/IndentationConsistency:
   Exclude:
@@ -53,6 +62,8 @@ Lint/InterpolationCheck:
 Metrics/BlockLength:
   Exclude:
     - spec/**/*
+    - tasks/cops_documentation.rake
+    - tasks/cut_release.rake
     - tools/stdlib_scraper.rb
 
 Metrics/ClassLength:
@@ -66,18 +77,27 @@ Metrics/LineLength:
   Exclude:
     - lib/rubocop/sketchup/cop/suggestions/operation_name.rb
     - spec/**/*
+    - tasks/**/*
     - tools/**/*
 
 Metrics/MethodLength:
   Exclude:
     - lib/rubocop/sketchup/cop/requirements/file_structure.rb
     - lib/rubocop/sketchup/cop/requirements/sketchup_extension.rb
+    - tasks/**/*
     - spec/**/*
 
 Metrics/ModuleLength:
   Exclude:
     - lib/rubocop/sketchup/dc_methods.rb
     - lib/rubocop/sketchup/features.rb
+
+
+# When performance isn't critical, computing sizes avoid magic numbers that
+# might get out of sync.
+Performance/FixedSize:
+  Exclude:
+    - tasks/cops_documentation.rake
 
 
 Style/ClassVars:
@@ -92,3 +112,4 @@ Style/MultilineBlockChain:
 Style/TrailingCommaInArrayLiteral:
   Exclude:
     - spec/**/*
+    - tasks/cops_documentation.rake

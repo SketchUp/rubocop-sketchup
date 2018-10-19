@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 $LOAD_PATH.unshift File.expand_path('lib', __dir__)
 require 'rubocop/sketchup/version'
 
@@ -13,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.version = RuboCop::SketchUp::VERSION
   spec.platform = Gem::Platform::RUBY
-  spec.required_ruby_version = '>= 2.1.0'
+  spec.required_ruby_version = '>= 2.2.0'
 
   spec.require_paths = ['lib']
   spec.files = Dir[
