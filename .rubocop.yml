@@ -1,7 +1,8 @@
 require: rubocop-sketchup
 
+inherit_from: sketchup-style.yml
+
 AllCops:
-  DisabledByDefault: true # TODO: Enable after configuring.
   Include:
     - 'lib/**/*'
     - 'spec/**/*'
