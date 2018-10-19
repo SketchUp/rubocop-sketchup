@@ -57,6 +57,7 @@ Metrics/BlockLength:
 
 Metrics/ClassLength:
   Exclude:
+    - lib/rubocop/sketchup/formatter/extension_review.rb
     - spec/**/*
 
 Metrics/LineLength:
@@ -70,6 +71,11 @@ Metrics/MethodLength:
     - lib/rubocop/sketchup/cop/requirements/file_structure.rb
     - lib/rubocop/sketchup/cop/requirements/sketchup_extension.rb
     - spec/**/*
+
+
+Style/MultilineBlockChain:
+  Exclude:
+    - lib/rubocop/sketchup/formatter/extension_review.rb
 
 Style/TrailingCommaInArrayLiteral:
   Exclude:

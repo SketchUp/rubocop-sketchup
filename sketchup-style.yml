@@ -90,6 +90,10 @@ Style/IfUnlessModifier:
 Style/ModuleFunction:
   Enabled: false
 
+# .zero? doesn't read better than == 0.
+Style/NumericPredicate:
+  Enabled: false
+
 # %w and %i etc isn't really intuitive unless you are really familiar with the
 # syntax. %w seems used often enough. But [:symbol, :foo] reads clearer than
 # %i(symbol foo).
