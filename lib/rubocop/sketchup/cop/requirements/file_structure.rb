@@ -84,9 +84,11 @@ module RuboCop
           false
         end
 
+        # rubocop:disable Lint/IneffectiveAccessModifier
         def self.reset
           @@already_run = false
         end
+        # rubocop:enable Lint/IneffectiveAccessModifier
 
       end
     end
