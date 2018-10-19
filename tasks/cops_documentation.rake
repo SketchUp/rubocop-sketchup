@@ -275,7 +275,7 @@ task generate_cops_documentation: :yard_for_generate_documentation do
   end
 
   def yaml_format(key, value)
-    value_margin = 2 + key.size + ": >-".size
+    value_margin = 2 + key.size + ': >-'.size
     margin = ' ' * value_margin
     max_length = 80 - value_margin
     return value if value.size <= 80 - (2 + key.size + 2)
