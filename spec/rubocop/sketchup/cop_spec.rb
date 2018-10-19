@@ -9,13 +9,13 @@ describe RuboCop::SketchUp::Cop do
         'AllCops' => {
           'SketchUp' => {
             'SketchupDeprecations' => {
-              'Exclude' => department_excludes
-            }
-          }
+              'Exclude' => department_excludes,
+            },
+          },
         },
         'SketchupDeprecations/FakeCop' => {
-          'Exclude' => %w[src/bizbaz.rb]
-        }
+          'Exclude' => %w[src/bizbaz.rb],
+        },
       }
 
     RuboCop::Config.new(rubocop_config, 'fake_cop_config.yml')

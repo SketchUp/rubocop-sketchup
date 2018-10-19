@@ -108,9 +108,9 @@ describe RuboCop::Cop::SketchupRequirements::SketchupExtension do
       rubocop_config = {
         'AllCops' => {
           'SketchUp' => {
-            'SourcePath' => 'source'
-          }
-        }
+            'SourcePath' => 'source',
+          },
+        },
       }
       RuboCop::Config.new(rubocop_config, 'fake_cop_config.yml')
     end

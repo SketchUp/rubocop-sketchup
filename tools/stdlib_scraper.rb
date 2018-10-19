@@ -32,7 +32,7 @@ def extract_classes(file)
   items.map { |item|
     {
       type: item['class'],
-      name: item.css('a').text
+      name: item.css('a').text,
     }
   }
 end
@@ -42,7 +42,7 @@ ruby_versions.each { |path|
 
   top_level_namespaces = {
     :class => Set.new,
-    :module => Set.new
+    :module => Set.new,
   }
 
   modules = libdoc_path.children.select(&:directory?)
@@ -60,7 +60,7 @@ ruby_versions.each { |path|
         name = item[:name].split('::').find { |n| n != 'Object' }.to_s
         {
           type: item[:type].split(' ').first.intern,
-          name: name
+          name: name,
         }
       }
       # Filter out anything indicate nodoc.

@@ -6,9 +6,9 @@ module Helpers
       rubocop_config = {
         'AllCops' => {
           'SketchUp' => {
-            'TargetSketchUpVersion' => version
-          }
-        }
+            'TargetSketchUpVersion' => version,
+          },
+        },
       }
       RuboCop::Config.new(rubocop_config, 'fake_cop_config.yml')
     end
