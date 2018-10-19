@@ -1,19 +1,12 @@
 // Place your settings in this file to overwrite default and user settings.
 {
   "files.trimTrailingWhitespace": true,
-  "cSpell.enabledLanguageIds": [
-    "csharp",
-    "go",
-    "javascript",
-    "javascriptreact",
-    "markdown",
-    "php",
-    "plaintext",
-    "ruby",
-    "text",
-    "typescript",
-    "typescriptreact",
-    "yaml",
-    "yml"
-  ],
+
+  "solargraph.diagnostics": true,
+
+  "cSpell.words": [
+    "RuboCop",
+    "Rubo",
+    "stdlib"
+  ]
 }

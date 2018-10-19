@@ -1,0 +1,8 @@
+require_paths:
+- lib
+
+reporters:
+- rubocop
+
+exclude:
+- /examples/**/*
