@@ -39,7 +39,7 @@ module RuboCop
       # @param [RuboCop::ProcessedSource] processed_source
       def root_file?(processed_source)
         filename = path_relative_to_source(processed_source)
-        filename.extname.downcase == '.rb' &&
+        filename.extname.casecmp('.rb').zero? &&
           filename.parent.to_s == '.'
       end
 

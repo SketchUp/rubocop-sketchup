@@ -48,7 +48,7 @@ ruby_versions.each { |path|
   modules = libdoc_path.children.select(&:directory?)
   modules.each { |module_path|
     # Ignore noisy tk library
-    next if module_path.basename.to_s.downcase == 'tk'
+    next if module_path.basename.to_s.casecmp('tk').zero?
 
     pattern = module_path.join('**/rdoc/index.html')
     files = Pathname.glob(pattern)
