@@ -83,7 +83,8 @@ module RuboCop
         def message(node)
           namespace = Namespace.new(node.defined_module_name).from_root
           format('Use a single root namespace. '\
-                 '(Found `%s`; Previously found `%s`)', namespace, @@namespace)
+                 '(Found `%<found>s`; Previously found `%<expected>s`)',
+              found: namespace, expected: @@namespace)
         end
 
         def exempted?(namespace)
