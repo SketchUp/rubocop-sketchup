@@ -5,18 +5,18 @@ describe RuboCop::SketchUp::Cop do
 
   let(:config) do
     rubocop_config =
-      {
-        'AllCops' => {
-          'SketchUp' => {
-            'SketchupDeprecations' => {
-              'Exclude' => department_excludes,
+        {
+          'AllCops' => {
+            'SketchUp' => {
+              'SketchupDeprecations' => {
+                'Exclude' => department_excludes,
+              },
             },
           },
-        },
-        'SketchupDeprecations/FakeCop' => {
-          'Exclude' => %w[src/bizbaz.rb],
-        },
-      }
+          'SketchupDeprecations/FakeCop' => {
+            'Exclude' => %w[src/bizbaz.rb],
+          },
+        }
 
     RuboCop::Config.new(rubocop_config, 'fake_cop_config.yml')
   end

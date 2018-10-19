@@ -5,7 +5,7 @@ module RuboCop
     module Config
 
       DEFAULT_CONFIGURATION =
-        SketchUp::CONFIG.fetch('AllCops').fetch('SketchUp')
+          SketchUp::CONFIG.fetch('AllCops').fetch('SketchUp')
 
       private
 

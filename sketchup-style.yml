@@ -28,6 +28,11 @@ Layout/EndOfLine:
 Layout/EmptyLinesAroundBlockBody:
   Enabled: false
 
+# Indent continuation lines by 4 spaces.
+Layout/IndentAssignment:
+  IndentationWidth: 4
+
+
 # Too noisy.
 Metrics/AbcSize:
   Enabled: false
