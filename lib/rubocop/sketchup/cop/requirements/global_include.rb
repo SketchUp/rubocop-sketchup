@@ -32,7 +32,7 @@ module RuboCop
         end
 
         def global_namespace?(node)
-          ['Kernel', 'Object'].include?(node.parent_module_name)
+          %w[Kernel Object].include?(node.parent_module_name)
         end
 
       end

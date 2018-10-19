@@ -59,7 +59,7 @@ describe RuboCop::Cop::SketchupRequirements::ExtensionNamespace, :config do
   context 'configured exception' do
 
     let(:cop_config) do
-      { 'Exceptions' => ['Foo', 'Bar'] }
+      { 'Exceptions' => %w[Foo Bar] }
     end
 
     it 'does not register an offense for exempted objects' do
