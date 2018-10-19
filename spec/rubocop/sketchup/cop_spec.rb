@@ -23,13 +23,11 @@ describe RuboCop::SketchUp::Cop do
 
   let(:fake_cop) do
     stub_const('RuboCop::SketchupDeprecations', Module.new)
-    # rubocop:disable ClassAndModuleChildren
     class RuboCop::SketchupDeprecations::FakeCop < described_class
       def on_send(node)
         add_offense(node, location: :expression, message: 'I flag everything')
       end
     end
-    # rubocop:enable ClassAndModuleChildren
     RuboCop::SketchupDeprecations::FakeCop
   end
 
