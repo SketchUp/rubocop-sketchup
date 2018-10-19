@@ -34,7 +34,7 @@ module RuboCop
 
           # Ensure there is only one root Ruby file.
           if root_ruby_files.size != 1
-            msg = 'Extensions must have exactly one root Ruby (.rb) file. '
+            msg = 'Extensions must have exactly one root Ruby (.rb) file. '\
                   'Found: %d'
             add_offense(nil,
                 location: range,
