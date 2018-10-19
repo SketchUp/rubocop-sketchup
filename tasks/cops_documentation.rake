@@ -276,13 +276,13 @@ task generate_cops_documentation: :yard_for_generate_documentation do
     margin = ' ' * value_margin
     max_length = 80 - value_margin
     return value if value.size <= 80 - (2 + key.size + 2)
-    formatted = String.new
-    line = String.new
+    formatted = ''.dup
+    line = ''.dup
     value.split(' ').each { |word|
       if line.size + word.size >= max_length
         formatted << "\n" unless formatted.empty?
         formatted << "#{margin}#{line.rstrip}"
-        line = String.new
+        line = ''.dup
       end
       line << "#{word} "
     }
