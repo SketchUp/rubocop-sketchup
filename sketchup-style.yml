@@ -3,6 +3,7 @@ AllCops:
 
 Layout/AlignParameters:
   EnforcedStyle: with_fixed_indentation
+  IndentationWidth: 4
 
 # It's ok to have more than one empty line to create a 'paragraph'.
 Layout/EmptyLines:
