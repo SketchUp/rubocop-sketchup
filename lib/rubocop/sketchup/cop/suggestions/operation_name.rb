@@ -79,16 +79,14 @@ module RuboCop
         def titleize(string)
           string = string.gsub(/[_.]/, ' ')
           words = string.split.map { |word|
-            if TITLEIZE_EXCLUDE.include?(word)
-              word
-            else
+            unless TITLEIZE_EXCLUDE.include?(word)
               # word.capitalize won't work here, as we want to allow words like:
               # "HTML", "SketchUp". So instead only the first character in each
               # word is modified.
               char = word[0].upcase
               word[0, 1] = char
-              word
             end
+            word
           }
           words.join(' ')
         end

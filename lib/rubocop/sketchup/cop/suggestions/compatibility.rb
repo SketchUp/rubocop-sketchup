@@ -24,9 +24,9 @@ module RuboCop
         end
 
         def on_send(node)
+          feature_name = ''
           if module_method?(node)
             feature_name = "#{node.receiver.const_name}.#{node.method_name}"
-            check_feature(node, :method, feature_name)
           else
             # Instance methods are harder. It's difficult to infer the type of
             # the receiver. If we only check the method name in isolation we
@@ -35,8 +35,8 @@ module RuboCop
             # We try to match names that are unlikely to cause much noise.
             return unless checkable_instance_method?(node)
             feature_name = "##{node.method_name}"
-            check_feature(node, :method, feature_name)
           end
+          check_feature(node, :method, feature_name)
         end
 
         def on_const(node)
