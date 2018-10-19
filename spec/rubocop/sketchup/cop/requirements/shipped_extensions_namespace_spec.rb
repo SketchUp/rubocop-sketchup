@@ -60,10 +60,10 @@ describe RuboCop::Cop::SketchupRequirements::ShippedExtensionsNamespace do
     end
 
     it 'does not register an offense for namespaced objects' do
-    inspect_source(['module Example',
-                    'end'])
-    expect(cop.offenses).to be_empty
-  end
+      inspect_source(['module Example',
+                      'end'])
+      expect(cop.offenses).to be_empty
+    end
   end
 
 end

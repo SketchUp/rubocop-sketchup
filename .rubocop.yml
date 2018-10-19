@@ -30,3 +30,38 @@ SketchupRequirements:
 
 SketchupSuggestions:
   Enabled: false
+
+
+Layout/AlignArray:
+  Exclude:
+    - spec/**/*
+
+Layout/AlignParameters:
+  Exclude:
+    - spec/**/*
+
+Layout/IndentationConsistency:
+  Exclude:
+    - spec/**/*
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
+    - tools/stdlib_scraper.rb
+
+Metrics/ClassLength:
+  Exclude:
+    - spec/**/*
+
+Metrics/LineLength:
+  Exclude:
+    - spec/**/*
+    - tools/**/*
+
+Metrics/MethodLength:
+  Exclude:
+    - spec/**/*
+
+Style/TrailingCommaInArrayLiteral:
+  Exclude:
+    - spec/**/*

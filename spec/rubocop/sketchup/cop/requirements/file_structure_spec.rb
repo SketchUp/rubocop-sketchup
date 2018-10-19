@@ -26,18 +26,18 @@ describe RuboCop::Cop::SketchupRequirements::FileStructure do
 
   context 'Valid extension with mac system folder' do
 
-        let(:config) do
-          RuboCop::Config.new({}, '.rubocop.yml')
-        end
+    let(:config) do
+      RuboCop::Config.new({}, '.rubocop.yml')
+    end
 
-        it 'does not register an offense for valid extension structure with __MACOSX folder' do
-          Dir.chdir('examples/extensions/macos_folder') do
-            inspect_source('foo(123)', 'examples/extensions/macos_folder/src/hello.rb')
-            expect(cop.offenses).to be_empty
-          end
-        end
-
+    it 'does not register an offense for valid extension structure with __MACOSX folder' do
+      Dir.chdir('examples/extensions/macos_folder') do
+        inspect_source('foo(123)', 'examples/extensions/macos_folder/src/hello.rb')
+        expect(cop.offenses).to be_empty
       end
+    end
+
+  end
 
   context 'Invalid extension' do
 
