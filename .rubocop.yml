@@ -66,6 +66,8 @@ Metrics/LineLength:
 
 Metrics/MethodLength:
   Exclude:
+    - lib/rubocop/sketchup/cop/requirements/file_structure.rb
+    - lib/rubocop/sketchup/cop/requirements/sketchup_extension.rb
     - spec/**/*
 
 Style/TrailingCommaInArrayLiteral:

@@ -41,9 +41,14 @@ Metrics/AbcSize:
 Metrics/CyclomaticComplexity:
   Enabled: false
 
+# The default 10 is a bit too constrictive.
+Metrics/MethodLength:
+  Max: 20
+
 # Too noisy.
 Metrics/PerceivedComplexity:
   Enabled: false
+
 
 # 🖤 Unicode!
 Style/AsciiComments:
