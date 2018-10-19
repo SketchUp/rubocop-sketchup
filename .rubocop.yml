@@ -72,6 +72,11 @@ Metrics/MethodLength:
     - lib/rubocop/sketchup/cop/requirements/sketchup_extension.rb
     - spec/**/*
 
+Metrics/ModuleLength:
+  Exclude:
+    - lib/rubocop/sketchup/dc_methods.rb
+    - lib/rubocop/sketchup/features.rb
+
 
 Style/MultilineBlockChain:
   Exclude:
