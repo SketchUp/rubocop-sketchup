@@ -20,7 +20,7 @@ module RuboCop
           return unless method_name == :start_operation
           return if args.size < 3
           argument = args[2]
-          next_transparent = argument.type == :true
+          next_transparent = (argument.type == :true)
           add_offense(argument, location: :expression) if next_transparent
         end
       end

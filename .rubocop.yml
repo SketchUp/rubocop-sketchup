@@ -44,6 +44,9 @@ Layout/IndentationConsistency:
   Exclude:
     - spec/**/*
 
+Lint/BooleanSymbol:
+  Exclude:
+    - lib/rubocop/sketchup/cop/deprecations/operation_next_transparent.rb
 
 Lint/InterpolationCheck:
   Exclude:
