@@ -46,7 +46,7 @@ module RuboCop
           # Find the root file and collect the sub-directories.
           root_file = root_ruby_files.first
           extension_basename = File.basename(root_file, '.*')
-          sub_folders = source_path.children.select { |c| c.directory? }
+          sub_folders = source_path.children.select(&:directory?)
           sub_folders.reject! { |folder|
             IGNORED_DIRECTORIES.include?(folder.basename.to_s)
           }
