@@ -26,7 +26,7 @@ puts source_path
 ruby_versions = Pathname.new(source_path).children.select(&:directory?)
 
 def extract_classes(file)
-  page = Nokogiri::HTML(open(file))
+  page = Nokogiri::HTML(File.read(file))
   items = page.css('#class-index .entries p')
   # items.map(&:text)
   items.map { |item|
