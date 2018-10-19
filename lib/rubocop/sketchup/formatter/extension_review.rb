@@ -243,8 +243,8 @@ module RuboCop
           "offense_#{title}"
         end
 
-        def escape(s)
-          CGI.escapeHTML(s)
+        def escape(string)
+          CGI.escapeHTML(string)
         end
 
         def base64_encoded_logo_image
