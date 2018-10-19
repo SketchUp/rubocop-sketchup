@@ -89,6 +89,6 @@ ruby_versions.each { |path|
       puts %(  "#{type} #{name}",)
     }
   }
-  puts "].freeze"
+  puts '].freeze'
   puts
 }

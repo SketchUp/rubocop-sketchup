@@ -11,7 +11,7 @@ module RuboCop
 
         include SketchUp::DynamicComponentGlobals
 
-        MSG = "Avoid relying on internal logic of Dynamic Components.".freeze
+        MSG = 'Avoid relying on internal logic of Dynamic Components.'.freeze
 
         def on_gvar(node)
           check_global(node)

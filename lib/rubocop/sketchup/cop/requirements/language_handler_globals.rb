@@ -10,7 +10,7 @@ module RuboCop
 
         include SketchUp::NoCommentDisable
 
-        MSG = "Avoid globals in general, but especially these which are known to be in use.".freeze
+        MSG = 'Avoid globals in general, but especially these which are known to be in use.'.freeze
 
         LH_GLOBALS = %i[
           $dc_strings

@@ -15,7 +15,7 @@ module RuboCop
         include RangeHelp
 
         MSG = 'Operation name should be a short capitalized description.'.freeze
-        MSG_MAX = "Operation names should not be short and concise. [%d/%d]".freeze
+        MSG_MAX = 'Operation names should not be short and concise. [%d/%d]'.freeze
 
         def on_send(node)
           _, method_name, *args = *node
