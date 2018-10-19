@@ -9,7 +9,7 @@ describe 'RuboCop Project' do
         dirname = File.basename(File.dirname(file))
         cop_name = basename.gsub(/(^|_)(.)/) { Regexp.last_match(2).upcase }
         department_name = dirname.gsub(/(^|_)(.)/) { Regexp.last_match(2).upcase }
-        
+
         "Sketchup#{department_name}/#{cop_name}"
       end
     end
