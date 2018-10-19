@@ -210,7 +210,7 @@ task generate_cops_documentation: :yard_for_generate_documentation do
 
     content = original.sub(
         /<!-- START_COP_LIST -->.+<!-- END_COP_LIST -->/m, content
-    )
+      )
     File.write(path, content)
   end
 

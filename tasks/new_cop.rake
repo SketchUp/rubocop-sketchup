@@ -17,7 +17,7 @@ class SketchupCopGenerator < RuboCop::Cop::Generator
         'cop',
         short_department_name(badge.department.to_s),
         "#{snake_case(badge.cop_name.to_s)}_spec.rb"
-    )
+      )
   end
 
   def source_path
@@ -28,7 +28,7 @@ class SketchupCopGenerator < RuboCop::Cop::Generator
         'cop',
         short_department_name(badge.department.to_s),
         "#{snake_case(badge.cop_name.to_s)}.rb"
-    )
+      )
   end
 
   def short_department_name(cop_name)

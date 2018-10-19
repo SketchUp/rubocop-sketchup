@@ -22,13 +22,13 @@ namespace :cut_release do
         file << content.gsub(
             /gem install rubocop -v \d+\.\d+\.\d+/,
             "gem install rubocop -v #{rubocop_version}"
-        ).gsub(
+          ).gsub(
             /gem 'rubocop', '~> \d+\.\d+\.\d+/,
             "gem 'rubocop', '~> #{rubocop_version}"
-        ).gsub(
+          ).gsub(
             "gem 'rubocop-sketchup', '~> #{old_version}",
             "gem 'rubocop-sketchup', '~> #{new_version}"
-        )
+          )
       end
     end
   end
