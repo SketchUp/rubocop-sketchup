@@ -123,7 +123,7 @@ module RuboCop
           name: :last_height,
           path: 'UI::WebDialog',
         },
-      ]
+      ].freeze
 
     end
   end

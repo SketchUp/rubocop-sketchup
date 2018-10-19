@@ -47,7 +47,7 @@ module RuboCop
         PATTERN
 
 
-        TOOLS_RUBY_FILES = %w[extensions.rb langhandler.rb sketchup.rb]
+        TOOLS_RUBY_FILES = %w[extensions.rb langhandler.rb sketchup.rb].freeze
 
 
         def on_send(node)

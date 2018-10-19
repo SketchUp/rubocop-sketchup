@@ -26,7 +26,7 @@ module RuboCop
           $unitsStrings
           $uStrings
           $wt_strings
-        ]
+        ].freeze
 
         def hl_global_var?(global_var)
           LH_GLOBALS.include?(global_var)

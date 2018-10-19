@@ -74,7 +74,7 @@ module RuboCop
         TITLEIZE_EXCLUDE = %w[
           by for from in of to
           and or if
-        ]
+        ].freeze
 
         def titleize(string)
           string = string.gsub(/[_.]/, ' ')

@@ -52,11 +52,11 @@ module RuboCop
           $DEBUG $FILENAME $VERBOSE $SAFE
           $-0 $-a $-d $-F $-i $-I $-l $-p $-v $-w
           $CLASSPATH $JRUBY_VERSION $JRUBY_REVISION $ENV_JAVA
-        ]
+        ].freeze
 
         SKETCHUP_VARS = %i[
           $loaded_files
-        ]
+        ].freeze
 
         # Some globals, like DC's, are being read from so often that it's better
         # to ignore these to reduce noise.

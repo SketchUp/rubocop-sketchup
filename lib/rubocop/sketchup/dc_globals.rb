@@ -11,7 +11,7 @@ module RuboCop
         $dc_REPORTER_NAME
         $dc_MANAGER_NAME
         $dc_observers
-      ]
+      ].freeze
 
       private
 

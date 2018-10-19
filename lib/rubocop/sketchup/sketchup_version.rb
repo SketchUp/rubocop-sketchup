@@ -57,7 +57,7 @@ module RuboCop
         [7.0, 1],
         [7.0, 0],
         [6.0, 0],
-      ]
+      ].freeze
 
       def parse_version(version)
         v = 0

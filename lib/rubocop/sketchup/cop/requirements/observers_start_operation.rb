@@ -119,7 +119,7 @@ module RuboCop
           onToolStateChanged
 
           onViewChanged
-        ]
+        ].freeze
 
         def on_def(node)
           return unless observer_event?(node)

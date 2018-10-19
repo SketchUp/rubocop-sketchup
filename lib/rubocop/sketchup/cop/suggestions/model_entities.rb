@@ -24,7 +24,7 @@ module RuboCop
             ({lvar ivar cvar} $_) :entities)
         PATTERN
 
-        MODEL_VARIABLE_NAMES = %w[model mod]
+        MODEL_VARIABLE_NAMES = %w[model mod].freeze
 
         def model_entities?(node)
           return true if active_model_entities?(node)

@@ -20,7 +20,7 @@ module RuboCop
 
         LOAD_PATH_ALIASES = %i[
           $: $LOAD_PATH
-        ]
+        ].freeze
 
         MUTATORS = %i[
           <<
@@ -53,7 +53,7 @@ module RuboCop
           sort_by!
           uniq!
           unshift
-        ]
+        ].freeze
 
         def load_path?(sym)
           LOAD_PATH_ALIASES.include?(sym)

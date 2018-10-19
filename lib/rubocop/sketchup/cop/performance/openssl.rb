@@ -25,7 +25,7 @@ module RuboCop
           )
         PATTERN
 
-        OPEN_SSL_USAGE = %w[openssl securerandom net/https net/http]
+        OPEN_SSL_USAGE = %w[openssl securerandom net/https net/http].freeze
 
         def on_send(node)
           filename = require(node)

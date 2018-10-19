@@ -88,7 +88,7 @@ module RuboCop
           SketchupDeprecations
           SketchupPerformance
           SketchupSuggestions
-        ]
+        ].freeze
 
         DEPARTMENT_DESCRIPTIONS = {
           'SketchupRequirements' => <<-DESCRIPTION,
@@ -127,7 +127,7 @@ module RuboCop
             This department is not a requirement for submission to
             Extension Warehouse.
           DESCRIPTION
-        }
+        }.freeze
 
         attr_reader :categories, :files, :summary
 
