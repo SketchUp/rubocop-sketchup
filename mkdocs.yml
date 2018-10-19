@@ -9,7 +9,10 @@ nav:
 - Basic Usage: basic_usage.md
 - Cops: cops.md
 - Formatters: formatters.md
+- Configuration: configuration.md
 - Integration with other tools: integration_with_other_tools.md
+- Contributing: contributing.md
+- Development: development.md
 - Cops Documentation:
     - Requirements Cops: cops_requirements.md
     - Deprecations Cops: cops_deprecations.md
