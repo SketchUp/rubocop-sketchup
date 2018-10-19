@@ -80,6 +80,11 @@ Metrics/ModuleLength:
     - lib/rubocop/sketchup/features.rb
 
 
+Style/ClassVars:
+  Exclude:
+    - lib/rubocop/sketchup/cop/requirements/extension_namespace.rb
+    - lib/rubocop/sketchup/cop/requirements/file_structure.rb
+
 Style/MultilineBlockChain:
   Exclude:
     - lib/rubocop/sketchup/formatter/extension_review.rb
