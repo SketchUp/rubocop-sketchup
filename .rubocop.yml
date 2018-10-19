@@ -44,6 +44,12 @@ Layout/IndentationConsistency:
   Exclude:
     - spec/**/*
 
+
+Lint/InterpolationCheck:
+  Exclude:
+    - spec/rubocop/sketchup/cop/requirements/observers_start_operation_spec.rb
+
+
 Metrics/BlockLength:
   Exclude:
     - spec/**/*
