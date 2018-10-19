@@ -3,12 +3,9 @@ require: rubocop-sketchup
 inherit_from: sketchup-style.yml
 
 AllCops:
-  Include:
-    - 'lib/**/*'
-    - 'spec/**/*'
-    - 'tools/**/*'
   Exclude:
     - 'bin/**/*'
+    - 'examples/**/*'
     - 'vendor/**/*'
   DisplayCopNames: true
   DisplayStyleGuide: true
