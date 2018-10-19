@@ -57,6 +57,8 @@ Metrics/BlockLength:
 
 Metrics/ClassLength:
   Exclude:
+    - lib/rubocop/sketchup/cop/requirements/ruby_core_namespace.rb
+    - lib/rubocop/sketchup/cop/requirements/ruby_stdlib_namespace.rb
     - lib/rubocop/sketchup/formatter/extension_review.rb
     - spec/**/*
 
