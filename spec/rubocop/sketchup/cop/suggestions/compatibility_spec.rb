@@ -13,33 +13,41 @@ describe RuboCop::Cop::SketchupSuggestions::Compatibility do
     end
 
     it 'registers an offense when using incompatible class' do
-      inspect_source('dialog = UI::HtmlDialog.new')
-      expect(cop.offenses.size).to eq(1)
+      expect_offense(<<-RUBY.strip_indent)
+        dialog = UI::HtmlDialog.new
+                 ^^^^^^^^^^^^^^ The class `UI::HtmlDialog` was added in SketchUp 2017 which is incompatible with target SketchUp 6.0.
+      RUBY
     end
 
     it 'registers an offense when using incompatible module' do
-      inspect_source('image = Sketchup::ImageRep.new')
-      expect(cop.offenses.size).to eq(1)
+      expect_offense(<<-RUBY.strip_indent)
+        state = Sketchup::Licensing::LICENSED
+                ^^^^^^^^^^^^^^^^^^^ The module `Sketchup::Licensing` was added in SketchUp 2015 which is incompatible with target SketchUp 6.0.
+      RUBY
     end
 
     it 'registers an offense when using incompatible module method' do
-      inspect_source('scale = UI.scale_factor')
-      expect(cop.offenses.size).to eq(1)
+      expect_offense(<<-RUBY.strip_indent)
+        scale = UI.select_directory(title: "Select Directory")
+                   ^^^^^^^^^^^^^^^^ The method `UI.select_directory` was added in SketchUp 2015 which is incompatible with target SketchUp 6.0.
+      RUBY
     end
 
     it 'registers an offense when using incompatible instance method' do
-      inspect_source('page.include_in_animation = true')
-      expect(cop.offenses.size).to eq(1)
+      expect_offense(<<-RUBY.strip_indent)
+        page.include_in_animation = true
+             ^^^^^^^^^^^^^^^^^^^^ The method `Sketchup::Page#include_in_animation=` was added in SketchUp 2018 which is incompatible with target SketchUp 6.0.
+      RUBY
     end
 
     it 'registers an register an offense when using incompatible observer method' do
-      inspect_source(<<-RUBY.strip_indent)
-        class ExampleObserver < Sketchup::Entities
+      expect_offense(<<-RUBY.strip_indent)
+        class ExampleObserver < Sketchup::EntitiesObserver
           def onActiveSectionPlaneChanged(entities)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^ The method `Sketchup::EntitiesObserver#onActiveSectionPlaneChanged` was added in SketchUp 2014 which is incompatible with target SketchUp 6.0.
           end
         end
       RUBY
-      expect(cop.offenses.size).to eq(1)
     end
 
   end

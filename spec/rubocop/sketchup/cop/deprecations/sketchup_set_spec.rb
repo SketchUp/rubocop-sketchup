@@ -7,18 +7,23 @@ describe RuboCop::Cop::SketchupDeprecations::SketchupSet do
   subject(:cop) { described_class.new }
 
   it 'registers an offense for Sketchup::Set.new' do
-    inspect_source('set = Sketchup::Set.new')
-    expect(cop.offenses.size).to eq(1)
+    expect_offense(<<-RUBY.strip_indent)
+      set = Sketchup::Set.new
+            ^^^^^^^^^^^^^ Class is deprecated.
+    RUBY
   end
 
   it 'registers an offense for Sketchup::Set shim' do
-    inspect_source('Set = Sketchup::Set')
-    expect(cop.offenses.size).to eq(1)
+    expect_offense(<<-RUBY.strip_indent)
+      Set = Sketchup::Set
+            ^^^^^^^^^^^^^ Class is deprecated.
+    RUBY
   end
 
   it 'does not register an offense for Set.new' do
-    inspect_source('set = Set.new')
-    expect(cop.offenses).to be_empty
+    expect_no_offenses(<<-RUBY.strip_indent)
+      set = Set.new
+    RUBY
   end
 
 end

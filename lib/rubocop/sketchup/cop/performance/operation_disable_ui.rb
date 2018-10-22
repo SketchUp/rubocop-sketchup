@@ -18,7 +18,7 @@ module RuboCop
           return unless method_name == :start_operation
 
           if args.size < 2
-            add_offense(node, location: :expression)
+            add_offense(node, location: :selector)
             return
           end
           argument = args[1]

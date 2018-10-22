@@ -7,8 +7,10 @@ describe RuboCop::Cop::SketchupDeprecations::RequireAll do
   subject(:cop) { described_class.new }
 
   it 'registers an offense for require_all ' do
-    inspect_source('require_all("foo/bar")')
-    expect(cop.offenses.size).to eq(1)
+    expect_offense(<<-RUBY.strip_indent)
+      require_all("foo/bar")
+      ^^^^^^^^^^^ Method is deprecated because it adds the given path to $LOAD_PATH.
+    RUBY
   end
 
 end

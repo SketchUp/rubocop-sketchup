@@ -13,6 +13,7 @@ require 'rubocop/sketchup/features'
 require 'rubocop/sketchup/namespace'
 require 'rubocop/sketchup/namespace_checker'
 require 'rubocop/sketchup/no_comment_disable'
+require 'rubocop/sketchup/range_help'
 require 'rubocop/sketchup/sketchup_version'
 
 RuboCop::SketchUp::Inject.defaults!

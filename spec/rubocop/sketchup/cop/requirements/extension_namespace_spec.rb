@@ -7,40 +7,39 @@ describe RuboCop::Cop::SketchupRequirements::ExtensionNamespace, :config do
   subject(:cop) { described_class.new(config) }
 
   it 'registers an offense for multiple top level namespaces' do
-    inspect_source(<<-RUBY.strip_indent)
+    expect_offense(<<-RUBY.strip_indent)
       module Example
       end
       module FooBar
+             ^^^^^^ Use a single root namespace. (Found `FooBar`; Previously found `Example`)
       end
     RUBY
-    expect(cop.offenses.size).to eq(1)
   end
 
   it 'does not register an offense for namespaced objects' do
-    inspect_source(<<-RUBY.strip_indent)
+    expect_no_offenses(<<-RUBY.strip_indent)
       module Example
         module SubModule
         end
       end
     RUBY
-    expect(cop.offenses).to be_empty
   end
 
   it 'does not register an offense for Ruby namespace objects' do
-    inspect_source(<<-RUBY.strip_indent)
+    expect_no_offenses(<<-RUBY.strip_indent)
       module Example
       end
       module Math
       end
     RUBY
-    expect(cop.offenses).to be_empty
   end
 
   it 'does not register an offense for nested namespace objects' do
-    inspect_source(<<-RUBY.strip_indent)
+    expect_offense(<<-RUBY.strip_indent)
       module Example
       end
       module FooBar
+             ^^^^^^ Use a single root namespace. (Found `FooBar`; Previously found `Example`)
         module BizBaz
         end
       end
@@ -49,23 +48,21 @@ describe RuboCop::Cop::SketchupRequirements::ExtensionNamespace, :config do
   end
 
   it 'does not register an offense for Ruby StdLib namespace objects' do
-    inspect_source(<<-RUBY.strip_indent)
+    expect_no_offenses(<<-RUBY.strip_indent)
       module Example
       end
       class MD5
       end
     RUBY
-    expect(cop.offenses).to be_empty
   end
 
   it 'does not register an offense for Sketchup namespace objects' do
-    inspect_source(<<-RUBY.strip_indent)
+    expect_no_offenses(<<-RUBY.strip_indent)
       module Example
       end
       module Sketchup
       end
     RUBY
-    expect(cop.offenses).to be_empty
   end
 
   context 'configured exception' do
@@ -75,29 +72,28 @@ describe RuboCop::Cop::SketchupRequirements::ExtensionNamespace, :config do
     end
 
     it 'does not register an offense for exempted objects' do
-      inspect_source(<<-RUBY.strip_indent)
+      expect_no_offenses(<<-RUBY.strip_indent)
         module Example
         end
         module Foo
         end
       RUBY
-      expect(cop.offenses).to be_empty
     end
 
     it 'registers an offense for multiple top level namespaces' do
-      inspect_source(<<-RUBY.strip_indent)
+      expect_offense(<<-RUBY.strip_indent)
         module Foo
         end
         module Example
         end
         module FooBar
+               ^^^^^^ Use a single root namespace. (Found `FooBar`; Previously found `Example`)
         end
         module Bar
         end
         module Bar::Biz::Baz
         end
       RUBY
-      expect(cop.offenses.size).to eq(1)
     end
 
   end # context

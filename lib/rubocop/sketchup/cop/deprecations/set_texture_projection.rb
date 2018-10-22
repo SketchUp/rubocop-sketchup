@@ -8,7 +8,7 @@ module RuboCop
       # repaired. Once repaired the UV mapping will visually change.
       class SetTextureProjection < SketchUp::Cop
 
-        MSG = 'Method is deprecated. It creates invalid UV mapping.'.freeze
+        MSG = 'Method is deprecated. It can create invalid UV mapping.'.freeze
 
         def_node_matcher :set_texture_projection?, <<-PATTERN
           (send _ :set_texture_projection ...)
@@ -17,7 +17,7 @@ module RuboCop
         def on_send(node)
           return unless set_texture_projection?(node)
 
-          add_offense(node, location: :expression)
+          add_offense(node, location: :selector)
         end
 
       end

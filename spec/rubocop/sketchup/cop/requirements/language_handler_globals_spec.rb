@@ -9,15 +9,18 @@ describe RuboCop::Cop::SketchupRequirements::LanguageHandlerGlobals do
   described_class::LH_GLOBALS.each do |var|
 
     it "registers an offense when using #{var}" do
-      inspect_source("#{var} = LanguageHandler.new('example.strings')")
-      expect(cop.offenses.size).to eq(1)
+      expect_offense(<<-RUBY.strip_indent)
+        #{var} = LanguageHandler.new('example.strings')
+        #{'^' * var.size} Avoid globals in general, but especially these which are known to be in use.
+      RUBY
     end
 
   end
 
   it 'does not register an offense when not using other globals' do
-    inspect_source('$hello = 456')
-    expect(cop.offenses).to be_empty
+    expect_no_offenses(<<-RUBY.strip_indent)
+      $hello = 456
+    RUBY
   end
 
 end

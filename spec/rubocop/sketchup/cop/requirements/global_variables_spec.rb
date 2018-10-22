@@ -7,45 +7,54 @@ describe RuboCop::Cop::SketchupRequirements::GlobalVariables do
   subject(:cop) { described_class.new }
 
   it 'registers an offense for $custom' do
-    inspect_source('puts $custom')
-    expect(cop.offenses.size).to eq(1)
+    expect_offense(<<-RUBY.strip_indent)
+      puts $custom
+           ^^^^^^^ Do not introduce global variables.
+    RUBY
   end
 
   described_class::ALLOWED_VARS.each do |var|
 
     it "does not register an offense for reading built-in variable #{var}" do
-      inspect_source("puts #{var}")
-      expect(cop.offenses).to be_empty
+      expect_no_offenses(<<-RUBY.strip_indent)
+        puts #{var}
+      RUBY
     end
 
     it "does not register an offense for calling built-in variable #{var}" do
-      inspect_source("#{var}.foo")
-      expect(cop.offenses).to be_empty
+      expect_no_offenses(<<-RUBY.strip_indent)
+        puts #{var}.foo
+      RUBY
     end
 
   end
 
   it 'does not register an offense for backrefs like $1' do
-    inspect_source('puts $1')
-    expect(cop.offenses).to be_empty
+    expect_no_offenses(<<-RUBY.strip_indent)
+      puts $1
+    RUBY
   end
 
   context 'read only globals' do
     described_class::READ_ONLY_VARS.each do |var|
 
       it "does not register an offense for reading from #{var}" do
-        inspect_source("puts #{var}")
-        expect(cop.offenses).to be_empty
+        expect_no_offenses(<<-RUBY.strip_indent)
+          puts #{var}
+        RUBY
       end
 
       it "does not register an offense for calling method on #{var}" do
-        inspect_source("#{var}.bar")
-        expect(cop.offenses).to be_empty
+        expect_no_offenses(<<-RUBY.strip_indent)
+          puts #{var}.bar
+        RUBY
       end
 
       it "registers an offense for assigning to #{var}" do
-        inspect_source("#{var} = []")
-        expect(cop.offenses.size).to eq(1)
+        expect_offense(<<-RUBY.strip_indent)
+          #{var} = []
+          #{'^' * var.size} Do not introduce global variables.
+        RUBY
       end
 
     end

@@ -17,7 +17,7 @@ describe RuboCop::Cop::SketchupRequirements::FileStructure do
 
     it 'does not register an offense for valid extension structure' do
       Dir.chdir('examples/extensions/valid') do
-        inspect_source('foo(123)', 'src/hello.rb')
+        inspect_source('foo(123)', 'examples/extensions/valid/src/hello.rb')
         expect(cop.offenses).to be_empty
       end
     end

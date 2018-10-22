@@ -9,25 +9,32 @@ describe RuboCop::Cop::SketchupSuggestions::DynamicComponentInternals do
   described_class::DC_GLOBALS.each do |var|
 
     it "registers an offense when using #{var}" do
-      inspect_source("#{var}.get_latest_class.show_configure_dialog")
-      expect(cop.offenses.size).to eq(1)
+      expect_offense(<<-RUBY.strip_indent)
+        #{var}.get_latest_class.show_configure_dialog
+        #{'^' * var.size} Avoid relying on internal logic of Dynamic Components.
+      RUBY
     end
 
     it "registers an offense when reading #{var}" do
-      inspect_source("defined?(#{var})")
-      expect(cop.offenses.size).to eq(1)
+      expect_offense(<<-RUBY.strip_indent)
+        defined?(#{var})
+                 #{'^' * var.size} Avoid relying on internal logic of Dynamic Components.
+      RUBY
     end
 
     it "registers an offense when writing #{var}" do
-      inspect_source("#{var} = 123")
-      expect(cop.offenses.size).to eq(1)
+      expect_offense(<<-RUBY.strip_indent)
+        #{var} = 123
+        #{'^' * var.size} Avoid relying on internal logic of Dynamic Components.
+      RUBY
     end
 
   end
 
   it 'does not register an offense when not using DC internals' do
-    inspect_source('$hello = 456')
-    expect(cop.offenses).to be_empty
+    expect_no_offenses(<<-RUBY.strip_indent)
+      $hello = 456
+    RUBY
   end
 
 end

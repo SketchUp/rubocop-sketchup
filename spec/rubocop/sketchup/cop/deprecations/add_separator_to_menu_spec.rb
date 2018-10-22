@@ -7,8 +7,10 @@ describe RuboCop::Cop::SketchupDeprecations::AddSeparatorToMenu do
   subject(:cop) { described_class.new }
 
   it 'registers an offense for add_separator_to_menu ' do
-    inspect_source('add_separator_to_menu("Plugins")')
-    expect(cop.offenses.size).to eq(1)
+    expect_offense(<<-RUBY.strip_indent)
+      add_separator_to_menu("Plugins")
+      ^^^^^^^^^^^^^^^^^^^^^ Method is deprecated.
+    RUBY
   end
 
 end

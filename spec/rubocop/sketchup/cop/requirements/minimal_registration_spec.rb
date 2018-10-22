@@ -12,32 +12,34 @@ describe RuboCop::Cop::SketchupRequirements::MinimalRegistration do
   end
 
   it 'registers an offense for requiring extensions files in the root file' do
-    inspect_source(<<-RUBY.strip_indent, './src/hello.rb')
+    expect_offense(<<-RUBY.strip_indent, './src/hello.rb')
       module Example
         require "hello/foo"
+        ^^^^^^^^^^^^^^^^^^^ Don't load extension files in the root file registering the extension.
         Sketchup.require "hello/bar"
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Don't load extension files in the root file registering the extension.
         load "hello/biz"
+        ^^^^^^^^^^^^^^^^ Don't load extension files in the root file registering the extension.
         Sketchup.load "hello/baz"
+        ^^^^^^^^^^^^^^^^^^^^^^^^^ Don't load extension files in the root file registering the extension.
         extension = SketchupExtension.new("Extension Name", filename)
         Sketchup.register_extension(extension, true)
       end
     RUBY
-    expect(cop.offenses.size).to eq(4)
   end
 
   it 'does not register an offense for requiring files not in the extension' do
-    inspect_source(<<-RUBY.strip_indent, './src/hello.rb')
+    expect_no_offenses(<<-RUBY.strip_indent, './src/hello.rb')
       module Example
         require "json"
         extension = SketchupExtension.new("Extension Name", filename)
         Sketchup.register_extension(extension, true)
       end
     RUBY
-    expect(cop.offenses).to be_empty
   end
 
   it 'does not register an offense for requiring extensions files outside the root file' do
-    inspect_source(<<-RUBY.strip_indent, './src/hello/main.rb')
+    expect_no_offenses(<<-RUBY.strip_indent, './src/hello/main.rb')
       module Example
         require "hello/foo"
         Sketchup.require "hello/bar"
@@ -47,7 +49,6 @@ describe RuboCop::Cop::SketchupRequirements::MinimalRegistration do
         Sketchup.register_extension(extension, true)
       end
     RUBY
-    expect(cop.offenses).to be_empty
   end
 
 end

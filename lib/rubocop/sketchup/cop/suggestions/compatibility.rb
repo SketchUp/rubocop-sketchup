@@ -78,7 +78,21 @@ module RuboCop
           message = "The #{feature_type} `#{feature_name}` was added in "\
                     "#{feature_version} which is incompatible with target "\
                     "#{sketchup_target_version}."
-          add_offense(node, message: message)
+          location = find_node_location(node)
+          add_offense(node, location: location, message: message)
+        end
+
+        def find_node_location(node)
+          # Highlight the most pertinent  piece of the expression.
+          if node.const_type?
+            :expression
+          elsif node.send_type?
+            :selector
+          elsif node.def_type?
+            :name
+          else
+            :expression
+          end
         end
 
         def module_method?(node)

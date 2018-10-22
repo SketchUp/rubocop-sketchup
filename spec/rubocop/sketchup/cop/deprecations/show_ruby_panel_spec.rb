@@ -7,8 +7,10 @@ describe RuboCop::Cop::SketchupDeprecations::ShowRubyPanel do
   subject(:cop) { described_class.new }
 
   it 'registers an offense for show_ruby_panel ' do
-    inspect_source('show_ruby_panel ')
-    expect(cop.offenses.size).to eq(1)
+    expect_offense(<<-RUBY.strip_indent)
+      show_ruby_panel
+      ^^^^^^^^^^^^^^^ Method is deprecated. Use `SKETCHUP_CONSOLE.show` instead.
+    RUBY
   end
 
 end

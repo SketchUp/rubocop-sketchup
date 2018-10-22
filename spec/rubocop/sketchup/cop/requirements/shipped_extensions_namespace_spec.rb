@@ -21,60 +21,59 @@ describe RuboCop::Cop::SketchupRequirements::ShippedExtensionsNamespace do
     end
 
     it "registers an offense for adding an instance method to #{var} #{type}" do
-      inspect_source(<<-RUBY.strip_indent)
+      expect_offense(<<-RUBY.strip_indent)
         #{type} #{var}
           def example
+              ^^^^^^^ Do not modify shipped extensions.
           end
         end
       RUBY
-      expect(cop.offenses.size).to eq(1)
     end
 
     it "registers an offense for adding a module method to #{var} #{type}" do
-      inspect_source(<<-RUBY.strip_indent)
+      expect_offense(<<-RUBY.strip_indent)
         #{type} #{var}
           def self.example
+                   ^^^^^^^ Do not modify shipped extensions.
           end
         end
       RUBY
-      expect(cop.offenses.size).to eq(1)
     end
 
     it "registers an offense for adding a constant to #{var} #{type}" do
-      inspect_source(<<-RUBY.strip_indent)
+      expect_offense(<<-RUBY.strip_indent)
         #{type} #{var}
           EXAMPLE = 123
+          ^^^^^^^ Do not modify shipped extensions.
         end
       RUBY
-      expect(cop.offenses.size).to eq(1)
     end
 
     it "registers an offense for adding a module to #{var} #{type}" do
-      inspect_source(<<-RUBY.strip_indent)
+      expect_offense(<<-RUBY.strip_indent)
         #{type} #{var}
           module Example
+                 ^^^^^^^ Do not modify shipped extensions.
           end
         end
       RUBY
-      expect(cop.offenses.size).to eq(1)
     end
 
     it "registers an offense for adding a class to #{var} #{type}" do
-      inspect_source(<<-RUBY.strip_indent)
+      expect_offense(<<-RUBY.strip_indent)
         #{type} #{var}
           class Example
+                ^^^^^^^ Do not modify shipped extensions.
           end
         end
       RUBY
-      expect(cop.offenses.size).to eq(1)
     end
 
     it 'does not register an offense for namespaced objects' do
-      inspect_source(<<-RUBY.strip_indent)
+      expect_no_offenses(<<-RUBY.strip_indent)
         module Example
         end
       RUBY
-      expect(cop.offenses).to be_empty
     end
   end
 

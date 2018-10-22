@@ -41,58 +41,53 @@ describe RuboCop::Cop::SketchupRequirements::SketchupExtension do
     end
 
     it 'does not register an offense for namespaced SketchupExtension in root file assigned to local variable' do
-      inspect_source(<<-RUBY.strip_indent, './src/hello.rb')
+      expect_no_offenses(<<-RUBY.strip_indent, './src/hello.rb')
         module Example
           extension = SketchupExtension.new("Extension Name", filename)
           extension.description = "Hello World"
           Sketchup.register_extension(extension, true)
         end
       RUBY
-      expect(cop.offenses).to be_empty
     end
 
     it 'does not register an offense for namespaced SketchupExtension in root file assigned to instance variable' do
-      inspect_source(<<-RUBY.strip_indent, './src/hello.rb')
+      expect_no_offenses(<<-RUBY.strip_indent, './src/hello.rb')
         module Example
           @extension = SketchupExtension.new("Extension Name", filename)
           @extension.description = "Hello World"
           Sketchup.register_extension(@extension, true)
         end
       RUBY
-      expect(cop.offenses).to be_empty
     end
 
     it 'does not register an offense for namespaced SketchupExtension in root file assigned to class variable' do
-      inspect_source(<<-RUBY.strip_indent, './src/hello.rb')
+      expect_no_offenses(<<-RUBY.strip_indent, './src/hello.rb')
         module Example
           @@extension = SketchupExtension.new("Extension Name", filename)
           @@extension.description = "Hello World"
           Sketchup.register_extension(@@extension, true)
         end
       RUBY
-      expect(cop.offenses).to be_empty
     end
 
     it 'does not register an offense for namespaced SketchupExtension in root file assigned to global variable' do
-      inspect_source(<<-RUBY.strip_indent, './src/hello.rb')
+      expect_no_offenses(<<-RUBY.strip_indent, './src/hello.rb')
         module Example
           $extension = SketchupExtension.new("Extension Name", filename)
           $extension.description = "Hello World"
           Sketchup.register_extension($extension, true)
         end
       RUBY
-      expect(cop.offenses).to be_empty
     end
 
     it 'does not register an offense for namespaced SketchupExtension in root file assigned to constant' do
-      inspect_source(<<-RUBY.strip_indent, './src/hello.rb')
+      expect_no_offenses(<<-RUBY.strip_indent, './src/hello.rb')
         module Example
           EXTENSION = SketchupExtension.new("Extension Name", filename)
           EXTENSION.description = "Hello World"
           Sketchup.register_extension(EXTENSION, true)
         end
       RUBY
-      expect(cop.offenses).to be_empty
     end
 
     it 'does not throw an error when inspecting source' do
@@ -142,11 +137,10 @@ describe RuboCop::Cop::SketchupRequirements::SketchupExtension do
     end
 
     it 'does not register an offense for SketchupExtension in root file' do
-      inspect_source(<<-RUBY.strip_indent, './source/hello.rb')
+      expect_no_offenses(<<-RUBY.strip_indent, './source/hello.rb')
         extension = SketchupExtension.new("Extension Name", filename)
         Sketchup.register_extension(extension, true)
       RUBY
-      expect(cop.offenses).to be_empty
     end
 
   end

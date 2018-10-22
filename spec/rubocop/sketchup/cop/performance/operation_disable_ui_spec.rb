@@ -7,31 +7,38 @@ describe RuboCop::Cop::SketchupPerformance::OperationDisableUI do
   subject(:cop) { described_class.new }
 
   it 'does not register an offense when starting an operation and disabling the UI' do
-    inspect_source('model.start_operation("Hello", true)')
-    expect(cop.offenses).to be_empty
+    expect_no_offenses(<<-RUBY.strip_indent)
+      model.start_operation("Hello", true)
+    RUBY
   end
 
   it 'registers an offense when starting an operation without disabling the UI' do
-    inspect_source('model.start_operation("Hello")')
-    expect(cop.offenses.size).to eq(1)
+    expect_offense(<<-RUBY.strip_indent)
+      model.start_operation("Hello")
+            ^^^^^^^^^^^^^^^ Operations should disable the UI for performance gain.
+    RUBY
   end
 
   it 'registers an offense when starting an operation explicitly disabling the UI' do
-    inspect_source('model.start_operation("Hello", false)')
-    expect(cop.offenses.size).to eq(1)
+    expect_offense(<<-RUBY.strip_indent)
+      model.start_operation("Hello", false)
+                                     ^^^^^ Operations should disable the UI for performance gain.
+    RUBY
   end
 
   it 'registers an offense when starting an operation WITH VAR' do
-    inspect_source(<<-RUBY.strip_indent)
+    expect_offense(<<-RUBY.strip_indent)
       disable_ui = false
       model.start_operation("Hello", disable_ui)
+                                     ^^^^^^^^^^ Operations should disable the UI for performance gain.
     RUBY
-    expect(cop.offenses.size).to eq(1)
   end
 
   it 'registers an offense when starting a transparent operation without disabling the UI' do
-    inspect_source('model.start_operation("Hello", false, false, true)')
-    expect(cop.offenses.size).to eq(1)
+    expect_offense(<<-RUBY.strip_indent)
+      model.start_operation("Hello", false, false, true)
+                                     ^^^^^ Operations should disable the UI for performance gain.
+    RUBY
   end
 
 end

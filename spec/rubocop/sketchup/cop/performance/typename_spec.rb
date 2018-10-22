@@ -7,8 +7,10 @@ describe RuboCop::Cop::SketchupPerformance::Typename do
   subject(:cop) { described_class.new }
 
   it 'registers an offense for use of Sketchup::Entity#typename' do
-    inspect_source('entity.typename == "Face"')
-    expect(cop.offenses.size).to eq(1)
+    expect_offense(<<-RUBY.strip_indent)
+      entity.typename == "Face"
+             ^^^^^^^^ `.typename` is very slow, prefer `.is_a?` instead.
+    RUBY
   end
 
 end

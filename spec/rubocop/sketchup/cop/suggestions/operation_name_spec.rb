@@ -8,8 +8,10 @@ describe RuboCop::Cop::SketchupSuggestions::OperationName, :config do
   let(:cop_config) { { 'Max' => 25 } }
 
   it 'registers an offense when operations name is too long' do
-    inspect_source('model.start_operation("Some Really Long Operation Name")')
-    expect(cop.offenses.size).to eq(1)
+    expect_offense(<<-RUBY.strip_indent)
+      model.start_operation("Some Really Long Operation Name")
+                                                      ^^^^^^ Operation names should not be short and concise. [31/25]
+    RUBY
   end
 
   context 'Max: 32' do
@@ -18,95 +20,117 @@ describe RuboCop::Cop::SketchupSuggestions::OperationName, :config do
     end
 
     it 'allows Max operation name to be adjusted' do
-      inspect_source('model.start_operation("Some Really Long Operation Name")')
-      expect(cop.offenses).to be_empty
+      expect_no_offenses(<<-RUBY.strip_indent)
+        model.start_operation("Some Really Long Operation Name")
+      RUBY
     end
   end
 
   it 'does not register an offense when operation name is short double quoted' do
-    inspect_source('model.start_operation("Short")')
-    expect(cop.offenses).to be_empty
+    expect_no_offenses(<<-RUBY.strip_indent)
+      model.start_operation("Short")
+    RUBY
   end
 
   it 'does not register an offense when operation name is short single quoted' do
-    inspect_source("model.start_operation('Short')")
-    expect(cop.offenses).to be_empty
+    expect_no_offenses(<<-RUBY.strip_indent)
+      model.start_operation('Short')
+    RUBY
   end
 
   it 'registers an offense when operations name is empty' do
-    inspect_source('model.start_operation("")')
-    expect(cop.offenses.size).to eq(1)
+    expect_offense(<<-RUBY.strip_indent)
+        model.start_operation("")
+                              ^^ Operation names should not be empty.
+
+    RUBY
   end
 
   it 'registers an offense when operations name ends with a period' do
-    inspect_source('model.start_operation("Something.")')
-    expect(cop.offenses.size).to eq(1)
+    expect_offense(<<-RUBY.strip_indent)
+      model.start_operation("Something.")
+                            ^^^^^^^^^^^^ Operation name should be a short capitalized description. Expected: `"Something"`
+    RUBY
   end
 
   it 'does not register an offense when operation name with prepositions or conjunctions' do
-    inspect_source('model.start_operation("Short and Sweet")')
-    expect(cop.offenses).to be_empty
+    expect_no_offenses(<<-RUBY.strip_indent)
+      model.start_operation("Short and Sweet")
+    RUBY
   end
 
   it 'registers an offense when operation name is not capitalized' do
-    inspect_source('model.start_operation("doing stuff")')
-    expect(cop.offenses.size).to eq(1)
+    expect_offense(<<-RUBY.strip_indent)
+      model.start_operation("doing stuff")
+                            ^^^^^^^^^^^^^ Operation name should be a short capitalized description. Expected: `"Doing Stuff"`
+    RUBY
   end
 
   it 'expects underscore to be empty spaces' do
-    inspect_source('model.start_operation("Foo_bar")')
-    expect(cop.offenses.size).to eq(1)
+    expect_offense(<<-RUBY.strip_indent)
+      model.start_operation("Foo_bar")
+                            ^^^^^^^^^ Operation name should be a short capitalized description. Expected: `"Foo Bar"`
+    RUBY
   end
 
   it 'expects period to be empty spaces' do
-    inspect_source('model.start_operation("Foo.bar")')
-    expect(cop.offenses.size).to eq(1)
+    expect_offense(<<-RUBY.strip_indent)
+      model.start_operation("Foo.bar")
+                            ^^^^^^^^^ Operation name should be a short capitalized description. Expected: `"Foo Bar"`
+    RUBY
   end
 
   it 'trims white-space at start and end' do
-    inspect_source('model.start_operation("  Foo Bar  ")')
-    expect(cop.offenses.size).to eq(1)
+    expect_offense(<<-RUBY.strip_indent)
+      model.start_operation("  Foo Bar  ")
+                            ^^^^^^^^^^^^^ Operation name should be a short capitalized description. Expected: `"Foo Bar"`
+    RUBY
   end
 
   it 'collapses whitespace' do
-    inspect_source('model.start_operation("Foo  Bar")')
-    expect(cop.offenses.size).to eq(1)
+    expect_offense(<<-RUBY.strip_indent)
+      model.start_operation("Foo  Bar")
+                            ^^^^^^^^^^ Operation name should be a short capitalized description. Expected: `"Foo Bar"`
+    RUBY
   end
 
   it 'does not allow tabs' do
-    inspect_source('model.start_operation("Foo\tBar")')
-    expect(cop.offenses.size).to eq(1)
+    expect_offense(<<-RUBY.strip_indent)
+      model.start_operation("Foo\tBar")
+                            ^^^^^^^^^ Operation name should be a short capitalized description. Expected: `"Foo Bar"`
+    RUBY
   end
 
   it 'does not register an offense operation when name is capitalized' do
-    inspect_source('model.start_operation("Doing Stuff")')
-    expect(cop.offenses).to be_empty
+    expect_no_offenses(<<-RUBY.strip_indent)
+      model.start_operation("Doing Stuff")
+    RUBY
   end
 
   it 'ignores arguments which are not string literals' do
-    inspect_source(<<-RUBY.strip_indent)
+    expect_no_offenses(<<-RUBY.strip_indent)
       operation_name = "Hello World"
       model.start_operation(operation_name)
     RUBY
-    expect(cop.offenses).to be_empty
   end
 
   it 'only transform the first character allowing words like HTML' do
-    inspect_source('model.start_operation("Doing HTML")')
-    expect(cop.offenses).to be_empty
+    expect_no_offenses(<<-RUBY.strip_indent)
+      model.start_operation("Doing HTML")
+    RUBY
   end
 
   it 'only transform the first character allowing words like SketchUp' do
-    inspect_source('model.start_operation("Doing SketchUp")')
-    expect(cop.offenses).to be_empty
+    expect_no_offenses(<<-RUBY.strip_indent)
+      model.start_operation("Doing SketchUp")
+    RUBY
   end
 
   it 'handles start_operation without arguments' do
-    inspect_source(<<-RUBY.strip_indent)
+    expect_no_offenses(<<-RUBY.strip_indent)
       CustomClass.start_operation do
       end
     RUBY
-    expect(cop.offenses).to be_empty
   end
 
 end

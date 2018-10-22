@@ -9,56 +9,56 @@ describe RuboCop::Cop::SketchupRequirements::ApiNamespace do
   described_class::NAMESPACES.each do |var|
 
     it "registers an offense for adding an instance method to #{var} module" do
-      inspect_source(<<-RUBY.strip_indent)
+      expect_offense(<<-RUBY.strip_indent)
         module #{var}
           def example
+              ^^^^^^^ Do not modify the SketchUp API.
           end
         end
       RUBY
-      expect(cop.offenses.size).to eq(1)
     end
 
     it "registers an offense for adding a module method to #{var} module" do
-      inspect_source(<<-RUBY.strip_indent)
+      expect_offense(<<-RUBY.strip_indent)
         module #{var}
           def self.example
+                   ^^^^^^^ Do not modify the SketchUp API.
           end
         end
       RUBY
-      expect(cop.offenses.size).to eq(1)
     end
 
     it "registers an offense for adding a constant to #{var} module" do
-      inspect_source(<<-RUBY.strip_indent)
+      expect_offense(<<-RUBY.strip_indent)
         module #{var}
           EXAMPLE = 123
+          ^^^^^^^ Do not modify the SketchUp API.
         end
       RUBY
-      expect(cop.offenses.size).to eq(1)
     end
 
     it "registers an offense for adding a module to #{var} module" do
-      inspect_source(<<-RUBY.strip_indent)
+      expect_offense(<<-RUBY.strip_indent)
         module #{var}
           module Example
+                 ^^^^^^^ Do not modify the SketchUp API.
           end
         end
       RUBY
-      expect(cop.offenses.size).to eq(1)
     end
 
     it "registers an offense for adding a class to #{var} module" do
-      inspect_source(<<-RUBY.strip_indent)
+      expect_offense(<<-RUBY.strip_indent)
         module #{var}
           class Example
+                ^^^^^^^ Do not modify the SketchUp API.
           end
         end
       RUBY
-      expect(cop.offenses.size).to eq(1)
     end
 
     it 'does not register an offense for block local methods' do
-      inspect_source(<<-RUBY.strip_indent)
+      expect_no_offenses(<<-RUBY.strip_indent)
         module Example
           10.times do
             def hello
@@ -66,7 +66,6 @@ describe RuboCop::Cop::SketchupRequirements::ApiNamespace do
           end
         end
       RUBY
-      expect(cop.offenses.size).to eq(0)
     end
   end
 

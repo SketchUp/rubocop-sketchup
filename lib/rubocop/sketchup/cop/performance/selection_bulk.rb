@@ -25,6 +25,9 @@ module RuboCop
       #   faces = model.active_entities.grep(Sketchup::Face)
       #   model.selection.add(faces)
       class SelectionBulkChanges < SketchUp::Cop
+
+        include RangeHelp
+
         MSG = 'Prefer changing selection in bulk instead of modifying '\
               'selection within loops.'.freeze
 
@@ -67,8 +70,9 @@ module RuboCop
           return unless selection?(node)
           return unless node.ancestors.any?(&method(:iterator?))
 
-          add_offense(node, location: :expression)
+          add_offense(node, location: range_with_receiver(node))
         end
+
       end
     end
   end

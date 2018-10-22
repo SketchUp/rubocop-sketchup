@@ -16,7 +16,7 @@ module RuboCop
 
           # TODO(thomthom): Should we try to detect use of #typename
           # in context of comparing against a string?
-          add_offense(node, location: :expression)
+          add_offense(node, location: :selector)
         end
       end
     end

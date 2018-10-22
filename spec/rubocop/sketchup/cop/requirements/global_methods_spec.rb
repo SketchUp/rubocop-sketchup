@@ -7,59 +7,65 @@ describe RuboCop::Cop::SketchupRequirements::GlobalMethods do
   subject(:cop) { described_class.new }
 
   it 'registers an offense for global methods' do
-    inspect_source('def example; end')
-    expect(cop.offenses.size).to eq(1)
+    expect_offense(<<-RUBY.strip_indent)
+      def example; end
+          ^^^^^^^ Do not introduce global methods.
+    RUBY
   end
 
   it 'does not register an offense for namespaced methods' do
-    inspect_source(<<-RUBY.strip_indent)
+    expect_no_offenses(<<-RUBY.strip_indent)
       module Example
         def namespaced_example; end
       end
     RUBY
-    expect(cop.offenses).to be_empty
   end
 
   it 'does not register an offense for namespaced Object methods' do
-    inspect_source(<<-RUBY.strip_indent)
+    expect_no_offenses(<<-RUBY.strip_indent)
       module Example
         class Object
           def namespaced_example; end
         end
       end
     RUBY
-    expect(cop.offenses).to be_empty
   end
 
   # TODO(thomthom): Move this to RubyCoreNamespace cop since it's a class
   # method?
   it 'register an offense for Object methods' do
-    inspect_source('def Object.foo; end')
-    expect(cop.offenses.size).to eq(1)
+    expect_offense(<<-RUBY.strip_indent)
+      def Object.foo; end
+                 ^^^ Do not introduce global methods.
+    RUBY
   end
 
   it 'does not register an offense for class method' do
-    inspect_source('def Example.foo; end')
-    expect(cop.offenses).to be_empty
+    expect_no_offenses(<<-RUBY.strip_indent)
+      def Example.foo; end
+    RUBY
   end
 
   it 'does not register an offense for class method with argument' do
-    inspect_source('def Example.bar(hello); end')
-    expect(cop.offenses).to be_empty
+    expect_no_offenses(<<-RUBY.strip_indent)
+      def Example.bar(hello); end
+    RUBY
   end
 
   it 'does not register an offense for class method with splat arguments' do
-    inspect_source('def Example.biz(*args); end')
-    expect(cop.offenses).to be_empty
+    expect_no_offenses(<<-RUBY.strip_indent)
+      def Example.biz(*args); end
+    RUBY
   end
 
   it 'does not register an offense for nested class method with argument' do
-    inspect_source('def (Example::Nested).baz(hello); end')
-    expect(cop.offenses).to be_empty
+    expect_no_offenses(<<-RUBY.strip_indent)
+      def (Example::Nested).baz(hello); end
+    RUBY
   end
 
   it 'does not register an offense for block local methods' do
-    inspect_source(<<-RUBY.strip_indent)
+    expect_no_offenses(<<-RUBY.strip_indent)
       module Example
         10.times do
           def hello
@@ -67,7 +73,6 @@ describe RuboCop::Cop::SketchupRequirements::GlobalMethods do
         end
       end
     RUBY
-    expect(cop.offenses).to be_empty
   end
 
 end
