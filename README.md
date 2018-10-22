@@ -6,6 +6,8 @@ Code analysis for SketchUp extensions using the [SketchUp Ruby API](http://ruby.
 
 Tool intended to assist with development of SketchUp extension by providing static analysis for common issues.
 
+![](manual/images/rubocop-example.png)
+
 
 ## Installation
 
