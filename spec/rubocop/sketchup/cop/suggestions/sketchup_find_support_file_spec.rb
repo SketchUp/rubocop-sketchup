@@ -12,9 +12,11 @@ describe RuboCop::Cop::SketchupSuggestions::SketchupFindSupportFile do
   end
 
   it 'registers an offense when using Sketchup.find_support_file without a string literals' do
-    inspect_source(['filename = "filename.rb"',
-                    'Sketchup.find_support_file(filename)'])
-                    expect(cop.offenses.size).to eq(1)
+    inspect_source(<<-RUBY.strip_indent)
+      filename = "filename.rb"
+      Sketchup.find_support_file(filename)
+    RUBY
+    expect(cop.offenses.size).to eq(1)
   end
 
 end

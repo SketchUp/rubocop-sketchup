@@ -20,6 +20,7 @@ module RuboCop
 
         def on_const(node)
           return unless sketchup_set?(node)
+
           add_offense(node, location: :expression)
         end
 

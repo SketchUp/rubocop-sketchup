@@ -17,6 +17,7 @@ module RuboCop
 
         def on_send(node)
           return unless require_all?(node)
+
           add_offense(node, location: :expression)
         end
 

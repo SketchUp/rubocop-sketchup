@@ -123,10 +123,12 @@ module RuboCop
 
         def on_def(node)
           return unless observer_event?(node)
+
           operations = start_operation(node)
           operations.each { |operation|
             _name, _disable_ui, _next_tr, transparent = operation.arguments
             next unless transparent.nil? || transparent.falsey_literal?
+
             location = operation_location(operation)
             add_offense(operation, location: location, severity: :error)
           }

@@ -29,8 +29,10 @@ describe RuboCop::Cop::SketchupSuggestions::SketchupRequire do
   it 'does not register an offense when using `Sketchup.require` with a variable' do
     # Don't flag path params which aren't string variables as it's much harder
     # to resolve the content of the variable.
-    inspect_source(['filename = "filename.rb"',
-                    'Sketchup.require(filename)'])
+    inspect_source(<<-RUBY.strip_indent)
+      filename = "filename.rb"
+      Sketchup.require(filename)
+    RUBY
     expect(cop.offenses).to be_empty
   end
 
@@ -60,8 +62,10 @@ describe RuboCop::Cop::SketchupSuggestions::SketchupRequire do
     it 'does not register an offense when using `SketchupExtension.new` variable for load param' do
       # Don't flag path params which aren't string variables as it's much harder
       # to resolve the content of the variable.
-      inspect_source(['loader = "Example/main.rb"',
-                      'extension = SketchupExtension.new("Example", loader)'])
+      inspect_source(<<-RUBY.strip_indent)
+        loader = "Example/main.rb"
+        extension = SketchupExtension.new("Example", loader)
+      RUBY
       expect(cop.offenses).to be_empty
     end
 

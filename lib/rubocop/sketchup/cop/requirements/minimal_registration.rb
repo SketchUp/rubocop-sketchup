@@ -52,15 +52,18 @@ module RuboCop
 
         def extension_file?(filename)
           return false unless filename.include?('/')
+
           first_directory = filename.split('/').first
           @extension_basename.casecmp(first_directory) == 0
         end
 
         def on_send(node)
           return unless @extension_basename
+
           filename = require_filename(node)
           return if filename.nil?
           return unless extension_file?(filename)
+
           add_offense(node, severity: :error)
         end
 

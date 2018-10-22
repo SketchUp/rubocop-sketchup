@@ -22,8 +22,10 @@ describe RuboCop::Cop::SketchupRequirements::RegisterExtension do
   end
 
   it 'registers an offense for extension not explicitly set to load by default' do
-    inspect_source(['some_var = 123',
-      'Sketchup.register_extension(extension, some_var)'])
+    inspect_source(<<-RUBY.strip_indent)
+      some_var = 123
+      Sketchup.register_extension(extension, some_var)
+    RUBY
     expect(cop.offenses.size).to eq(1)
   end
 

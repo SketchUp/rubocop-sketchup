@@ -34,6 +34,7 @@ module RuboCop
             end
             load_arg = args[1]
             next if load_arg.true_type?
+
             add_offense(load_arg, severity: :error)
           }
         end

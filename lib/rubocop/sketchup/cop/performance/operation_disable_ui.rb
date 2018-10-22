@@ -16,6 +16,7 @@ module RuboCop
         def on_send(node)
           _, method_name, *args = *node
           return unless method_name == :start_operation
+
           if args.size < 2
             add_offense(node, location: :expression)
             return
@@ -23,6 +24,7 @@ module RuboCop
           argument = args[1]
           disable_ui = argument.truthy_literal?
           return if disable_ui
+
           add_offense(argument, location: :expression)
         end
       end

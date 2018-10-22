@@ -33,11 +33,13 @@ describe RuboCop::Cop::SketchupSuggestions::Compatibility do
     end
 
     it 'registers an register an offense when using incompatible observer method' do
-      inspect_source(['class ExampleObserver < Sketchup::Entities',
-                      '  def onActiveSectionPlaneChanged(entities)',
-                      '  end',
-                      'end'])
-                      expect(cop.offenses.size).to eq(1)
+      inspect_source(<<-RUBY.strip_indent)
+        class ExampleObserver < Sketchup::Entities
+          def onActiveSectionPlaneChanged(entities)
+          end
+        end
+      RUBY
+      expect(cop.offenses.size).to eq(1)
     end
 
   end
@@ -72,10 +74,12 @@ describe RuboCop::Cop::SketchupSuggestions::Compatibility do
     end
 
     it 'does not register an offense when using compatible observer method' do
-      inspect_source(['class ExampleObserver < Sketchup::Entities',
-                      '  def onActiveSectionPlaneChanged(entities)',
-                      '  end',
-                      'end'])
+      inspect_source(<<-RUBY.strip_indent)
+        class ExampleObserver < Sketchup::Entities
+          def onActiveSectionPlaneChanged(entities)
+          end
+        end
+      RUBY
       expect(cop.offenses).to be_empty
     end
 

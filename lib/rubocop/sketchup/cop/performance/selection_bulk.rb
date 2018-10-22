@@ -66,6 +66,7 @@ module RuboCop
         def on_send(node)
           return unless selection?(node)
           return unless node.ancestors.any?(&method(:iterator?))
+
           add_offense(node, location: :expression)
         end
       end

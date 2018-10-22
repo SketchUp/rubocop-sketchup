@@ -19,6 +19,7 @@ module RuboCop
 
         def on_def(node)
           return unless observer_method?(node)
+
           feature_name = "##{node.method_name}"
           check_feature(node, :method, feature_name)
         end
@@ -34,6 +35,7 @@ module RuboCop
             # methods in Ruby itself and other older features.
             # We try to match names that are unlikely to cause much noise.
             return unless checkable_instance_method?(node)
+
             feature_name = "##{node.method_name}"
           end
           check_feature(node, :method, feature_name)
@@ -50,11 +52,13 @@ module RuboCop
 
         def check_feature(node, type, feature_name)
           return unless sketchup_target_version?
+
           full_feature_name = feature_name
           FEATURES.each { |feature_set|
             version = feature_set[:version]
             feature_version = SketchUp::SketchUpVersion.new(version)
             next unless feature_version > sketchup_target_version
+
             objects = feature_set[:types][type] || []
             if type == :method && instance_method?(feature_name)
               # Instance methods are simply matching the method name since it's

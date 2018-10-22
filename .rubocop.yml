@@ -93,6 +93,11 @@ Metrics/ModuleLength:
     - lib/rubocop/sketchup/features.rb
 
 
+Naming/FileName:
+  Exclude:
+    - lib/rubocop-sketchup.rb # Not changing the name now.
+
+
 # When performance isn't critical, computing sizes avoid magic numbers that
 # might get out of sync.
 Performance/FixedSize:

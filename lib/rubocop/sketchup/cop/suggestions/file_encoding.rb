@@ -40,6 +40,7 @@ module RuboCop
         def on_send(node)
           return if file_loaded?(node)
           return if node.arguments.none?(&method(:magic_file_or_dir?))
+
           add_offense(node, location: :expression)
         end
 
@@ -54,8 +55,10 @@ module RuboCop
           # After assigning __FILE__ or __dir_ to a variable, check the parent
           # scope to whether .force_encoding is called on the variable.
           return if node.parent.nil?
+
           encoded = force_encoding(node.parent).to_a
           return if encoded.include?(lhs)
+
           add_offense(node)
         end
 

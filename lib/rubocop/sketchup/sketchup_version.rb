@@ -78,6 +78,7 @@ module RuboCop
         unless VALID_VERSIONS.include?(version_parts)
           raise InvalidVersion, "#{version} is not a valid SketchUp version"
         end
+
         version_parts
       end
 

@@ -16,6 +16,7 @@ module RuboCop
 
         def on_send(node)
           return unless set_texture_projection?(node)
+
           add_offense(node, location: :expression)
         end
 

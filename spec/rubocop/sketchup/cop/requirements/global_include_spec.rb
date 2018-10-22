@@ -12,40 +12,50 @@ describe RuboCop::Cop::SketchupRequirements::GlobalInclude do
   end
 
   it 'does not register an offense for Kernel include' do
-    inspect_source(['module Kernel',
-                    '  include Math',
-                    'end'])
+    inspect_source(<<-RUBY.strip_indent)
+      module Kernel
+        include Math
+      end
+    RUBY
     expect(cop.offenses.size).to eq(1)
   end
 
 
   it 'does not register an offense for module namespaced include' do
-    inspect_source(['module Example',
-                    '  include Math',
-                    'end'])
+    inspect_source(<<-RUBY.strip_indent)
+      module Example
+        include Math
+      end
+    RUBY
     expect(cop.offenses).to be_empty
   end
 
   it 'does not register an offense for module namespaced include' do
-    inspect_source(['module Example::Kernel',
-                    '  include Math',
-                    'end'])
+    inspect_source(<<-RUBY.strip_indent)
+      module Example::Kernel
+        include Math
+      end
+    RUBY
     expect(cop.offenses).to be_empty
   end
 
   it 'does not register an offense for module namespaced include' do
-    inspect_source(['module Example',
-                    '  module Kernel',
-                    '    include Math',
-                    '  end',
-                    'end'])
+    inspect_source(<<-RUBY.strip_indent)
+      module Example
+        module Kernel
+          include Math
+        end
+      end
+    RUBY
     expect(cop.offenses).to be_empty
   end
 
   it 'does not register an offense for class namespaced include' do
-    inspect_source(['class Example',
-                    '  include Math',
-                    'end'])
+    inspect_source(<<-RUBY.strip_indent)
+      class Example
+        include Math
+      end
+    RUBY
     expect(cop.offenses).to be_empty
   end
 

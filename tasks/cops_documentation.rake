@@ -276,6 +276,7 @@ task generate_cops_documentation: :yard_for_generate_documentation do
     margin = ' ' * value_margin
     max_length = 80 - value_margin
     return value if value.size <= 80 - (2 + key.size + 2)
+
     formatted = ''.dup
     line = ''.dup
     value.split(' ').each { |word|
@@ -305,6 +306,7 @@ task generate_cops_documentation: :yard_for_generate_documentation do
       sketchup_cops = cops_of_department(cops, department)
       sketchup_cops.each { |cop|
         next if config_cops.include?(cop.cop_name)
+
         warn "Cop with missing config: #{cop.cop_name}"
       }
     end

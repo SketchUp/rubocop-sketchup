@@ -75,8 +75,10 @@ module RuboCop
 
       def department_exclude_config?
         return false unless all_cops_config.key?('SketchUp')
+
         sketchup_config = all_cops_config.fetch('SketchUp')
         return false unless sketchup_config.key?(department_name)
+
         sketchup_config.fetch(department_name).key?('Exclude')
       end
 

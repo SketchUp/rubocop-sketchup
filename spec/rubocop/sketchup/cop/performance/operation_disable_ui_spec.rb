@@ -22,8 +22,10 @@ describe RuboCop::Cop::SketchupPerformance::OperationDisableUI do
   end
 
   it 'registers an offense when starting an operation WITH VAR' do
-    inspect_source(['disable_ui = false',
-                    'model.start_operation("Hello", disable_ui)'])
+    inspect_source(<<-RUBY.strip_indent)
+      disable_ui = false
+      model.start_operation("Hello", disable_ui)
+    RUBY
     expect(cop.offenses.size).to eq(1)
   end
 

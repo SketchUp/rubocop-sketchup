@@ -59,6 +59,7 @@ module RuboCop
             return
           end
           return if valid_filename?(filename)
+
           add_offense(node, location: :expression)
         end
 

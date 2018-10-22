@@ -36,6 +36,7 @@ module RuboCop
         def on_gvasgn(node)
           global_var, = *node
           return unless hl_global_var?(global_var)
+
           add_offense(node, location: :name, severity: :error)
         end
 

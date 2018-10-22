@@ -12,16 +12,20 @@ describe RuboCop::Cop::SketchupRequirements::GlobalConstants do
   end
 
   it 'does not register an offense for namespaced constants' do
-    inspect_source(['module Example',
-                    '  NAMESPACED_EXAMPLE = 123',
-                    'end'])
+    inspect_source(<<-RUBY.strip_indent)
+      module Example
+        NAMESPACED_EXAMPLE = 123
+      end
+    RUBY
     expect(cop.offenses).to be_empty
   end
 
   it 'does not register an offense for qualified namespaced constants' do
-    inspect_source(['module Example',
-                    'end',
-                    'Example::NAMESPACED_EXAMPLE = 123'])
+    inspect_source(<<-RUBY.strip_indent)
+      module Example
+      end
+      Example::NAMESPACED_EXAMPLE = 123
+    RUBY
     expect(cop.offenses).to be_empty
   end
 

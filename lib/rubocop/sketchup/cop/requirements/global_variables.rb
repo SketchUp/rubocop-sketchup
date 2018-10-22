@@ -86,6 +86,7 @@ module RuboCop
           global_var, = *node
 
           return if allowed_var?(global_var)
+
           add_offense(node, location: :name, severity: :error)
         end
       end

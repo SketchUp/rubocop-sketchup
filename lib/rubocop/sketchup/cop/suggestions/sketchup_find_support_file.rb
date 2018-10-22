@@ -29,6 +29,7 @@ module RuboCop
 
         def on_send(node)
           return unless sketchup_find_support_file?(node)
+
           add_offense(node, location: :expression)
         end
 

@@ -24,6 +24,7 @@ module RuboCop
 
       def check_namespace(node)
         return unless in_namespace?(node)
+
         add_offense(node, location: :name, severity: :error)
       end
 
@@ -31,6 +32,7 @@ module RuboCop
         # parent_module_name might return nil if for instance a method is
         # defined within a block. (Apparently that is possible...)
         return false if node.parent_module_name.nil?
+
         namespace = SketchUp::Namespace.new(node.parent_module_name)
         namespaces.include?(namespace.first)
       end

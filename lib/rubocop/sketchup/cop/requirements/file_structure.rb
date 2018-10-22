@@ -80,6 +80,7 @@ module RuboCop
 
         def already_run?
           return true if @@already_run
+
           @@already_run = true
           false
         end

@@ -12,18 +12,22 @@ describe RuboCop::Cop::SketchupRequirements::GlobalMethods do
   end
 
   it 'does not register an offense for namespaced methods' do
-    inspect_source(['module Example',
-                    '  def namespaced_example; end',
-                    'end'])
+    inspect_source(<<-RUBY.strip_indent)
+      module Example
+        def namespaced_example; end
+      end
+    RUBY
     expect(cop.offenses).to be_empty
   end
 
   it 'does not register an offense for namespaced Object methods' do
-    inspect_source(['module Example',
-                    '  class Object',
-                    '    def namespaced_example; end',
-                    '  end',
-                    'end'])
+    inspect_source(<<-RUBY.strip_indent)
+      module Example
+        class Object
+          def namespaced_example; end
+        end
+      end
+    RUBY
     expect(cop.offenses).to be_empty
   end
 
@@ -55,12 +59,14 @@ describe RuboCop::Cop::SketchupRequirements::GlobalMethods do
   end
 
   it 'does not register an offense for block local methods' do
-    inspect_source(['module Example',
-                    '  10.times do',
-                    '    def hello',
-                    '    end',
-                    '  end',
-                    'end'])
+    inspect_source(<<-RUBY.strip_indent)
+      module Example
+        10.times do
+          def hello
+          end
+        end
+      end
+    RUBY
     expect(cop.offenses).to be_empty
   end
 

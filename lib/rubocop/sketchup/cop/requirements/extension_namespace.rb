@@ -52,6 +52,7 @@ module RuboCop
           return unless parent.top_level?
           # Don't check excluded namespaces.
           return if exempted?(namespace)
+
           check_namespace(node, namespace)
         end
 
@@ -64,11 +65,13 @@ module RuboCop
           # Make sure the namespace isn't part of reserved namespaces that other
           # cops are checking.
           return if reserved?(namespace)
+
           # Remember the first namespace encountered and log an offence if
           # more top level namespaces are registered.
           top = namespace.first
           @@namespace ||= top
           return if @@namespace == top
+
           add_offense(node, location: :name, severity: :error)
         end
 
@@ -77,6 +80,7 @@ module RuboCop
           return true if RubyCoreNamespace::NAMESPACES.include?(top)
           return true if RubyStdLibNamespace::NAMESPACES.include?(top)
           return true if ApiNamespace::NAMESPACES.include?(top)
+
           false
         end
 

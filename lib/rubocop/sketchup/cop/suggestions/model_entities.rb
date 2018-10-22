@@ -28,6 +28,7 @@ module RuboCop
 
         def model_entities?(node)
           return true if active_model_entities?(node)
+
           name = entities_receiver(node)
           name && model_variable?(name)
         end

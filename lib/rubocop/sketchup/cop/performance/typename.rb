@@ -13,6 +13,7 @@ module RuboCop
         def on_send(node)
           _, method_name = *node
           return unless method_name == :typename
+
           # TODO(thomthom): Should we try to detect use of #typename
           # in context of comparing against a string?
           add_offense(node, location: :expression)

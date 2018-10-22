@@ -23,6 +23,7 @@ module RuboCop
 
         def on_send(node)
           return unless exit?(node)
+
           add_offense(node, location: :expression, severity: :error)
         end
       end

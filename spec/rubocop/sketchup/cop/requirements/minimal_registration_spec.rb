@@ -12,38 +12,41 @@ describe RuboCop::Cop::SketchupRequirements::MinimalRegistration do
   end
 
   it 'registers an offense for requiring extensions files in the root file' do
-    inspect_source(['module Example',
-                    '  require "hello/foo"',
-                    '  Sketchup.require "hello/bar"',
-                    '  load "hello/biz"',
-                    '  Sketchup.load "hello/baz"',
-                    '  extension = SketchupExtension.new("Extension Name", filename)',
-                    '  Sketchup.register_extension(extension, true)',
-                    'end'],
-                    './src/hello.rb')
+    inspect_source(<<-RUBY.strip_indent, './src/hello.rb')
+      module Example
+        require "hello/foo"
+        Sketchup.require "hello/bar"
+        load "hello/biz"
+        Sketchup.load "hello/baz"
+        extension = SketchupExtension.new("Extension Name", filename)
+        Sketchup.register_extension(extension, true)
+      end
+    RUBY
     expect(cop.offenses.size).to eq(4)
   end
 
   it 'does not register an offense for requiring files not in the extension' do
-    inspect_source(['module Example',
-                    '  require "json"',
-                    '  extension = SketchupExtension.new("Extension Name", filename)',
-                    '  Sketchup.register_extension(extension, true)',
-                    'end'],
-                    './src/hello.rb')
+    inspect_source(<<-RUBY.strip_indent, './src/hello.rb')
+      module Example
+        require "json"
+        extension = SketchupExtension.new("Extension Name", filename)
+        Sketchup.register_extension(extension, true)
+      end
+    RUBY
     expect(cop.offenses).to be_empty
   end
 
   it 'does not register an offense for requiring extensions files outside the root file' do
-    inspect_source(['module Example',
-                    '  require "hello/foo"',
-                    '  Sketchup.require "hello/bar"',
-                    '  load "hello/biz"',
-                    '  Sketchup.load "hello/baz"',
-                    '  extension = SketchupExtension.new("Extension Name", filename)',
-                    '  Sketchup.register_extension(extension, true)',
-                    'end'],
-                    './src/hello/main.rb')
+    inspect_source(<<-RUBY.strip_indent, './src/hello/main.rb')
+      module Example
+        require "hello/foo"
+        Sketchup.require "hello/bar"
+        load "hello/biz"
+        Sketchup.load "hello/baz"
+        extension = SketchupExtension.new("Extension Name", filename)
+        Sketchup.register_extension(extension, true)
+      end
+    RUBY
     expect(cop.offenses).to be_empty
   end
 

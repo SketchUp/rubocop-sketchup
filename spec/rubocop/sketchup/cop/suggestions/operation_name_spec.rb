@@ -84,8 +84,10 @@ describe RuboCop::Cop::SketchupSuggestions::OperationName, :config do
   end
 
   it 'ignores arguments which are not string literals' do
-    inspect_source(['operation_name = "Hello World"',
-                    'model.start_operation(operation_name)'])
+    inspect_source(<<-RUBY.strip_indent)
+      operation_name = "Hello World"
+      model.start_operation(operation_name)
+    RUBY
     expect(cop.offenses).to be_empty
   end
 
@@ -100,8 +102,10 @@ describe RuboCop::Cop::SketchupSuggestions::OperationName, :config do
   end
 
   it 'handles start_operation without arguments' do
-    inspect_source(['CustomClass.start_operation do',
-                    'end'])
+    inspect_source(<<-RUBY.strip_indent)
+      CustomClass.start_operation do
+      end
+    RUBY
     expect(cop.offenses).to be_empty
   end
 

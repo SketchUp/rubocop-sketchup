@@ -44,6 +44,7 @@ module RuboCop
         offenses.each { |offense|
           # Report only SketchUp related cops.
           next unless offense.cop_name.start_with?('Sketchup')
+
           report = OpenStruct.new(path: file, offense: offense)
           categories[offense.cop_name] ||= []
           categories[offense.cop_name] << report
@@ -152,6 +153,7 @@ module RuboCop
           count = 0
           categories.each { |category, offenses|
             next unless department(category) == dep
+
             count += offenses.size
           }
           count

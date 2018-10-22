@@ -21,9 +21,11 @@ module RuboCop
           _, method_name, *args = *node
           return unless method_name == :start_operation
           return if args.empty? || !args.first.str_type?
+
           operation_name = args.first.str_content
           # We can only inspect string literals.
           return unless operation_name.is_a?(String)
+
           # Check the format of the operation name.
           unless acceptable_operation_name?(operation_name)
             msg = %(#{MSG} Expected: `"#{titleize(operation_name)}"`)
@@ -61,6 +63,7 @@ module RuboCop
           # Capitalization, no programmer name, no punctuation.
           return false if name.end_with?('.')
           return false if titleize(name) != name
+
           true
         end
 
