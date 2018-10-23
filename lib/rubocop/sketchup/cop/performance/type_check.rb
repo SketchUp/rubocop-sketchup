@@ -33,21 +33,29 @@ module RuboCop
         MSG = 'String comparisons are very slow, prefer `.is_a?` '\
               'instead.'.freeze
 
+        def_node_matcher :string_class_compare?, <<-PATTERN
+          (send
+            (send
+              (send
+                _ :class) :name) {:== :=== :!=}
+            (str _))
+        PATTERN
+
         def on_send(node)
-          return unless node.comparison_method?
+          return unless string_class_compare?(node)
 
+          add_offense(node, location: comparison_range(node))
+        end
+
+        private
+
+        def comparison_range(node)
           lhs = node.receiver
-          return unless lhs.method_name == :name
-          return unless lhs.receiver.send_type?
-          return unless lhs.receiver.method_name == :class
-
           rhs = node.arguments.first
-          return unless rhs.str_type?
 
           loc_begin = lhs.receiver.loc.selector.begin_pos
           loc_end = rhs.loc.expression.end_pos
-          range = range_between(loc_begin, loc_end)
-          add_offense(node, location: range)
+          range_between(loc_begin, loc_end)
         end
       end
     end
