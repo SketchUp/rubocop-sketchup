@@ -67,8 +67,6 @@ module RuboCop
           :warning
         when :SketchupSuggestions
           :convention
-        else
-          nil
         end
       end
 

@@ -83,6 +83,43 @@ model.selection.add(faces)
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_performance.md#selectionbulkchanges](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_performance.md#selectionbulkchanges)
 
+## SketchupPerformance/TypeCheck
+
+Enabled by default | Supports autocorrection
+--- | ---
+Enabled | No
+
+String comparisons for type checks are very slow.
+
+`entity.class.name == 'Sketchup::Face'` is slow because it performs a
+string comparison. `is_a?` is much faster because it's a simple type
+check.
+
+If you know you need a strict type check, compare the classes directly:
+`entity.class == Sketchup::Face`.
+
+### Examples
+
+#### Poor performance
+
+```ruby
+entity.class.name == 'Sketchup::Face'
+```
+#### Good performance
+
+```ruby
+entity.class == Sketchup::Face
+```
+#### Good performance and idiomatic Ruby convention
+
+```ruby
+entity.is_a?(Sketchup::Face)
+```
+
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_performance.md#typecheck](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_performance.md#typecheck)
+
 ## SketchupPerformance/Typename
 
 Enabled by default | Supports autocorrection

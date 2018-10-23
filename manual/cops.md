@@ -50,6 +50,7 @@ In the following section you find all available cops:
 * [SketchupPerformance/OpenSSL](cops_performance.md#sketchupperformanceopenssl)
 * [SketchupPerformance/OperationDisableUI](cops_performance.md#sketchupperformanceoperationdisableui)
 * [SketchupPerformance/SelectionBulkChanges](cops_performance.md#sketchupperformanceselectionbulkchanges)
+* [SketchupPerformance/TypeCheck](cops_performance.md#sketchupperformancetypecheck)
 * [SketchupPerformance/Typename](cops_performance.md#sketchupperformancetypename)
 
 #### Department [SketchupRequirements](cops_requirements.md)

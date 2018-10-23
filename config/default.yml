@@ -85,6 +85,11 @@ SketchupPerformance/SelectionBulkChanges:
   Reference: https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_performance.md#selectionbulkchanges
   Enabled: true
 
+SketchupPerformance/TypeCheck:
+  Description: String comparisons for type checks are very slow.
+  Reference: https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_performance.md#typecheck
+  Enabled: true
+
 SketchupPerformance/Typename:
   Description: Using `.typename` is very slow, prefer `.is_a?` instead.
   Reference: https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_performance.md#typename
