@@ -5,6 +5,7 @@
 require 'yaml'
 require 'yard'
 require 'stringio'
+require 'rainbow'
 require 'rubocop'
 require 'rubocop-sketchup'
 
@@ -307,7 +308,7 @@ task generate_cops_documentation: :yard_for_generate_documentation do
       sketchup_cops.each { |cop|
         next if config_cops.include?(cop.cop_name)
 
-        warn "Cop with missing config: #{cop.cop_name}"
+        warn Rainbow("Cop with missing config: #{cop.cop_name}").red
       }
     end
   end
