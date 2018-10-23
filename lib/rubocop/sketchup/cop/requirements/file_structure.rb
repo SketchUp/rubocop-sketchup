@@ -38,8 +38,7 @@ module RuboCop
                   'Found: %d'
             add_offense(nil,
                 location: range,
-                message: format(msg, root_ruby_files.size),
-                severity: :error)
+                message: format(msg, root_ruby_files.size))
             return
           end
 
@@ -56,8 +55,7 @@ module RuboCop
             msg = 'Extensions must have exactly one support directory. Found %d'
             add_offense(nil,
                 location: range,
-                message: format(msg, sub_folders.size),
-                severity: :error)
+                message: format(msg, sub_folders.size))
             return
           end
 
@@ -69,8 +67,7 @@ module RuboCop
             msg = format(msg, extension_basename, support_directory.basename)
             add_offense(nil,
                 location: range,
-                message: msg,
-                severity: :error)
+                message: msg)
           end
         end
 

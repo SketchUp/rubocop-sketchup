@@ -35,7 +35,7 @@ module RuboCop
                     "It's a monkey-patched addition by Dynamic Components."
           add_offense(node,
               location: :selector,
-              severity: :error,
+              severity: :warning,
               message: message)
         end
 

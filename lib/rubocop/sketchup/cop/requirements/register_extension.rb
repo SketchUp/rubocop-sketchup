@@ -29,13 +29,13 @@ module RuboCop
         def on_send(node)
           sketchup_register_extension(node).each { |args|
             if args.size < 2
-              add_offense(node, location: :selector, severity: :error)
+              add_offense(node, location: :selector)
               next
             end
             load_arg = args[1]
             next if load_arg.true_type?
 
-            add_offense(load_arg, severity: :error)
+            add_offense(load_arg)
           }
         end
 

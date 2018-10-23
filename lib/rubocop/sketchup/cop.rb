@@ -53,6 +53,25 @@ module RuboCop
 
       private
 
+      def default_severity
+        sketchup_severity || super
+      end
+
+      def sketchup_severity
+        case self.class.department
+        when :SketchupRequirements
+          :error
+        when :SketchupDeprecations
+          :warning
+        when :SketchupPerformance
+          :warning
+        when :SketchupSuggestions
+          :convention
+        else
+          nil
+        end
+      end
+
       def department_name
         self.class.department.to_s
       end

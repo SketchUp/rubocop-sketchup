@@ -130,7 +130,7 @@ module RuboCop
             next unless transparent.nil? || transparent.falsey_literal?
 
             location = operation_location(operation)
-            add_offense(operation, location: location, severity: :error)
+            add_offense(operation, location: location)
           }
         end
 

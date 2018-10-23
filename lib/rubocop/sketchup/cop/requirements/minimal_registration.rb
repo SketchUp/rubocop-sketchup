@@ -64,7 +64,7 @@ module RuboCop
           return if filename.nil?
           return unless extension_file?(filename)
 
-          add_offense(node, severity: :error)
+          add_offense(node)
         end
 
       end

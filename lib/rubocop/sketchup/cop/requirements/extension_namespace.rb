@@ -72,7 +72,7 @@ module RuboCop
           @@namespace ||= top
           return if @@namespace == top
 
-          add_offense(node, location: :name, severity: :error)
+          add_offense(node, location: :name)
         end
 
         def reserved?(namespace)

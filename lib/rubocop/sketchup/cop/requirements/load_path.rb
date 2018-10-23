@@ -67,14 +67,14 @@ module RuboCop
           global_var, = *node
           return unless load_path?(global_var)
 
-          add_offense(node, location: :expression, severity: :error)
+          add_offense(node, location: :expression)
         end
 
         def on_send(node)
           method_name = load_path_mutator?(node)
           return unless method_name
 
-          add_offense(node, location: :expression, severity: :error)
+          add_offense(node, location: :expression)
         end
 
       end

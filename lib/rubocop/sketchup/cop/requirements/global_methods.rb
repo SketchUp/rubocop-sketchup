@@ -55,7 +55,7 @@ module RuboCop
           end
           return unless namespace.top_level?
 
-          add_offense(node, location: :name, severity: :error)
+          add_offense(node, location: :name)
         end
         alias on_defs on_def
 
