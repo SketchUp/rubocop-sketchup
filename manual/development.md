@@ -54,9 +54,10 @@ File modified:
   - A configuration for the cop is added into config/default.yml
     - If you want to disable the cop by default, set `Enabled` option to false.
 
-Do 1 steps:
+Do 3 steps:
   1. Modify the description of Department/Name in config/default.yml
-  2. Implement your new cop in the generated file!
+  2. Implement your new cop in the generated file
+  3. Make sure your new cop have tests!
 ```
 
 

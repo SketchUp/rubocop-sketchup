@@ -7,6 +7,35 @@ require 'rubocop'
 # TODO(thomthom): Move to  RuboCop::SketchUp::Cop::Generator
 class SketchupCopGenerator < RuboCop::Cop::Generator
 
+  def inject_config(config_file_path: 'config/default.yml')
+    config = File.readlines(config_file_path)
+    content = <<-YAML.strip_indent
+      #{badge}:
+        Description: 'TODO: Write a description of the cop.'
+        Enabled: true
+
+    YAML
+    target_line = config.find.with_index(1) do |line, index|
+      next if line =~ /^[\s#]/
+      break index - 1 if badge.to_s < line
+    end
+    config.insert(target_line, content)
+    File.write(config_file_path, config.join)
+    output.puts <<-MESSAGE.strip_indent
+      [modify] A configuration for the cop is added into #{config_file_path}.
+               If you want to disable the cop by default, set `Enabled` option to false.
+    MESSAGE
+  end
+
+  def todo
+    <<-TODO.strip_indent
+      Do 3 steps:
+        1. Modify the description of #{badge} in config/default.yml
+        2. Implement your new cop in the generated file
+        3. Make sure your new cop have tests!
+    TODO
+  end
+
   private
 
   def spec_path
@@ -47,6 +76,8 @@ task :new_cop, [:cop] do |_task, args|
   github_user = `git config github.user`.chop
   github_user = 'your_id' if github_user.empty?
 
+  # TODO(thomthom): Ensure requirement cops include
+  #   include SketchUp::NoCommentDisable
   generator = SketchupCopGenerator.new(cop_name, github_user)
 
   generator.write_source
