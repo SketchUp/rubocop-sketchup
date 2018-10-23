@@ -26,6 +26,12 @@ describe RuboCop::Cop::SketchupSuggestions::OperationName, :config do
     end
   end
 
+  it 'does not register an offense when operation is transparent' do
+    expect_no_offenses(<<-RUBY.strip_indent)
+      model.start_operation("_", true, false, true)
+    RUBY
+  end
+
   it 'does not register an offense when operation name is short double quoted' do
     expect_no_offenses(<<-RUBY.strip_indent)
       model.start_operation("Short")
