@@ -8,7 +8,12 @@ module RuboCop
       private
 
       def range_with_receiver(node)
-        loc_begin = node.receiver.loc.selector.begin_pos
+        receiver = node.receiver
+        loc_begin = if receiver.send_type?
+                      receiver.loc.selector.begin_pos
+                    else
+                      receiver.loc.expression.begin_pos
+                    end
         loc_end = node.loc.selector.end_pos
         range_between(loc_begin, loc_end)
       end

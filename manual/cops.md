@@ -59,6 +59,7 @@ In the following section you find all available cops:
 * [SketchupRequirements/Exit](cops_requirements.md#sketchuprequirementsexit)
 * [SketchupRequirements/ExtensionNamespace](cops_requirements.md#sketchuprequirementsextensionnamespace)
 * [SketchupRequirements/FileStructure](cops_requirements.md#sketchuprequirementsfilestructure)
+* [SketchupRequirements/GemInstall](cops_requirements.md#sketchuprequirementsgeminstall)
 * [SketchupRequirements/GlobalConstants](cops_requirements.md#sketchuprequirementsglobalconstants)
 * [SketchupRequirements/GlobalInclude](cops_requirements.md#sketchuprequirementsglobalinclude)
 * [SketchupRequirements/GlobalMethods](cops_requirements.md#sketchuprequirementsglobalmethods)

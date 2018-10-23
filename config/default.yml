@@ -131,6 +131,13 @@ SketchupRequirements/FileStructure:
   Reference: https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#filestructure
   Enabled: true
 
+SketchupRequirements/GemInstall:
+  Description: >-
+                 Gem.install is unreliable in SketchUp, and can cause
+                 extensions to clash.
+  Reference: https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#geminstall
+  Enabled: true
+
 SketchupRequirements/GlobalConstants:
   Description: Do not introduce global constants.
   Reference: https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#globalconstants
