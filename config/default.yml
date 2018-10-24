@@ -313,3 +313,8 @@ SketchupSuggestions/SketchupRequire:
                  encrypted files to be loaded.
   Reference: https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#sketchuprequire
   Enabled: true
+
+SketchupSuggestions/ToolbarTimer:
+  Description: Wrapping `toolbar.restore` in `UI.start_timer` is redundant.
+  Reference: https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#toolbartimer
+  Enabled: true

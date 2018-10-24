@@ -220,3 +220,37 @@ Sketchup.require 'hello/world'
 ### References
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#sketchuprequire](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#sketchuprequire)
+
+<a name='toolbartimer'></a>
+## SketchupSuggestions/ToolbarTimer
+
+Enabled by default | Supports autocorrection
+--- | ---
+Enabled | No
+
+Wrapping `toolbar.restore` in `UI.start_timer` is redundant. It was a
+workaround for an issue in a very old version of SketchUp. There is no
+need to still be using this workaround.
+
+### Examples
+
+#### Creating a new toolbar
+
+```ruby
+# bad
+toolbar = UI::Toolbar.new('Example')
+# ...
+toolbar.restore
+UI.start_timer(0.1, false) {
+  toolbar.restore
+}
+
+# good
+toolbar = UI::Toolbar.new('Example')
+# ...
+toolbar.restore
+```
+
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#toolbartimer](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#toolbartimer)

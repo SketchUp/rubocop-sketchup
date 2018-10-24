@@ -86,5 +86,6 @@ In the following section you find all available cops:
 * [SketchupSuggestions/OperationName](cops_suggestions.md#sketchupsuggestionsoperationname)
 * [SketchupSuggestions/SketchupFindSupportFile](cops_suggestions.md#sketchupsuggestionssketchupfindsupportfile)
 * [SketchupSuggestions/SketchupRequire](cops_suggestions.md#sketchupsuggestionssketchuprequire)
+* [SketchupSuggestions/ToolbarTimer](cops_suggestions.md#sketchupsuggestionstoolbartimer)
 
 <!-- END_COP_LIST -->
