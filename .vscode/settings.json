@@ -5,8 +5,9 @@
   "solargraph.diagnostics": true,
 
   "cSpell.words": [
-    "RuboCop",
     "Rubo",
+    "RuboCop",
+    "performant",
     "stdlib"
   ]
 }
