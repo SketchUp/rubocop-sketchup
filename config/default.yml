@@ -138,6 +138,11 @@ SketchupRequirements/GemInstall:
   Reference: https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#geminstall
   Enabled: true
 
+SketchupRequirements/GetExtensionLicense:
+  Description: Pass in valid extension ID from local string literals.
+  Reference: https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#getextensionlicense
+  Enabled: true
+
 SketchupRequirements/GlobalConstants:
   Description: Do not introduce global constants.
   Reference: https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#globalconstants

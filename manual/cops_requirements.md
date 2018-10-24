@@ -133,6 +133,23 @@ gem you want to use and wrap it in your own namespace.
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#geminstall](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#geminstall)
 
+## SketchupRequirements/GetExtensionLicense
+
+Enabled by default | Supports autocorrection
+--- | ---
+Enabled | No
+
+Don't attempt to kill the Ruby interpreter by calling `exit` or `exit!`.
+SketchUp will trap `exit` and prevent that, with a message in the
+console. But `exit!` is not trapped and with terminate SketchUp without
+shutting down cleanly.
+
+Use `return`, `next`, `break` or `raise` instead.
+
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#getextensionlicense](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#getextensionlicense)
+
 ## SketchupRequirements/GlobalConstants
 
 Enabled by default | Supports autocorrection
