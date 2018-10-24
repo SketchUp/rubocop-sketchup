@@ -21,7 +21,7 @@ task generate_cops_documentation: :yard_for_generate_documentation do
   end
 
   def cops_body(config, cop, description, examples_objects, pars)
-    content = h2(cop.cop_name)
+    content = h2(cop.cop_name, anchor_names(cop.cop_name).last)
     content << properties(config, cop)
     content << "#{description}\n"
     content << examples(examples_objects) if examples_objects.count > 0
@@ -47,8 +47,9 @@ task generate_cops_documentation: :yard_for_generate_documentation do
     to_table(header, content) + "\n"
   end
 
-  def h2(title)
+  def h2(title, anchor_name = nil)
     content = "\n".dup
+    content << "<a name='#{anchor_name}'></a>\n" if anchor_name
     content << "## #{title}\n"
     content << "\n"
     content
@@ -233,6 +234,10 @@ task generate_cops_documentation: :yard_for_generate_documentation do
     end
   end
 
+  def anchor_names(cop_name)
+    cop_name.split('/').map(&:downcase)
+  end
+
   def update_default_yml_reference_links
     manual_url = 'https://github.com/SketchUp/rubocop-sketchup/tree/master/manual'
     file_name = "#{Dir.pwd}/config/default.yml"
@@ -242,7 +247,7 @@ task generate_cops_documentation: :yard_for_generate_documentation do
     config.delete('AllCops')
     # Generate reference URI for all cops.
     config.each { |cop, cop_config|
-      department_name, cop_name = cop.split('/').map(&:downcase)
+      department_name, cop_name = anchor_names(cop)
       department_name = sketchup_department_name(department_name)
       url = "#{manual_url}/cops_#{department_name}.md##{cop_name}"
       cop_config['Reference'] = url

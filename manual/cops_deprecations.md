@@ -1,5 +1,6 @@
 # SketchupDeprecations
 
+<a name='addseparatortomenu'></a>
 ## SketchupDeprecations/AddSeparatorToMenu
 
 Enabled by default | Supports autocorrection
@@ -13,6 +14,7 @@ a sub-menu instead.
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_deprecations.md#addseparatortomenu](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_deprecations.md#addseparatortomenu)
 
+<a name='operationnexttransparent'></a>
 ## SketchupDeprecations/OperationNextTransparent
 
 Enabled by default | Supports autocorrection
@@ -33,6 +35,7 @@ around bug in how `Sketchup::Model#place_component` starts operations.
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_deprecations.md#operationnexttransparent](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_deprecations.md#operationnexttransparent)
 
+<a name='requireall'></a>
 ## SketchupDeprecations/RequireAll
 
 Enabled by default | Supports autocorrection
@@ -47,6 +50,7 @@ to inadvertently load the wrong file.
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_deprecations.md#requireall](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_deprecations.md#requireall)
 
+<a name='settextureprojection'></a>
 ## SketchupDeprecations/SetTextureProjection
 
 Enabled by default | Supports autocorrection
@@ -61,6 +65,7 @@ repaired. Once repaired the UV mapping will visually change.
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_deprecations.md#settextureprojection](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_deprecations.md#settextureprojection)
 
+<a name='showrubypanel'></a>
 ## SketchupDeprecations/ShowRubyPanel
 
 Enabled by default | Supports autocorrection
@@ -73,6 +78,7 @@ Method is deprecated. Use `SKETCHUP_CONSOLE.show` instead.
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_deprecations.md#showrubypanel](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_deprecations.md#showrubypanel)
 
+<a name='sketchupset'></a>
 ## SketchupDeprecations/SketchupSet
 
 Enabled by default | Supports autocorrection

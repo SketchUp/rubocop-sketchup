@@ -1,5 +1,6 @@
 # SketchupPerformance
 
+<a name='openssl'></a>
 ## SketchupPerformance/OpenSSL
 
 Enabled by default | Supports autocorrection
@@ -21,6 +22,7 @@ It also affects `Net::HTTP` if making HTTPS connections.
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_performance.md#openssl](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_performance.md#openssl)
 
+<a name='operationdisableui'></a>
 ## SketchupPerformance/OperationDisableUI
 
 Enabled by default | Supports autocorrection
@@ -42,6 +44,7 @@ model.commit_operation
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_performance.md#operationdisableui](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_performance.md#operationdisableui)
 
+<a name='selectionbulkchanges'></a>
 ## SketchupPerformance/SelectionBulkChanges
 
 Enabled by default | Supports autocorrection
@@ -83,6 +86,7 @@ model.selection.add(faces)
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_performance.md#selectionbulkchanges](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_performance.md#selectionbulkchanges)
 
+<a name='typecheck'></a>
 ## SketchupPerformance/TypeCheck
 
 Enabled by default | Supports autocorrection
@@ -120,6 +124,7 @@ entity.is_a?(Sketchup::Face)
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_performance.md#typecheck](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_performance.md#typecheck)
 
+<a name='typename'></a>
 ## SketchupPerformance/Typename
 
 Enabled by default | Supports autocorrection

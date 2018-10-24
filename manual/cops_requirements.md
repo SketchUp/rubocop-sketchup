@@ -1,5 +1,6 @@
 # SketchupRequirements
 
+<a name='apinamespace'></a>
 ## SketchupRequirements/ApiNamespace
 
 Enabled by default | Supports autocorrection
@@ -17,6 +18,7 @@ API.
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#apinamespace](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#apinamespace)
 
+<a name='exit'></a>
 ## SketchupRequirements/Exit
 
 Enabled by default | Supports autocorrection
@@ -34,6 +36,7 @@ Use `return`, `next`, `break` or `raise` instead.
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#exit](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#exit)
 
+<a name='extensionnamespace'></a>
 ## SketchupRequirements/ExtensionNamespace
 
 Enabled by default | Supports autocorrection
@@ -82,6 +85,7 @@ Exceptions | `[]` | Array
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#extensionnamespace](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#extensionnamespace)
 
+<a name='filestructure'></a>
 ## SketchupRequirements/FileStructure
 
 Enabled by default | Supports autocorrection
@@ -105,6 +109,7 @@ SketchUp/Plugins
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#filestructure](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#filestructure)
 
+<a name='geminstall'></a>
 ## SketchupRequirements/GemInstall
 
 Enabled by default | Supports autocorrection
@@ -133,6 +138,7 @@ gem you want to use and wrap it in your own namespace.
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#geminstall](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#geminstall)
 
+<a name='getextensionlicense'></a>
 ## SketchupRequirements/GetExtensionLicense
 
 Enabled by default | Supports autocorrection
@@ -150,6 +156,7 @@ Use `return`, `next`, `break` or `raise` instead.
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#getextensionlicense](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#getextensionlicense)
 
+<a name='globalconstants'></a>
 ## SketchupRequirements/GlobalConstants
 
 Enabled by default | Supports autocorrection
@@ -167,6 +174,7 @@ global constants.
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#globalconstants](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#globalconstants)
 
+<a name='globalinclude'></a>
 ## SketchupRequirements/GlobalInclude
 
 Enabled by default | Supports autocorrection
@@ -184,6 +192,7 @@ the global namespace by including mix-in modules.
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#globalinclude](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#globalinclude)
 
+<a name='globalmethods'></a>
 ## SketchupRequirements/GlobalMethods
 
 Enabled by default | Supports autocorrection
@@ -201,6 +210,7 @@ global methods.
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#globalmethods](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#globalmethods)
 
+<a name='globalvariables'></a>
 ## SketchupRequirements/GlobalVariables
 
 Enabled by default | Supports autocorrection
@@ -225,6 +235,7 @@ Note that backreferences like `$1`, `$2`, etc are not global variables.
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#globalvariables](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#globalvariables)
 
+<a name='languagehandlerglobals'></a>
 ## SketchupRequirements/LanguageHandlerGlobals
 
 Enabled by default | Supports autocorrection
@@ -239,6 +250,7 @@ They are still in use due to compatibility reasons.
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#languagehandlerglobals](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#languagehandlerglobals)
 
+<a name='loadpath'></a>
 ## SketchupRequirements/LoadPath
 
 Enabled by default | Supports autocorrection
@@ -252,6 +264,7 @@ because it can cause extensions to inadvertently load the wrong file.
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#loadpath](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#loadpath)
 
+<a name='minimalregistration'></a>
 ## SketchupRequirements/MinimalRegistration
 
 Enabled by default | Supports autocorrection
@@ -292,6 +305,7 @@ end
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#minimalregistration](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#minimalregistration)
 
+<a name='observersstartoperation'></a>
 ## SketchupRequirements/ObserversStartOperation
 
 Enabled by default | Supports autocorrection
@@ -330,6 +344,7 @@ end
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#observersstartoperation](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#observersstartoperation)
 
+<a name='registerextension'></a>
 ## SketchupRequirements/RegisterExtension
 
 Enabled by default | Supports autocorrection
@@ -357,6 +372,7 @@ end
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#registerextension](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#registerextension)
 
+<a name='rubycorenamespace'></a>
 ## SketchupRequirements/RubyCoreNamespace
 
 Enabled by default | Supports autocorrection
@@ -374,6 +390,7 @@ core Ruby functionality.
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#rubycorenamespace](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#rubycorenamespace)
 
+<a name='rubystdlibnamespace'></a>
 ## SketchupRequirements/RubyStdLibNamespace
 
 Enabled by default | Supports autocorrection
@@ -391,6 +408,7 @@ Ruby StdLib functionality.
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#rubystdlibnamespace](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#rubystdlibnamespace)
 
+<a name='shippedextensionsnamespace'></a>
 ## SketchupRequirements/ShippedExtensionsNamespace
 
 Enabled by default | Supports autocorrection
@@ -403,6 +421,7 @@ Don't modify SketchUp's shipped extensions.
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#shippedextensionsnamespace](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#shippedextensionsnamespace)
 
+<a name='sketchupextension'></a>
 ## SketchupRequirements/SketchupExtension
 
 Enabled by default | Supports autocorrection

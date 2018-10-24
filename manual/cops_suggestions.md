@@ -1,5 +1,6 @@
 # SketchupSuggestions
 
+<a name='addgroup'></a>
 ## SketchupSuggestions/AddGroup
 
 Enabled by default | Supports autocorrection
@@ -39,6 +40,7 @@ face2 = group.entities.add_face(points2)
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#addgroup](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#addgroup)
 
+<a name='compatibility'></a>
 ## SketchupSuggestions/Compatibility
 
 Enabled by default | Supports autocorrection
@@ -63,6 +65,7 @@ AllCops:
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#compatibility](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#compatibility)
 
+<a name='dynamiccomponentinternals'></a>
 ## SketchupSuggestions/DynamicComponentInternals
 
 Enabled by default | Supports autocorrection
@@ -78,6 +81,7 @@ luck!
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#dynamiccomponentinternals](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#dynamiccomponentinternals)
 
+<a name='fileencoding'></a>
 ## SketchupSuggestions/FileEncoding
 
 Enabled by default | Supports autocorrection
@@ -108,6 +112,7 @@ basename = File.basename(file, '.*')
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#fileencoding](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#fileencoding)
 
+<a name='modelentities'></a>
 ## SketchupSuggestions/ModelEntities
 
 Enabled by default | Supports autocorrection
@@ -125,6 +130,7 @@ have an explicit reason to work in the root model context.
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#modelentities](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#modelentities)
 
+<a name='monkeypatchedapi'></a>
 ## SketchupSuggestions/MonkeyPatchedApi
 
 Enabled by default | Supports autocorrection
@@ -141,6 +147,7 @@ the extensions are disabled. Avoid using these methods.
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#monkeypatchedapi](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#monkeypatchedapi)
 
+<a name='operationname'></a>
 ## SketchupSuggestions/OperationName
 
 Enabled by default | Supports autocorrection
@@ -165,6 +172,7 @@ Max | `25` | Integer
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#operationname](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#operationname)
 
+<a name='sketchupfindsupportfile'></a>
 ## SketchupSuggestions/SketchupFindSupportFile
 
 Enabled by default | Supports autocorrection
@@ -186,6 +194,7 @@ control.
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#sketchupfindsupportfile](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#sketchupfindsupportfile)
 
+<a name='sketchuprequire'></a>
 ## SketchupSuggestions/SketchupRequire
 
 Enabled by default | Supports autocorrection
