@@ -18,6 +18,12 @@ module RuboCop
         range_between(loc_begin, loc_end)
       end
 
+      def arguments_range(node)
+        begin_pos = node.arguments.first.loc.expression.begin_pos
+        end_pos = node.arguments.last.loc.expression.end_pos
+        range_between(begin_pos, end_pos)
+      end
+
     end
   end
 end

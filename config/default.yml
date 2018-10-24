@@ -231,6 +231,11 @@ SketchupRequirements/SketchupExtension:
   Enabled: true
 
 
+SketchupSuggestions/AddGroup:
+  Description: Avoid creating groups out of existing entities.
+  Reference: https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#addgroup
+  Enabled: true
+
 SketchupSuggestions/Compatibility:
   Description: Incompatible feature with target SketchUp version.
   Reference: https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#compatibility
