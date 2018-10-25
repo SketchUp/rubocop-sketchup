@@ -30,6 +30,15 @@ module RuboCop
         range_between(begin_pos, end_pos)
       end
 
+      def conditional_range(node)
+        if node.modifier_form?
+          range_between(node.loc.keyword.begin_pos,
+              node.loc.expression.end_pos)
+        else
+          :expression
+        end
+      end
+
     end
   end
 end

@@ -448,3 +448,43 @@ end
 ### References
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#sketchupextension](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#sketchupextension)
+
+<a name='toolbarrestore'></a>
+## SketchupRequirements/ToolbarRestore
+
+Enabled by default | Supports autocorrection
+--- | ---
+Enabled | No
+
+To ensure the toolbar visibility state is correctly persisted between
+sessions, always use `toolbar.restore` to display your toolbar.
+
+### Examples
+
+#### Creating a new toolbar
+
+```ruby
+# bad
+toolbar = UI::Toolbar.new('Example')
+# ...
+toolbar.show
+
+# bad - .restore would do the same
+toolbar = UI::Toolbar.new('Example')
+# ...
+toolbar.show unless toolbar.get_last_state == TB_HIDDEN
+
+# bad - redundant to check state when using .restore
+toolbar = UI::Toolbar.new('Example')
+# ...
+toolbar.restore unless toolbar.get_last_state == TB_HIDDEN
+
+# good
+toolbar = UI::Toolbar.new('Example')
+# ...
+toolbar.restore
+```
+
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#toolbarrestore](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#toolbarrestore)
