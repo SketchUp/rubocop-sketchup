@@ -5,6 +5,8 @@ AllCops:
   SketchUp:
     SourcePath: src
     TargetSketchUpVersion: 2016
+    EncryptedExtension: false
+    ExtensionBinaries: []
     SketchupDeprecations:
       Exclude: []
     SketchupPerformance:
@@ -222,6 +224,13 @@ SketchupRequirements/RubyStdLibNamespace:
   Reference: https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#rubystdlibnamespace
   Enabled: true
 
+SketchupRequirements/SketchupRequire:
+  Description: >-
+                 Omit file extensions when using `Sketchup.require` to allow
+                 encrypted files to be loaded.
+  Reference: https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#sketchuprequire
+  Enabled: true
+
 SketchupRequirements/ShippedExtensionsNamespace:
   Description: Don't use the namespace of SketchUp's shipped extensions.
   Reference: https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#shippedextensionsnamespace
@@ -310,13 +319,6 @@ SketchupSuggestions/SketchupFindSupportFile:
              Use `__FILE__` and `__dir__` to locate your files relative to the
              executing file.
   Reference: https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#sketchupfindsupportfile
-  Enabled: true
-
-SketchupSuggestions/SketchupRequire:
-  Description: >-
-                 Omit file extensions when using `Sketchup.require` to allow
-                 encrypted files to be loaded.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#sketchuprequire
   Enabled: true
 
 SketchupSuggestions/ToolbarTimer:

@@ -35,9 +35,9 @@ require: rubocop-sketchup
 AllCops:
   DisabledByDefault: true
   DisplayStyleGuide: true
-  ExtraDetails: true
   SketchUp:
     SourcePath: src # Path to extension sources in project directory.
+    EncryptedExtension: false # Enable if you plan to encrypt your extension.
     TargetSketchUpVersion: 2016 M1
 
 SketchupDeprecations:

@@ -194,33 +194,6 @@ control.
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#sketchupfindsupportfile](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#sketchupfindsupportfile)
 
-<a name='sketchuprequire'></a>
-## SketchupSuggestions/SketchupRequire
-
-Enabled by default | Supports autocorrection
---- | ---
-Enabled | No
-
-Omit file extensions when using `Sketchup.require` to allow encrypted
-files to be loaded.
-
-### Examples
-
-#### Bad - This will fail if extension is encrypted
-
-```ruby
-Sketchup.require 'hello/world.rb'
-```
-#### Good - This will work for `.rbe`, `.rbs` and `rb` files.
-
-```ruby
-Sketchup.require 'hello/world'
-```
-
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#sketchuprequire](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#sketchuprequire)
-
 <a name='toolbartimer'></a>
 ## SketchupSuggestions/ToolbarTimer
 

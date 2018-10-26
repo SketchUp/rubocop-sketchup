@@ -20,7 +20,7 @@ module RuboCop
 
       # @return [Pathname]
       def relative_source_path
-        Pathname.new(sketchup_source_path_config)
+        Pathname.new(extension_source_path_config)
       end
 
       # @return [Pathname]
@@ -41,6 +41,23 @@ module RuboCop
         filename = path_relative_to_source(processed_source)
         filename.extname.casecmp('.rb').zero? &&
           filename.parent.to_s == '.'
+      end
+
+      def extension_root_files
+        Dir.glob("#{source_path}/*.rb").map { |path| Pathname.new(path) }
+      end
+
+      def extension_root_file
+        unless extension_root_files.size == 1
+          num_files = extension_root_files.size
+          raise "More than one root extension file (#{num_files})"
+        end
+
+        extension_root_files.first
+      end
+
+      def extension_directory
+        extension_root_file.dirname
       end
 
     end

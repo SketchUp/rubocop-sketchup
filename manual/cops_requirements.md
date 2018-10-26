@@ -449,6 +449,47 @@ end
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#sketchupextension](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#sketchupextension)
 
+<a name='sketchuprequire'></a>
+## SketchupRequirements/SketchupRequire
+
+Enabled by default | Supports autocorrection
+--- | ---
+Enabled | No
+
+Omit file extensions when using `Sketchup.require` to allow encrypted
+files to be loaded.
+
+Ruby C extensions, `.so`/`.bundle` libraries must always be loaded via
+the normal `require`. Omit the file extension to the libraries as Ruby
+will resolve the`.so`/`.bundle` automatically.
+
+### Examples
+
+#### Bad - This will fail if extension is encrypted
+
+```ruby
+Sketchup.require 'hello/world.rb'
+```
+#### Good - This will work for `.rbe`, `.rbs` and `rb` files.
+
+```ruby
+Sketchup.require 'hello/world'
+```
+#### Bad - This will fail if extension is encrypted
+
+```ruby
+extension = SketchupExtension.new("Example", "Example/main.rb")
+```
+#### Good - This will work for `.rbe`, `.rbs` and `rb` files.
+
+```ruby
+extension = SketchupExtension.new("Example", "Example/main")
+```
+
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#sketchuprequire](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#sketchuprequire)
+
 <a name='toolbarrestore'></a>
 ## SketchupRequirements/ToolbarRestore
 

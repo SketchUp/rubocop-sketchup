@@ -18,6 +18,34 @@ AllCops:
 
 If this isn't configured correctly then some cops, such as `SketchupRequirements/FileStructure` will fail as extension file structure is part of the Extension Warehouse technical requirements. Additionally, SketchUp expects this particular file structure to fully manage the extension.
 
+## Encrypted Extensions
+
+When encrypting an extension there are additional technical requirements.
+Enable `AllCops/SketchUp/EncryptedExtension` to turn on these additional checks
+for your project. This is by default off.
+
+```yml
+AllCops:
+  SketchUp:
+    EncryptedExtension: true
+```
+
+### Extension Binaries
+
+Regardless of the extension is going to be encrypted, when loading binary
+Ruby C Extension libraries `require` must always be used. To make the cops
+aware of what require statements are binary libraries, add them to the
+`AllCops/SketchUp/EncryptedExtension` list.
+
+```yml
+AllCops:
+  SketchUp:
+    EncryptedExtension: true
+    ExtensionBinaries:
+      - 'example/libs/ruby2.0/my_lib'
+      - 'example/libs/ruby2.2/my_lib'
+```
+
 ## Target SketchUp Version
 
 The `SketchupSuggestions/Compatibility` cop checks for usage of the SketchUp API against a configured target version.

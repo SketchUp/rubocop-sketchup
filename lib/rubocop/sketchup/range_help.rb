@@ -39,6 +39,14 @@ module RuboCop
         end
       end
 
+      def file_ext_range(argument_node)
+        filename = argument_node.str_content
+        ext_size = File.extname(filename).size
+        end_pos = argument_node.loc.end.begin_pos
+        begin_pos = end_pos - ext_size
+        range_between(begin_pos, end_pos)
+      end
+
     end
   end
 end

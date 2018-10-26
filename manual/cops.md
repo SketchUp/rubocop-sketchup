@@ -74,6 +74,7 @@ In the following section you find all available cops:
 * [SketchupRequirements/RubyStdLibNamespace](cops_requirements.md#sketchuprequirementsrubystdlibnamespace)
 * [SketchupRequirements/ShippedExtensionsNamespace](cops_requirements.md#sketchuprequirementsshippedextensionsnamespace)
 * [SketchupRequirements/SketchupExtension](cops_requirements.md#sketchuprequirementssketchupextension)
+* [SketchupRequirements/SketchupRequire](cops_requirements.md#sketchuprequirementssketchuprequire)
 * [SketchupRequirements/ToolbarRestore](cops_requirements.md#sketchuprequirementstoolbarrestore)
 
 #### Department [SketchupSuggestions](cops_suggestions.md)
@@ -86,7 +87,6 @@ In the following section you find all available cops:
 * [SketchupSuggestions/MonkeyPatchedApi](cops_suggestions.md#sketchupsuggestionsmonkeypatchedapi)
 * [SketchupSuggestions/OperationName](cops_suggestions.md#sketchupsuggestionsoperationname)
 * [SketchupSuggestions/SketchupFindSupportFile](cops_suggestions.md#sketchupsuggestionssketchupfindsupportfile)
-* [SketchupSuggestions/SketchupRequire](cops_suggestions.md#sketchupsuggestionssketchuprequire)
 * [SketchupSuggestions/ToolbarTimer](cops_suggestions.md#sketchupsuggestionstoolbartimer)
 
 <!-- END_COP_LIST -->
