@@ -15,6 +15,7 @@ require 'rubocop/sketchup/namespace_checker'
 require 'rubocop/sketchup/no_comment_disable'
 require 'rubocop/sketchup/range_help'
 require 'rubocop/sketchup/sketchup_version'
+require 'rubocop/sketchup/tool_checker'
 
 RuboCop::SketchUp::Inject.defaults!
 
@@ -30,6 +31,13 @@ class RuboCop::Formatter::FormatterSet
     BUILTIN_FORMATTERS_FOR_KEYS = formatters.freeze
   ensure
     $VERBOSE = verbose
+  end
+end
+
+# Make it easier to explore available methods on a method.
+class Object
+  def methods!
+    methods.sort - Object.class.instance_methods
   end
 end
 

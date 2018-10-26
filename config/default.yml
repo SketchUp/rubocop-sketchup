@@ -321,6 +321,27 @@ SketchupSuggestions/SketchupFindSupportFile:
   Reference: https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#sketchupfindsupportfile
   Enabled: true
 
+SketchupSuggestions/ToolDrawingBounds:
+  Description: >-
+                 When drawing to the viewport implement `getExtents` so drawn
+                 geometry is not clipped.
+  Reference: https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#tooldrawingbounds
+  Enabled: true
+
+SketchupSuggestions/ToolInvalidate:
+  Description: >-
+                 When drawing to the viewport, make sure tools invalidate when
+                 tool becomes inactive.
+  Reference: https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#toolinvalidate
+  Enabled: true
+
+SketchupSuggestions/ToolUserInput:
+  Description: >-
+                 When a tool is accepting user input, make sure to define
+                 enableVCB?.
+  Reference: https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#tooluserinput
+  Enabled: true
+
 SketchupSuggestions/ToolbarTimer:
   Description: Wrapping `toolbar.restore` in `UI.start_timer` is redundant.
   Reference: https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#toolbartimer

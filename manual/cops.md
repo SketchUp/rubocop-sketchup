@@ -87,6 +87,9 @@ In the following section you find all available cops:
 * [SketchupSuggestions/MonkeyPatchedApi](cops_suggestions.md#sketchupsuggestionsmonkeypatchedapi)
 * [SketchupSuggestions/OperationName](cops_suggestions.md#sketchupsuggestionsoperationname)
 * [SketchupSuggestions/SketchupFindSupportFile](cops_suggestions.md#sketchupsuggestionssketchupfindsupportfile)
+* [SketchupSuggestions/ToolDrawingBounds](cops_suggestions.md#sketchupsuggestionstooldrawingbounds)
+* [SketchupSuggestions/ToolInvalidate](cops_suggestions.md#sketchupsuggestionstoolinvalidate)
+* [SketchupSuggestions/ToolUserInput](cops_suggestions.md#sketchupsuggestionstooluserinput)
 * [SketchupSuggestions/ToolbarTimer](cops_suggestions.md#sketchupsuggestionstoolbartimer)
 
 <!-- END_COP_LIST -->

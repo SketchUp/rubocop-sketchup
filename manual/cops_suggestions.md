@@ -194,6 +194,111 @@ control.
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#sketchupfindsupportfile](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#sketchupfindsupportfile)
 
+<a name='tooldrawingbounds'></a>
+## SketchupSuggestions/ToolDrawingBounds
+
+Enabled by default | Supports autocorrection
+--- | ---
+Enabled | No
+
+When drawing 3D geometry to the viewport from a tool, make sure to
+implement `getExtents` that return a `Geom::BoundingBox` object large
+enough to encompass what you draw.
+
+With out doing that the drawn content might end up being clipped.
+
+### Examples
+
+```ruby
+# good
+class ExampleTool
+
+  def getExtents
+    bounds = Geom::BoundingBox.new
+    bounds.add(@points)
+    bounds
+  end
+
+  def draw(view)
+    view.draw(GL_LINES, @points)
+  end
+
+end
+```
+
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#tooldrawingbounds](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#tooldrawingbounds)
+
+<a name='toolinvalidate'></a>
+## SketchupSuggestions/ToolInvalidate
+
+Enabled by default | Supports autocorrection
+--- | ---
+Enabled | No
+
+After having drawn to the viewport from a tool, make sure to invalidate
+the view on `deactivate` and `suspend`.
+
+If you don't do that the things you drew might stick around for longer
+than the life-span of the tool and cause confusion for the user.
+
+### Examples
+
+```ruby
+# good
+class ExampleTool
+
+  def deactivate(view)
+    view_invalidate
+  end
+
+  def suspend(view)
+    view_invalidate
+  end
+
+  def draw(view)
+    view.draw(GL_LINES, @points)
+  end
+
+end
+```
+
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#toolinvalidate](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#toolinvalidate)
+
+<a name='tooluserinput'></a>
+## SketchupSuggestions/ToolUserInput
+
+Enabled by default | Supports autocorrection
+--- | ---
+Enabled | No
+
+When a tool takes user input via `onUserText`, make sure to define
+`enableVCB?` so that the VCB is enabled.
+
+### Examples
+
+```ruby
+# good
+class ExampleTool
+
+  def enableVCB?
+    true
+  end
+
+  def onUserText(text, view)
+    # ...
+  end
+
+end
+```
+
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#tooluserinput](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#tooluserinput)
+
 <a name='toolbartimer'></a>
 ## SketchupSuggestions/ToolbarTimer
 
