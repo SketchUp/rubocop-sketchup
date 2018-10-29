@@ -12,6 +12,14 @@
       ]
     },
     {
+      "label": "RuboCop",
+      "type": "shell",
+      "command": "bundle",
+      "args": [
+        "exec", "rubocop"
+      ]
+    },
+    {
       "label": "All Tests",
       "type": "shell",
       "command": "bundle",
