@@ -243,12 +243,11 @@ task generate_cops_documentation: :yard_for_generate_documentation do
     file_name = "#{Dir.pwd}/config/default.yml"
     # Copy AllCops exactly as manually crafted. This is done to preserve useful
     # comments.
-    all_cops_pattern = /(^AllCops:.*?)^Sketchup\w+\/\w+:/m
+    all_cops_pattern = %r{(^AllCops:.*?)^Sketchup\w+/\w+:}m
     all_cops_content = File.read(file_name).match(all_cops_pattern).captures[0]
     # Now process the file as YAML:
     config = YAML.load_file(file_name)
     # AllCops is treated separately.
-    all_cops_config = { 'AllCops' => config['AllCops'].dup }
     config.delete('AllCops')
     # Generate reference URI for all cops.
     config.each { |cop, cop_config|
