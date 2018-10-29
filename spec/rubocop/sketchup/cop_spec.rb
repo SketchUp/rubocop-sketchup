@@ -8,6 +8,7 @@ describe RuboCop::SketchUp::Cop do
         {
           'AllCops' => {
             'SketchUp' => {
+              'Exclude' => sketchup_excludes,
               'SketchupDeprecations' => {
                 'Exclude' => department_excludes,
               },
@@ -31,7 +32,8 @@ describe RuboCop::SketchUp::Cop do
     RuboCop::SketchupDeprecations::FakeCop
   end
 
-  let(:department_excludes) { ['_test.rb$', '(?:^|/)test/'] }
+  let(:sketchup_excludes) { %w[spec/**/* **/*_spec.rb] }
+  let(:department_excludes) { %w[test/**/* **/*_test.rb] }
 
   context 'when the source path starts with `src`' do
     it 'registers an offense' do
@@ -52,12 +54,19 @@ describe RuboCop::SketchUp::Cop do
         foo(1)
       RUBY
     end
+
+    it 'ignores the file if it is sketchup-excluded' do
+      expect_no_offenses(<<-RUBY, 'src/bar_spec.rb')
+        foo(1)
+      RUBY
+    end
   end
 
   context 'when the source path contains `/test/`' do
-    it 'ignores the file if it is department-excluded' do
-      expect_no_offenses(<<-RUBY, '/test/support/thing.rb')
+    it 'registers an offense when path starts at root' do
+      expect_offense(<<-RUBY, '/test/support/thing.rb')
         foo(1)
+        ^^^^^^ I flag everything
       RUBY
     end
   end
@@ -65,6 +74,23 @@ describe RuboCop::SketchUp::Cop do
   context 'when the source path starts with `test/`' do
     it 'ignores the file if it is department-excluded' do
       expect_no_offenses(<<-RUBY, 'test/support/thing.rb')
+        foo(1)
+      RUBY
+    end
+  end
+
+  context 'when the source path contains `/spec/`' do
+    it 'registers an offense when path starts at root' do
+      expect_offense(<<-RUBY, '/spec/support/thing.rb')
+        foo(1)
+        ^^^^^^ I flag everything
+      RUBY
+    end
+  end
+
+  context 'when the source path starts with `spec/`' do
+    it 'ignores the file if it is sketchup-excluded' do
+      expect_no_offenses(<<-RUBY, 'spec/support/thing.rb')
         foo(1)
       RUBY
     end

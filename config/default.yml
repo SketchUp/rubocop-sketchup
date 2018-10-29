@@ -3,10 +3,23 @@
 ---
 AllCops:
   SketchUp:
+    # The path to the extension source. This needs to be correct in order to
+    # correctly validate file structure.
     SourcePath: src
+    # Set target SketchUp version. Compatibility checks can then warn if you
+    # use features that belong to older SketchUp versions. Refer to the manual
+    # for list of valid versions.
     TargetSketchUpVersion: 2016
+    # Indicate if you plan to scramble/encrypt this extension using the .RBS or
+    # .RBE format. It changes the technical requirements for requiring files.
     EncryptedExtension: false
+    # Binary Ruby C Extension must always be loaded using Ruby's own `require`.
+    # If you enable `AllCops/SketchUp/EncryptedExtension` you need to list
+    # the require paths for your Ruby C Extensions if you have any.
     ExtensionBinaries: []
+    # You can set up exclude pattens for all SketchUp departments.
+    Exclude: []
+    # Alternativly you can set up department wide exclusion.
     SketchupDeprecations:
       Exclude: []
     SketchupPerformance:

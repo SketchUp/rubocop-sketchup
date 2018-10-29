@@ -329,7 +329,8 @@ task generate_cops_documentation: :yard_for_generate_documentation do
   end
 
   def main
-    update_default_yml_reference_links
+    # Disabled for now as it nukes comments.
+    # update_default_yml_reference_links
 
     cops   = RuboCop::Cop::Cop.registry
     config = RuboCop::ConfigLoader.default_configuration
