@@ -10,7 +10,7 @@ describe RuboCop::Cop::SketchupSuggestions::ModelEntities do
     expect_offense(<<-RUBY.strip_indent)
       model = Sketchup.active_model
       entities = model.entities
-                 ^^^^^^^^^^^^^^ Prefer model.active_entities over model.entities.
+                 ^^^^^^^^^^^^^^ Prefer `model.active_entities` over `model.entities`.
     RUBY
   end
 
@@ -18,7 +18,7 @@ describe RuboCop::Cop::SketchupSuggestions::ModelEntities do
     expect_offense(<<-RUBY.strip_indent)
       @model = Sketchup.active_model
       entities = @model.entities
-                 ^^^^^^^^^^^^^^^ Prefer model.active_entities over model.entities.
+                 ^^^^^^^^^^^^^^^ Prefer `model.active_entities` over `model.entities`.
     RUBY
   end
 
@@ -26,7 +26,7 @@ describe RuboCop::Cop::SketchupSuggestions::ModelEntities do
     expect_offense(<<-RUBY.strip_indent)
       @@model = Sketchup.active_model
       entities = @@model.entities
-                 ^^^^^^^^^^^^^^^^ Prefer model.active_entities over model.entities.
+                 ^^^^^^^^^^^^^^^^ Prefer `model.active_entities` over `model.entities`.
     RUBY
   end
 
@@ -41,7 +41,7 @@ describe RuboCop::Cop::SketchupSuggestions::ModelEntities do
     expect_offense(<<-RUBY.strip_indent)
       def get_entities(model)
         model.entities
-        ^^^^^^^^^^^^^^ Prefer model.active_entities over model.entities.
+        ^^^^^^^^^^^^^^ Prefer `model.active_entities` over `model.entities`.
       end
     RUBY
   end
@@ -50,7 +50,7 @@ describe RuboCop::Cop::SketchupSuggestions::ModelEntities do
     expect_offense(<<-RUBY.strip_indent)
       mod = Sketchup.active_model
       entities = mod.entities
-                 ^^^^^^^^^^^^ Prefer model.active_entities over model.entities.
+                 ^^^^^^^^^^^^ Prefer `model.active_entities` over `model.entities`.
     RUBY
   end
 
@@ -58,7 +58,7 @@ describe RuboCop::Cop::SketchupSuggestions::ModelEntities do
     expect_offense(<<-RUBY.strip_indent)
       def get_entities
         entities = Sketchup.active_model.entities
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer model.active_entities over model.entities.
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer `model.active_entities` over `model.entities`.
       end
     RUBY
   end
@@ -75,7 +75,7 @@ describe RuboCop::Cop::SketchupSuggestions::ModelEntities do
   it 'registers an offense when fetching Sketchup.active_model.entities' do
     expect_offense(<<-RUBY.strip_indent)
       entities = Sketchup.active_model.entities
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer model.active_entities over model.entities.
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer `model.active_entities` over `model.entities`.
     RUBY
   end
 

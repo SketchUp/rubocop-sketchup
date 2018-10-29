@@ -11,7 +11,7 @@ module RuboCop
       # have an explicit reason to work in the root model context.
       class ModelEntities < SketchUp::Cop
 
-        MSG = 'Prefer model.active_entities over model.entities.'.freeze
+        MSG = 'Prefer `model.active_entities` over `model.entities`.'.freeze
 
         # Reference: http://www.rubydoc.info/gems/rubocop/RuboCop/NodePattern
         def_node_matcher :active_model_entities?, <<-PATTERN
