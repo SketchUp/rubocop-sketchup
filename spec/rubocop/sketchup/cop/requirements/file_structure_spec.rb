@@ -52,5 +52,12 @@ describe RuboCop::Cop::SketchupRequirements::FileStructure do
       end
     end
 
+    it 'registers an offense for case mis-match' do
+      Dir.chdir('examples/extensions/invalid_case_mismatch') do
+        inspect_source('foo(123)', 'examples/extensions/valid/src/hello.rb')
+        expect(cop.offenses.size).to eq(1)
+      end
+    end
+
   end
 end

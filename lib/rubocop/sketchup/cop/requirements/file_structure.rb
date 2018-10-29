@@ -6,6 +6,9 @@ module RuboCop
       # Check that the extension conform to expected file structure with a
       # single root .rb file and a support folder with matching name.
       #
+      # Make sure to match upper and lower case characters between the root .rb
+      # file and the support folder.
+      #
       # @example
       #   SketchUp/Plugins
       #   + ex_hello_world.rb
