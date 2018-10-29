@@ -1,6 +1,5 @@
-# These are all the cops that are enabled in the default configuration.
+# Common configuration.
 
----
 AllCops:
   SketchUp:
     # The path to the extension source. This needs to be correct in order to

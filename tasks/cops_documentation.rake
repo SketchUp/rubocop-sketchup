@@ -241,6 +241,11 @@ task generate_cops_documentation: :yard_for_generate_documentation do
   def update_default_yml_reference_links
     manual_url = 'https://github.com/SketchUp/rubocop-sketchup/tree/master/manual'
     file_name = "#{Dir.pwd}/config/default.yml"
+    # Copy AllCops exactly as manually crafted. This is done to preserve useful
+    # comments.
+    all_cops_pattern = /(^AllCops:.*?)^Sketchup\w+\/\w+:/m
+    all_cops_content = File.read(file_name).match(all_cops_pattern).captures[0]
+    # Now process the file as YAML:
     config = YAML.load_file(file_name)
     # AllCops is treated separately.
     all_cops_config = { 'AllCops' => config['AllCops'].dup }
@@ -258,9 +263,9 @@ task generate_cops_documentation: :yard_for_generate_documentation do
     }
     # Pretty-format YAML.
     yml_config = StringIO.new
-    yml_config.puts '# These are all the cops that are enabled in the default configuration.'
+    yml_config.puts '# Common configuration.'
     yml_config.puts
-    yml_config.puts all_cops_config.to_yaml
+    yml_config.puts '<AllCops>'
     yml_config.puts
     last_department = nil
     config.each { |cop, cop_config|
@@ -274,7 +279,10 @@ task generate_cops_documentation: :yard_for_generate_documentation do
       }
       last_department = department_name
     }
-    File.write(file_name, yml_config.string)
+    # Copy back the AllCops section:
+    yaml_content = yml_config.string
+    yaml_content.sub!('<AllCops>', all_cops_content.strip)
+    File.write(file_name, yaml_content)
   end
 
   def yaml_format(key, value)
@@ -329,8 +337,7 @@ task generate_cops_documentation: :yard_for_generate_documentation do
   end
 
   def main
-    # Disabled for now as it nukes comments.
-    # update_default_yml_reference_links
+    update_default_yml_reference_links
 
     cops   = RuboCop::Cop::Cop.registry
     config = RuboCop::ConfigLoader.default_configuration
