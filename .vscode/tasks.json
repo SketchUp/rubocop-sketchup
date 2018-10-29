@@ -4,11 +4,19 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "All Tests",
+      "label": "Rake",
       "type": "shell",
       "command": "bundle",
       "args": [
         "exec", "rake"
+      ]
+    },
+    {
+      "label": "All Tests",
+      "type": "shell",
+      "command": "bundle",
+      "args": [
+        "exec", "rake", "spec"
       ],
       "group": "test"
     },
