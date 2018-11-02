@@ -27,17 +27,33 @@ describe RuboCop::Cop::SketchupRequirements::SketchupExtension do
       expect(cop.offenses.size).to eq(1)
     end
 
+    it 'registers an offense for missing name argument in SketchupExtension.new' do
+      expect_offense(<<-RUBY.strip_indent, './src/hello.rb')
+        extension = SketchupExtension.new
+                    ^^^^^^^^^^^^^^^^^^^^^ Missing required name arguments
+        Sketchup.register_extension(extension, true)
+      RUBY
+    end
+
+    it 'registers an offense for missing path argument in SketchupExtension.new' do
+      expect_offense(<<-RUBY.strip_indent, './src/hello.rb')
+        extension = SketchupExtension.new('Extension Name')
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Missing second argument for the path
+        Sketchup.register_extension(extension, true)
+      RUBY
+    end
+
     it 'does not register an offense for missing SketchupExtension in support file' do
-      inspect_source('foo(123)', './src/hello/world.rb')
-      expect(cop.offenses).to be_empty
+      expect_no_offenses(<<-RUBY.strip_indent, './src/hello/world.rb')
+        foo(123)
+      RUBY
     end
 
     it 'does not register an offense for SketchupExtension in root file' do
-      inspect_source(<<-RUBY.strip_indent, './src/hello.rb')
+      expect_no_offenses(<<-RUBY.strip_indent, './src/hello.rb')
         extension = SketchupExtension.new("Extension Name", filename)
         Sketchup.register_extension(extension, true)
       RUBY
-      expect(cop.offenses).to be_empty
     end
 
     it 'does not register an offense for namespaced SketchupExtension in root file assigned to local variable' do
@@ -132,8 +148,9 @@ describe RuboCop::Cop::SketchupRequirements::SketchupExtension do
     end
 
     it 'does not register an offense for missing SketchupExtension in support file' do
-      inspect_source('foo(123)', './source/hello/world.rb')
-      expect(cop.offenses).to be_empty
+      expect_no_offenses(<<-RUBY.strip_indent, './source/hello/world.rb')
+        foo(123)
+      RUBY
     end
 
     it 'does not register an offense for SketchupExtension in root file' do

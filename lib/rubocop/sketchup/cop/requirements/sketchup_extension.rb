@@ -31,7 +31,7 @@ module RuboCop
         # Reference: http://rubocop.readthedocs.io/en/latest/node_pattern/
         def_node_search :sketchup_extension_new, <<-PATTERN
           (send
-            (const nil? :SketchupExtension) :new _ _)
+            (const nil? :SketchupExtension) :new ...)
         PATTERN
 
         def_node_search :sketchup_register_extension, <<-PATTERN
@@ -70,6 +70,18 @@ module RuboCop
             add_offense(nil,
                 location: range,
                 message: MSG_CREATE_MISSING)
+            return
+          end
+
+          # Ensure it have two arguments.
+          if extension_node.arguments.size < 2
+            message = if extension_node.arguments.size == 1
+                        'Missing second argument for the path'
+                      else
+                        'Missing required name arguments'
+                      end
+            add_offense(extension_node,
+                message: message)
             return
           end
 
