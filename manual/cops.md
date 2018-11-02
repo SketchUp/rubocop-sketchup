@@ -75,7 +75,6 @@ In the following section you find all available cops:
 * [SketchupRequirements/ShippedExtensionsNamespace](cops_requirements.md#sketchuprequirementsshippedextensionsnamespace)
 * [SketchupRequirements/SketchupExtension](cops_requirements.md#sketchuprequirementssketchupextension)
 * [SketchupRequirements/SketchupRequire](cops_requirements.md#sketchuprequirementssketchuprequire)
-* [SketchupRequirements/ToolbarRestore](cops_requirements.md#sketchuprequirementstoolbarrestore)
 
 #### Department [SketchupSuggestions](cops_suggestions.md)
 

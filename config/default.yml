@@ -256,11 +256,6 @@ SketchupRequirements/SketchupExtension:
   Reference: https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#sketchupextension
   Enabled: true
 
-SketchupRequirements/ToolbarRestore:
-  Description: Always use .restore to display your toolbar.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#toolbarrestore
-  Enabled: true
-
 
 SketchupSuggestions/AddGroup:
   Description: Avoid creating groups out of existing entities.
