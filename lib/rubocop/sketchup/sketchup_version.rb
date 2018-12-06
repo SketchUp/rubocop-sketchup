@@ -33,7 +33,7 @@ module RuboCop
 
       private
 
-      VERSION_NUMBER_REGEX = /^(?:SketchUp )?([0-9.]+)(?: M(\d+))?$/
+      VERSION_NUMBER_REGEX = /^(?:SketchUp )?([0-9.]+)(?: M(\d+))?$/.freeze
 
       # This list is compiled from the list of versions reported by YARD when
       # running the `versions` template;

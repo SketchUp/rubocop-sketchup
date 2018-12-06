@@ -29,7 +29,7 @@ module RuboCop
         PATTERN
 
         # rubocop:disable Metrics/LineLength
-        EXTENSION_ID_PATTERN = /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/
+        EXTENSION_ID_PATTERN = /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.freeze
         # rubocop:enable Metrics/LineLength
 
         def on_send(node)
