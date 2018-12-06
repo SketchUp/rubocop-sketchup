@@ -68,7 +68,7 @@ See [RuboCop's own documentation](https://github.com/rubocop-hq/rubocop/blob/mas
 
 # Release
 
-To release a new version (Done by SketchUp Team), update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+To release a new version (Done by SketchUp Team), update the version number using `bundle exec rake cut_release`. For instance, `bundle exec cut_release:minor` when a new feature has been added or the RuboCop dependency has been updated. Run `bundle exec cut_release:patch` for bug-fixes only. Then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 http://guides.rubygems.org/publishing/
 
