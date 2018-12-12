@@ -57,6 +57,17 @@ Metrics/PerceivedComplexity:
   Enabled: false
 
 
+# Allow for common names used in 3D context.
+Naming/UncommunicativeMethodParamName:
+  AllowedNames:
+    - x
+    - y
+    - z
+    - u
+    - v
+    - uv
+
+
 # 🖤 Unicode!
 Style/AsciiComments:
   Enabled: false
@@ -99,6 +110,11 @@ Style/ModuleFunction:
 
 # .zero? doesn't read better than == 0.
 Style/NumericPredicate:
+  Enabled: false
+
+# Very subjective style. Lots of existing SketchUp code and example uses them
+# so disable by default.
+Style/RedundantSelf:
   Enabled: false
 
 # %w and %i etc isn't really intuitive unless you are really familiar with the
