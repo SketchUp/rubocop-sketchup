@@ -31,12 +31,12 @@ module RuboCop
         # Reference: http://rubocop.readthedocs.io/en/latest/node_pattern/
         def_node_search :sketchup_extension_new, <<-PATTERN
           (send
-            (const nil? :SketchupExtension) :new ...)
+            (const {nil? cbase} :SketchupExtension) :new ...)
         PATTERN
 
         def_node_search :sketchup_register_extension, <<-PATTERN
           (send
-            (const nil? :Sketchup) :register_extension
+            (const {nil? cbase} :Sketchup) :register_extension
             {({lvar ivar cvar gvar} $_)(const nil? $_)}
             _)
         PATTERN

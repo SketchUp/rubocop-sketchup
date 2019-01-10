@@ -106,6 +106,26 @@ describe RuboCop::Cop::SketchupRequirements::SketchupExtension do
       RUBY
     end
 
+    it 'does not register an offense when SketchupExtension is prefixed with ::' do
+      expect_no_offenses(<<-RUBY.strip_indent, './src/hello.rb')
+        module Example
+          extension = ::SketchupExtension.new("Extension Name", filename)
+          extension.description = "Hello World"
+          Sketchup.register_extension(extension, true)
+        end
+      RUBY
+    end
+
+    it 'does not register an offense when Sketchup is prefixed with ::' do
+      expect_no_offenses(<<-RUBY.strip_indent, './src/hello.rb')
+        module Example
+          extension = SketchupExtension.new("Extension Name", filename)
+          extension.description = "Hello World"
+          ::Sketchup.register_extension(extension, true)
+        end
+      RUBY
+    end
+
     it 'does not throw an error when inspecting source' do
       inspect_source(<<-RUBY.strip_indent, './src/hello.rb')
         module Example
