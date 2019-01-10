@@ -1,2 +1,3 @@
 formats:
     - htmlzip
+requirements_file: manual/requirements.txt
