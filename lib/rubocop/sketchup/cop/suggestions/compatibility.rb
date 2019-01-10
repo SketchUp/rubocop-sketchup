@@ -14,6 +14,7 @@ module RuboCop
       class Compatibility < SketchUp::Cop
 
         include SketchUp::Features
+        include SketchUp
 
         MSG = 'Incompatible feature with target SketchUp version'.freeze
 
@@ -42,6 +43,9 @@ module RuboCop
         end
 
         def on_const(node)
+          namespace = Namespace.new(node.parent_module_name)
+          return unless namespace.top_level?
+
           feature_name = node.const_name
           [:class, :module, :constant].each { |type|
             check_feature(node, type, feature_name)

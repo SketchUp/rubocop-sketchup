@@ -50,6 +50,16 @@ describe RuboCop::Cop::SketchupSuggestions::Compatibility do
       RUBY
     end
 
+    it 'does not register an offense when shadowing incompatible module' do
+      inspect_source(<<-RUBY.strip_indent)
+        module Example
+          module Layout
+          end
+        end
+      RUBY
+      expect(cop.offenses).to be_empty
+    end
+
   end
 
 
