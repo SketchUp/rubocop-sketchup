@@ -3,6 +3,7 @@
   "files.trimTrailingWhitespace": true,
 
   "solargraph.diagnostics": true,
+  "solargraph.useBundler": true,
 
   "cSpell.words": [
     "Rubo",
