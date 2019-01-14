@@ -4,16 +4,16 @@ edit_uri: edit/master/manual/
 copyright: "Copyright &copy; 2017-2019 Trimble Inc. SketchUp and contributors"
 docs_dir: manual
 nav:
-- Home: index.md
-- Installation: installation.md
-- Basic Usage: basic_usage.md
-- Cops: cops.md
-- Formatters: formatters.md
-- Configuration: configuration.md
-- Integration with other tools: integration_with_other_tools.md
-- Contributing: contributing.md
-- Development: development.md
-- Cops Documentation:
+  - Home: index.md
+  - Installation: installation.md
+  - Basic Usage: basic_usage.md
+  - Cops: cops.md
+  - Formatters: formatters.md
+  - Configuration: configuration.md
+  - Integration with other tools: integration_with_other_tools.md
+  - Contributing: contributing.md
+  - Development: development.md
+  - Cops Documentation:
     - Requirements Cops: cops_requirements.md
     - Deprecations Cops: cops_deprecations.md
     - Performance Cops: cops_performance.md
