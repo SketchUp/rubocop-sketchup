@@ -14,7 +14,9 @@ describe RuboCop::Cop::SketchupSuggestions::OperationName, :config do
     RUBY
   end
 
+
   context 'Max: 32' do
+
     let(:cop_config) do
       { 'Max' => 32 }
     end
@@ -24,7 +26,9 @@ describe RuboCop::Cop::SketchupSuggestions::OperationName, :config do
         model.start_operation("Some Really Long Operation Name")
       RUBY
     end
+
   end
+
 
   it 'does not register an offense when operation is transparent' do
     expect_no_offenses(<<-RUBY.strip_indent)

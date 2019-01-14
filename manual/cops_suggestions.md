@@ -162,6 +162,59 @@ This cop make some very naive assumptions and will have more false
 positives than most of the other cops. It's purpose is mainly to enable
 awareness.
 
+### Examples
+
+#### Bad - Ends with a punctuation. Inconsistent with SketchUp.
+
+```ruby
+model.start_operation('Example.', true)
+```
+#### Good - Doesn't end with a punctuation.
+
+```ruby
+model.start_operation('Example', true)
+```
+#### Bad - Starts with whitespace. Inconsistent with SketchUp.
+
+```ruby
+model.start_operation('  Example', true)
+```
+#### Good - Doesn't start with whitespace.
+
+```ruby
+model.start_operation('Example', true)
+```
+#### Bad - Tabs doesn't belong in operation titles.
+
+```ruby
+model.start_operation("example\tName", true)
+```
+#### Good - Stick to space for whitespace.
+
+```ruby
+model.start_operation('Example Name', true)
+```
+#### Bad - No capitalization. Inconsistent with SketchUp.
+
+```ruby
+model.start_operation('example name', true)
+```
+#### Good - Each word capitalized.
+
+```ruby
+model.start_operation('Example Name', true)
+```
+#### Bad - Underscore instead of space. Inconsistent with SketchUp.
+
+```ruby
+model.start_operation('example_name', true)
+```
+#### Good - Name is for human reading.
+
+```ruby
+model.start_operation('Example Name', true)
+```
+
 ### Configurable attributes
 
 Name | Default value | Configurable values

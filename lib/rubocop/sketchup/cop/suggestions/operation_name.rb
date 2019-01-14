@@ -10,6 +10,40 @@ module RuboCop
       # This cop make some very naive assumptions and will have more false
       # positives than most of the other cops. It's purpose is mainly to enable
       # awareness.
+      #
+      # @example Bad - Ends with a punctuation. Inconsistent with SketchUp.
+      #   model.start_operation('Example.', true)
+      #
+      # @example Good - Doesn't end with a punctuation.
+      #   model.start_operation('Example', true)
+      #
+      #
+      # @example Bad - Starts with whitespace. Inconsistent with SketchUp.
+      #   model.start_operation('  Example', true)
+      #
+      # @example Good - Doesn't start with whitespace.
+      #   model.start_operation('Example', true)
+      #
+      #
+      # @example Bad - Tabs doesn't belong in operation titles.
+      #   model.start_operation("example\tName", true)
+      #
+      # @example Good - Stick to space for whitespace.
+      #   model.start_operation('Example Name', true)
+      #
+      #
+      # @example Bad - No capitalization. Inconsistent with SketchUp.
+      #   model.start_operation('example name', true)
+      #
+      # @example Good - Each word capitalized.
+      #   model.start_operation('Example Name', true)
+      #
+      #
+      # @example Bad - Underscore instead of space. Inconsistent with SketchUp.
+      #   model.start_operation('example_name', true)
+      #
+      # @example Good - Name is for human reading.
+      #   model.start_operation('Example Name', true)
       class OperationName < SketchUp::Cop
 
         include RangeHelp
