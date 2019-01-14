@@ -27,7 +27,7 @@ Enabled | No
 
 Don't attempt to kill the Ruby interpreter by calling `exit` or `exit!`.
 SketchUp will trap `exit` and prevent that, with a message in the
-console. But `exit!` is not trapped and with terminate SketchUp without
+console. But `exit!` is not trapped and will terminate SketchUp without
 shutting down cleanly.
 
 Use `return`, `next`, `break` or `raise` instead.
