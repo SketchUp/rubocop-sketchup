@@ -67,4 +67,7 @@ SketchupRequirements:
 
 SketchupSuggestions:
   Enabled: true
+
+SketchupBugs:
+  Enabled: true
 ```

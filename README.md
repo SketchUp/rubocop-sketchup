@@ -1,6 +1,6 @@
 # RuboCop SketchUp
 
-[![Gem Version](https://badge.fury.io/rb/rubocop-sketchup.svg)](https://badge.fury.io/rb/rubocop-sketchup) [![Build status](https://ci.appveyor.com/api/projects/status/idwviv2nkal1gp7g?svg=true)](https://ci.appveyor.com/project/thomthom/rubocop-sketchup)
+[![Gem Version](https://badge.fury.io/rb/rubocop-sketchup.svg)](https://badge.fury.io/rb/rubocop-sketchup) [![Build status](https://ci.appveyor.com/api/projects/status/idwviv2nkal1gp7g?svg=true)](https://ci.appveyor.com/project/thomthom/rubocop-sketchup) [![Documentation Status](https://readthedocs.org/projects/rubocop-sketchup/badge/?version=latest)](https://rubocop-sketchup.readthedocs.io/en/latest/?badge=latest)
 
 Code analysis for SketchUp extensions using the [SketchUp Ruby API](http://ruby.sketchup.com/).
 
@@ -11,7 +11,7 @@ Tool intended to assist with development of SketchUp extension by providing stat
 
 ## Installation
 
-### TL;DR
+### TL;DR (Global Installation)
 
 ```sh
 gem install rubocop -v 0.61.1
@@ -20,7 +20,9 @@ gem install rubocop-sketchup
 
 ### The Long Version
 
-* [Manual: Requirements and Installation](manual/installation.md)
+For more information about the installation process and how to manage your gem dependencies locally for a project refer to the dedicated section in the manual:
+
+* [Manual: Requirements and Installation](https://rubocop-sketchup.readthedocs.io/en/latest/installation/)
 
 
 ## Usage
@@ -51,12 +53,15 @@ SketchupRequirements:
 
 SketchupSuggestions:
   Enabled: true
+
+SketchupBugs:
+  Enabled: true
 ```
 
 ### The Long Version
 
-* [Manual: Basic Usage](manual/basic_usage.md)
-* [Manual: Configuration](manual/configuration.md)
+* [Manual: Basic Usage](https://rubocop-sketchup.readthedocs.io/en/latest/basic_usage/)
+* [Manual: Configuration](https://rubocop-sketchup.readthedocs.io/en/latest/configuration/)
 
 
 ### Formatters
@@ -78,14 +83,14 @@ rubocop -f extension_review -o report.html
 
 ### The Long Version
 
-* [Manual: Formatters](manual/formatters.md)
+* [Manual: Formatters](https://rubocop-sketchup.readthedocs.io/en/latest/formatters/)
 
 
 ## The Cops
 
 All cops are located under [`lib/rubocop/sketchup`](lib/rubocop/sketchup), and contain examples/documentation.
 
-[Manual: Cops](manual/cops.md)
+[Manual: Cops](https://rubocop-sketchup.readthedocs.io/en/latest/cops/)
 
 
 ## Contributing

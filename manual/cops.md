@@ -31,6 +31,10 @@ Note that the complete technical requirements for Extension Warehouse is not ful
 
 `SketchupSuggestions` might be the more noisy of the departments. These are more general gentle suggestions for common improvements to raise the quality of your extension and source code. No need to address everything this reports, evaluate to the context of your extension. In general this department will be a collection of established best practices.
 
+### SketchupBugs
+
+`SketchupBugs` warns about known bugs in the SketchUp API. It uses the [`TargetSketchUpVersion` configuration](configuration.md#target-sketchup-version) to determine if the bug is relevant for your project. This department isn't a collection of all known bugs. But only a subset which can be reasonable detected.
+
 ### Available cops
 
 In the following section you find all available cops:
