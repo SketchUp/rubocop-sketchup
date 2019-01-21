@@ -89,6 +89,7 @@ module RuboCop
           SketchupDeprecations
           SketchupPerformance
           SketchupSuggestions
+          SketchupBugs
         ].freeze
 
         DEPARTMENT_DESCRIPTIONS = {
@@ -124,6 +125,15 @@ module RuboCop
             that aim to improve the general quality of your extension. Some of
             these might be more noisy than the rest of the cops. Disable as
             needed after reviewing the suggestions.
+
+            This department is not a requirement for submission to
+            Extension Warehouse.
+          DESCRIPTION
+          'SketchupBugs' => <<-DESCRIPTION,
+            This department warns about known bugs in the SketchUp API. It uses
+            the TargetSketchUpVersion configuration to determine if the bug is
+            relevant for your project. This department isn't a collection of all
+            known bugs. But only a subset which can be reasonable detected..
 
             This department is not a requirement for submission to
             Extension Warehouse.
