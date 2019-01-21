@@ -10,8 +10,31 @@ module RuboCop
 
       class InvalidVersion < StandardError; end
 
-      def initialize(version)
-        @version, @maintenance = parse_version(version)
+      # @overload initialize(version_string)
+      #   @param [String] version_string
+      #
+      # @overload initialize(version, maintenance)
+      #   @param [Integer, Float] version
+      #   @param [Integer] maintenance
+      def initialize(*args)
+        if args.size == 1
+          @version, @maintenance = parse_version(args.first)
+        elsif args.size == 2
+          validate(args)
+          @version, @maintenance = args
+        else
+          raise ArgumentError, "expected 1..2 arguments, got #{args.size}"
+        end
+      end
+
+      # @return [SketchUpVersion, nil]
+      def succ
+        version_parts = [@version, @maintenance]
+        index = VALID_VERSIONS.index(version_parts)
+        next_version_parts = VALID_VERSIONS[index + 1]
+        return nil if next_version_parts.nil?
+
+        self.class.new(*next_version_parts)
       end
 
       def <=>(other)
@@ -22,6 +45,7 @@ module RuboCop
         end
       end
 
+      # @return [String]
       def to_s
         string_version = version < 2013 ? version.to_f : version.to_i
         if maintenance > 0
@@ -57,15 +81,17 @@ module RuboCop
         [7.0, 1],
         [7.0, 0],
         [6.0, 0],
-      ].freeze
+      ].reverse.freeze
 
+      # @param [String] version
+      # @return [Array(Float, Integer)]
       def parse_version(version)
         v = 0
         m = 0
         if version.is_a?(String)
           # Treat all LayOut versions as SketchUp versions for now.
-          normalised_version = version.gsub('LayOut', 'SketchUp')
-          result = normalised_version.match(VERSION_NUMBER_REGEX)
+          normalized_version = version.gsub('LayOut', 'SketchUp')
+          result = normalized_version.match(VERSION_NUMBER_REGEX)
           if result
             v = result.captures[0].to_f
             m = (result.captures[1] || '0').to_i
@@ -74,7 +100,11 @@ module RuboCop
           v = version
           m = 0
         end
-        version_parts = [v, m]
+        validate([v, m])
+      end
+
+      # @param [Array(Float, Integer)] version_parts
+      def validate(version_parts)
         unless VALID_VERSIONS.include?(version_parts)
           raise InvalidVersion, "#{version} is not a valid SketchUp version"
         end

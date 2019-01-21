@@ -36,6 +36,10 @@ Note that the complete technical requirements for Extension Warehouse is not ful
 In the following section you find all available cops:
 
 <!-- START_COP_LIST -->
+#### Department [SketchupBugs](cops_bugs.md)
+
+* [SketchupBugs/RenderMode](cops_bugs.md#sketchupbugsrendermode)
+
 #### Department [SketchupDeprecations](cops_deprecations.md)
 
 * [SketchupDeprecations/AddSeparatorToMenu](cops_deprecations.md#sketchupdeprecationsaddseparatortomenu)

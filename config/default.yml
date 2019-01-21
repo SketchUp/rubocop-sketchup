@@ -19,6 +19,8 @@ AllCops:
     # You can set up exclude pattens for all SketchUp departments.
     Exclude: []
     # Alternativly you can set up department wide exclusion.
+    SketchupBugs:
+      Exclude: []
     SketchupDeprecations:
       Exclude: []
     SketchupPerformance:
@@ -27,6 +29,17 @@ AllCops:
       Exclude: []
     SketchupSuggestions:
       Exclude: []
+
+
+SketchupBugs/RenderMode:
+  Description: >-
+                 Invalid rendering mode will crash SketchUp 2017 and newer
+                 versions.
+  Details: >-
+             Avoid adding separators to top level menus. If you require
+             grouping use a sub-menu instead.
+  Reference: https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_bugs.md#rendermode
+  Enabled: true
 
 
 SketchupDeprecations/AddSeparatorToMenu:

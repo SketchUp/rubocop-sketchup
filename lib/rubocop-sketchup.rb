@@ -14,6 +14,7 @@ require 'rubocop/sketchup/namespace'
 require 'rubocop/sketchup/namespace_checker'
 require 'rubocop/sketchup/no_comment_disable'
 require 'rubocop/sketchup/range_help'
+require 'rubocop/sketchup/sketchup_target_range'
 require 'rubocop/sketchup/sketchup_version'
 require 'rubocop/sketchup/tool_checker'
 

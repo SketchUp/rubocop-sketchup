@@ -18,6 +18,7 @@ nav:
     - Deprecations Cops: cops_deprecations.md
     - Performance Cops: cops_performance.md
     - Suggestions Cops: cops_suggestions.md
+    - Bugs Cops: cops_bugs.md
 extra_css:
   - css/extra.css
 markdown_extensions:
