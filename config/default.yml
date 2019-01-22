@@ -35,9 +35,6 @@ SketchupBugs/RenderMode:
   Description: >-
                  Invalid rendering mode will crash SketchUp 2017 and newer
                  versions.
-  Details: >-
-             Avoid adding separators to top level menus. If you require
-             grouping use a sub-menu instead.
   Reference: https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_bugs.md#rendermode
   Enabled: true
 
