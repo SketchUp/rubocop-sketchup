@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.version = RuboCop::SketchUp::VERSION
   spec.platform = Gem::Platform::RUBY
-  spec.required_ruby_version = '>= 2.3.0'
+  spec.required_ruby_version = '>= 2.2.0'
 
   spec.require_paths = ['lib']
   spec.files = Dir[
