@@ -16,6 +16,9 @@ AllCops:
 # load the gem and cause them to be run.
 # (Not sure why DisabledByDefault isn't enough.)
 
+SketchupBugs:
+  Enabled: false
+
 SketchupDeprecations:
   Enabled: false
 
