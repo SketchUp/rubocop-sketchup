@@ -117,3 +117,27 @@ Sketchup.active_model.rendering_options["RenderMode"] = 99
 ### References
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_bugs.md#rendermode](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_bugs.md#rendermode)
+
+<a name='uniformscaling'></a>
+## SketchupBugs/UniformScaling
+
+Enabled by default | Supports autocorrection
+--- | ---
+Enabled | No
+
+Until SketchUp 2018 `Geom::Transformation.scaling(scale)` modified the
+16th value in the transformation matrix. This way of scaling the matrix
+isn't fully accounted in all places in SketchUp. There are also a number
+of exporters and render engines which also doesn't fully handle this.
+
+### Examples
+
+#### Workaround for SketchUp versions older than SketchUp 2018
+
+```ruby
+tr = Geom::Transformation.scaling(scale, scale, scale)
+```
+
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_bugs.md#uniformscaling](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_bugs.md#uniformscaling)

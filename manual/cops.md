@@ -44,6 +44,7 @@ In the following section you find all available cops:
 
 * [SketchupBugs/MaterialName](cops_bugs.md#sketchupbugsmaterialname)
 * [SketchupBugs/RenderMode](cops_bugs.md#sketchupbugsrendermode)
+* [SketchupBugs/UniformScaling](cops_bugs.md#sketchupbugsuniformscaling)
 
 #### Department [SketchupDeprecations](cops_deprecations.md)
 

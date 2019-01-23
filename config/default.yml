@@ -45,6 +45,13 @@ SketchupBugs/RenderMode:
   Reference: https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_bugs.md#rendermode
   Enabled: true
 
+SketchupBugs/UniformScaling:
+  Description: >-
+                 `Geom::Transformation.scaling(scale)` might yield unexpected
+                 behavior.
+  Reference: https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_bugs.md#uniformscaling
+  Enabled: true
+
 
 SketchupDeprecations/AddSeparatorToMenu:
   Description: The method `add_separator_to_menu` is deprecated.
