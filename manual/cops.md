@@ -42,6 +42,7 @@ In the following section you find all available cops:
 <!-- START_COP_LIST -->
 #### Department [SketchupBugs](cops_bugs.md)
 
+* [SketchupBugs/MaterialName](cops_bugs.md#sketchupbugsmaterialname)
 * [SketchupBugs/RenderMode](cops_bugs.md#sketchupbugsrendermode)
 
 #### Department [SketchupDeprecations](cops_deprecations.md)

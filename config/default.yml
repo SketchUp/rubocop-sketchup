@@ -31,6 +31,13 @@ AllCops:
       Exclude: []
 
 
+SketchupBugs/MaterialName:
+  Description: >-
+                 SketchUp 2017 did not protect against the Ruby API creating
+                 duplicated material names.
+  Reference: https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_bugs.md#materialname
+  Enabled: true
+
 SketchupBugs/RenderMode:
   Description: >-
                  Invalid rendering mode will crash SketchUp 2017 and newer
