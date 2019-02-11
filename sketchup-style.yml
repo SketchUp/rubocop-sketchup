@@ -35,6 +35,10 @@ Layout/EndOfLine:
 Layout/EmptyLinesAroundBlockBody:
   Enabled: false
 
+# Match indent with Layout/AlignParameters.
+Layout/FirstParameterIndentation:
+  IndentationWidth: 4
+
 # Indent continuation lines by 4 spaces.
 Layout/IndentAssignment:
   IndentationWidth: 4
