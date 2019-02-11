@@ -37,8 +37,10 @@ end
 
 # Make it easier to explore available methods on a method.
 class Object
-  def methods!
-    methods.sort - Object.class.instance_methods
+  def methods!(queries = true)
+    sorted = methods.sort - Object.class.instance_methods
+    sorted.reject! { |m| m.to_s.end_with?('?') } unless queries
+    sorted
   end
 end
 
