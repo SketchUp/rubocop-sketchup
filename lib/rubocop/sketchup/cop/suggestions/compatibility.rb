@@ -43,8 +43,11 @@ module RuboCop
         end
 
         def on_const(node)
-          namespace = Namespace.new(node.parent_module_name)
-          return unless namespace.top_level?
+          if node.parent && node.parent.module_definition?
+            # This catches definition of classes and modules.
+            namespace = Namespace.new(node.parent_module_name)
+            return unless namespace.top_level?
+          end
 
           feature_name = node.const_name
           [:class, :module, :constant].each { |type|

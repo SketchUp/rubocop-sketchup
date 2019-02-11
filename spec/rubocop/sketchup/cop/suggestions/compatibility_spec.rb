@@ -19,6 +19,30 @@ describe RuboCop::Cop::SketchupSuggestions::Compatibility do
       RUBY
     end
 
+    it 'registers an offense when using incompatible class in a method' do
+      expect_offense(<<-RUBY.strip_indent)
+        module Example
+          def self.hello
+            dialog = UI::HtmlDialog.new
+                     ^^^^^^^^^^^^^^ The class `UI::HtmlDialog` was added in SketchUp 2017 which is incompatible with target SketchUp 6.0.
+          end
+        end
+      RUBY
+    end
+
+    it 'registers an offense when using incompatible class in a block' do
+      expect_offense(<<-RUBY.strip_indent)
+        module Example
+          def self.hello
+            5.times do |i|
+              dialog = UI::HtmlDialog.new
+                       ^^^^^^^^^^^^^^ The class `UI::HtmlDialog` was added in SketchUp 2017 which is incompatible with target SketchUp 6.0.
+            end
+          end
+        end
+      RUBY
+    end
+
     it 'registers an offense when using incompatible module' do
       expect_offense(<<-RUBY.strip_indent)
         state = Sketchup::Licensing::LICENSED
@@ -54,6 +78,16 @@ describe RuboCop::Cop::SketchupSuggestions::Compatibility do
       inspect_source(<<-RUBY.strip_indent)
         module Example
           module Layout
+          end
+        end
+      RUBY
+      expect(cop.offenses).to be_empty
+    end
+
+    it 'does not register an offense when shadowing incompatible module' do
+      inspect_source(<<-RUBY.strip_indent)
+        module Example
+          class Layout
           end
         end
       RUBY
