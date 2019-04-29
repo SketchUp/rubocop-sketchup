@@ -46,6 +46,8 @@ module RuboCop
 
         def check_class_or_module(node)
           name = node.defined_module_name
+          return if name.nil? # TODO: Temp workaround
+          return if node.parent_module_name.nil? # TODO: Temp workaround
           parent = Namespace.new(node.parent_module_name)
           namespace = parent.join(name)
           # Don't want to process anything that aren't top level namespaces.
