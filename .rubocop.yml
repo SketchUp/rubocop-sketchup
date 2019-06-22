@@ -1,4 +1,4 @@
-require: rubocop-sketchup
+require: ./lib/rubocop-sketchup
 
 inherit_from: sketchup-style.yml
 
