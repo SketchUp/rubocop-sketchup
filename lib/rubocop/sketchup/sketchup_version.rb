@@ -63,8 +63,12 @@ module RuboCop
       # running the `versions` template on the API stubs repository;
       #
       #   yardoc -t versions -f text
+      #
+      # The second item in the array is maintenance annotation
       VALID_VERSIONS = [
-        [2019, 0],
+        [2019.2, 0],
+        [2019.0, 0], # SketchUp dropped M notation as of SU2019.
+        [2019, 0], # Documentation still refer to SU2019 instead of SU2019.0
         [2018, 0],
         [2017, 0],
         [2016, 1],
@@ -105,6 +109,7 @@ module RuboCop
       # @param [Array(Float, Integer)] version_parts
       def validate(version_parts)
         unless VALID_VERSIONS.include?(version_parts)
+          version = version_parts.join('.')
           raise InvalidVersion, "#{version} is not a valid SketchUp version"
         end
 

@@ -35,6 +35,18 @@ module RuboCop
       FEATURES = [
 
         {
+          version: 'SketchUp 2019.2',
+          types: {
+            method: [
+              'Sketchup.format_volume',
+              'Sketchup::Material#owner_type',
+              'Sketchup::Selection#invert',
+              'Sketchup::Tool#onMouseWheel',
+            ],
+          },
+        },
+
+        {
           version: 'LayOut 2019',
           types: {
             method: [
@@ -1126,6 +1138,7 @@ module RuboCop
         offset_vector
         offset_vector=
         outer_shell
+        owner_type
         persistent_id
         persistent_id_path
         refresh_thumbnail
