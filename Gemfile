@@ -12,7 +12,7 @@ end
 
 group :development do
   gem 'bump', '~> 0.5', require: false
-  gem 'nokogiri', '>= 1.8', '< 1.10', require: false # 1.10 require Ruby 2.3
+  gem 'rubocop-performance', require: false
   gem 'simplecov', '~> 0.10', require: false
   gem 'solargraph', '~> 0.34', require: false
   gem 'thor', '~> 0.20', require: false

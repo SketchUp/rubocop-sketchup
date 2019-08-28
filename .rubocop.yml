@@ -1,4 +1,6 @@
-require: rubocop-sketchup
+require:
+  - rubocop-performance
+  - rubocop-sketchup
 
 inherit_from: sketchup-style.yml
 
@@ -41,7 +43,7 @@ Layout/AlignParameters:
     - spec/**/*
     - tasks/**/*
 
-Layout/FirstParameterIndentation:
+Layout/IndentFirstArgument:
   Exclude:
     - tasks/**/*
 
