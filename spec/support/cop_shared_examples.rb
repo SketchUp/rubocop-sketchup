@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copied from rubocop-cask
 module CopSharedExamples
   shared_examples 'does not report any offenses' do

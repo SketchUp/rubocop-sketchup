@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'RuboCop Project' do
   describe 'default configuration file' do
     let(:cop_names) do
