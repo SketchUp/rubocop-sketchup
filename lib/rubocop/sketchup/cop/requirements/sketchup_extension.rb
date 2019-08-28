@@ -53,7 +53,7 @@ module RuboCop
 
           # Threat instances not assigned to anything as non-existing.
           extension_nodes.select! { |node|
-            node.parent && node.parent.assignment?
+            node.parent&.assignment?
           }
 
           # There should not be multiple instances.

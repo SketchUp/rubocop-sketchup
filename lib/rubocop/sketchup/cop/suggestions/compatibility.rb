@@ -43,7 +43,7 @@ module RuboCop
         end
 
         def on_const(node)
-          if node.parent && node.parent.module_definition?
+          if node.parent&.module_definition?
             # This catches definition of classes and modules.
             namespace = Namespace.new(node.parent_module_name)
             return unless namespace.top_level?
@@ -103,7 +103,7 @@ module RuboCop
         end
 
         def module_method?(node)
-          node.receiver && node.receiver.const_type?
+          node.receiver&.const_type?
         end
 
         def instance_method?(feature_name)

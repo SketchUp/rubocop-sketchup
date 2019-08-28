@@ -14,7 +14,7 @@ module RuboCop
 
         def on_send(node)
           # Only check instance methods.
-          return if node.receiver && node.receiver.const_type?
+          return if node.receiver&.const_type?
 
           name = node.method_name
 
@@ -22,7 +22,7 @@ module RuboCop
           return unless dc_method
 
           if dc_method.key?(:variables)
-            return unless node.receiver && node.receiver.variable?
+            return unless node.receiver&.variable?
 
             receiver_name = node.receiver.children.first
             # Account for instance and class variables.

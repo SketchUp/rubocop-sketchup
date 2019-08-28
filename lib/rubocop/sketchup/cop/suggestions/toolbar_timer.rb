@@ -50,7 +50,7 @@ module RuboCop
           toolbar_variable_name = assignment_node.children.first
 
           receiver = ui_start_timer_restore(assignment_node.parent).first
-          return unless receiver && receiver.variable?
+          return unless receiver&.variable?
 
           receiver_variable_name = receiver.children.first
 
