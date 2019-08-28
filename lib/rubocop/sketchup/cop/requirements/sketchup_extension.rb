@@ -59,8 +59,8 @@ module RuboCop
           # There should not be multiple instances.
           if extension_nodes.size > 1
             add_offense(nil,
-                location: range,
-                message: MSG_CREATE_ONE)
+                        location: range,
+                        message: MSG_CREATE_ONE)
             return
           end
 
@@ -68,8 +68,8 @@ module RuboCop
           extension_node = extension_nodes.first
           if extension_node.nil?
             add_offense(nil,
-                location: range,
-                message: MSG_CREATE_MISSING)
+                        location: range,
+                        message: MSG_CREATE_MISSING)
             return
           end
 
@@ -81,7 +81,7 @@ module RuboCop
                         'Missing required name arguments'
                       end
             add_offense(extension_node,
-                message: message)
+                        message: message)
             return
           end
 
@@ -100,7 +100,7 @@ module RuboCop
           # Make sure there is only one call to `register_extension`.
           if registered_vars.size > 1
             add_offense(registered_vars[1],
-                message: MSG_REGISTER_ONE)
+                        message: MSG_REGISTER_ONE)
             return
           end
 
@@ -108,8 +108,8 @@ module RuboCop
           unless registered_var == extension_var
             msg = MSG_REGISTER_MISSING % extension_var.to_s
             add_offense(nil,
-                location: range,
-                message: msg)
+                        location: range,
+                        message: msg)
           end
         end
 

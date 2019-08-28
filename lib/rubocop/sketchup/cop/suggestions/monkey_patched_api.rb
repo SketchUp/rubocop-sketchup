@@ -34,9 +34,9 @@ module RuboCop
           message = "#{path}##{name} is not part of the official API. "\
                     "It's a monkey-patched addition by Dynamic Components."
           add_offense(node,
-              location: :selector,
-              severity: :warning,
-              message: message)
+                      location: :selector,
+                      severity: :warning,
+                      message: message)
         end
 
       end

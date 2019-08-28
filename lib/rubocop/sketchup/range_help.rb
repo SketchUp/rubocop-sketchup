@@ -33,7 +33,7 @@ module RuboCop
       def conditional_range(node)
         if node.modifier_form?
           range_between(node.loc.keyword.begin_pos,
-              node.loc.expression.end_pos)
+                        node.loc.expression.end_pos)
         else
           :expression
         end

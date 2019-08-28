@@ -72,8 +72,8 @@ module RuboCop
           unless operation_name.size <= max_operation_name_length
             message = format(MSG_MAX, operation_name.size, max_operation_name_length)
             add_offense(args.first,
-                location: excess_range(args.first, operation_name),
-                message: message)
+                        location: excess_range(args.first, operation_name),
+                        message: message)
           end
           # Ensure operation name is not empty.
           if operation_name.empty?
