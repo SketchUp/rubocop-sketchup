@@ -109,6 +109,12 @@ Performance/FixedSize:
   Exclude:
     - tasks/cops_documentation.rake
 
+# What this cop suggests makes the code less intuitive/readable.
+# Keeping it disabled until there's a known tangible performance impact for this
+# gem.
+Performance/UnfreezeString:
+  Enabled: false
+
 
 Style/ClassVars:
   Exclude:
