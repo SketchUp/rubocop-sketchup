@@ -7,7 +7,7 @@ module RuboCop
       # a sub-menu instead.
       class AddSeparatorToMenu < SketchUp::Cop
 
-        MSG = 'Method is deprecated.'.freeze
+        MSG = 'Method is deprecated.'
 
         def_node_matcher :add_separator_to_menu?, <<-PATTERN
           (send nil? :add_separator_to_menu _)

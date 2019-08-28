@@ -6,7 +6,7 @@ module RuboCop
 
       attr_reader :namespace
 
-      SEPARATOR = '::'.freeze
+      SEPARATOR = '::'
 
       # @param [String] namespace
       def initialize(namespace)

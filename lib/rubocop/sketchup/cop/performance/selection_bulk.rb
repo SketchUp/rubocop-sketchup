@@ -29,7 +29,7 @@ module RuboCop
         include RangeHelp
 
         MSG = 'Prefer changing selection in bulk instead of modifying '\
-              'selection within loops.'.freeze
+              'selection within loops.'
 
         # http://www.rubydoc.info/gems/rubocop/RuboCop/NodePattern
         # https://rubocop.readthedocs.io/en/latest/node_pattern/

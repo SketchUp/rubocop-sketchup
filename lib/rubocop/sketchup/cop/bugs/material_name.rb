@@ -79,7 +79,7 @@ module RuboCop
         PATTERN
 
         MSG_SET_NAME = '`material.name=` might add duplicate materials in '\
-            'SU2017 and older versions.'.freeze
+            'SU2017 and older versions.'
 
         def on_send(node)
           return unless valid_for_target_sketchup_version?

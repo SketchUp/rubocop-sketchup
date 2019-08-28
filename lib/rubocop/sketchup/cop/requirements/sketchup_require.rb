@@ -28,19 +28,19 @@ module RuboCop
         include RangeHelp
 
         MSG_SKETCHUP_REQUIRE_EXT_NAME = 'Do not hard code file extensions '\
-                                        'with `Sketchup.require`.'.freeze
+                                        'with `Sketchup.require`.'
 
         MSG_EXTENSION_NEW_EXT_NAME = 'Do not hard code file extensions '\
-                                      'with `SketchupExtension.new`.'.freeze
+                                      'with `SketchupExtension.new`.'
 
         MSG_REQUIRE_FOR_BINARY = 'Use `require` instead of `Sketchup.require` '\
-                                 'to load binary Ruby libraries.'.freeze
+                                 'to load binary Ruby libraries.'
 
         MSG_OMIT_BINARY_EXT = 'Do not hard code .so/.bundle file '\
-                              'extensions'.freeze
+                              'extensions'
 
         MSG_REQUIRE_ENCRYPTED = 'Use `Sketchup.require` when loading Ruby '\
-                                'files for encrypted extensions.'.freeze
+                                'files for encrypted extensions.'
 
         def_node_matcher :ruby_require, <<-PATTERN
           (send nil? :require (str $_))

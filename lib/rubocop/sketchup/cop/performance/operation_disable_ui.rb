@@ -11,7 +11,7 @@ module RuboCop
       #   # <model changes>
       #   model.commit_operation
       class OperationDisableUI < SketchUp::Cop
-        MSG = 'Operations should disable the UI for performance gain.'.freeze
+        MSG = 'Operations should disable the UI for performance gain.'
 
         def on_send(node)
           _, method_name, *args = *node

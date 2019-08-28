@@ -16,7 +16,7 @@ module RuboCop
         include SketchUp::Features
         include SketchUp
 
-        MSG = 'Incompatible feature with target SketchUp version'.freeze
+        MSG = 'Incompatible feature with target SketchUp version'
 
         def on_def(node)
           return unless observer_method?(node)

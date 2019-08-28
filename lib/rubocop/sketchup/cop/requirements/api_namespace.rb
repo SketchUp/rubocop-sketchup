@@ -14,7 +14,7 @@ module RuboCop
         include SketchUp::NoCommentDisable
         include SketchUp::NamespaceChecker
 
-        MSG = 'Do not modify the SketchUp API.'.freeze
+        MSG = 'Do not modify the SketchUp API.'
 
         NAMESPACES = %w[
           Geom Layout Sketchup SketchupExtension UI

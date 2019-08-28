@@ -30,7 +30,7 @@ module RuboCop
 
         include RangeHelp
 
-        MSG = 'Avoid creating groups out of existing entities.'.freeze
+        MSG = 'Avoid creating groups out of existing entities.'
 
         def_node_matcher :add_group?, <<-PATTERN
           (send _ :add_group ...)

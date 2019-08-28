@@ -7,7 +7,7 @@ module RuboCop
       class ShowRubyPanel < SketchUp::Cop
 
         MSG = 'Method is deprecated. Use `SKETCHUP_CONSOLE.show` '\
-               'instead.'.freeze
+               'instead.'
 
         def_node_matcher :show_ruby_panel?, <<-PATTERN
           (send nil? :show_ruby_panel)

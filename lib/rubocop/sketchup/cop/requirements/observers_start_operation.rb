@@ -32,7 +32,7 @@ module RuboCop
         include SketchUp::NoCommentDisable
         include RangeHelp
 
-        MSG = 'Observers should create transparent operations.'.freeze
+        MSG = 'Observers should create transparent operations.'
 
         def_node_search :start_operation, <<-PATTERN
           (send

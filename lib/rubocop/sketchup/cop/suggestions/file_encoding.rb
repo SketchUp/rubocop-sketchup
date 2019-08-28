@@ -17,7 +17,7 @@ module RuboCop
       #   basename = File.basename(file, '.*')
       class FileEncoding < SketchUp::Cop
 
-        MSG = 'Beware encoding bug with `__FILE__` and `__dir__`.'.freeze
+        MSG = 'Beware encoding bug with `__FILE__` and `__dir__`.'
 
         def_node_matcher :file_loaded?, <<-PATTERN
           (send nil? {:file_loaded? :file_loaded} ...)

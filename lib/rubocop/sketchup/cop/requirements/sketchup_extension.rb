@@ -21,11 +21,11 @@ module RuboCop
         include RangeHelp
 
         # rubocop:disable Metrics/LineLength
-        MSG = 'Create and register one SketchupExtension instance per extension.'.freeze
-        MSG_CREATE_ONE = 'Create only SketchupExtension instance per extension.'.freeze
-        MSG_CREATE_MISSING = 'SketchupExtension.new not found.'.freeze
-        MSG_REGISTER_ONE = 'Only register one SketchupExtension instance per extension.'.freeze
-        MSG_REGISTER_MISSING = 'Registration of SketchupExtension not found. Expected %s'.freeze
+        MSG = 'Create and register one SketchupExtension instance per extension.'
+        MSG_CREATE_ONE = 'Create only SketchupExtension instance per extension.'
+        MSG_CREATE_MISSING = 'SketchupExtension.new not found.'
+        MSG_REGISTER_ONE = 'Only register one SketchupExtension instance per extension.'
+        MSG_REGISTER_MISSING = 'Registration of SketchupExtension not found. Expected %s'
         # rubocop:enable Metrics/LineLength
 
         # Reference: http://rubocop.readthedocs.io/en/latest/node_pattern/

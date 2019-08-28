@@ -14,7 +14,7 @@ module RuboCop
         include SketchUp::NoCommentDisable
         include SketchUp
 
-        MSG = 'Do not introduce global constants.'.freeze
+        MSG = 'Do not introduce global constants.'
 
         def_node_matcher :namespaced_constant?, <<-PATTERN
           (casgn

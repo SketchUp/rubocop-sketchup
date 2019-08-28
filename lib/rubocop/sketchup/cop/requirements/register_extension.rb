@@ -18,7 +18,7 @@ module RuboCop
 
         include SketchUp::NoCommentDisable
 
-        MSG = 'Always register extensions to load by default.'.freeze
+        MSG = 'Always register extensions to load by default.'
 
         def_node_search :sketchup_register_extension, <<-PATTERN
           (send

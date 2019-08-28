@@ -14,7 +14,7 @@ module RuboCop
         include SketchUp::NoCommentDisable
         include SketchUp
 
-        MSG = 'Do not include into global namespace.'.freeze
+        MSG = 'Do not include into global namespace.'
 
         def_node_matcher :is_include?, <<-PATTERN
           (send nil? :include ...)

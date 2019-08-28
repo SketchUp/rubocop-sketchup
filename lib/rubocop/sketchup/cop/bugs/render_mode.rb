@@ -43,10 +43,10 @@ module RuboCop
         PATTERN
 
         MSG_OBSOLETE = 'Obsolete render mode will crash in SU2017 and '\
-            'newer versions.'.freeze
+            'newer versions.'
 
         MSG_INVALID = 'Invalid render mode will crash in SU2017 and '\
-            'newer versions.'.freeze
+            'newer versions.'
 
         def on_send(node)
           return unless valid_for_target_sketchup_version?

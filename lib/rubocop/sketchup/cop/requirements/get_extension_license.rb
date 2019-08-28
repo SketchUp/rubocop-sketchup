@@ -14,12 +14,12 @@ module RuboCop
         include RangeHelp
         include SketchUp::NoCommentDisable
 
-        MSG_INVALID = 'Invalid extension GUID'.freeze
+        MSG_INVALID = 'Invalid extension GUID'
 
         MSG_WRONG_TYPE = 'Only pass in extension GUID from local string '\
-                         'literals.'.freeze
+                         'literals.'
 
-        MSG_TRAILING_SPACE = 'Extra space in extension GUID'.freeze
+        MSG_TRAILING_SPACE = 'Extra space in extension GUID'
 
         def_node_matcher :get_extension_license, <<-PATTERN
           (send

@@ -16,7 +16,7 @@ module RuboCop
       class SketchupFindSupportFile < SketchUp::Cop
 
         MSG = 'Avoid `Sketchup.find_support_file` to find your '\
-              "extension's files.".freeze
+              "extension's files."
 
         # http://www.rubydoc.info/gems/rubocop/RuboCop/NodePattern
         # https://rubocop.readthedocs.io/en/latest/node_pattern/

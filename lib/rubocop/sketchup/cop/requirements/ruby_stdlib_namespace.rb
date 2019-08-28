@@ -14,7 +14,7 @@ module RuboCop
         include SketchUp::NoCommentDisable
         include SketchUp::NamespaceChecker
 
-        MSG = 'Do not modify Ruby stdlib functionality.'.freeze
+        MSG = 'Do not modify Ruby stdlib functionality.'
 
         # We check only against the top level namespaces. The stdlib define more
         # objects, but they are under one of the top level namespaces listed.

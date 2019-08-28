@@ -21,7 +21,7 @@ module RuboCop
         include SketchUp::NoCommentDisable
         include SketchUp::DynamicComponentGlobals
 
-        MSG = 'Do not introduce global variables.'.freeze
+        MSG = 'Do not introduce global variables.'
 
         # predefined global variables their English aliases
         # http://www.zenspider.com/Languages/Ruby/QuickRef.html

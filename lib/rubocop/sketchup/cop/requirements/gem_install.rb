@@ -26,7 +26,7 @@ module RuboCop
         include SketchUp::NoCommentDisable
 
         MSG = '`Gem.install` is unreliable in SketchUp, and can cause '\
-              'extensions to clash.'.freeze
+              'extensions to clash.'
 
         # Reference: http://rubocop.readthedocs.io/en/latest/development/
         def_node_matcher :gem_install?, <<-PATTERN

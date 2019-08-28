@@ -9,7 +9,7 @@ module RuboCop
 
         include SketchUp::NoCommentDisable
 
-        MSG = 'Do not modify the load path.'.freeze
+        MSG = 'Do not modify the load path.'
 
         def_node_matcher :load_path_mutator?, <<-PATTERN
           (send

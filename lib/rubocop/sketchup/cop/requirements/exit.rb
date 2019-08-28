@@ -14,7 +14,7 @@ module RuboCop
         include SketchUp::NoCommentDisable
 
         MSG = '`exit` attempts to kill the Ruby interpreter. Use `return`, '\
-              '`next`, `break` or `raise` instead.'.freeze
+              '`next`, `break` or `raise` instead.'
 
         # Reference: http://rubocop.readthedocs.io/en/latest/development/
         def_node_matcher :exit?, <<-PATTERN

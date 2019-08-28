@@ -33,7 +33,7 @@ module RuboCop
         include SketchUp::ExtensionProject
 
         MSG = "Don't load extension files in the root file registering the "\
-              'extension.'.freeze
+              'extension.'
 
         # Reference: http://rubocop.readthedocs.io/en/latest/node_pattern/
         def_node_matcher :require_filename, <<-PATTERN

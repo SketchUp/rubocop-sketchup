@@ -12,7 +12,7 @@ module RuboCop
       # and less versatile.
       class SketchupSet < SketchUp::Cop
 
-        MSG = 'Class is deprecated.'.freeze
+        MSG = 'Class is deprecated.'
 
         def_node_matcher :sketchup_set?, <<-PATTERN
           (const (const nil? :Sketchup) :Set)

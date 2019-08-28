@@ -31,10 +31,10 @@ module RuboCop
         include SketchUp::ToolChecker
 
         MSG_MISSING_INVALIDATE_METHOD = 'When drawing to the viewport, make '\
-            'sure to `suspend` and `deactivate` calls `view.invalidate`.'.freeze
+            'sure to `suspend` and `deactivate` calls `view.invalidate`.'
 
         MSG_MISSING_INVALIDATE = 'When drawing to the viewport, make sure to '\
-            'call `view.invalidate` when the tool becomes inactive.'.freeze
+            'call `view.invalidate` when the tool becomes inactive.'
 
         def_node_search :view_invalidate?, <<-PATTERN
           (send (lvar :view) :invalidate ...)

@@ -14,7 +14,7 @@ module RuboCop
         include SketchUp::NoCommentDisable
         include SketchUp
 
-        MSG = 'Do not introduce global methods.'.freeze
+        MSG = 'Do not introduce global methods.'
 
         # Reference: http://www.rubydoc.info/gems/rubocop/RuboCop/NodePattern
         #

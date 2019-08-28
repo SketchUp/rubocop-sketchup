@@ -8,7 +8,7 @@ module RuboCop
       # `entity.typename == 'Face'` is slow because it performs a string
       # comparison. `is_a?` is much faster because it's a simple type check.
       class Typename < SketchUp::Cop
-        MSG = '`.typename` is very slow, prefer `.is_a?` instead.'.freeze
+        MSG = '`.typename` is very slow, prefer `.is_a?` instead.'
 
         def on_send(node)
           _, method_name = *node

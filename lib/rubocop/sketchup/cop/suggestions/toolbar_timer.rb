@@ -25,7 +25,7 @@ module RuboCop
         include RangeHelp
 
         MSG = 'Wrapping `toolbar.restore` in `UI.start_timer` is '\
-              'redundant.'.freeze
+              'redundant.'
 
         def_node_matcher :toolbar_new?, <<-PATTERN
           (send (const (const nil? :UI) :Toolbar) :new _)

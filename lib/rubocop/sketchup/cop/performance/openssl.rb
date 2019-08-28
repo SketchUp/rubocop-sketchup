@@ -16,7 +16,7 @@ module RuboCop
       class OpenSSL < SketchUp::Cop
 
         MSG = 'Avoid use of OpenSSL within SketchUp due to severe performance '\
-              'issues.'.freeze
+              'issues.'
 
         # http://www.rubydoc.info/gems/rubocop/RuboCop/NodePattern
         # https://rubocop.readthedocs.io/en/latest/node_pattern/
