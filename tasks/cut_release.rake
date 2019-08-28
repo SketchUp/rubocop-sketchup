@@ -15,16 +15,18 @@ namespace :cut_release do
   end
 
   def update_versions(old_version, new_version, rubocop_version)
+    max_rubocop_version = rubocop_version.requirements.last.last.to_s
+    rubocop_requirements = rubocop_version.to_s
     files = %w[README.md manual/installation.md manual/integration_with_other_tools.md]
     files.each do |filename|
       content = File.read(filename)
       File.open(filename, 'w') do |file|
         file << content.gsub(
-            /gem install rubocop -v \d+\.\d+\.\d+/,
-            "gem install rubocop -v #{rubocop_version}"
+            /gem install rubocop -v \d+\.\d+(?:\.\d+)?/,
+            "gem install rubocop -v #{max_rubocop_version}"
           ).gsub(
-            /gem 'rubocop', '~> \d+\.\d+\.\d+/,
-            "gem 'rubocop', '~> #{rubocop_version}"
+            /gem 'rubocop', '.+'/,
+            "gem 'rubocop', '~> #{rubocop_requirements}'"
           ).gsub(
             "gem 'rubocop-sketchup', '~> #{old_version}",
             "gem 'rubocop-sketchup', '~> #{new_version}"
@@ -34,7 +36,10 @@ namespace :cut_release do
   end
 
   def run(release_type)
-    rubocop_version = RuboCop::Version.version
+    runtime = Bundler.setup
+    spec = runtime.specs.find { |spec| spec.name == 'rubocop-sketchup' }
+    rubocop = spec.dependencies.find { |dep| dep.name == 'rubocop' }
+    rubocop_version = rubocop.requirement
 
     old_version = Bump::Bump.current
     Bump::Bump.run(release_type, commit: false, bundle: false, tag: false)
