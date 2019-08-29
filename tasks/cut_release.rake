@@ -37,8 +37,8 @@ namespace :cut_release do
 
   def run(release_type)
     runtime = Bundler.setup
-    spec = runtime.specs.find { |spec| spec.name == 'rubocop-sketchup' }
-    rubocop = spec.dependencies.find { |dep| dep.name == 'rubocop' }
+    rubocop_sketchup = runtime.specs.find { |spec| spec.name == 'rubocop-sketchup' }
+    rubocop = rubocop_sketchup.dependencies.find { |dep| dep.name == 'rubocop' }
     rubocop_version = rubocop.requirement
 
     old_version = Bump::Bump.current

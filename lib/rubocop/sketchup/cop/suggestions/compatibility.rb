@@ -18,6 +18,10 @@ module RuboCop
 
         MSG = 'Incompatible feature with target SketchUp version'
 
+        def_node_matcher :module_definition?, <<~PATTERN
+          {class module (casgn _ _ class_constructor?)}
+        PATTERN
+
         def on_def(node)
           return unless observer_method?(node)
 
@@ -43,7 +47,7 @@ module RuboCop
         end
 
         def on_const(node)
-          if node.parent&.module_definition?
+          if node.parent && module_definition?(node.parent)
             # This catches definition of classes and modules.
             namespace = Namespace.new(node.parent_module_name)
             return unless namespace.top_level?
