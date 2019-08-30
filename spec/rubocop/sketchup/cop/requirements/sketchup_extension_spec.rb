@@ -180,6 +180,13 @@ describe RuboCop::Cop::SketchupRequirements::SketchupExtension do
       RUBY
     end
 
+    it 'does not register an offense for SketchupExtension in root file with only one argument' do
+      expect_no_offenses(<<-RUBY.strip_indent, './source/hello.rb')
+        extension = SketchupExtension.new("Extension Name", filename)
+        Sketchup.register_extension(extension)
+      RUBY
+    end
+
   end
 
 end

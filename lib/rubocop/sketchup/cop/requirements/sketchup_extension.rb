@@ -38,7 +38,7 @@ module RuboCop
           (send
             (const {nil? cbase} :Sketchup) :register_extension
             {({lvar ivar cvar gvar} $_)(const nil? $_)}
-            _)
+            _ ?)
         PATTERN
 
         def investigate(processed_source)
