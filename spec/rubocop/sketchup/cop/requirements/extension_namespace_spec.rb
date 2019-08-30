@@ -16,6 +16,32 @@ describe RuboCop::Cop::SketchupRequirements::ExtensionNamespace, :config do
     RUBY
   end
 
+  it 'registers an offense for module definitions in blocks' do
+    expect_offense(<<-RUBY.strip_indent)
+      module Example
+        def self.generate; end
+      end
+      Example.generate do
+        module FooBar
+               ^^^^^^ Use a single root namespace. (Found `FooBar`; Previously found `Example`)
+        end
+      end
+    RUBY
+  end
+
+  it 'registers an offense for class definitions in blocks' do
+    expect_offense(<<-RUBY.strip_indent)
+      module Example
+        def self.generate; end
+      end
+      Example.generate do
+        class FooBar
+              ^^^^^^ Use a single root namespace. (Found `FooBar`; Previously found `Example`)
+        end
+      end
+    RUBY
+  end
+
   it 'does not register an offense for namespaced objects' do
     expect_no_offenses(<<-RUBY.strip_indent)
       module Example

@@ -46,8 +46,25 @@ module RuboCop
 
         def check_class_or_module(node)
           name = node.defined_module_name
-          parent = Namespace.new(node.parent_module_name)
+
+          if node.parent_module_name
+            parent = Namespace.new(node.parent_module_name)
+          else
+            # This is somewhat of an educated guess. We might end up here with
+            # code like this:
+            #
+            #   Example.generate do
+            #     module HelloWorld
+            #     end
+            #   end
+            #
+            # It might be that the module is evaluated in a different context.
+            # But we'll accept the possible false positive and let the user
+            # config exceptions if needed.
+            parent = Namespace.new('Object')
+          end
           namespace = parent.join(name)
+
           # Don't want to process anything that aren't top level namespaces.
           return unless parent.top_level?
           # Don't check excluded namespaces.
