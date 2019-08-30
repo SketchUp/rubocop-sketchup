@@ -60,9 +60,27 @@ describe RuboCop::Cop::SketchupRequirements::GetExtensionLicense do
 
   context 'unsafe storage of extension GUID' do
 
+    it 'registers an offense when extension GUID is not a local string literal' do
+      expect_offense(<<-RUBY.strip_indent)
+        module Example
+          def check(extension_id)
+            license = Sketchup::Licensing.get_extension_license(extension_id)
+                                                                ^^^^^^^^^^^^ Only pass in extension GUID from local string literals.
+          end
+        end
+      RUBY
+    end
+
     it 'registers an offense when extension GUID is stored as a constant' do
       expect_offense(<<-RUBY.strip_indent)
         EXTENSION_ID = "4e215280-dd23-40c4-babb-b8a8dd29d5ee"
+        license = Sketchup::Licensing.get_extension_license(EXTENSION_ID)
+                                                            ^^^^^^^^^^^^ Only pass in extension GUID from local string literals.
+      RUBY
+    end
+
+    it 'registers an offense when extension GUID is stored as a constant (unknown source)' do
+      expect_offense(<<-RUBY.strip_indent)
         license = Sketchup::Licensing.get_extension_license(EXTENSION_ID)
                                                             ^^^^^^^^^^^^ Only pass in extension GUID from local string literals.
       RUBY
@@ -76,6 +94,13 @@ describe RuboCop::Cop::SketchupRequirements::GetExtensionLicense do
       RUBY
     end
 
+    it 'registers an offense when extension GUID is stored as an instance variable (unknown source)' do
+      expect_offense(<<-RUBY.strip_indent)
+        license = Sketchup::Licensing.get_extension_license(@extension_id)
+                                                            ^^^^^^^^^^^^^ Only pass in extension GUID from local string literals.
+      RUBY
+    end
+
     it 'registers an offense when extension GUID is stored as a class variable' do
       expect_offense(<<-RUBY.strip_indent)
         @@extension_id = "4e215280-dd23-40c4-babb-b8a8dd29d5ee"
@@ -84,9 +109,23 @@ describe RuboCop::Cop::SketchupRequirements::GetExtensionLicense do
       RUBY
     end
 
+    it 'registers an offense when extension GUID is stored as a class variable (unknown source)' do
+      expect_offense(<<-RUBY.strip_indent)
+        license = Sketchup::Licensing.get_extension_license(@@extension_id)
+                                                            ^^^^^^^^^^^^^^ Only pass in extension GUID from local string literals.
+      RUBY
+    end
+
     it 'registers an offense when extension GUID is stored as a global variable' do
       expect_offense(<<-RUBY.strip_indent)
         $extension_id = "4e215280-dd23-40c4-babb-b8a8dd29d5ee"
+        license = Sketchup::Licensing.get_extension_license($extension_id)
+                                                            ^^^^^^^^^^^^^ Only pass in extension GUID from local string literals.
+      RUBY
+    end
+
+    it 'registers an offense when extension GUID is stored as a global variable (unknown source)' do
+      expect_offense(<<-RUBY.strip_indent)
         license = Sketchup::Licensing.get_extension_license($extension_id)
                                                             ^^^^^^^^^^^^^ Only pass in extension GUID from local string literals.
       RUBY

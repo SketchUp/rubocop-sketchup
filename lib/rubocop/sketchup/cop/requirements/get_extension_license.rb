@@ -39,7 +39,7 @@ module RuboCop
           if argument.lvar_type?
             variable_name = argument.children.first
             assignment_node = find_assignment(node, variable_name)
-            argument = assignment_node.children.last
+            argument = assignment_node.children.last if assignment_node
           end
 
           if argument.str_type?
