@@ -48,8 +48,7 @@ end
 
 ```json
 {
-  "solargraph.diagnostics": true,
-  "solargraph.useBundler": true
+  "solargraph.diagnostics": true
 }
 ```
 
@@ -57,7 +56,7 @@ end
 
 ```yml
 require_paths:
-- "C:/Program Files/SketchUp/SketchUp 2018/Tools" # Modify as needed
+- "C:/Program Files/SketchUp/SketchUp 2019/Tools" # Modify as needed
 - src # Match with AllCops/SketchUp/SourcePath in .rubocop.yml.
 
 reporters:
