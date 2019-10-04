@@ -13,14 +13,14 @@ describe RuboCop::Cop::SketchupSuggestions::Compatibility do
     end
 
     it 'registers an offense when using incompatible class' do
-      expect_offense(<<-RUBY.strip_indent)
+      expect_offense(<<~RUBY)
         dialog = UI::HtmlDialog.new
                  ^^^^^^^^^^^^^^ The class `UI::HtmlDialog` was added in SketchUp 2017 which is incompatible with target SketchUp 6.0.
       RUBY
     end
 
     it 'registers an offense when using incompatible class in a method' do
-      expect_offense(<<-RUBY.strip_indent)
+      expect_offense(<<~RUBY)
         module Example
           def self.hello
             dialog = UI::HtmlDialog.new
@@ -31,7 +31,7 @@ describe RuboCop::Cop::SketchupSuggestions::Compatibility do
     end
 
     it 'registers an offense when using incompatible class in a block' do
-      expect_offense(<<-RUBY.strip_indent)
+      expect_offense(<<~RUBY)
         module Example
           def self.hello
             5.times do |i|
@@ -44,28 +44,28 @@ describe RuboCop::Cop::SketchupSuggestions::Compatibility do
     end
 
     it 'registers an offense when using incompatible module' do
-      expect_offense(<<-RUBY.strip_indent)
+      expect_offense(<<~RUBY)
         state = Sketchup::Licensing::LICENSED
                 ^^^^^^^^^^^^^^^^^^^ The module `Sketchup::Licensing` was added in SketchUp 2015 which is incompatible with target SketchUp 6.0.
       RUBY
     end
 
     it 'registers an offense when using incompatible module method' do
-      expect_offense(<<-RUBY.strip_indent)
+      expect_offense(<<~RUBY)
         scale = UI.select_directory(title: "Select Directory")
                    ^^^^^^^^^^^^^^^^ The method `UI.select_directory` was added in SketchUp 2015 which is incompatible with target SketchUp 6.0.
       RUBY
     end
 
     it 'registers an offense when using incompatible instance method' do
-      expect_offense(<<-RUBY.strip_indent)
+      expect_offense(<<~RUBY)
         page.include_in_animation = true
              ^^^^^^^^^^^^^^^^^^^^ The method `Sketchup::Page#include_in_animation=` was added in SketchUp 2018 which is incompatible with target SketchUp 6.0.
       RUBY
     end
 
     it 'registers an register an offense when using incompatible observer method' do
-      expect_offense(<<-RUBY.strip_indent)
+      expect_offense(<<~RUBY)
         class ExampleObserver < Sketchup::EntitiesObserver
           def onActiveSectionPlaneChanged(entities)
               ^^^^^^^^^^^^^^^^^^^^^^^^^^^ The method `Sketchup::EntitiesObserver#onActiveSectionPlaneChanged` was added in SketchUp 2014 which is incompatible with target SketchUp 6.0.
@@ -75,7 +75,7 @@ describe RuboCop::Cop::SketchupSuggestions::Compatibility do
     end
 
     it 'does not register an offense when shadowing incompatible module' do
-      inspect_source(<<-RUBY.strip_indent)
+      inspect_source(<<~RUBY)
         module Example
           module Layout
           end
@@ -85,7 +85,7 @@ describe RuboCop::Cop::SketchupSuggestions::Compatibility do
     end
 
     it 'does not register an offense when shadowing incompatible module' do
-      inspect_source(<<-RUBY.strip_indent)
+      inspect_source(<<~RUBY)
         module Example
           class Layout
           end
@@ -126,7 +126,7 @@ describe RuboCop::Cop::SketchupSuggestions::Compatibility do
     end
 
     it 'does not register an offense when using compatible observer method' do
-      inspect_source(<<-RUBY.strip_indent)
+      inspect_source(<<~RUBY)
         class ExampleObserver < Sketchup::Entities
           def onActiveSectionPlaneChanged(entities)
           end

@@ -15,7 +15,7 @@ describe RuboCop::Cop::SketchupBugs::MaterialName do
       end
 
       it 'registers an offense for renaming a material via variable' do
-        expect_offense(<<-RUBY.strip_indent)
+        expect_offense(<<~RUBY)
           material = get_materials.add('Test')
           name = 'Example'
           material.name = name
@@ -24,7 +24,7 @@ describe RuboCop::Cop::SketchupBugs::MaterialName do
       end
 
       it 'registers an offense for renaming a material via string literal' do
-        expect_offense(<<-RUBY.strip_indent)
+        expect_offense(<<~RUBY)
           material = get_materials.add('Test')
           material.name = 'Example'
           ^^^^^^^^^^^^^^^^^^^^^^^^^ `material.name=` might add duplicate materials in SU2017 and older versions.
@@ -32,7 +32,7 @@ describe RuboCop::Cop::SketchupBugs::MaterialName do
       end
 
       it 'registers an offense for using `name=` with other variable names' do
-        expect_no_offenses(<<-RUBY.strip_indent)
+        expect_no_offenses(<<~RUBY)
           layer.name = 'Example'
         RUBY
       end
@@ -49,7 +49,7 @@ describe RuboCop::Cop::SketchupBugs::MaterialName do
       end
 
       it 'registers an offense for renaming a material via variable' do
-        expect_no_offenses(<<-RUBY.strip_indent)
+        expect_no_offenses(<<~RUBY)
           material = get_materials.add('Test')
           name = 'Example'
           material.name = name
@@ -59,7 +59,7 @@ describe RuboCop::Cop::SketchupBugs::MaterialName do
       it 'registers an offense for renaming a material via string literal' do
         # TODO(thomthom): Might want to add a SketchupSuggestions cop to detect
         # material renaming without going through materials.unique_name.
-        expect_no_offenses(<<-RUBY.strip_indent)
+        expect_no_offenses(<<~RUBY)
           material = get_materials.add('Test')
           material.name = 'Example'
         RUBY

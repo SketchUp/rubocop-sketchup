@@ -9,7 +9,7 @@ describe RuboCop::Cop::SketchupSuggestions::ToolInvalidate do
   context 'with a draw method' do
 
     it 'registers an offense when `deactivate` is missing' do
-      expect_offense(<<-RUBY.strip_indent)
+      expect_offense(<<~RUBY)
         class ExampleTool
         ^^^^^^^^^^^^^^^^^ When drawing to the viewport, make sure to `suspend` and `deactivate` calls `view.invalidate`.
           def suspend(view)
@@ -22,7 +22,7 @@ describe RuboCop::Cop::SketchupSuggestions::ToolInvalidate do
     end
 
     it 'registers an offense when `deactivate` is missing `view.invalidate`' do
-      expect_offense(<<-RUBY.strip_indent)
+      expect_offense(<<~RUBY)
         class ExampleTool
           def deactivate(view)
           ^^^^^^^^^^^^^^^^^^^^ When drawing to the viewport, make sure to call `view.invalidate` when the tool becomes inactive.
@@ -37,7 +37,7 @@ describe RuboCop::Cop::SketchupSuggestions::ToolInvalidate do
     end
 
     it 'registers an offense when `suspend` is missing' do
-      expect_offense(<<-RUBY.strip_indent)
+      expect_offense(<<~RUBY)
         class ExampleTool
         ^^^^^^^^^^^^^^^^^ When drawing to the viewport, make sure to `suspend` and `deactivate` calls `view.invalidate`.
           def deactivate(view)
@@ -50,7 +50,7 @@ describe RuboCop::Cop::SketchupSuggestions::ToolInvalidate do
     end
 
     it 'registers an offense when `suspend` is missing `view.invalidate`' do
-      expect_offense(<<-RUBY.strip_indent)
+      expect_offense(<<~RUBY)
         class ExampleTool
           def deactivate(view)
             view.invalidate
@@ -65,7 +65,7 @@ describe RuboCop::Cop::SketchupSuggestions::ToolInvalidate do
     end
 
     it 'does not register an offense when `deactivate` and `suspend` is calling `view.invalidate`' do
-      expect_no_offenses(<<-RUBY.strip_indent)
+      expect_no_offenses(<<~RUBY)
         class ExampleTool
           def deactivate(view)
             view.invalidate
@@ -82,14 +82,14 @@ describe RuboCop::Cop::SketchupSuggestions::ToolInvalidate do
   end
 
   it 'does not register an offense with an empty tool' do
-    expect_no_offenses(<<-RUBY.strip_indent)
+    expect_no_offenses(<<~RUBY)
       class ExampleTool
       end
     RUBY
   end
 
   it 'does not register an offense when class name does not ends with Tool' do
-    expect_no_offenses(<<-RUBY.strip_indent)
+    expect_no_offenses(<<~RUBY)
       class Example
         def draw(view)
         end

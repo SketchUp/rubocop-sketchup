@@ -28,7 +28,7 @@ describe RuboCop::Cop::SketchupRequirements::SketchupExtension do
     end
 
     it 'registers an offense for missing name argument in SketchupExtension.new' do
-      expect_offense(<<-RUBY.strip_indent, './src/hello.rb')
+      expect_offense(<<~RUBY, './src/hello.rb')
         extension = SketchupExtension.new
                     ^^^^^^^^^^^^^^^^^^^^^ Missing required name arguments
         Sketchup.register_extension(extension, true)
@@ -36,7 +36,7 @@ describe RuboCop::Cop::SketchupRequirements::SketchupExtension do
     end
 
     it 'registers an offense for missing path argument in SketchupExtension.new' do
-      expect_offense(<<-RUBY.strip_indent, './src/hello.rb')
+      expect_offense(<<~RUBY, './src/hello.rb')
         extension = SketchupExtension.new('Extension Name')
                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Missing second argument for the path
         Sketchup.register_extension(extension, true)
@@ -44,20 +44,20 @@ describe RuboCop::Cop::SketchupRequirements::SketchupExtension do
     end
 
     it 'does not register an offense for missing SketchupExtension in support file' do
-      expect_no_offenses(<<-RUBY.strip_indent, './src/hello/world.rb')
+      expect_no_offenses(<<~RUBY, './src/hello/world.rb')
         foo(123)
       RUBY
     end
 
     it 'does not register an offense for SketchupExtension in root file' do
-      expect_no_offenses(<<-RUBY.strip_indent, './src/hello.rb')
+      expect_no_offenses(<<~RUBY, './src/hello.rb')
         extension = SketchupExtension.new("Extension Name", filename)
         Sketchup.register_extension(extension, true)
       RUBY
     end
 
     it 'does not register an offense for namespaced SketchupExtension in root file assigned to local variable' do
-      expect_no_offenses(<<-RUBY.strip_indent, './src/hello.rb')
+      expect_no_offenses(<<~RUBY, './src/hello.rb')
         module Example
           extension = SketchupExtension.new("Extension Name", filename)
           extension.description = "Hello World"
@@ -67,7 +67,7 @@ describe RuboCop::Cop::SketchupRequirements::SketchupExtension do
     end
 
     it 'does not register an offense for namespaced SketchupExtension in root file assigned to instance variable' do
-      expect_no_offenses(<<-RUBY.strip_indent, './src/hello.rb')
+      expect_no_offenses(<<~RUBY, './src/hello.rb')
         module Example
           @extension = SketchupExtension.new("Extension Name", filename)
           @extension.description = "Hello World"
@@ -77,7 +77,7 @@ describe RuboCop::Cop::SketchupRequirements::SketchupExtension do
     end
 
     it 'does not register an offense for namespaced SketchupExtension in root file assigned to class variable' do
-      expect_no_offenses(<<-RUBY.strip_indent, './src/hello.rb')
+      expect_no_offenses(<<~RUBY, './src/hello.rb')
         module Example
           @@extension = SketchupExtension.new("Extension Name", filename)
           @@extension.description = "Hello World"
@@ -87,7 +87,7 @@ describe RuboCop::Cop::SketchupRequirements::SketchupExtension do
     end
 
     it 'does not register an offense for namespaced SketchupExtension in root file assigned to global variable' do
-      expect_no_offenses(<<-RUBY.strip_indent, './src/hello.rb')
+      expect_no_offenses(<<~RUBY, './src/hello.rb')
         module Example
           $extension = SketchupExtension.new("Extension Name", filename)
           $extension.description = "Hello World"
@@ -97,7 +97,7 @@ describe RuboCop::Cop::SketchupRequirements::SketchupExtension do
     end
 
     it 'does not register an offense for namespaced SketchupExtension in root file assigned to constant' do
-      expect_no_offenses(<<-RUBY.strip_indent, './src/hello.rb')
+      expect_no_offenses(<<~RUBY, './src/hello.rb')
         module Example
           EXTENSION = SketchupExtension.new("Extension Name", filename)
           EXTENSION.description = "Hello World"
@@ -107,7 +107,7 @@ describe RuboCop::Cop::SketchupRequirements::SketchupExtension do
     end
 
     it 'does not register an offense when SketchupExtension is prefixed with ::' do
-      expect_no_offenses(<<-RUBY.strip_indent, './src/hello.rb')
+      expect_no_offenses(<<~RUBY, './src/hello.rb')
         module Example
           extension = ::SketchupExtension.new("Extension Name", filename)
           extension.description = "Hello World"
@@ -117,7 +117,7 @@ describe RuboCop::Cop::SketchupRequirements::SketchupExtension do
     end
 
     it 'does not register an offense when Sketchup is prefixed with ::' do
-      expect_no_offenses(<<-RUBY.strip_indent, './src/hello.rb')
+      expect_no_offenses(<<~RUBY, './src/hello.rb')
         module Example
           extension = SketchupExtension.new("Extension Name", filename)
           extension.description = "Hello World"
@@ -127,7 +127,7 @@ describe RuboCop::Cop::SketchupRequirements::SketchupExtension do
     end
 
     it 'does not throw an error when inspecting source' do
-      inspect_source(<<-RUBY.strip_indent, './src/hello.rb')
+      inspect_source(<<~RUBY, './src/hello.rb')
         module Example
           msg = "Hello World"
           msg += "Foo Bar"
@@ -168,20 +168,20 @@ describe RuboCop::Cop::SketchupRequirements::SketchupExtension do
     end
 
     it 'does not register an offense for missing SketchupExtension in support file' do
-      expect_no_offenses(<<-RUBY.strip_indent, './source/hello/world.rb')
+      expect_no_offenses(<<~RUBY, './source/hello/world.rb')
         foo(123)
       RUBY
     end
 
     it 'does not register an offense for SketchupExtension in root file' do
-      expect_no_offenses(<<-RUBY.strip_indent, './source/hello.rb')
+      expect_no_offenses(<<~RUBY, './source/hello.rb')
         extension = SketchupExtension.new("Extension Name", filename)
         Sketchup.register_extension(extension, true)
       RUBY
     end
 
     it 'does not register an offense for SketchupExtension in root file with only one argument' do
-      expect_no_offenses(<<-RUBY.strip_indent, './source/hello.rb')
+      expect_no_offenses(<<~RUBY, './source/hello.rb')
         extension = SketchupExtension.new("Extension Name", filename)
         Sketchup.register_extension(extension)
       RUBY

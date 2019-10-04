@@ -7,7 +7,7 @@ describe RuboCop::Cop::SketchupRequirements::ExtensionNamespace, :config do
   subject(:cop) { described_class.new(config) }
 
   it 'registers an offense for multiple top level namespaces' do
-    expect_offense(<<-RUBY.strip_indent)
+    expect_offense(<<~RUBY)
       module Example
       end
       module FooBar
@@ -17,7 +17,7 @@ describe RuboCop::Cop::SketchupRequirements::ExtensionNamespace, :config do
   end
 
   it 'registers an offense for module definitions in blocks' do
-    expect_offense(<<-RUBY.strip_indent)
+    expect_offense(<<~RUBY)
       module Example
         def self.generate; end
       end
@@ -30,7 +30,7 @@ describe RuboCop::Cop::SketchupRequirements::ExtensionNamespace, :config do
   end
 
   it 'registers an offense for class definitions in blocks' do
-    expect_offense(<<-RUBY.strip_indent)
+    expect_offense(<<~RUBY)
       module Example
         def self.generate; end
       end
@@ -43,7 +43,7 @@ describe RuboCop::Cop::SketchupRequirements::ExtensionNamespace, :config do
   end
 
   it 'does not register an offense for namespaced objects' do
-    expect_no_offenses(<<-RUBY.strip_indent)
+    expect_no_offenses(<<~RUBY)
       module Example
         module SubModule
         end
@@ -52,7 +52,7 @@ describe RuboCop::Cop::SketchupRequirements::ExtensionNamespace, :config do
   end
 
   it 'does not register an offense for Ruby namespace objects' do
-    expect_no_offenses(<<-RUBY.strip_indent)
+    expect_no_offenses(<<~RUBY)
       module Example
       end
       module Math
@@ -61,7 +61,7 @@ describe RuboCop::Cop::SketchupRequirements::ExtensionNamespace, :config do
   end
 
   it 'does not register an offense for nested namespace objects' do
-    expect_offense(<<-RUBY.strip_indent)
+    expect_offense(<<~RUBY)
       module Example
       end
       module FooBar
@@ -74,7 +74,7 @@ describe RuboCop::Cop::SketchupRequirements::ExtensionNamespace, :config do
   end
 
   it 'does not register an offense for Ruby StdLib namespace objects' do
-    expect_no_offenses(<<-RUBY.strip_indent)
+    expect_no_offenses(<<~RUBY)
       module Example
       end
       class MD5
@@ -83,7 +83,7 @@ describe RuboCop::Cop::SketchupRequirements::ExtensionNamespace, :config do
   end
 
   it 'does not register an offense for Sketchup namespace objects' do
-    expect_no_offenses(<<-RUBY.strip_indent)
+    expect_no_offenses(<<~RUBY)
       module Example
       end
       module Sketchup
@@ -98,7 +98,7 @@ describe RuboCop::Cop::SketchupRequirements::ExtensionNamespace, :config do
     end
 
     it 'does not register an offense for exempted objects' do
-      expect_no_offenses(<<-RUBY.strip_indent)
+      expect_no_offenses(<<~RUBY)
         module Example
         end
         module Foo
@@ -107,7 +107,7 @@ describe RuboCop::Cop::SketchupRequirements::ExtensionNamespace, :config do
     end
 
     it 'registers an offense for multiple top level namespaces' do
-      expect_offense(<<-RUBY.strip_indent)
+      expect_offense(<<~RUBY)
         module Foo
         end
         module Example

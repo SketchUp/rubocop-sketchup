@@ -7,11 +7,11 @@ describe RuboCop::Cop::SketchupRequirements::ObserversStartOperation do
   subject(:cop) { described_class.new }
 
   it 'does not register an offense for not starting an operation' do
-    expect_no_offenses(<<-'RUBY'.strip_indent)
+    expect_no_offenses(<<~RUBY)
       module Example
         class ExampleObserver < Sketchup::EntitiesObserver
           def onElementAdded(entities, entity)
-            puts "onElementAdded: #{entity}"
+            puts "onElementAdded: \#{entity}"
           end
         end
       end
@@ -19,7 +19,7 @@ describe RuboCop::Cop::SketchupRequirements::ObserversStartOperation do
   end
 
   it 'does not register an offense for starting a non-observer operation' do
-    expect_no_offenses(<<-RUBY.strip_indent)
+    expect_no_offenses(<<~RUBY)
       module Example
         def self.redify(entity)
           model = Sketchup.active_model
@@ -32,7 +32,7 @@ describe RuboCop::Cop::SketchupRequirements::ObserversStartOperation do
   end
 
   it 'does not register an offense for not starting a transparent operation' do
-    expect_no_offenses(<<-RUBY.strip_indent)
+    expect_no_offenses(<<~RUBY)
       module Example
         class ExampleObserver < Sketchup::EntitiesObserver
           def onElementAdded(entities, entity)
@@ -47,7 +47,7 @@ describe RuboCop::Cop::SketchupRequirements::ObserversStartOperation do
   end
 
   it 'registers an offense for starting a non-transparent operation' do
-    expect_offense(<<-RUBY.strip_indent)
+    expect_offense(<<~RUBY)
       module Example
         class ExampleObserver < Sketchup::EntitiesObserver
           def onElementAdded(entities, entity)
@@ -63,7 +63,7 @@ describe RuboCop::Cop::SketchupRequirements::ObserversStartOperation do
   end
 
   it 'registers an offense for explicitly starting a non-transparent operation' do
-    expect_offense(<<-RUBY.strip_indent)
+    expect_offense(<<~RUBY)
       module Example
         class ExampleObserver < Sketchup::EntitiesObserver
           def onElementAdded(entities, entity)

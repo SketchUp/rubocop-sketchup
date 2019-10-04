@@ -7,7 +7,7 @@ describe RuboCop::Cop::SketchupSuggestions::ToolbarTimer do
   subject(:cop) { described_class.new }
 
   it 'registers an offense when calling .restore within a timer' do
-    expect_offense(<<-RUBY.strip_indent)
+    expect_offense(<<~RUBY)
       tb = UI::Toolbar.new('Example')
       tb.restore
       UI.start_timer(0.1, false) {
@@ -18,7 +18,7 @@ describe RuboCop::Cop::SketchupSuggestions::ToolbarTimer do
   end
 
   it 'registers an offense when within a state check' do
-    expect_offense(<<-RUBY.strip_indent)
+    expect_offense(<<~RUBY)
       tb = UI::Toolbar.new('Example')
       state = tb.get_last_state
       if (state == TB_VISIBLE)
@@ -35,7 +35,7 @@ describe RuboCop::Cop::SketchupSuggestions::ToolbarTimer do
   end
 
   it 'does not register an offense when not using a timer' do
-    expect_no_offenses(<<-RUBY.strip_indent)
+    expect_no_offenses(<<~RUBY)
       tb = UI::Toolbar.new('Example')
       tb.restore
     RUBY

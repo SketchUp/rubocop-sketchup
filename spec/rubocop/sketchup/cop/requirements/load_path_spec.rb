@@ -7,14 +7,14 @@ describe RuboCop::Cop::SketchupRequirements::LoadPath do
   subject(:cop) { described_class.new }
 
   it 'registers an offense when setting $LOAD_PATH' do
-    expect_offense(<<-RUBY.strip_indent)
+    expect_offense(<<~RUBY)
       $LOAD_PATH = ["dummy"]
       ^^^^^^^^^^^^^^^^^^^^^^ Do not modify the load path.
     RUBY
   end
 
   it 'does not register an offense for reading $LOAD_PATH' do
-    expect_no_offenses(<<-RUBY.strip_indent)
+    expect_no_offenses(<<~RUBY)
       dummy = $LOAD_PATH
     RUBY
   end
@@ -27,7 +27,7 @@ describe RuboCop::Cop::SketchupRequirements::LoadPath do
   end
 
   it 'registers an offense when modifying $LOAD_PATH with <<' do
-    expect_offense(<<-RUBY.strip_indent)
+    expect_offense(<<~RUBY)
       $LOAD_PATH << "dummy"
       ^^^^^^^^^^^^^^^^^^^^^ Do not modify the load path.
     RUBY
@@ -98,7 +98,7 @@ describe RuboCop::Cop::SketchupRequirements::LoadPath do
     |
   ].each do |var|
     it "does not register an offense when not modifying $LOAD_PATH with #{var.inspect}" do
-      expect_no_offenses(<<-RUBY.strip_indent)
+      expect_no_offenses(<<~RUBY)
         $LOAD_PATH.#{var}('dummy')
       RUBY
     end

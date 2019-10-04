@@ -21,7 +21,7 @@ describe RuboCop::Cop::SketchupRequirements::ShippedExtensionsNamespace do
     end
 
     it "registers an offense for adding an instance method to #{var} #{type}" do
-      expect_offense(<<-RUBY.strip_indent)
+      expect_offense(<<~RUBY)
         #{type} #{var}
           def example
               ^^^^^^^ Do not modify shipped extensions.
@@ -31,7 +31,7 @@ describe RuboCop::Cop::SketchupRequirements::ShippedExtensionsNamespace do
     end
 
     it "registers an offense for adding a module method to #{var} #{type}" do
-      expect_offense(<<-RUBY.strip_indent)
+      expect_offense(<<~RUBY)
         #{type} #{var}
           def self.example
                    ^^^^^^^ Do not modify shipped extensions.
@@ -41,7 +41,7 @@ describe RuboCop::Cop::SketchupRequirements::ShippedExtensionsNamespace do
     end
 
     it "registers an offense for adding a constant to #{var} #{type}" do
-      expect_offense(<<-RUBY.strip_indent)
+      expect_offense(<<~RUBY)
         #{type} #{var}
           EXAMPLE = 123
           ^^^^^^^ Do not modify shipped extensions.
@@ -50,7 +50,7 @@ describe RuboCop::Cop::SketchupRequirements::ShippedExtensionsNamespace do
     end
 
     it "registers an offense for adding a module to #{var} #{type}" do
-      expect_offense(<<-RUBY.strip_indent)
+      expect_offense(<<~RUBY)
         #{type} #{var}
           module Example
                  ^^^^^^^ Do not modify shipped extensions.
@@ -60,7 +60,7 @@ describe RuboCop::Cop::SketchupRequirements::ShippedExtensionsNamespace do
     end
 
     it "registers an offense for adding a class to #{var} #{type}" do
-      expect_offense(<<-RUBY.strip_indent)
+      expect_offense(<<~RUBY)
         #{type} #{var}
           class Example
                 ^^^^^^^ Do not modify shipped extensions.
@@ -70,7 +70,7 @@ describe RuboCop::Cop::SketchupRequirements::ShippedExtensionsNamespace do
     end
 
     it 'does not register an offense for namespaced objects' do
-      expect_no_offenses(<<-RUBY.strip_indent)
+      expect_no_offenses(<<~RUBY)
         module Example
         end
       RUBY
