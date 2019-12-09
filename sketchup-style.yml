@@ -61,6 +61,11 @@ Metrics/PerceivedComplexity:
   Enabled: false
 
 
+# Prefer non-abbreviated variable name. Usually `error`, but `exception` if
+# catching `Exception`.
+Naming/RescuedExceptionsVariableName:
+  Enabled: false
+
 # Allow for common names used in 3D context.
 Naming/UncommunicativeMethodParamName:
   AllowedNames:
@@ -119,6 +124,11 @@ Style/NumericPredicate:
 # Very subjective style. Lots of existing SketchUp code and example uses them
 # so disable by default.
 Style/RedundantSelf:
+  Enabled: false
+
+# Safe navigation was added with Ruby 2.3. SketchUp 2017 with Ruby 2.2 is still
+# relevant, so ignore this for now.
+Style/SafeNavigation:
   Enabled: false
 
 # %w and %i etc isn't really intuitive unless you are really familiar with the
