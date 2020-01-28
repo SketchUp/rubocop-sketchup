@@ -35,6 +35,21 @@ module RuboCop
       FEATURES = [
 
         {
+          version: 'SketchUp 2020.0',
+          types: {
+            method: [
+              'Geom.tesselate',
+              'Sketchup::Layer#display_name',
+              'Sketchup::Model#active_path=',
+              'Sketchup::Model#drawing_element_visible?',
+              'Sketchup::Page#get_drawingelement_visibility',
+              'Sketchup::Page#set_drawingelement_visibility',
+              'Sketchup::View#text_bounds',
+            ],
+          },
+        },
+
+        {
           version: 'SketchUp 2019.2',
           types: {
             method: [
@@ -1066,6 +1081,7 @@ module RuboCop
 
       INSTANCE_METHODS = %i[
         active_path
+        active_path=
         active_section_plane
         active_section_plane=
         active_tool
@@ -1089,6 +1105,7 @@ module RuboCop
         count_used_instances
         dash_scale
         days_remaining
+        drawing_element_visible?
         edit_transform
         end_attached_to
         end_attached_to=
@@ -1100,6 +1117,7 @@ module RuboCop
         fov_is_height?
         georeferenced?
         get_classification_value
+        get_drawingelement_visibility
         get_glued_instances
         get_texture_projection
         has_aligned_text?
@@ -1149,6 +1167,7 @@ module RuboCop
         set_can_close
         set_classification_value
         set_download_progress_callback
+        set_drawingelement_visibility
         set_full_security
         set_on_closed
         set_texture_projection
@@ -1160,6 +1179,7 @@ module RuboCop
         start_attached_to
         start_attached_to=
         status_bar_text
+        text_bounds
         unit_vector?
         unload_schema
         upper_left
