@@ -26,7 +26,7 @@ namespace :cut_release do
             "gem install rubocop -v #{max_rubocop_version}"
           ).gsub(
             /gem 'rubocop', '.+'/,
-            "gem 'rubocop', '~> #{rubocop_requirements}'"
+            "gem 'rubocop', '#{rubocop_requirements}'"
           ).gsub(
             "gem 'rubocop-sketchup', '~> #{old_version}",
             "gem 'rubocop-sketchup', '~> #{new_version}"
