@@ -46,6 +46,13 @@ Layout/FirstArgumentIndentation:
   Exclude:
     - tasks/**/*
 
+Layout/LineLength:
+  Exclude:
+    - lib/rubocop/sketchup/cop/suggestions/operation_name.rb
+    - spec/**/*
+    - tasks/**/*
+    - tools/**/*
+
 Layout/IndentationConsistency:
   Exclude:
     - spec/**/*
@@ -77,13 +84,6 @@ Metrics/ClassLength:
     - lib/rubocop/sketchup/cop/requirements/ruby_stdlib_namespace.rb
     - lib/rubocop/sketchup/formatter/extension_review.rb
     - spec/**/*
-
-Metrics/LineLength:
-  Exclude:
-    - lib/rubocop/sketchup/cop/suggestions/operation_name.rb
-    - spec/**/*
-    - tasks/**/*
-    - tools/**/*
 
 Metrics/MethodLength:
   Exclude:

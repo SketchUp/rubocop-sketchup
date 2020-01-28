@@ -48,6 +48,6 @@ end
 
 # Load all custom cops.
 pattern = File.join(__dir__, 'rubocop', 'sketchup', 'cop', '**/*rb')
-Dir.glob(pattern) { |file|
+Dir.glob(pattern).sort.each { |file|
   require file
 }

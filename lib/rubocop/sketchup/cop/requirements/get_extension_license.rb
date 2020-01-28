@@ -28,9 +28,9 @@ module RuboCop
             $_)
         PATTERN
 
-        # rubocop:disable Metrics/LineLength
+        # rubocop:disable Layout/LineLength
         EXTENSION_ID_PATTERN = /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.freeze
-        # rubocop:enable Metrics/LineLength
+        # rubocop:enable Layout/LineLength
 
         def on_send(node)
           argument = get_extension_license(node)

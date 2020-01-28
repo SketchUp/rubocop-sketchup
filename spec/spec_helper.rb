@@ -7,7 +7,7 @@ require 'rubocop'
 require 'rubocop/rspec/support'
 
 project_path = File.join(File.dirname(__FILE__), '..')
-Dir["#{project_path}/spec/support/**/*.rb"].each { |f| require f }
+Dir["#{project_path}/spec/support/**/*.rb"].sort.each { |f| require f }
 
 RSpec.configure do |config|
   config.order = :random
