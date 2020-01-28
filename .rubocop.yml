@@ -34,26 +34,26 @@ SketchupSuggestions:
   Enabled: false
 
 
-Layout/AlignArray:
+Layout/ArrayAlignment:
   Exclude:
     - spec/**/*
 
-Layout/AlignParameters:
-  Exclude:
-    - spec/**/*
-    - tasks/**/*
-
-Layout/IndentFirstArgument:
-  Exclude:
-    - tasks/**/*
-
-Layout/IndentAssignment:
+Layout/AssignmentIndentation:
   Exclude:
     - tasks/cops_documentation.rake
+
+Layout/FirstArgumentIndentation:
+  Exclude:
+    - tasks/**/*
 
 Layout/IndentationConsistency:
   Exclude:
     - spec/**/*
+
+Layout/ParameterAlignment:
+  Exclude:
+    - spec/**/*
+    - tasks/**/*
 
 Lint/BooleanSymbol:
   Exclude:

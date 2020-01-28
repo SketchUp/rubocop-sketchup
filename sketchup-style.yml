@@ -1,14 +1,8 @@
 AllCops:
   DisplayCopNames: true
 
-# Disabled until a more flexible rule is implemented.
-# See issue for more details: https://github.com/rubocop-hq/rubocop/issues/6410
-# TL;DR: The best readability for alignment might depend.
-Layout/AlignHash:
-  Enabled: false
-
-Layout/AlignParameters:
-  EnforcedStyle: with_fixed_indentation
+# Indent continuation lines by 4 spaces.
+Layout/AssignmentIndentation:
   IndentationWidth: 4
 
 # It's ok to have more than one empty line to create a 'paragraph'.
@@ -35,12 +29,24 @@ Layout/EndOfLine:
 Layout/EmptyLinesAroundBlockBody:
   Enabled: false
 
-# Match indent with Layout/AlignParameters.
-Layout/IndentFirstArgument:
+# Match indent with Layout/ParameterAlignment.
+Layout/FirstArgumentIndentation:
   IndentationWidth: 4
 
-# Indent continuation lines by 4 spaces.
-Layout/IndentAssignment:
+# Disabled until a more flexible rule is implemented.
+# See issue for more details: https://github.com/rubocop-hq/rubocop/issues/6410
+# TL;DR: The best readability for alignment might depend.
+Layout/HashAlignment:
+  # Enabled: false
+  EnforcedHashRocketStyle:
+    - key
+    - table
+  EnforcedColonStyle:
+    - key
+    - table
+
+Layout/ParameterAlignment:
+  EnforcedStyle: with_fixed_indentation
   IndentationWidth: 4
 
 
@@ -67,7 +73,7 @@ Naming/RescuedExceptionsVariableName:
   Enabled: false
 
 # Allow for common names used in 3D context.
-Naming/UncommunicativeMethodParamName:
+Naming/MethodParameterName:
   AllowedNames:
     - x
     - y
