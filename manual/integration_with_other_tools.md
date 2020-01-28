@@ -56,7 +56,7 @@ end
 
 ```yml
 require_paths:
-- "C:/Program Files/SketchUp/SketchUp 2019/Tools" # Modify as needed
+- "C:/Program Files/SketchUp/SketchUp 2020/Tools" # Modify as needed
 - src # Match with AllCops/SketchUp/SourcePath in .rubocop.yml.
 
 reporters:
