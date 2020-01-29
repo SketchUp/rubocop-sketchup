@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name = 'rubocop-sketchup'
   spec.summary = 'RuboCop rules for SketchUp extensions.'
   spec.description = 'RuboCop rules for SketchUp extensions.'
-  spec.homepage = 'http://github.com/sketchup/rubocop-sketchup'
+  spec.homepage = 'https://github.com/sketchup/rubocop-sketchup'
   spec.authors = ['Trimble Inc, SketchUp Team']
   spec.licenses = ['MIT']
 
