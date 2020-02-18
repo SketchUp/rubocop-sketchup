@@ -111,6 +111,15 @@ Style/CommentedKeyword:
 Style/Documentation:
   Enabled: false
 
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
 # Conflict too often with Metric/LineLength.
 # https://github.com/bbatsov/rubocop/issues/1332#issuecomment-277503854
 Style/GuardClause:
