@@ -463,8 +463,7 @@ Omit file extensions when using `Sketchup.require` to allow encrypted
 files to be loaded.
 
 Ruby C extensions, `.so`/`.bundle` libraries must always be loaded via
-the normal `require`. Omit the file extension to the libraries as Ruby
-will resolve the`.so`/`.bundle` automatically.
+the normal `require`.
 
 ### Examples
 

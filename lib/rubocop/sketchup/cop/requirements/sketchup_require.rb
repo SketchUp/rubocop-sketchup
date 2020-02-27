@@ -7,8 +7,7 @@ module RuboCop
       # files to be loaded.
       #
       # Ruby C extensions, `.so`/`.bundle` libraries must always be loaded via
-      # the normal `require`. Omit the file extension to the libraries as Ruby
-      # will resolve the`.so`/`.bundle` automatically.
+      # the normal `require`.
       #
       # @example Bad - This will fail if extension is encrypted
       #   Sketchup.require 'hello/world.rb'
@@ -35,9 +34,6 @@ module RuboCop
 
         MSG_REQUIRE_FOR_BINARY = 'Use `require` instead of `Sketchup.require` '\
                                  'to load binary Ruby libraries.'
-
-        MSG_OMIT_BINARY_EXT = 'Do not hard code .so/.bundle file '\
-                              'extensions'
 
         MSG_REQUIRE_ENCRYPTED = 'Use `Sketchup.require` when loading Ruby '\
                                 'files for encrypted extensions.'
@@ -80,7 +76,6 @@ module RuboCop
 
           elsif ruby_require?(node)
             filename = ruby_require(node)
-            return if check_binary_ruby_require(node, filename)
             return if check_encrypted_require(node, filename)
 
           elsif sketchup_extension_new?(node)
@@ -105,15 +100,6 @@ module RuboCop
           end_pos = node.loc.dot.end_pos
           range = node.receiver.loc.expression.with(end_pos: end_pos)
           add_offense(node, location: range, message: MSG_REQUIRE_FOR_BINARY)
-          true
-        end
-
-        def check_binary_ruby_require(node, filename)
-          ext_name = File.extname(filename)
-          return unless %w[.so .bundle].include?(ext_name)
-
-          add_offense(node, location: file_ext_range(node.arguments.first),
-                            message: MSG_OMIT_BINARY_EXT)
           true
         end
 

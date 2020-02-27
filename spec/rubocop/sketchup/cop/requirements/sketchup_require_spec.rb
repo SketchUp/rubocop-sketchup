@@ -85,17 +85,15 @@ describe RuboCop::Cop::SketchupRequirements::SketchupRequire do
       RUBY
     end
 
-    it 'registers an offense when using `require` with .so file extension' do
-      expect_offense(<<~RUBY)
+    it 'does not register an offense when using `require` with .so file extension' do
+      expect_no_offenses(<<~RUBY)
         require("example/cext.so")
-                             ^^^ Do not hard code .so/.bundle file extensions
       RUBY
     end
 
-    it 'registers an offense when using `require` with .bundle file extension' do
-      expect_offense(<<~RUBY)
+    it 'does not register an offense when using `require` with .bundle file extension' do
+      expect_no_offenses(<<~RUBY)
         require("example/cext.bundle")
-                             ^^^^^^^ Do not hard code .so/.bundle file extensions
       RUBY
     end
 
