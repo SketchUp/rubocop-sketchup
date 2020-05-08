@@ -5,6 +5,8 @@ branches:
     - master
     - dev-appveyor
 
+image: Visual Studio 2019
+
 cache:
   - vendor/bundle
 
