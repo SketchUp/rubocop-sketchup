@@ -10,11 +10,11 @@ group :test do
   gem 'rspec', '~> 3.7', require: false
   gem 'rubocop-performance', require: false
   gem 'simplecov', '~> 0.10', require: false
+  gem 'yard', '~> 0.9', require: false
 end
 
 group :development do
   gem 'bump', '~> 0.5', require: false
   gem 'solargraph', '~> 0.34', require: false
   gem 'thor', '~> 0.20', require: false
-  gem 'yard', '~> 0.9', require: false
 end
