@@ -66,6 +66,7 @@ module RuboCop
       #
       # The second item in the array is maintenance annotation
       VALID_VERSIONS = [
+        [2020.1, 0],
         [2020.0, 0],
         [2019.2, 0],
         [2019.0, 0], # SketchUp dropped M notation as of SU2019.
