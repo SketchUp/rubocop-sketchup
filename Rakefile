@@ -26,7 +26,7 @@ RuboCop::RakeTask.new(:internal_investigation)
 #   task.options = ['--force-exclusion']
 # end
 
-YARD::Rake::YardocTask.new
+YARD::Rake::YardocTask.new unless ENV['CI']
 
 task default: %i[
   generate_cops_documentation
