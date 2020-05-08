@@ -62,6 +62,7 @@ Layout/ParameterAlignment:
     - spec/**/*
     - tasks/**/*
 
+
 Lint/BooleanSymbol:
   Exclude:
     - lib/rubocop/sketchup/cop/deprecations/operation_next_transparent.rb
@@ -69,6 +70,12 @@ Lint/BooleanSymbol:
 Lint/InterpolationCheck:
   Exclude:
     - spec/rubocop/sketchup/cop/requirements/observers_start_operation_spec.rb
+
+Lint/RaiseException:
+  Enabled: true
+
+Lint/StructNewOverride:
+  Enabled: true
 
 
 Metrics/BlockLength:
