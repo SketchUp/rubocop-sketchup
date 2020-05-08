@@ -80,7 +80,7 @@ module RuboCop
           end
 
           # Invalid format.
-          if extension_id !~ EXTENSION_ID_PATTERN
+          unless EXTENSION_ID_PATTERN.match?(extension_id)
             range = string_contents_range(node)
             add_offense(node, location: range, message: MSG_INVALID)
             return false

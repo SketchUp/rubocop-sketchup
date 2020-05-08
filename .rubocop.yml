@@ -62,6 +62,8 @@ Layout/ParameterAlignment:
     - spec/**/*
     - tasks/**/*
 
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
 
 Lint/BooleanSymbol:
   Exclude:
@@ -127,6 +129,9 @@ Style/ClassVars:
   Exclude:
     - lib/rubocop/sketchup/cop/requirements/extension_namespace.rb
     - lib/rubocop/sketchup/cop/requirements/file_structure.rb
+
+Style/ExponentialNotation:
+  Enabled: true
 
 Style/MultilineBlockChain:
   Exclude:

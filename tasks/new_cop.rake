@@ -16,7 +16,7 @@ class SketchupCopGenerator < RuboCop::Cop::Generator
 
     YAML
     target_line = config.find.with_index(1) do |line, index|
-      next if line =~ /^[\s#]/
+      next if /^[\s#]/.match?(line)
       break index - 1 if badge.to_s < line
     end
     config.insert(target_line, content)
