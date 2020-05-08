@@ -18,8 +18,15 @@
 # positives. The method names should be names that are not commonly used in
 # general context.
 #
+# Since it's difficult to know what a variable in Ruby code represent by static
+# analysis, these methods are assumed to belong to the FEATURES list.
+#
 # When a new version is released and FEATURES is updated the new methods from
 # the new version should be considered for this list.
+#
+# TODO(thomthom): Investigate if Solargraph's static analysis can be used to
+#   provide a more accurate analysis. Not sure how well it works on code bases
+#   that isn't well documented with YARD type tags.
 #
 #
 # OBSERVER_METHODS constant:
@@ -33,6 +40,48 @@ module RuboCop
     module Features
 
       FEATURES = [
+
+        {
+          version: 'LayOut 2020.1',
+          types: {
+            method: [
+              'Layout::Document#export',
+              'Layout::Grid#clip_to_margins=',
+              'Layout::Grid#clip_to_margins?',
+              'Layout::Grid#in_front=',
+              'Layout::Grid#in_front?',
+              'Layout::Grid#major_color=',
+              'Layout::Grid#major_spacing=',
+              'Layout::Grid#minor_color=',
+              'Layout::Grid#minor_divisions=',
+              'Layout::Grid#print=',
+              'Layout::Grid#show=',
+              'Layout::Grid#show_major=',
+              'Layout::Grid#show_minor=',
+              'Layout::SketchUpModel#camera_modified?',
+              'Layout::SketchUpModel#effects_modified?',
+              'Layout::SketchUpModel#layers_modified?',
+              'Layout::SketchUpModel#reset_camera',
+              'Layout::SketchUpModel#reset_effects',
+              'Layout::SketchUpModel#reset_layers',
+              'Layout::SketchUpModel#reset_style',
+              'Layout::SketchUpModel#style_modified?',
+            ],
+          },
+        },
+
+        {
+          version: 'SketchUp 2020.1',
+          types: {
+            method: [
+              'Sketchup::Entities#weld',
+              'Sketchup::Page#use_hidden_geometry=',
+              'Sketchup::Page#use_hidden_geometry?',
+              'Sketchup::Page#use_hidden_objects=',
+              'Sketchup::Page#use_hidden_objects?',
+            ],
+          },
+        },
 
         {
           version: 'SketchUp 2020.0',
@@ -1097,8 +1146,11 @@ module RuboCop
         attached_to
         attached_to=
         boundingbox_pick
+        camera_modified?
         center_2d
         classifications
+        clip_to_margins?
+        clip_to_margins=
         colorize_deltas
         colorize_type
         colorize_type=
@@ -1107,6 +1159,7 @@ module RuboCop
         days_remaining
         drawing_element_visible?
         edit_transform
+        effects_modified?
         end_attached_to
         end_attached_to=
         error_description
@@ -1127,12 +1180,15 @@ module RuboCop
         icon_tooltip
         icon_tooltip=
         image_rep
+        in_front?
+        in_front=
         include_in_animation?
         include_in_animation=
         instance_path
         instance_path_from_pid_path
         is_polygon?
         large_icon
+        layers_modified?
         leader_break_point
         leader_break_point=
         leader_points
@@ -1145,7 +1201,11 @@ module RuboCop
         local_bounds
         lower_left
         lower_right
+        major_color=
+        major_spacing=
         menu_text
+        minor_color=
+        minor_divisions=
         mipmapping?
         mipmapping=
         navigation_buttons_enabled?
@@ -1161,6 +1221,10 @@ module RuboCop
         persistent_id_path
         refresh_thumbnail
         remove_classification
+        reset_camera
+        reset_effects
+        reset_layers
+        reset_style
         same_direction?
         scale_2d
         screen_scale_factor
@@ -1174,11 +1238,14 @@ module RuboCop
         set_upload_progress_callback
         set_uv
         show_differences
+        show_major=
+        show_minor=
         sketch_plane
         small_icon
         start_attached_to
         start_attached_to=
         status_bar_text
+        style_modified?
         text_bounds
         unit_vector?
         unload_schema
