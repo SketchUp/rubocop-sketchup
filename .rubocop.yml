@@ -80,6 +80,9 @@ Lint/InterpolationCheck:
   Exclude:
     - spec/rubocop/sketchup/cop/requirements/observers_start_operation_spec.rb
 
+Lint/MixedRegexpCaptureTypes:
+  Enabled: true
+
 Lint/RaiseException:
   Enabled: true
 
@@ -143,6 +146,12 @@ Style/ExponentialNotation:
 Style/MultilineBlockChain:
   Exclude:
     - lib/rubocop/sketchup/formatter/extension_review.rb
+
+Style/RedundantRegexpCharacterClass:
+  Enabled: true
+
+Style/RedundantRegexpEscape:
+  Enabled: true
 
 Style/SafeNavigation:
   Enabled: true
