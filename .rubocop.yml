@@ -46,6 +46,9 @@ Layout/FirstArgumentIndentation:
   Exclude:
     - tasks/**/*
 
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+
 Layout/LineLength:
   Exclude:
     - lib/rubocop/sketchup/cop/suggestions/operation_name.rb
@@ -138,6 +141,9 @@ Style/MultilineBlockChain:
     - lib/rubocop/sketchup/formatter/extension_review.rb
 
 Style/SafeNavigation:
+  Enabled: true
+
+Style/SlicingWithRange:
   Enabled: true
 
 Style/TrailingCommaInArrayLiteral:
