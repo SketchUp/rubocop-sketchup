@@ -14,7 +14,7 @@ Tool intended to assist with development of SketchUp extension by providing stat
 ### TL;DR (Global Installation)
 
 ```sh
-gem install rubocop -v 0.82
+gem install rubocop -v 0.86
 gem install rubocop-sketchup
 ```
 
