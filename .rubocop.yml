@@ -50,6 +50,7 @@ Layout/EmptyLinesAroundAttributeAccessor:
   Enabled: true
 
 Layout/LineLength:
+  Max: 80
   Exclude:
     - lib/rubocop/sketchup/cop/suggestions/operation_name.rb
     - spec/**/*
@@ -71,6 +72,9 @@ Layout/SpaceAroundMethodCallOperator:
 Lint/BooleanSymbol:
   Exclude:
     - lib/rubocop/sketchup/cop/deprecations/operation_next_transparent.rb
+
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
 
 Lint/InterpolationCheck:
   Exclude:
