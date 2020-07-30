@@ -42,6 +42,14 @@ module RuboCop
 
       include SketchUp::Config
 
+      SKETCHUP_DEPARTMENT_SEVERITY = {
+        SketchupRequirements: :error,
+        SketchupDeprecations: :warning,
+        SketchupPerformance: :warning,
+        SketchupBugs: :warning,
+        SketchupSuggestions: :convention,
+      }.freeze
+
       # Invoke the original inherited hook so our cops are recognized
       def self.inherited(subclass)
         RuboCop::Cop::Cop.inherited(subclass)
@@ -58,16 +66,7 @@ module RuboCop
       end
 
       def sketchup_severity
-        case self.class.department
-        when :SketchupRequirements
-          :error
-        when :SketchupDeprecations
-          :warning
-        when :SketchupPerformance
-          :warning
-        when :SketchupSuggestions
-          :convention
-        end
+        SKETCHUP_DEPARTMENT_SEVERITY[self.class.department]
       end
 
       def department_name

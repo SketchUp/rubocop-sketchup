@@ -17,9 +17,10 @@ module RuboCop
       #   @param [Integer, Float] version
       #   @param [Integer] maintenance
       def initialize(*args)
-        if args.size == 1
+        case args.size
+        when 1
           @version, @maintenance = parse_version(args.first)
-        elsif args.size == 2
+        when 2
           validate(args)
           @version, @maintenance = args
         else
@@ -93,7 +94,8 @@ module RuboCop
       def parse_version(version)
         v = 0
         m = 0
-        if version.is_a?(String)
+        case version
+        when String
           # Treat all LayOut versions as SketchUp versions for now.
           normalized_version = version.gsub('LayOut', 'SketchUp')
           result = normalized_version.match(VERSION_NUMBER_REGEX)
@@ -101,7 +103,7 @@ module RuboCop
             v = result.captures[0].to_f
             m = (result.captures[1] || '0').to_i
           end
-        elsif version.is_a?(Numeric)
+        when Numeric
           v = version
           m = 0
         end

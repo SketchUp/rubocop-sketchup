@@ -69,11 +69,15 @@ Layout/ParameterAlignment:
 Layout/SpaceAroundMethodCallOperator:
   Enabled: true
 
+
 Lint/BooleanSymbol:
   Exclude:
     - lib/rubocop/sketchup/cop/deprecations/operation_next_transparent.rb
 
 Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
+
+Lint/DuplicateElsifCondition:
   Enabled: true
 
 Lint/InterpolationCheck:
@@ -159,11 +163,16 @@ Performance/StringInclude:
   Enabled: true
 
 
-
 Style/AccessorGrouping:
   Enabled: true
 
+Style/ArrayCoercion:
+  Enabled: true
+
 Style/BisectedAttrAccessor:
+  Enabled: true
+
+Style/CaseLikeIf:
   Enabled: true
 
 Style/ClassVars:
@@ -174,6 +183,12 @@ Style/ClassVars:
 Style/ExponentialNotation:
   Enabled: true
 
+Style/HashAsLastArrayItem:
+  Enabled: true
+
+Style/HashLikeCase:
+  Enabled: true
+
 Style/MultilineBlockChain:
   Exclude:
     - lib/rubocop/sketchup/formatter/extension_review.rb
@@ -182,6 +197,9 @@ Style/RedundantAssignment:
   Enabled: true
 
 Style/RedundantFetchBlock:
+  Enabled: true
+
+Style/RedundantFileExtensionInRequire:
   Enabled: true
 
 Style/RedundantRegexpCharacterClass:
