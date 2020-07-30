@@ -160,6 +160,12 @@ Performance/StringInclude:
 
 
 
+Style/AccessorGrouping:
+  Enabled: true
+
+Style/BisectedAttrAccessor:
+  Enabled: true
+
 Style/ClassVars:
   Exclude:
     - lib/rubocop/sketchup/cop/requirements/extension_namespace.rb
@@ -171,6 +177,9 @@ Style/ExponentialNotation:
 Style/MultilineBlockChain:
   Exclude:
     - lib/rubocop/sketchup/formatter/extension_review.rb
+
+Style/RedundantAssignment:
+  Enabled: true
 
 Style/RedundantFetchBlock:
   Enabled: true
