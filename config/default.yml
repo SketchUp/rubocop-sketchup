@@ -18,7 +18,7 @@ AllCops:
     ExtensionBinaries: []
     # You can set up exclude pattens for all SketchUp departments.
     Exclude: []
-    # Alternativly you can set up department wide exclusion.
+    # Alternatively you can set up department wide exclusion.
     SketchupBugs:
       Exclude: []
     SketchupDeprecations:
@@ -156,7 +156,7 @@ SketchupRequirements/ExtensionNamespace:
   Description: Confine extensions to a single root namespace.
   Details: >-
              To avoid clashing with other extensions a single root namespace
-             should all the extension's code.
+             should contain all the extension's code.
   Reference: https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_requirements.md#extensionnamespace
   Exceptions: []
   Enabled: true
