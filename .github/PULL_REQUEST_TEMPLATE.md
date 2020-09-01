@@ -12,6 +12,6 @@ Before submitting the PR make sure the following are checked:
 * [ ] Added tests.
 * [ ] The PR relates to *only* one subject with a clear title
   and description in grammatically correct, complete sentences.
-* [ ] Run `rake default`. It executes all tests and RuboCop for itself, and generates the documentation.
+* [ ] Run `bundle exec rake`. It executes all tests and RuboCop for itself, and generates the documentation.
 
 [1]: http://chris.beams.io/posts/git-commit/
