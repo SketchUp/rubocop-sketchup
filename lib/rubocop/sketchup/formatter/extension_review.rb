@@ -207,7 +207,7 @@ module RuboCop
         end
 
         # Make Kernel#binding public.
-        def binding
+        def binding # rubocop:disable Lint/UselessMethodDefinition
           super
         end
 

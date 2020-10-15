@@ -83,10 +83,16 @@ Lint/DeprecatedOpenSSLConstant:
 Lint/DuplicateElsifCondition:
   Enabled: true
 
+Lint/DuplicateRequire: # (new in 0.90)
+  Enabled: true
+
 Lint/DuplicateRescueException:
   Enabled: true
 
 Lint/EmptyConditionalBody:
+  Enabled: true
+
+Lint/EmptyFile: # (new in 0.90)
   Enabled: true
 
 Lint/FloatComparison:
@@ -117,7 +123,13 @@ Lint/StructNewOverride:
 Lint/TopLevelReturnWithArgument:
   Enabled: true
 
+Lint/TrailingCommaInAttributeDeclaration: # (new in 0.90)
+  Enabled: true
+
 Lint/UnreachableLoop:
+  Enabled: true
+
+Lint/UselessMethodDefinition: # (new in 0.90)
   Enabled: true
 
 
@@ -207,6 +219,9 @@ Style/ClassVars:
     - lib/rubocop/sketchup/cop/requirements/extension_namespace.rb
     - lib/rubocop/sketchup/cop/requirements/file_structure.rb
 
+Style/CombinableLoops: # (new in 0.90)
+  Enabled: true
+
 Style/ExplicitBlockArgument:
   Enabled: true
 
@@ -220,6 +235,9 @@ Style/HashLikeCase:
   Enabled: true
 
 Style/GlobalStdStream:
+  Enabled: true
+
+Style/KeywordParametersOrder: # (new in 0.90)
   Enabled: true
 
 Style/MultilineBlockChain:
@@ -244,6 +262,9 @@ Style/RedundantRegexpCharacterClass:
 Style/RedundantRegexpEscape:
   Enabled: true
 
+Style/RedundantSelfAssignment: # (new in 0.90)
+  Enabled: true
+
 Style/SafeNavigation:
   Enabled: true
 
@@ -251,6 +272,9 @@ Style/SingleArgumentDig:
   Enabled: true
 
 Style/SlicingWithRange:
+  Enabled: true
+
+Style/SoleNestedConditional: # (new in 0.89)
   Enabled: true
 
 Style/StringConcatenation:
