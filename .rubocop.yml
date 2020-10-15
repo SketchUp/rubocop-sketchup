@@ -42,6 +42,9 @@ Layout/AssignmentIndentation:
   Exclude:
     - tasks/cops_documentation.rake
 
+Layout/BeginEndAlignment: # (new in 0.91)
+  Enabled: true
+
 Layout/FirstArgumentIndentation:
   Exclude:
     - tasks/**/*
@@ -77,6 +80,11 @@ Lint/BooleanSymbol:
   Exclude:
     - lib/rubocop/sketchup/cop/deprecations/operation_next_transparent.rb
 
+Lint/ConstantDefinitionInBlock: # (new in 0.91)
+  Enabled: true
+  Exclude:
+    - spec/**/*
+
 Lint/DeprecatedOpenSSLConstant:
   Enabled: true
 
@@ -96,6 +104,9 @@ Lint/EmptyFile: # (new in 0.90)
   Enabled: true
 
 Lint/FloatComparison:
+  Enabled: true
+
+Lint/IdentityComparison: # (new in 0.91)
   Enabled: true
 
 Lint/InterpolationCheck:
@@ -130,6 +141,9 @@ Lint/UnreachableLoop:
   Enabled: true
 
 Lint/UselessMethodDefinition: # (new in 0.90)
+  Enabled: true
+
+Lint/UselessTimes: # (new in 0.91)
   Enabled: true
 
 
@@ -274,7 +288,7 @@ Style/SingleArgumentDig:
 Style/SlicingWithRange:
   Enabled: true
 
-Style/SoleNestedConditional: # (new in 0.89)
+Style/SoleNestedConditional: # (new in 0.90)
   Enabled: true
 
 Style/StringConcatenation:
