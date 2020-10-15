@@ -31,7 +31,7 @@ module RuboCop
 
       end # module ClassMethods
 
-      def self.included(mod)
+      def self.included(mod) # rubocop:disable Lint/MissingSuper
         mod.extend(ClassMethods)
       end
 

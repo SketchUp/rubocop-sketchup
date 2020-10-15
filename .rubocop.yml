@@ -70,6 +70,9 @@ Layout/SpaceAroundMethodCallOperator:
   Enabled: true
 
 
+Lint/BinaryOperatorWithIdenticalOperands:
+  Enabled: true
+
 Lint/BooleanSymbol:
   Exclude:
     - lib/rubocop/sketchup/cop/deprecations/operation_next_transparent.rb
@@ -80,17 +83,41 @@ Lint/DeprecatedOpenSSLConstant:
 Lint/DuplicateElsifCondition:
   Enabled: true
 
+Lint/DuplicateRescueException:
+  Enabled: true
+
+Lint/EmptyConditionalBody:
+  Enabled: true
+
+Lint/FloatComparison:
+  Enabled: true
+
 Lint/InterpolationCheck:
   Exclude:
     - spec/rubocop/sketchup/cop/requirements/observers_start_operation_spec.rb
 
+Lint/MissingSuper:
+  Enabled: true
+
 Lint/MixedRegexpCaptureTypes:
+  Enabled: true
+
+Lint/OutOfRangeRegexpRef:
   Enabled: true
 
 Lint/RaiseException:
   Enabled: true
 
+Lint/SelfAssignment:
+  Enabled: true
+
 Lint/StructNewOverride:
+  Enabled: true
+
+Lint/TopLevelReturnWithArgument:
+  Enabled: true
+
+Lint/UnreachableLoop:
   Enabled: true
 
 
@@ -180,6 +207,9 @@ Style/ClassVars:
     - lib/rubocop/sketchup/cop/requirements/extension_namespace.rb
     - lib/rubocop/sketchup/cop/requirements/file_structure.rb
 
+Style/ExplicitBlockArgument:
+  Enabled: true
+
 Style/ExponentialNotation:
   Enabled: true
 
@@ -189,9 +219,15 @@ Style/HashAsLastArrayItem:
 Style/HashLikeCase:
   Enabled: true
 
+Style/GlobalStdStream:
+  Enabled: true
+
 Style/MultilineBlockChain:
   Exclude:
     - lib/rubocop/sketchup/formatter/extension_review.rb
+
+Style/OptionalBooleanParameter:
+  Enabled: true
 
 Style/RedundantAssignment:
   Enabled: true
@@ -211,7 +247,13 @@ Style/RedundantRegexpEscape:
 Style/SafeNavigation:
   Enabled: true
 
+Style/SingleArgumentDig:
+  Enabled: true
+
 Style/SlicingWithRange:
+  Enabled: true
+
+Style/StringConcatenation:
   Enabled: true
 
 Style/TrailingCommaInArrayLiteral:

@@ -44,7 +44,7 @@ task generate_cops_documentation: :yard_for_generate_documentation do
       enabled_by_default ? 'Enabled' : 'Disabled',
       cop.new.support_autocorrect? ? 'Yes' : 'No',
     ]]
-    to_table(header, content) + "\n"
+    "#{to_table(header, content)}\n"
   end
 
   def h2(title, anchor_name = nil)
@@ -127,7 +127,7 @@ task generate_cops_documentation: :yard_for_generate_documentation do
       Array.new(header.size, '---').join(' | '),
     ]
     table.concat(content.map { |c| c.join(' | ') })
-    table.join("\n") + "\n"
+    "#{table.join("\n")}\n"
   end
 
   def format_table_value(val)
@@ -168,7 +168,7 @@ task generate_cops_documentation: :yard_for_generate_documentation do
     file_name = "#{Dir.pwd}/manual/cops_#{department_name}.md"
     File.open(file_name, 'w') do |file|
       puts "* generated #{file_name}"
-      file.write(content.strip + "\n")
+      file.write("#{content.strip}\n")
     end
   end
 
