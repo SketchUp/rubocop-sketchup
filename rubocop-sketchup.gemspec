@@ -24,6 +24,6 @@ Gem::Specification.new do |spec|
       'Gemfile'
   ]
 
-  spec.add_dependency 'rubocop', '>= 0.82', '<= 0.92'
+  spec.add_dependency 'rubocop', '>= 0.82', '<= 0.93'
   spec.add_development_dependency 'bundler', '>= 1.13', '< 3.0'
 end
