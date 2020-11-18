@@ -16,7 +16,10 @@ namespace :cut_release do
 
   def update_versions(old_version, new_version, rubocop_version)
     max_rubocop_version = rubocop_version.requirements.last.last.to_s
-    rubocop_requirements = rubocop_version.to_s
+    rubocop_requirements = rubocop_version.requirements.map { |requirement|
+      part = requirement.map(&:to_s).join(' ')
+      "'#{part}'"
+    }.join(', ')
     files = %w[README.md manual/installation.md manual/integration_with_other_tools.md]
     files.each do |filename|
       content = File.read(filename)
