@@ -18,5 +18,5 @@ Install the `rubocop-sketchup` gem:
 
 If you use [bundler](http://bundler.io/) to manage you're project's dependencies put this in your Gemfile:
 
-    gem 'rubocop', '>= 0.82, <= 0.93'
-    gem 'rubocop-sketchup', '~> 0.17.1'
+    gem 'rubocop', ''>= 0.82', '<= 0.93''
+    gem 'rubocop-sketchup', '~> 0.18.0'
