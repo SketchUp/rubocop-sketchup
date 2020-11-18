@@ -42,6 +42,62 @@ module RuboCop
       FEATURES = [
 
         {
+          version: 'SketchUp 2021.0',
+          types: {
+            class: [
+              'Sketchup::LayerFolder',
+            ],
+            method: [
+              'Sketchup.redo',
+              'Sketchup::ComponentDefinition#live_component?',
+              'Sketchup::Layer#folder',
+              'Sketchup::Layer#folder=',
+              'Sketchup::LayerFolder#==',
+              'Sketchup::LayerFolder#add_folder',
+              'Sketchup::LayerFolder#add_layer',
+              'Sketchup::LayerFolder#count_folders',
+              'Sketchup::LayerFolder#count_layers',
+              'Sketchup::LayerFolder#display_name',
+              'Sketchup::LayerFolder#each',
+              'Sketchup::LayerFolder#each_folder',
+              'Sketchup::LayerFolder#each_layer',
+              'Sketchup::LayerFolder#folder',
+              'Sketchup::LayerFolder#folder=',
+              'Sketchup::LayerFolder#folders',
+              'Sketchup::LayerFolder#layers',
+              'Sketchup::LayerFolder#length',
+              'Sketchup::LayerFolder#name',
+              'Sketchup::LayerFolder#name=',
+              'Sketchup::LayerFolder#remove_folder',
+              'Sketchup::LayerFolder#remove_layer',
+              'Sketchup::LayerFolder#size',
+              'Sketchup::LayerFolder#visible=',
+              'Sketchup::LayerFolder#visible?',
+              'Sketchup::LayerFolder#visible_on_new_pages=',
+              'Sketchup::LayerFolder#visible_on_new_pages?',
+              'Sketchup::Layers#add_folder',
+              'Sketchup::Layers#count_folders',
+              'Sketchup::Layers#count_layers',
+              'Sketchup::Layers#each_folder',
+              'Sketchup::Layers#each_layer',
+              'Sketchup::Layers#folders',
+              'Sketchup::Layers#layers',
+              'Sketchup::Layers#purge_unused_folders',
+              'Sketchup::Layers#remove_folder',
+              'Sketchup::LayersObserver#onLayerFolderAdded',
+              'Sketchup::LayersObserver#onLayerFolderChanged',
+              'Sketchup::LayersObserver#onLayerFolderRemoved',
+              'Sketchup::LayersObserver#onParentFolderChanged',
+              'Sketchup::Page#layer_folders',
+              'Sketchup::Skp.read_guid',
+            ],
+            module: [
+              'Sketchup::Skp',
+            ],
+          },
+        },
+
+        {
           version: 'LayOut 2020.1',
           types: {
             method: [
@@ -1137,6 +1193,8 @@ module RuboCop
         add_classification
         add_dimension_linear
         add_dimension_radial
+        add_folder
+        add_layer
         add_matchphoto_page
         add_section_plane
         aligned_text_position
@@ -1154,10 +1212,14 @@ module RuboCop
         colorize_deltas
         colorize_type
         colorize_type=
+        count_folders
+        count_layers
         count_used_instances
         dash_scale
         days_remaining
         drawing_element_visible?
+        each_folder
+        each_layer
         edit_transform
         effects_modified?
         end_attached_to
@@ -1188,6 +1250,7 @@ module RuboCop
         instance_path_from_pid_path
         is_polygon?
         large_icon
+        layer_folders
         layers_modified?
         leader_break_point
         leader_break_point=
@@ -1195,6 +1258,7 @@ module RuboCop
         line_style
         line_style=
         line_styles
+        live_component?
         load_from_url
         load_on_start?
         load_schema
@@ -1221,6 +1285,7 @@ module RuboCop
         persistent_id_path
         refresh_thumbnail
         remove_classification
+        remove_folder
         reset_camera
         reset_effects
         reset_layers
@@ -1251,6 +1316,8 @@ module RuboCop
         unload_schema
         upper_left
         upper_right
+        visible_on_new_pages?
+        visible_on_new_pages=
         winding
         window_pick
       ].freeze
@@ -1263,6 +1330,10 @@ module RuboCop
         onElementModified
         onExplode
         onLayerChanged
+        onLayerFolderAdded
+        onLayerFolderChanged
+        onLayerFolderRemoved
+        onParentFolderChanged
         onPidChanged
         onPlaceComponent
         onPostSaveModel
