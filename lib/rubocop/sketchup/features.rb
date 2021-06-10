@@ -42,6 +42,28 @@ module RuboCop
       FEATURES = [
 
         {
+          version: 'SketchUp 2021.1',
+          types: {
+            method: [
+              'Sketchup.focus',
+              'Sketchup::DefinitionList#import',
+              'Sketchup::Face#clear_texture_projection',
+              'Sketchup::Face#texture_positioned?',
+              'Sketchup::Face#texture_projected?',
+              'Sketchup::Face#uv_tile_at',
+              'Sketchup::Group#glued_to',
+              'Sketchup::Group#glued_to=',
+              'Sketchup::Image#glued_to',
+              'Sketchup::Image#glued_to=',
+              'UI::HtmlDialog#get_content_size',
+              'UI::HtmlDialog#get_position',
+              'UI::HtmlDialog#get_size',
+              'UI::HtmlDialog#set_content_size',
+            ],
+          },
+        },
+
+        {
           version: 'SketchUp 2021.0',
           types: {
             class: [
@@ -52,6 +74,7 @@ module RuboCop
               'Sketchup::ComponentDefinition#live_component?',
               'Sketchup::Layer#folder',
               'Sketchup::Layer#folder=',
+              'Sketchup::LayerFolder#<=>',
               'Sketchup::LayerFolder#==',
               'Sketchup::LayerFolder#add_folder',
               'Sketchup::LayerFolder#add_layer',
@@ -149,6 +172,7 @@ module RuboCop
               'Sketchup::Model#drawing_element_visible?',
               'Sketchup::Page#get_drawingelement_visibility',
               'Sketchup::Page#set_drawingelement_visibility',
+              'Sketchup::View#load_texture',
               'Sketchup::View#text_bounds',
             ],
           },
