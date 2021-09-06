@@ -241,7 +241,7 @@ task generate_cops_documentation: :yard_for_generate_documentation do
   end
 
   def update_default_yml_reference_links
-    manual_url = 'https://github.com/SketchUp/rubocop-sketchup/tree/master/manual'
+    manual_url = 'https://github.com/SketchUp/rubocop-sketchup/tree/main/manual'
     file_name = "#{Dir.pwd}/config/default.yml"
     # Copy AllCops exactly as manually crafted. This is done to preserve useful
     # comments.

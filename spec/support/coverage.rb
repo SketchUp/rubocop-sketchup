@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 # TODO(thomthom): Update when CI is configured.
-on_master = ENV['TRAVIS_BRANCH'] == 'master' &&
-            ENV['TRAVIS_PULL_REQUEST'] == 'false'
-if on_master || ENV['COVERAGE']
+on_default = ENV['TRAVIS_BRANCH'] == 'main' &&
+             ENV['TRAVIS_PULL_REQUEST'] == 'false'
+if on_default || ENV['COVERAGE']
   require 'simplecov'
   SimpleCov.add_filter '/spec/'
   SimpleCov.add_filter '/vendor/bundle/'
