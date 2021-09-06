@@ -38,7 +38,7 @@ face2 = group.entities.add_face(points2)
 
 ### References
 
-* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#addgroup](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#addgroup)
+* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#addgroup](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#addgroup)
 
 <a name='compatibility'></a>
 ## SketchupSuggestions/Compatibility
@@ -63,7 +63,7 @@ AllCops:
 
 ### References
 
-* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#compatibility](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#compatibility)
+* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#compatibility](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#compatibility)
 
 <a name='dynamiccomponentinternals'></a>
 ## SketchupSuggestions/DynamicComponentInternals
@@ -79,7 +79,7 @@ luck!
 
 ### References
 
-* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#dynamiccomponentinternals](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#dynamiccomponentinternals)
+* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#dynamiccomponentinternals](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#dynamiccomponentinternals)
 
 <a name='fileencoding'></a>
 ## SketchupSuggestions/FileEncoding
@@ -110,7 +110,7 @@ basename = File.basename(file, '.*')
 
 ### References
 
-* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#fileencoding](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#fileencoding)
+* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#fileencoding](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#fileencoding)
 
 <a name='modelentities'></a>
 ## SketchupSuggestions/ModelEntities
@@ -128,7 +128,7 @@ have an explicit reason to work in the root model context.
 
 ### References
 
-* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#modelentities](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#modelentities)
+* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#modelentities](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#modelentities)
 
 <a name='monkeypatchedapi'></a>
 ## SketchupSuggestions/MonkeyPatchedApi
@@ -145,7 +145,7 @@ the extensions are disabled. Avoid using these methods.
 
 ### References
 
-* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#monkeypatchedapi](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#monkeypatchedapi)
+* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#monkeypatchedapi](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#monkeypatchedapi)
 
 <a name='operationname'></a>
 ## SketchupSuggestions/OperationName
@@ -223,7 +223,7 @@ Max | `25` | Integer
 
 ### References
 
-* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#operationname](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#operationname)
+* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#operationname](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#operationname)
 
 <a name='sketchupfindsupportfile'></a>
 ## SketchupSuggestions/SketchupFindSupportFile
@@ -245,7 +245,7 @@ control.
 
 ### References
 
-* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#sketchupfindsupportfile](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#sketchupfindsupportfile)
+* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#sketchupfindsupportfile](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#sketchupfindsupportfile)
 
 <a name='tooldrawingbounds'></a>
 ## SketchupSuggestions/ToolDrawingBounds
@@ -281,7 +281,7 @@ end
 
 ### References
 
-* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#tooldrawingbounds](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#tooldrawingbounds)
+* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#tooldrawingbounds](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#tooldrawingbounds)
 
 <a name='toolinvalidate'></a>
 ## SketchupSuggestions/ToolInvalidate
@@ -319,7 +319,7 @@ end
 
 ### References
 
-* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#toolinvalidate](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#toolinvalidate)
+* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#toolinvalidate](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#toolinvalidate)
 
 <a name='tooluserinput'></a>
 ## SketchupSuggestions/ToolUserInput
@@ -350,7 +350,7 @@ end
 
 ### References
 
-* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#tooluserinput](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#tooluserinput)
+* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#tooluserinput](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#tooluserinput)
 
 <a name='toolbartimer'></a>
 ## SketchupSuggestions/ToolbarTimer
@@ -384,4 +384,4 @@ toolbar.restore
 
 ### References
 
-* [https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#toolbartimer](https://github.com/SketchUp/rubocop-sketchup/tree/master/manual/cops_suggestions.md#toolbartimer)
+* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#toolbartimer](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#toolbartimer)
