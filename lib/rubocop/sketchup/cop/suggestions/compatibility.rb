@@ -94,14 +94,14 @@ module RuboCop
         end
 
         def find_node_location(node)
-          # Highlight the most pertinent  piece of the expression.
+          # Highlight the most pertinent piece of the expression.
           if node.const_type?
             :expression
           elsif node.send_type?
             :selector
           elsif node.def_type?
             :name
-          else
+          else # rubocop:disable Lint/DuplicateBranch
             :expression
           end
         end
