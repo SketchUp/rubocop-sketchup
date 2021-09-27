@@ -269,13 +269,14 @@ task generate_cops_documentation: :yard_for_generate_documentation do
     yml_config.puts '<AllCops>'
     yml_config.puts
     last_department = nil
+    keys = %w[Details Description]
     config.each { |cop, cop_config|
       department_name, _cop_name = cop.split('/')
       yml_config.puts if last_department && last_department != department_name
       yml_config.puts
       yml_config.puts "#{cop}:"
       cop_config.each { |key, value|
-        value = yaml_format(key, value) if %w[Details Description].include?(key)
+        value = yaml_format(key, value) if keys.include?(key)
         yml_config.puts "  #{key}: #{value}"
       }
       last_department = department_name
