@@ -1,7 +1,7 @@
 site_name: "RuboCop SketchUp: SketchUp Extension Best Practices"
 repo_url: https://github.com/sketchup/rubocop-sketchup
 edit_uri: edit/main/manual/
-copyright: "Copyright &copy; 2017-2019 Trimble Inc. SketchUp and contributors"
+copyright: "Copyright &copy; 2017-2021 Trimble Inc. SketchUp and contributors"
 docs_dir: manual
 nav:
   - Home: index.md
