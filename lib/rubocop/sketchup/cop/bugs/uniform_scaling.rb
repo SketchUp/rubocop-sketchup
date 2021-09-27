@@ -21,7 +21,7 @@ module RuboCop
         PATTERN
 
         MSG = 'Resulting transformation matrix might yield unexpected '\
-            'results.'
+              'results.'
 
         def on_send(node)
           return unless valid_for_target_sketchup_version?

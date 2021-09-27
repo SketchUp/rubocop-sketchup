@@ -30,7 +30,7 @@ module RuboCop
                                         'with `Sketchup.require`.'
 
         MSG_EXTENSION_NEW_EXT_NAME = 'Do not hard code file extensions '\
-                                      'with `SketchupExtension.new`.'
+                                     'with `SketchupExtension.new`.'
 
         MSG_REQUIRE_FOR_BINARY = 'Use `require` instead of `Sketchup.require` '\
                                  'to load binary Ruby libraries.'

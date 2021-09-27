@@ -29,7 +29,8 @@ module RuboCop
         include SketchUp::ToolChecker
 
         MSG_MISSING_GET_EXTENTS = 'When drawing to the viewport implement '\
-            '`getExtents` so drawn geometry is not clipped.'
+                                  '`getExtents` so drawn geometry is not '\
+                                  'clipped.'
 
         def on_tool_class(class_node, body_methods)
           return unless find_method(body_methods, :draw)
