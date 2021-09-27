@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
 
   spec.version = RuboCop::SketchUp::VERSION
   spec.platform = Gem::Platform::RUBY
-  spec.required_ruby_version = '>= 2.4.0'
+  spec.required_ruby_version = '>= 2.5.0'
 
   spec.require_paths = ['lib']
   spec.files = Dir[
@@ -24,6 +24,6 @@ Gem::Specification.new do |spec|
       'Gemfile'
   ]
 
-  spec.add_dependency 'rubocop', '>= 0.82', '<= 1.12'
+  spec.add_dependency 'rubocop', '>= 0.82', '<= 1.13'
   spec.add_development_dependency 'bundler', '>= 1.13', '< 3.0'
 end
