@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 # This file is based of the same file in RuboCop's own repository.
+# TODO: Refactor to use CopsDocumentationGenerator like rubocop-rails does.
+#       https://github.com/rubocop/rubocop-rails/blob/master/tasks/cops_documentation.rake
 
 require 'yaml'
 require 'yard'
