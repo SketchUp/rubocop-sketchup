@@ -5,7 +5,10 @@ require:
 inherit_from: sketchup-style.yml
 
 AllCops:
-  NewCops: enable
+  # RuboCop 1.x uses semantic versioning. However, to avoid the CI build from
+  # breaking when a new cop is added that might yield warnings new cops are
+  # kept disabled and instead enabled explicitly as new versions are tested.
+  # NewCops: enable
   Exclude:
     - 'bin/**/*'
     - 'examples/**/*'
@@ -35,6 +38,10 @@ SketchupSuggestions:
   Enabled: false
 
 
+Gemspec/DateAssignment: # new in 1.10
+  Enabled: true
+
+
 Layout/ArrayAlignment:
   Exclude:
     - spec/**/*
@@ -51,6 +58,9 @@ Layout/FirstArgumentIndentation:
     - tasks/**/*
 
 Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+
+Layout/LineEndStringConcatenationIndentation: # new in 1.18
   Enabled: true
 
 Layout/LineLength:
@@ -73,6 +83,18 @@ Layout/ParameterAlignment:
 Layout/SpaceAroundMethodCallOperator:
   Enabled: true
 
+Layout/SpaceBeforeBrackets: # new in 1.7
+  Enabled: true
+
+
+Lint/AmbiguousAssignment: # new in 1.7
+  Enabled: true
+
+Lint/AmbiguousOperatorPrecedence: # new in 1.21
+  Enabled: true
+
+Lint/AmbiguousRange: # new in 1.19
+  Enabled: true
 
 Lint/BinaryOperatorWithIdenticalOperands:
   Enabled: true
@@ -86,10 +108,19 @@ Lint/ConstantDefinitionInBlock: # (new in 0.91)
   Exclude:
     - spec/**/*
 
+Lint/DeprecatedConstants: # new in 1.8
+  Enabled: true
+
 Lint/DeprecatedOpenSSLConstant:
   Enabled: true
 
+Lint/DuplicateBranch: # new in 1.3
+  Enabled: true
+
 Lint/DuplicateElsifCondition:
+  Enabled: true
+
+Lint/DuplicateRegexpCharacterClassElement: # new in 1.1
   Enabled: true
 
 Lint/DuplicateRequire: # (new in 0.90)
@@ -98,10 +129,19 @@ Lint/DuplicateRequire: # (new in 0.90)
 Lint/DuplicateRescueException:
   Enabled: true
 
+Lint/EmptyBlock: # new in 1.1
+  Enabled: true
+
+Lint/EmptyClass: # new in 1.3
+  Enabled: true
+
 Lint/EmptyConditionalBody:
   Enabled: true
 
 Lint/EmptyFile: # (new in 0.90)
+  Enabled: true
+
+Lint/EmptyInPattern: # new in 1.16
   Enabled: true
 
 Lint/FloatComparison:
@@ -113,9 +153,15 @@ Lint/HashCompareByIdentity: # (new in 0.93)
 Lint/IdentityComparison: # (new in 0.91)
   Enabled: true
 
+Lint/IncompatibleIoSelectWithFiberScheduler: # new in 1.21
+  Enabled: true
+
 Lint/InterpolationCheck:
   Exclude:
     - spec/rubocop/sketchup/cop/requirements/observers_start_operation_spec.rb
+
+Lint/LambdaWithoutLiteralBlock: # new in 1.8
+  Enabled: true
 
 Lint/MissingSuper:
   Enabled: true
@@ -123,10 +169,22 @@ Lint/MissingSuper:
 Lint/MixedRegexpCaptureTypes:
   Enabled: true
 
+Lint/NoReturnInBeginEndBlocks: # new in 1.2
+  Enabled: true
+
+Lint/NumberedParameterAssignment: # new in 1.9
+  Enabled: true
+
+Lint/OrAssignmentToConstant: # new in 1.9
+  Enabled: true
+
 Lint/OutOfRangeRegexpRef:
   Enabled: true
 
 Lint/RaiseException:
+  Enabled: true
+
+Lint/RedundantDirGlobSort: # new in 1.8
   Enabled: true
 
 Lint/RedundantSafeNavigation: # (new in 0.93)
@@ -138,10 +196,25 @@ Lint/SelfAssignment:
 Lint/StructNewOverride:
   Enabled: true
 
+Lint/SymbolConversion: # new in 1.9
+  Enabled: true
+
+Lint/ToEnumArguments: # new in 1.1
+  Enabled: true
+
 Lint/TopLevelReturnWithArgument:
   Enabled: true
 
 Lint/TrailingCommaInAttributeDeclaration: # (new in 0.90)
+  Enabled: true
+
+Lint/TripleQuotes: # new in 1.9
+  Enabled: true
+
+Lint/UnexpectedBlockArity: # new in 1.5
+  Enabled: true
+
+Lint/UnmodifiedReduceAccumulator: # new in 1.1
   Enabled: true
 
 Lint/UnreachableLoop:
@@ -226,6 +299,9 @@ Performance/StringInclude:
 Style/AccessorGrouping:
   Enabled: true
 
+Style/ArgumentsForwarding: # new in 1.1
+  Enabled: true
+
 Style/ArrayCoercion:
   Enabled: true
 
@@ -243,7 +319,16 @@ Style/ClassVars:
     - lib/rubocop/sketchup/cop/requirements/extension_namespace.rb
     - lib/rubocop/sketchup/cop/requirements/file_structure.rb
 
+Style/CollectionCompact: # new in 1.2
+  Enabled: true
+
 Style/CombinableLoops: # (new in 0.90)
+  Enabled: true
+
+Style/DocumentDynamicEvalDefinition: # new in 1.1
+  Enabled: true
+
+Style/EndlessMethod: # new in 1.8
   Enabled: true
 
 Style/ExplicitBlockArgument:
@@ -255,10 +340,22 @@ Style/ExponentialNotation:
 Style/HashAsLastArrayItem:
   Enabled: true
 
+Style/HashConversion: # new in 1.10
+  Enabled: true
+
+Style/HashExcept: # new in 1.7
+  Enabled: true
+
 Style/HashLikeCase:
   Enabled: true
 
 Style/GlobalStdStream:
+  Enabled: true
+
+Style/IfWithBooleanLiteralBranches: # new in 1.9
+  Enabled: true
+
+Style/InPatternThen: # new in 1.16
   Enabled: true
 
 Style/KeywordParametersOrder: # (new in 0.90)
@@ -268,7 +365,19 @@ Style/MultilineBlockChain:
   Exclude:
     - lib/rubocop/sketchup/formatter/extension_review.rb
 
+Style/MultilineInPatternThen: # new in 1.16
+  Enabled: true
+
+Style/NegatedIfElseCondition: # new in 1.2
+  Enabled: true
+
+Style/NilLambda: # new in 1.3
+  Enabled: true
+
 Style/OptionalBooleanParameter:
+  Enabled: true
+
+Style/QuotedSymbols: # new in 1.16
   Enabled: true
 
 Style/RedundantAssignment:
@@ -289,6 +398,9 @@ Style/RedundantRegexpEscape:
 Style/RedundantSelfAssignment: # (new in 0.90)
   Enabled: true
 
+Style/RedundantSelfAssignmentBranch: # new in 1.19
+  Enabled: true
+
 Style/SafeNavigation:
   Enabled: true
 
@@ -301,7 +413,13 @@ Style/SlicingWithRange:
 Style/SoleNestedConditional: # (new in 0.90)
   Enabled: true
 
+Style/StringChars: # new in 1.12
+  Enabled: true
+
 Style/StringConcatenation:
+  Enabled: true
+
+Style/SwapValues: # new in 1.1
   Enabled: true
 
 Style/TrailingCommaInArrayLiteral:
