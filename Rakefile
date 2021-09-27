@@ -10,7 +10,9 @@ unless ENV['CI']
   Dir['tasks/**/*.rake'].each { |task_file| load task_file }
 end
 
-RSpec::Core::RakeTask.new(:spec) { |task| task.ruby_opts = '-E UTF-8' }
+RSpec::Core::RakeTask.new(:spec) do |task|
+  task.ruby_opts = '-E UTF-8'
+end
 
 desc 'Run RSpec with code coverage'
 task :coverage do
@@ -39,3 +41,25 @@ task ci: %i[
   spec
   internal_investigation
 ]
+
+desc 'Generate a new cop with a template'
+task :new_cop, [:cop] do |_task, args|
+  require 'rubocop'
+
+  cop_name = args.fetch(:cop) do
+    warn 'usage: bundle exec rake new_cop[Department/Name]'
+    exit!
+  end
+
+  github_user = `git config github.user`.chop
+  github_user = 'your_id' if github_user.empty?
+
+  generator = RuboCop::Cop::Generator.new(cop_name, github_user)
+
+  generator.write_source
+  generator.write_spec
+  # generator.inject_require(root_file_path: 'lib/rubocop/cop/foobar_cops.rb')
+  generator.inject_config(config_file_path: 'config/default.yml')
+
+  puts generator.todo
+end
