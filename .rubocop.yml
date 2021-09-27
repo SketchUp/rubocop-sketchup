@@ -5,6 +5,7 @@ require:
 inherit_from: sketchup-style.yml
 
 AllCops:
+  NewCops: enable
   Exclude:
     - 'bin/**/*'
     - 'examples/**/*'
