@@ -136,6 +136,10 @@ Style/ModuleFunction:
 Style/NumericPredicate:
   Enabled: false
 
+# It's not easy always know the defaults. Being explicit is a safe choice.
+Style/RedundantArgument:
+  Enabled: false
+
 # Very subjective style. Lots of existing SketchUp code and example uses them
 # so disable by default.
 Style/RedundantSelf:
