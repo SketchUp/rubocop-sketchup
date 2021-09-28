@@ -12,7 +12,6 @@ cache:
 
 environment:
   matrix:
-    - RUBY_VERSION: 24
     - RUBY_VERSION: 25
     - RUBY_VERSION: 25-x64
     - RUBY_VERSION: 26
