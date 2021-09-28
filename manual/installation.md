@@ -6,9 +6,9 @@
 
 * The [RuboCop](http://batsov.com/rubocop/) gem must also be installed.
 
-  ```sh
-  gem install rubocop
-  ```
+    ```sh
+    gem install rubocop
+    ```
 
 ## Install
 
