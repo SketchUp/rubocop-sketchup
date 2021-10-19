@@ -13,18 +13,19 @@ module RuboCop
 
         include SketchUp::NoCommentDisable
 
-        MSG = '`exit` attempts to kill the Ruby interpreter. Use `return`, '\
+        MSG = '`%s` attempts to kill the Ruby interpreter. Use `return`, '\
               '`next`, `break` or `raise` instead.'
 
         # Reference: http://rubocop.readthedocs.io/en/latest/development/
         def_node_matcher :exit?, <<-PATTERN
-          (send {(const nil? :Kernel) nil?} {:exit :exit!} ...)
+          (send {(const nil? :Kernel) nil?} {:abort :exit :exit!} ...)
         PATTERN
 
         def on_send(node)
           return unless exit?(node)
 
-          add_offense(node, location: :selector)
+          message = format(MSG, node.method_name)
+          add_offense(node, location: :selector, message: message)
         end
       end
     end
