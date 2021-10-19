@@ -138,6 +138,9 @@ Lint/OrAssignmentToConstant: # new in 1.9
 Lint/RedundantDirGlobSort: # new in 1.8
   Enabled: true
 
+Lint/RequireRelativeSelfPath: # new in 1.22
+  Enabled: true
+
 Lint/SymbolConversion: # new in 1.9
   Enabled: true
 
@@ -250,6 +253,10 @@ Performance/Sum: # new in 1.8
   Enabled: true
 
 
+Security/IoMethods: # new in 1.22
+  Enabled: true
+
+
 Style/ArgumentsForwarding: # new in 1.1
   Enabled: true
 
@@ -292,10 +299,19 @@ Style/NegatedIfElseCondition: # new in 1.2
 Style/NilLambda: # new in 1.3
   Enabled: true
 
+Style/NumberedParameters: # new in 1.22
+  Enabled: true
+
+Style/NumberedParametersLimit: # new in 1.22
+  Enabled: true
+
 Style/QuotedSymbols: # new in 1.16
   Enabled: true
 
 Style/RedundantSelfAssignmentBranch: # new in 1.19
+  Enabled: true
+
+Style/SelectByRegexp: # new in 1.22
   Enabled: true
 
 Style/StringChars: # new in 1.12
