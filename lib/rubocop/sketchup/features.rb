@@ -42,6 +42,51 @@ module RuboCop
       FEATURES = [
 
         {
+          version: 'LayOut 2022.0',
+          types: {
+            method: [
+              'Layout::AutoTextDefinition#end_page',
+              'Layout::AutoTextDefinition#end_page=',
+              'Layout::AutoTextDefinition#increment',
+              'Layout::AutoTextDefinition#increment=',
+              'Layout::AutoTextDefinition#number_style',
+              'Layout::AutoTextDefinition#number_style=',
+              'Layout::AutoTextDefinition#renumber',
+              'Layout::AutoTextDefinition#sequence_format',
+              'Layout::AutoTextDefinition#sequence_format=',
+              'Layout::AutoTextDefinition#start_page',
+              'Layout::AutoTextDefinition#start_page=',
+            ],
+          },
+        },
+
+        {
+          version: 'SketchUp 2022.0',
+          types: {
+            class: [
+              'Sketchup::EntitiesBuilder',
+            ],
+            method: [
+              'Sketchup::AppObserver#onExtensionsLoaded',
+              'Sketchup::ComponentDefinition#save_copy',
+              'Sketchup::Entities#build',
+              'Sketchup::EntitiesBuilder#add_edge',
+              'Sketchup::EntitiesBuilder#add_edges',
+              'Sketchup::EntitiesBuilder#add_face',
+              'Sketchup::EntitiesBuilder#add_line',
+              'Sketchup::EntitiesBuilder#entities',
+              'Sketchup::EntitiesBuilder#valid?',
+              'Sketchup::EntitiesBuilder#vertex_at',
+              'Sketchup::Face#clear_texture_position',
+              'UI::Command#extension',
+              'UI::Command#extension=',
+              'UI::Command#get_validation_proc',
+              'UI::Command#proc',
+            ],
+          },
+        },
+
+        {
           version: 'SketchUp 2021.1',
           types: {
             method: [
@@ -1231,6 +1276,7 @@ module RuboCop
         camera_modified?
         center_2d
         classifications
+        clear_texture_position
         clip_to_margins?
         clip_to_margins=
         colorize_deltas
@@ -1259,6 +1305,7 @@ module RuboCop
         get_drawingelement_visibility
         get_glued_instances
         get_texture_projection
+        get_validation_proc
         has_aligned_text?
         has_aligned_text=
         icon_name
@@ -1340,6 +1387,7 @@ module RuboCop
         unload_schema
         upper_left
         upper_right
+        vertex_at
         visible_on_new_pages?
         visible_on_new_pages=
         winding
@@ -1352,6 +1400,7 @@ module RuboCop
         onAfterComponentSaveAs
         onBeforeComponentSaveAs
         onElementModified
+        onExtensionsLoaded
         onExplode
         onLayerChanged
         onLayerFolderAdded
