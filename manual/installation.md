@@ -24,5 +24,5 @@ If you use [bundler](http://bundler.io/) to manage you're project's dependencies
 
 ```ruby
 gem 'rubocop', '>= 0.82', '< 2.0'
-gem 'rubocop-sketchup', '~> 1.1.0'
+gem 'rubocop-sketchup', '~> 1.2.0'
 ```
