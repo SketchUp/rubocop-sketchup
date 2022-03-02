@@ -283,6 +283,12 @@ Style/DocumentDynamicEvalDefinition: # new in 1.1
 Style/EndlessMethod: # new in 1.8
   Enabled: true
 
+# The `expect_no_offenses` special assertions have custom formatting directives.
+# They will however trigger this cop.
+Style/FormatStringToken:
+  Exclude:
+    - spec/rubocop/sketchup/cop/requirements/ruby_core_namespace_spec.rb
+
 Style/FileRead: # new in 1.24
   Enabled: true
 
