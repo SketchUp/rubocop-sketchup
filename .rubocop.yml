@@ -1,5 +1,6 @@
 require:
   - rubocop-performance
+  - rubocop-rake
   - rubocop-sketchup
 
 inherit_from: sketchup-style.yml
@@ -176,6 +177,7 @@ Metrics/ClassLength:
     - lib/rubocop/sketchup/cop/requirements/ruby_stdlib_namespace.rb
     - lib/rubocop/sketchup/formatter/extension_review.rb
     - spec/**/*
+    - tasks/cops_documentation.rake
 
 Metrics/MethodLength:
   Exclude:
