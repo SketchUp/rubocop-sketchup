@@ -10,6 +10,7 @@ group :test do
   gem 'rspec', '~> 3.7', require: false
   gem 'rubocop-performance', '~> 1.11.0', require: false
   gem 'rubocop-rake', '~> 0.6.0', require: false
+  gem 'rubocop-rspec', require: false
   gem 'simplecov', '~> 0.10', require: false
 end
 
