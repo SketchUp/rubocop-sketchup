@@ -2,6 +2,11 @@
 
 describe 'RuboCop Project' do
   describe 'default configuration file' do
+
+    subject(:default_config) do
+      RuboCop::ConfigLoader.load_file('config/default.yml')
+    end
+
     let(:cop_names) do
       project_path = File.expand_path('..', __dir__)
       cop_files = Dir.glob(File.join(project_path, 'lib',
@@ -14,10 +19,6 @@ describe 'RuboCop Project' do
 
         "Sketchup#{department_name}/#{cop_name}"
       end
-    end
-
-    subject(:default_config) do
-      RuboCop::ConfigLoader.load_file('config/default.yml')
     end
 
     let(:sketchup_config_keys) do
