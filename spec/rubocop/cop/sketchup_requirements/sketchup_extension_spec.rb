@@ -13,12 +13,12 @@ describe RuboCop::Cop::SketchupRequirements::SketchupExtension do
       RuboCop::Config.new({}, 'fake_cop_config.yml')
     end
 
-    before :all do
+    before do
       @old_pwd = Dir.pwd
       Dir.chdir('examples/extensions/valid')
     end
 
-    after :all do
+    after do
       Dir.chdir(@old_pwd)
     end
 
@@ -153,12 +153,12 @@ describe RuboCop::Cop::SketchupRequirements::SketchupExtension do
       RuboCop::Config.new(rubocop_config, 'fake_cop_config.yml')
     end
 
-    before :all do
+    before do
       @old_pwd = Dir.pwd
       Dir.chdir('examples/extensions/valid_custom_src_path')
     end
 
-    after :all do
+    after do
       Dir.chdir(@old_pwd)
     end
 
