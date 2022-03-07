@@ -13,13 +13,15 @@ describe RuboCop::Cop::SketchupRequirements::SketchupExtension do
       RuboCop::Config.new({}, 'fake_cop_config.yml')
     end
 
+    old_pwd = nil
+
     before do
-      @old_pwd = Dir.pwd
+      old_pwd = Dir.pwd
       Dir.chdir('examples/extensions/valid')
     end
 
     after do
-      Dir.chdir(@old_pwd)
+      Dir.chdir(old_pwd)
     end
 
     it 'registers an offense for missing SketchupExtension in root file' do
@@ -153,13 +155,15 @@ describe RuboCop::Cop::SketchupRequirements::SketchupExtension do
       RuboCop::Config.new(rubocop_config, 'fake_cop_config.yml')
     end
 
+    old_pwd = nil
+
     before do
-      @old_pwd = Dir.pwd
+      old_pwd = Dir.pwd
       Dir.chdir('examples/extensions/valid_custom_src_path')
     end
 
     after do
-      Dir.chdir(@old_pwd)
+      Dir.chdir(old_pwd)
     end
 
     it 'registers an offense for missing SketchupExtension in root file' do
