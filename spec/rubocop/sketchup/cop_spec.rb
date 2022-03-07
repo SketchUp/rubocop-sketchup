@@ -24,12 +24,13 @@ describe RuboCop::SketchUp::Cop do
 
   let(:fake_cop) do
     stub_const('RuboCop::SketchupDeprecations', Module.new)
-    class RuboCop::SketchupDeprecations::FakeCop < described_class
+
+    cop_class = Class.new(described_class) do
       def on_send(node)
         add_offense(node, location: :expression, message: 'I flag everything')
       end
     end
-    RuboCop::SketchupDeprecations::FakeCop
+    stub_const('RuboCop::SketchupDeprecations::FakeCop', cop_class)
   end
 
   let(:sketchup_excludes) { %w[spec/**/* **/*_spec.rb] }

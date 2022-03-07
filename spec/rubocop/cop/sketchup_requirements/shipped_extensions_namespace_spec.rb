@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe RuboCop::Cop::SketchupRequirements::ShippedExtensionsNamespace do
 
-  self::NAMESPACE_TYPES = %w[class module].freeze
+  namespace_types = %w[class module].freeze
 
   subject(:cop) { described_class.new }
 
@@ -19,7 +19,7 @@ describe RuboCop::Cop::SketchupRequirements::ShippedExtensionsNamespace do
     if Object.constants.include?(var.intern)
       const = Object.const_get(var)
       type = const.class.name.downcase
-      next unless self::NAMESPACE_TYPES.include?(type)
+      next unless namespace_types.include?(type)
     end
 
     it "registers an offense for adding an instance method to #{var} #{type}" do

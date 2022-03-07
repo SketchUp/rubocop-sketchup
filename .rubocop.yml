@@ -265,6 +265,11 @@ Performance/Sum: # new in 1.8
   Enabled: true
 
 
+# Too many cases of nested context where this rule doesn't apply.
+RSpec/ContextWording:
+  Enabled: false
+
+
 Security/IoMethods: # new in 1.22
   Enabled: true
 

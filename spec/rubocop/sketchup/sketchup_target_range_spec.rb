@@ -10,7 +10,8 @@ describe RuboCop::SketchUp::SketchUpTargetRange do
 
     let(:fake_cop) do
       stub_const('RuboCop::SketchupBugs', Module.new)
-      class RuboCop::SketchupBugs::FakeCop < RuboCop::SketchUp::Cop
+
+      cop_class = Class.new(RuboCop::SketchUp::Cop) do
 
         include RuboCop::SketchUp::SketchUpTargetRange
 
@@ -22,7 +23,7 @@ describe RuboCop::SketchUp::SketchUpTargetRange do
           add_offense(node, location: :expression, message: 'I flag everything')
         end
       end
-      RuboCop::SketchupBugs::FakeCop
+      stub_const('RuboCop::SketchupBugs::FakeCop', cop_class)
     end
 
     context 'and target is below' do
@@ -61,7 +62,8 @@ describe RuboCop::SketchUp::SketchUpTargetRange do
 
     let(:fake_cop) do
       stub_const('RuboCop::SketchupBugs', Module.new)
-      class RuboCop::SketchupBugs::FakeCop < RuboCop::SketchUp::Cop
+
+      cop_class = Class.new(RuboCop::SketchUp::Cop) do
 
         include RuboCop::SketchUp::SketchUpTargetRange
 
@@ -73,7 +75,7 @@ describe RuboCop::SketchUp::SketchUpTargetRange do
           add_offense(node, location: :expression, message: 'I flag everything')
         end
       end
-      RuboCop::SketchupBugs::FakeCop
+      stub_const('RuboCop::SketchupBugs::FakeCop', cop_class)
     end
 
     context 'and target is below' do
@@ -112,7 +114,8 @@ describe RuboCop::SketchUp::SketchUpTargetRange do
 
     let(:fake_cop) do
       stub_const('RuboCop::SketchupBugs', Module.new)
-      class RuboCop::SketchupBugs::FakeCop < RuboCop::SketchUp::Cop
+
+      cop_class = Class.new(RuboCop::SketchUp::Cop) do
 
         include RuboCop::SketchUp::SketchUpTargetRange
 
@@ -125,7 +128,7 @@ describe RuboCop::SketchUp::SketchUpTargetRange do
           add_offense(node, location: :expression, message: 'I flag everything')
         end
       end
-      RuboCop::SketchupBugs::FakeCop
+      stub_const('RuboCop::SketchupBugs::FakeCop', cop_class)
     end
 
     context 'and target is below range' do
