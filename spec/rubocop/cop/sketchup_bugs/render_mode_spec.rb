@@ -53,6 +53,7 @@ describe RuboCop::Cop::SketchupBugs::RenderMode do
       sketchup_version_config('SketchUp 2014')
     end
 
+    # rubocop:disable RSpec/RepeatedExample
     described_class::RENDER_MODE_VALID.each do |var|
       it 'registers an offense for valid rendering mode' do
         expect_no_offenses(<<~RUBY)
@@ -68,6 +69,7 @@ describe RuboCop::Cop::SketchupBugs::RenderMode do
         RUBY
       end
     end
+    # rubocop:enable RSpec/RepeatedExample
 
     it 'registers an offense for invalid rendering mode' do
       expect_no_offenses(<<~RUBY)
