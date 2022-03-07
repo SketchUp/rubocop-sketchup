@@ -86,7 +86,7 @@ describe RuboCop::Cop::SketchupRequirements::RubyCoreNamespace do
         expect_offense(<<~RUBY, method: method)
           module Example; end
           #{type} #{var}
-            %{method} Example
+            #{method} Example
             ^{method} Do not modify Ruby core functionality.
           end
         RUBY
@@ -104,7 +104,7 @@ describe RuboCop::Cop::SketchupRequirements::RubyCoreNamespace do
       it "registers an offense using #{method} on the #{var} #{type} via klass.#{method}" do
         expect_offense(<<~RUBY, var: var, method: method)
           module Example; end
-          %{var}.%{method} Example
+          #{var}.#{method} Example
           _{var} ^{method} Do not modify Ruby core functionality.
         RUBY
       end
@@ -124,7 +124,7 @@ describe RuboCop::Cop::SketchupRequirements::RubyCoreNamespace do
     it "registers an offense for using #{method} in global scope" do
       expect_offense(<<~RUBY, method: method)
         module Example; end
-        %{method} Example
+        #{method} Example
         ^{method} Do not modify Ruby core functionality.
       RUBY
     end
