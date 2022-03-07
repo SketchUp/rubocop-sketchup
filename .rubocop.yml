@@ -265,6 +265,12 @@ Performance/Sum: # new in 1.8
   Enabled: true
 
 
+RSpec/BeEq: # new in 2.9.0
+  Enabled: true
+
+RSpec/BeNil: # new in 2.9.0
+  Enabled: true
+
 # Too many cases of nested context where this rule doesn't apply.
 RSpec/ContextWording:
   Enabled: false
@@ -276,6 +282,9 @@ RSpec/DescribeClass:
 RSpec/ExampleLength:
   Max: 10
 
+RSpec/ExcessiveDocstringSpacing: # new in 2.5
+  Enabled: true
+
 RSpec/FilePath:
   CustomTransform:
     DynamicComponentInternals: dc_internals
@@ -283,6 +292,18 @@ RSpec/FilePath:
     RubyStdLibNamespace: ruby_stdlib_namespace
     SketchUp: sketchup
     SketchUpTargetRange: sketchup_target_range
+
+RSpec/IdenticalEqualityAssertion: # new in 2.4
+  Enabled: true
+
+RSpec/SubjectDeclaration: # new in 2.5
+  Enabled: true
+
+RSpec/FactoryBot/SyntaxMethods: # new in 2.7
+  Enabled: true
+
+RSpec/Rails/AvoidSetupHook: # new in 2.4
+  Enabled: false
 
 
 Security/IoMethods: # new in 1.22
