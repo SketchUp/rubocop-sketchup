@@ -269,6 +269,14 @@ Performance/Sum: # new in 1.8
 RSpec/ContextWording:
   Enabled: false
 
+RSpec/FilePath:
+  CustomTransform:
+    DynamicComponentInternals: dc_internals
+    OpenSSL: openssl
+    RubyStdLibNamespace: ruby_stdlib_namespace
+    SketchUp: sketchup
+    SketchUpTargetRange: sketchup_target_range
+
 
 Security/IoMethods: # new in 1.22
   Enabled: true
