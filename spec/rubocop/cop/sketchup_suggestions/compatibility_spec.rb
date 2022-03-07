@@ -84,7 +84,7 @@ describe RuboCop::Cop::SketchupSuggestions::Compatibility do
       expect(cop.offenses).to be_empty
     end
 
-    it 'does not register an offense when shadowing incompatible module' do
+    it 'does not register an offense when shadowing incompatible class' do
       inspect_source(<<~RUBY)
         module Example
           class Layout

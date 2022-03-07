@@ -23,7 +23,7 @@ describe RuboCop::Cop::SketchupRequirements::GlobalInclude do
   end
 
 
-  it 'does not register an offense for module namespaced include' do
+  it 'does not register an offense for include in namespaced module' do
     expect_no_offenses(<<~RUBY)
       module Example
         include Math
@@ -31,7 +31,7 @@ describe RuboCop::Cop::SketchupRequirements::GlobalInclude do
     RUBY
   end
 
-  it 'does not register an offense for module namespaced include' do
+  it 'does not register an offense for include in nested namespaced module' do
     expect_no_offenses(<<~RUBY)
       module Example::Kernel
         include Math
@@ -39,7 +39,7 @@ describe RuboCop::Cop::SketchupRequirements::GlobalInclude do
     RUBY
   end
 
-  it 'does not register an offense for module namespaced include' do
+  it 'does not register an offense for include in indented nested namespaced module' do
     expect_no_offenses(<<~RUBY)
       module Example
         module Kernel

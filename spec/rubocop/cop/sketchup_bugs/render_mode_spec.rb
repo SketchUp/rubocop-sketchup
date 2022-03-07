@@ -13,7 +13,7 @@ describe RuboCop::Cop::SketchupBugs::RenderMode do
     end
 
     described_class::RENDER_MODE_VALID.each do |var|
-      it 'registers an offense for obsolete rendering mode' do
+      it 'registers an offense for valid rendering mode' do
         expect_no_offenses(<<~RUBY)
           Sketchup.active_model.rendering_options["RenderMode"] = #{var}
         RUBY
@@ -54,7 +54,7 @@ describe RuboCop::Cop::SketchupBugs::RenderMode do
     end
 
     described_class::RENDER_MODE_VALID.each do |var|
-      it 'registers an offense for obsolete rendering mode' do
+      it 'registers an offense for valid rendering mode' do
         expect_no_offenses(<<~RUBY)
           Sketchup.active_model.rendering_options["RenderMode"] = #{var}
         RUBY
