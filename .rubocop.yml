@@ -269,6 +269,9 @@ Performance/Sum: # new in 1.8
 RSpec/ContextWording:
   Enabled: false
 
+RSpec/ExampleLength:
+  Max: 10
+
 RSpec/FilePath:
   CustomTransform:
     DynamicComponentInternals: dc_internals
