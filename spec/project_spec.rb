@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 describe 'RuboCop Project' do
-  describe 'default configuration file' do
+  describe 'default configuration file' do # rubocop:disable RSpec/EmptyExampleGroup
 
     subject(:default_config) do
       RuboCop::ConfigLoader.load_file('config/default.yml')
