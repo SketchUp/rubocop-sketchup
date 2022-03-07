@@ -9,8 +9,7 @@ describe RuboCop::Cop::SketchupRequirements::RubyCoreNamespace do
 
   subject(:cop) { described_class.new }
 
-  # described_class::NAMESPACES.each do |var|
-  %w[Array Math].each do |var|
+  described_class::NAMESPACES.each do |var|
 
     # The namespace objects are either modules or classes, but we don't know
     # what. We'll try to infer this based on the current Ruby installation
