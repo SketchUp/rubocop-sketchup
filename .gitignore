@@ -17,3 +17,6 @@ doc/
 
 # Ignore Mkdocs files
 site/
+
+.bundle/
+vendor/bundle/
