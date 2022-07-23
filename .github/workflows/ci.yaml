@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    paths-ignore:
+      - '**.md'
+  pull_request:
+    paths-ignore:
+      - '**.md'
+  workflow_dispatch:
+
+jobs:
+  ci:
+    name: >-
+      ${{ matrix.os }} ${{ matrix.ruby }}
+
+    runs-on: ${{ matrix.os }}
+    if: |
+      !(   contains(github.event.pull_request.title,  '[ci skip]')
+        || contains(github.event.pull_request.title,  '[skip ci]'))
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ macos-11, windows-2022 ]
+        ruby: [ 2.5, 2.7, 3.1 ]
+
+    steps:
+      - name: repo checkout
+        uses: actions/checkout@v3
+
+      - name: load ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          rubygems: latest
+          bundler: none
+        timeout-minutes: 5
+
+      - run: |
+          bundle config --local path vendor/bundle
+          bundle config --local without development
+
+      - run: bundle install --jobs 4 --retry 3
+
+      - run: bundle exec rake ci
