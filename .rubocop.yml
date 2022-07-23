@@ -18,6 +18,7 @@ AllCops:
   DisplayCopNames: true
   DisplayStyleGuide: true
   ExtraDetails: true
+  TargetRubyVersion: 2.5
 
 
 # Need to explicitly disable the SketchUp cops here because Rake tasks will
@@ -39,9 +40,13 @@ SketchupRequirements:
 SketchupSuggestions:
   Enabled: false
 
-
+<% if RUBY_VERSION < '2.6' %>
 Gemspec/DateAssignment: # new in 1.10
   Enabled: true
+<% else %>
+Gemspec/DeprecatedAttributeAssignment: # new in 1.31
+  Enabled: true
+<% end %>
 
 Gemspec/RequireMFA: # new in 1.23
   Enabled: false

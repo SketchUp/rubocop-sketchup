@@ -13,11 +13,9 @@ module RuboCop
 
       private
 
-      # rubocop:disable Lint/UnusedMethodArgument
       def on_tool_class(class_node, body, body_methods)
         raise NotImplementedError, 'Implement this method'
       end
-      # rubocop:enable Lint/UnusedMethodArgument
 
       def body_methods(body)
         return [body] if body.def_type?
