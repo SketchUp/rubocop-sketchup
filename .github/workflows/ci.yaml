@@ -23,6 +23,8 @@ jobs:
       matrix:
         os: [ macos-11, windows-2022 ]
         ruby: [ 2.5, 2.7, 3.1 ]
+    env:
+      BUNDLE_WITHOUT: development
 
     steps:
       - name: repo checkout
@@ -34,12 +36,7 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
           rubygems: latest
           bundler: none
+          bundler-cache: true
         timeout-minutes: 5
-
-      - run: |
-          bundle config --local path vendor/bundle
-          bundle config --local without development
-
-      - run: bundle install --jobs 4 --retry 3
 
       - run: bundle exec rake ci
