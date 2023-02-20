@@ -42,10 +42,10 @@ module RuboCop
           (send _ :[]= (str "RenderMode") (int $_))
         PATTERN
 
-        MSG_OBSOLETE = 'Obsolete render mode will crash in SU2017 and '\
+        MSG_OBSOLETE = 'Obsolete render mode will crash in SU2017 and ' \
                        'newer versions.'
 
-        MSG_INVALID = 'Invalid render mode will crash in SU2017 and '\
+        MSG_INVALID = 'Invalid render mode will crash in SU2017 and ' \
                       'newer versions.'
 
         def on_send(node)

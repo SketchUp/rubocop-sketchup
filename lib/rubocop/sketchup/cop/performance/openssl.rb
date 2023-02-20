@@ -15,7 +15,7 @@ module RuboCop
       # It also affects `Net::HTTP` if making HTTPS connections.
       class OpenSSL < SketchUp::Cop
 
-        MSG = 'Avoid use of OpenSSL within SketchUp due to severe performance '\
+        MSG = 'Avoid use of OpenSSL within SketchUp due to severe performance ' \
               'issues.'
 
         # http://www.rubydoc.info/gems/rubocop/RuboCop/NodePattern

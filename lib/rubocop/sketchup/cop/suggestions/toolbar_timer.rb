@@ -24,7 +24,7 @@ module RuboCop
 
         include RangeHelp
 
-        MSG = 'Wrapping `toolbar.restore` in `UI.start_timer` is '\
+        MSG = 'Wrapping `toolbar.restore` in `UI.start_timer` is ' \
               'redundant.'
 
         def_node_matcher :toolbar_new?, <<-PATTERN

@@ -20,7 +20,7 @@ module RuboCop
           (send (const (const nil? :Geom) :Transformation) :scaling _)
         PATTERN
 
-        MSG = 'Resulting transformation matrix might yield unexpected '\
+        MSG = 'Resulting transformation matrix might yield unexpected ' \
               'results.'
 
         def on_send(node)

@@ -32,7 +32,7 @@ module RuboCop
         include SketchUp::NoCommentDisable
         include SketchUp::ExtensionProject
 
-        MSG = "Don't load extension files in the root file registering the "\
+        MSG = "Don't load extension files in the root file registering the " \
               'extension.'
 
         # Reference: http://rubocop.readthedocs.io/en/latest/node_pattern/

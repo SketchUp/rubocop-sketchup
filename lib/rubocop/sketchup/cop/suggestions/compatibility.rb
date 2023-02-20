@@ -86,8 +86,8 @@ module RuboCop
         end
 
         def report(node, feature_name, feature_version, feature_type)
-          message = "The #{feature_type} `#{feature_name}` was added in "\
-                    "#{feature_version} which is incompatible with target "\
+          message = "The #{feature_type} `#{feature_name}` was added in " \
+                    "#{feature_version} which is incompatible with target " \
                     "#{sketchup_target_version}."
           location = find_node_location(node)
           add_offense(node, location: location, message: message)

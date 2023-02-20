@@ -13,7 +13,7 @@ module RuboCop
 
         include SketchUp::NoCommentDisable
 
-        MSG = '`%s` attempts to kill the Ruby interpreter. Use `return`, '\
+        MSG = '`%s` attempts to kill the Ruby interpreter. Use `return`, ' \
               '`next`, `break` or `raise` instead.'
 
         # Reference: http://rubocop.readthedocs.io/en/latest/development/

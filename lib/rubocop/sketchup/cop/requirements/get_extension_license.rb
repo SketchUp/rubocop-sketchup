@@ -16,7 +16,7 @@ module RuboCop
 
         MSG_INVALID = 'Invalid extension GUID'
 
-        MSG_WRONG_TYPE = 'Only pass in extension GUID from local string '\
+        MSG_WRONG_TYPE = 'Only pass in extension GUID from local string ' \
                          'literals.'
 
         MSG_TRAILING_SPACE = 'Extra space in extension GUID'

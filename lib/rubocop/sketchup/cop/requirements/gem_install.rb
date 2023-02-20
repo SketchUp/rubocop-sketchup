@@ -25,7 +25,7 @@ module RuboCop
         include RangeHelp
         include SketchUp::NoCommentDisable
 
-        MSG = '`Gem.install` is unreliable in SketchUp, and can cause '\
+        MSG = '`Gem.install` is unreliable in SketchUp, and can cause ' \
               'extensions to clash.'
 
         # Reference: http://rubocop.readthedocs.io/en/latest/development/

@@ -28,7 +28,7 @@ module RuboCop
 
         include RangeHelp
 
-        MSG = 'Prefer changing selection in bulk instead of modifying '\
+        MSG = 'Prefer changing selection in bulk instead of modifying ' \
               'selection within loops.'
 
         # http://www.rubydoc.info/gems/rubocop/RuboCop/NodePattern

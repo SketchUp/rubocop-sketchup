@@ -30,7 +30,7 @@ module RuboCop
 
         include RangeHelp
 
-        MSG = 'String comparisons are very slow, prefer `.is_a?` '\
+        MSG = 'String comparisons are very slow, prefer `.is_a?` ' \
               'instead.'
 
         def_node_matcher :string_class_compare?, <<-PATTERN

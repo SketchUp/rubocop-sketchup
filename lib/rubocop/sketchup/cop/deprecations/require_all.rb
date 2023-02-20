@@ -8,7 +8,7 @@ module RuboCop
       # to inadvertently load the wrong file.
       class RequireAll < SketchUp::Cop
 
-        MSG = 'Method is deprecated because it adds the given path '\
+        MSG = 'Method is deprecated because it adds the given path ' \
               'to $LOAD_PATH.'
 
         def_node_matcher :require_all?, <<-PATTERN

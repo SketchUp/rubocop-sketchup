@@ -23,7 +23,7 @@ module RuboCop
 
         include SketchUp::ToolChecker
 
-        MSG_MISSING_ENABLE_VCB = 'When accepting user input, make sure to '\
+        MSG_MISSING_ENABLE_VCB = 'When accepting user input, make sure to ' \
                                  'define `enableVCB?`.'
 
         def on_tool_class(class_node, body_methods)

@@ -10,7 +10,7 @@ module RuboCop
 
         include SketchUp::NoCommentDisable
 
-        MSG = 'Avoid globals in general, but especially these which are known '\
+        MSG = 'Avoid globals in general, but especially these which are known ' \
               'to be in use.'
 
         LH_GLOBALS = %i[

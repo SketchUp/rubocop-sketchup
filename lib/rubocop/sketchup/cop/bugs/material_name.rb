@@ -78,7 +78,7 @@ module RuboCop
           (send #material? :name= _)
         PATTERN
 
-        MSG_SET_NAME = '`material.name=` might add duplicate materials in '\
+        MSG_SET_NAME = '`material.name=` might add duplicate materials in ' \
                        'SU2017 and older versions.'
 
         def on_send(node)
