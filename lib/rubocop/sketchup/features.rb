@@ -42,6 +42,61 @@ module RuboCop
       FEATURES = [
 
         {
+          version: 'LayOut 2023.0',
+          types: {
+            class: [
+              'Layout::ReferenceEntity',
+            ],
+            method: [
+              'Layout::AutoTextDefinition#sequence_type',
+              'Layout::AutoTextDefinition#sequence_type=',
+              'Layout::ReferenceEntity#clip_mask',
+              'Layout::ReferenceEntity#clip_mask=',
+              'Layout::ReferenceEntity#entities',
+            ],
+          },
+        },
+
+        {
+          version: 'SketchUp 2023.0',
+          types: {
+            class: [
+              'Sketchup::Overlay',
+              'Sketchup::OverlaysManager',
+            ],
+            method: [
+              'Sketchup.resize_viewport',
+              'Sketchup::ComponentDefinition#thumbnail_camera',
+              'Sketchup::ComponentDefinition#thumbnail_camera=',
+              'Sketchup::Model#overlays',
+              'Sketchup::Overlay#description',
+              'Sketchup::Overlay#description=',
+              'Sketchup::Overlay#draw',
+              'Sketchup::Overlay#enabled=',
+              'Sketchup::Overlay#enabled?',
+              'Sketchup::Overlay#getExtents',
+              'Sketchup::Overlay#initialize',
+              'Sketchup::Overlay#name',
+              'Sketchup::Overlay#onMouseEnter',
+              'Sketchup::Overlay#onMouseLeave',
+              'Sketchup::Overlay#onMouseMove',
+              'Sketchup::Overlay#overlay_id',
+              'Sketchup::Overlay#source',
+              'Sketchup::Overlay#start',
+              'Sketchup::Overlay#stop',
+              'Sketchup::Overlay#valid?',
+              'Sketchup::OverlaysManager#[]',
+              'Sketchup::OverlaysManager#add',
+              'Sketchup::OverlaysManager#at',
+              'Sketchup::OverlaysManager#each',
+              'Sketchup::OverlaysManager#length',
+              'Sketchup::OverlaysManager#remove',
+              'Sketchup::OverlaysManager#size',
+            ],
+          },
+        },
+
+        {
           version: 'LayOut 2022.0',
           types: {
             method: [
@@ -1364,6 +1419,7 @@ module RuboCop
         same_direction?
         scale_2d
         screen_scale_factor
+        sequence_type
         set_can_close
         set_classification_value
         set_download_progress_callback
@@ -1383,6 +1439,7 @@ module RuboCop
         status_bar_text
         style_modified?
         text_bounds
+        thumbnail_camera
         unit_vector?
         unload_schema
         upper_left
