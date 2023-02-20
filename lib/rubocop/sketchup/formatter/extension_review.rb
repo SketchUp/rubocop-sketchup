@@ -62,7 +62,7 @@ module RuboCop
         context = ERBContext.new(categories, files, summary)
 
         template = File.read(TEMPLATE_PATH, encoding: Encoding::UTF_8)
-        erb = ERB.new(template, nil, '-')
+        erb = ERB.new(template, trim_mode: '-')
         html = erb.result(context.binding)
 
         output.write html
