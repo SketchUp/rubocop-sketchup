@@ -18,6 +18,7 @@ AllCops:
   DisplayCopNames: true
   DisplayStyleGuide: true
   ExtraDetails: true
+  TargetRubyVersion: 2.5
 
 
 # Need to explicitly disable the SketchUp cops here because Rake tasks will
