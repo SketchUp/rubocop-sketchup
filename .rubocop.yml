@@ -41,7 +41,14 @@ SketchupSuggestions:
   Enabled: false
 
 
-Gemspec/DateAssignment: # new in 1.10
+Capybara:
+  Enabled: false
+
+
+Gemspec/DevelopmentDependencies: # new in 1.44
+  Enabled: true
+
+Gemspec/DeprecatedAttributeAssignment: # new in 1.10
   Enabled: true
 
 Gemspec/RequireMFA: # new in 1.23
@@ -59,6 +66,12 @@ Layout/AssignmentIndentation:
 Layout/FirstArgumentIndentation:
   Exclude:
     - tasks/**/*
+
+Layout/LineContinuationLeadingSpace: # new in 1.31
+  Enabled: true
+
+Layout/LineContinuationSpacing: # new in 1.31
+  Enabled: true
 
 Layout/LineEndStringConcatenationIndentation: # new in 1.18
   Enabled: true
@@ -104,10 +117,16 @@ Lint/ConstantDefinitionInBlock:
   Exclude:
     - spec/**/*
 
+Lint/ConstantOverwrittenInRescue: # new in 1.31
+  Enabled: true
+
 Lint/DeprecatedConstants: # new in 1.8
   Enabled: true
 
 Lint/DuplicateBranch: # new in 1.3
+  Enabled: true
+
+Lint/DuplicateMagicComment: # new in 1.37
   Enabled: true
 
 Lint/DuplicateRegexpCharacterClassElement: # new in 1.1
@@ -132,6 +151,9 @@ Lint/InterpolationCheck:
 Lint/LambdaWithoutLiteralBlock: # new in 1.8
   Enabled: true
 
+Lint/NonAtomicFileOperation: # new in 1.31
+  Enabled: true
+
 Lint/NoReturnInBeginEndBlocks: # new in 1.2
   Enabled: true
 
@@ -142,6 +164,12 @@ Lint/OrAssignmentToConstant: # new in 1.9
   Enabled: true
 
 Lint/RedundantDirGlobSort: # new in 1.8
+  Enabled: true
+
+Lint/RefinementImportMethods: # new in 1.27
+  Enabled: true
+
+Lint/RequireRangeParentheses: # new in 1.32
   Enabled: true
 
 Lint/RequireRelativeSelfPath: # new in 1.22
@@ -160,6 +188,9 @@ Lint/UnexpectedBlockArity: # new in 1.5
   Enabled: true
 
 Lint/UnmodifiedReduceAccumulator: # new in 1.1
+  Enabled: true
+
+Lint/UselessRescue: # new in 1.43
   Enabled: true
 
 Lint/UselessRuby2Keywords: # new in 1.23
@@ -272,6 +303,9 @@ RSpec/BeEq: # new in 2.9.0
 RSpec/BeNil: # new in 2.9.0
   Enabled: true
 
+RSpec/ChangeByZero: # new in 2.11
+  Enabled: true
+
 # Too many cases of nested context where this rule doesn't apply.
 RSpec/ContextWording:
   Enabled: false
@@ -279,6 +313,9 @@ RSpec/ContextWording:
 RSpec/DescribeClass:
   Exclude:
     - spec/project_spec.rb # Not testing a class/module.
+
+RSpec/DuplicatedMetadata: # new in 2.16
+  Enabled: true
 
 RSpec/ExampleLength:
   Max: 10
@@ -297,7 +334,25 @@ RSpec/FilePath:
 RSpec/IdenticalEqualityAssertion: # new in 2.4
   Enabled: true
 
+RSpec/NoExpectationExample: # new in 2.13
+  Enabled: true
+
+RSpec/PendingWithoutReason: # new in 2.16
+  Enabled: true
+
 RSpec/SubjectDeclaration: # new in 2.5
+  Enabled: true
+
+RSpec/SortMetadata: # new in 2.14
+  Enabled: true
+
+RSpec/VerifiedDoubleReference: # new in 2.10.0
+  Enabled: true
+
+RSpec/FactoryBot/ConsistentParenthesesStyle: # new in 2.14
+  Enabled: true
+
+RSpec/FactoryBot/FactoryNameStyle: # new in 2.16
   Enabled: true
 
 RSpec/FactoryBot/SyntaxMethods: # new in 2.7
@@ -306,12 +361,27 @@ RSpec/FactoryBot/SyntaxMethods: # new in 2.7
 RSpec/Rails/AvoidSetupHook: # new in 2.4
   Enabled: false
 
+RSpec/Rails/HaveHttpStatus: # new in 2.12
+  Enabled: true
+
+RSpec/Rails/InferredSpecType: # new in 2.14
+  Enabled: true
+
+RSpec/Rails/MinitestAssertions: # new in 2.17
+  Enabled: true
+
+
+Security/CompoundHash: # new in 1.28
+  Enabled: true
 
 Security/IoMethods: # new in 1.22
   Enabled: true
 
 
 Style/ArgumentsForwarding: # new in 1.1
+  Enabled: true
+
+Style/ArrayIntersect: # new in 1.40
   Enabled: true
 
 Style/ClassVars:
@@ -322,10 +392,25 @@ Style/ClassVars:
 Style/CollectionCompact: # new in 1.2
   Enabled: true
 
+Style/ComparableClamp: # new in 1.44
+  Enabled: true
+
+Style/ConcatArrayLiterals: # new in 1.41
+  Enabled: true
+
 Style/DocumentDynamicEvalDefinition: # new in 1.1
   Enabled: true
 
+Style/EmptyHeredoc: # new in 1.32
+  Enabled: true
+
 Style/EndlessMethod: # new in 1.8
+  Enabled: true
+
+Style/EnvHome: # new in 1.29
+  Enabled: true
+
+Style/FetchEnvVar: # new in 1.28
   Enabled: true
 
 # The `expect_no_offenses` special assertions have custom formatting directives.
@@ -352,7 +437,25 @@ Style/IfWithBooleanLiteralBranches: # new in 1.9
 Style/InPatternThen: # new in 1.16
   Enabled: true
 
+Style/ObjectThen: # new in 1.28
+  Enabled: true
+
+Style/OperatorMethodCall: # new in 1.37
+  Enabled: true
+
+Style/MagicCommentFormat: # new in 1.35
+  Enabled: true
+
+Style/MapCompactWithConditionalBlock: # new in 1.30
+  Enabled: true
+
 Style/MapToHash: # new in 1.24
+  Enabled: true
+
+Style/MapToSet: # new in 1.42
+  Enabled: true
+
+Style/MinMaxComparison: # new in 1.42
   Enabled: true
 
 Style/MultilineBlockChain:
@@ -363,6 +466,9 @@ Style/MultilineInPatternThen: # new in 1.16
   Enabled: true
 
 Style/NegatedIfElseCondition: # new in 1.2
+  Enabled: true
+
+Style/NestedFileDirname: # new in 1.26
   Enabled: true
 
 Style/NilLambda: # new in 1.3
@@ -382,7 +488,25 @@ Style/OpenStructUse: # new in 1.23
 Style/QuotedSymbols: # new in 1.16
   Enabled: true
 
+Style/RedundantConstantBase: # new in 1.40
+  Enabled: true
+
+Style/RedundantDoubleSplatHashBraces: # new in 1.41
+  Enabled: true
+
+Style/RedundantEach: # new in 1.38
+  Enabled: true
+
+Style/RedundantHeredocDelimiterQuotes: # new in 1.45
+  Enabled: true
+
+Style/RedundantInitialize: # new in 1.27
+  Enabled: true
+
 Style/RedundantSelfAssignmentBranch: # new in 1.19
+  Enabled: true
+
+Style/RedundantStringEscape: # new in 1.37
   Enabled: true
 
 Style/SelectByRegexp: # new in 1.22
