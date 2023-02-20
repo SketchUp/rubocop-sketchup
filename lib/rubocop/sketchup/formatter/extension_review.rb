@@ -242,7 +242,7 @@ module RuboCop
 
         def source_after_highlight(offense)
           source_line = offense.location.source_line
-          escape(source_line[offense.highlighted_area.end_pos..-1])
+          escape(source_line[offense.highlighted_area.end_pos..])
         end
 
         def possible_ellipses(location)

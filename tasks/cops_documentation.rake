@@ -186,7 +186,7 @@ module RuboCopSketchUp
     end
 
     def table_of_content_for_department(cops, department)
-      type_title = department[0].upcase + department[1..-1]
+      type_title = department[0].upcase + department[1..]
       department_name = sketchup_department_name(department)
       filename = "cops_#{department_name}.md"
       content = "#### Department [#{type_title}](#{filename})\n\n".dup
