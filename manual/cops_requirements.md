@@ -18,6 +18,21 @@ API.
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#apinamespace](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#apinamespace)
 
+<a name='debugmode'></a>
+## SketchupRequirements/DebugMode
+
+Enabled by default | Supports autocorrection
+--- | ---
+Enabled | No
+
+Changing the global SketchUp debug mode can cause warnings from other
+extensions to be silenced.
+Don't let your extension change the debug mode in a production setting.
+
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#debugmode](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#debugmode)
+
 <a name='exit'></a>
 ## SketchupRequirements/Exit
 

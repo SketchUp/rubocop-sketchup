@@ -66,6 +66,7 @@ In the following section you find all available cops:
 #### Department [SketchupRequirements](cops_requirements.md)
 
 * [SketchupRequirements/ApiNamespace](cops_requirements.md#sketchuprequirementsapinamespace)
+* [SketchupRequirements/DebugMode](cops_requirements.md#sketchuprequirementsdebugmode)
 * [SketchupRequirements/Exit](cops_requirements.md#sketchuprequirementsexit)
 * [SketchupRequirements/ExtensionNamespace](cops_requirements.md#sketchuprequirementsextensionnamespace)
 * [SketchupRequirements/FileStructure](cops_requirements.md#sketchuprequirementsfilestructure)
