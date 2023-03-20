@@ -212,6 +212,11 @@ Metrics/ClassLength:
     - spec/**/*
     - tasks/cops_documentation.rake
 
+Metrics/CollectionLiteralLength: # new in 1.47
+  Enabled: true
+  Exclude:
+    - lib/rubocop/sketchup/features.rb
+
 Metrics/MethodLength:
   Exclude:
     - lib/rubocop/sketchup/cop/requirements/file_structure.rb
@@ -340,6 +345,12 @@ RSpec/NoExpectationExample: # new in 2.13
 RSpec/PendingWithoutReason: # new in 2.16
   Enabled: true
 
+RSpec/RedundantAround: # new in 2.19
+  Enabled: true
+
+RSpec/SkipBlockInsideExample: # new in 2.19
+  Enabled: true
+
 RSpec/SubjectDeclaration: # new in 2.5
   Enabled: true
 
@@ -362,13 +373,16 @@ RSpec/Rails/AvoidSetupHook: # new in 2.4
   Enabled: false
 
 RSpec/Rails/HaveHttpStatus: # new in 2.12
-  Enabled: true
+  Enabled: false
 
 RSpec/Rails/InferredSpecType: # new in 2.14
-  Enabled: true
+  Enabled: false
 
 RSpec/Rails/MinitestAssertions: # new in 2.17
-  Enabled: true
+  Enabled: false
+
+RSpec/Rails/TravelAround: # new in 2.19
+  Enabled: false
 
 
 Security/CompoundHash: # new in 1.28
@@ -401,6 +415,9 @@ Style/ConcatArrayLiterals: # new in 1.41
 Style/DocumentDynamicEvalDefinition: # new in 1.1
   Enabled: true
 
+Style/DirEmpty: # new in 1.48
+  Enabled: true
+
 Style/EmptyHeredoc: # new in 1.32
   Enabled: true
 
@@ -418,6 +435,9 @@ Style/FetchEnvVar: # new in 1.28
 Style/FormatStringToken:
   Exclude:
     - spec/rubocop/sketchup/cop/requirements/ruby_core_namespace_spec.rb
+
+Style/FileEmpty: # new in 1.48
+  Enabled: true
 
 Style/FileRead: # new in 1.24
   Enabled: true
