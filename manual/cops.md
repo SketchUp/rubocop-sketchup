@@ -76,6 +76,7 @@ In the following section you find all available cops:
 * [SketchupRequirements/GlobalInclude](cops_requirements.md#sketchuprequirementsglobalinclude)
 * [SketchupRequirements/GlobalMethods](cops_requirements.md#sketchuprequirementsglobalmethods)
 * [SketchupRequirements/GlobalVariables](cops_requirements.md#sketchuprequirementsglobalvariables)
+* [SketchupRequirements/InitializeEntity](cops_requirements.md#sketchuprequirementsinitializeentity)
 * [SketchupRequirements/LanguageHandlerGlobals](cops_requirements.md#sketchuprequirementslanguagehandlerglobals)
 * [SketchupRequirements/LoadPath](cops_requirements.md#sketchuprequirementsloadpath)
 * [SketchupRequirements/MinimalRegistration](cops_requirements.md#sketchuprequirementsminimalregistration)

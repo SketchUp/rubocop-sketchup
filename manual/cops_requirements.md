@@ -253,6 +253,22 @@ Note that backreferences like `$1`, `$2`, etc are not global variables.
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#globalvariables](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#globalvariables)
 
+<a name='initializeentity'></a>
+## SketchupRequirements/InitializeEntity
+
+Enabled by default | Supports autocorrection
+--- | ---
+Enabled | No
+
+SketchUp Entity objects (`Face`, `Edge`, `Group` etc) should not be
+initialized using the `new` constructor. These objects are managed by
+SketchUp. Instead use the `Sketchup::Entities#add_*` methods to create
+them.
+
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#initializeentity](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#initializeentity)
+
 <a name='languagehandlerglobals'></a>
 ## SketchupRequirements/LanguageHandlerGlobals
 

@@ -430,11 +430,12 @@ Style/EnvHome: # new in 1.29
 Style/FetchEnvVar: # new in 1.28
   Enabled: true
 
-# The `expect_no_offenses` special assertions have custom formatting directives.
-# They will however trigger this cop.
+# The `expect_no_offenses` and `expect_no_offenses` special assertions have
+# custom formatting directives. They will however trigger this cop.
 Style/FormatStringToken:
-  Exclude:
-    - spec/rubocop/sketchup/cop/requirements/ruby_core_namespace_spec.rb
+  AllowedMethods:
+    - expect_offense
+    - expect_no_offenses
 
 Style/FileEmpty: # new in 1.48
   Enabled: true

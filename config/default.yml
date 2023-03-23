@@ -209,6 +209,11 @@ SketchupRequirements/GlobalVariables:
   Reference: https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#globalvariables
   Enabled: true
 
+SketchupRequirements/InitializeEntity:
+  Description: Do not initialize SketchUp Entity objects with `new`.
+  Reference: https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#initializeentity
+  Enabled: true
+
 SketchupRequirements/LanguageHandlerGlobals:
   Description: Don't use other known global variables.
   Details: >-
