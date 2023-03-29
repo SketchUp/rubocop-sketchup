@@ -247,6 +247,21 @@ control.
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#sketchupfindsupportfile](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#sketchupfindsupportfile)
 
+<a name='sleep'></a>
+## SketchupSuggestions/Sleep
+
+Enabled by default | Supports autocorrection
+--- | ---
+Enabled | No
+
+Avoid kernel `sleep` as it freezes up SketchUp.
+Prefer `UI.start_timer` or a callback from the resource you are waiting
+for.
+
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#sleep](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#sleep)
+
 <a name='tooldrawingbounds'></a>
 ## SketchupSuggestions/ToolDrawingBounds
 
