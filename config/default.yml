@@ -365,6 +365,14 @@ SketchupSuggestions/SketchupFindSupportFile:
   Reference: https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#sketchupfindsupportfile
   Enabled: true
 
+SketchupSuggestions/Sleep:
+  Description: Avoid kernel `sleep` as it freezes up SketchUp.
+  Details: >-
+             Prefer `UI.start_timer` or a callback from the resource you are
+             waiting for.
+  Reference: https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#sleep
+  Enabled: true
+
 SketchupSuggestions/ToolDrawingBounds:
   Description: >-
                  When drawing to the viewport implement `getExtents` so drawn
