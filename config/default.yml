@@ -299,6 +299,11 @@ SketchupSuggestions/AddGroup:
   Reference: https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#addgroup
   Enabled: true
 
+SketchupSuggestions/CommandTitle:
+  Description: Use title case for command titles.
+  Reference: https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#commandtitle
+  Enabled: true
+
 SketchupSuggestions/Compatibility:
   Description: Incompatible feature with target SketchUp version.
   Reference: https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#compatibility
