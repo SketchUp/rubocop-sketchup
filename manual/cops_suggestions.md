@@ -40,6 +40,23 @@ face2 = group.entities.add_face(points2)
 
 * [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#addgroup](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#addgroup)
 
+<a name='commandtitle'></a>
+## SketchupSuggestions/CommandTitle
+
+Enabled by default | Supports autocorrection
+--- | ---
+Enabled | No
+
+SketchUp command titles should be in title case, e.g. "Make Component"
+and "Follow Me".
+
+In English, capitalize the first letter of each word. Other languages
+may have different rules.
+
+### References
+
+* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#commandtitle](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#commandtitle)
+
 <a name='compatibility'></a>
 ## SketchupSuggestions/Compatibility
 
