@@ -50,4 +50,10 @@ describe RuboCop::Cop::SketchupSuggestions::CommandTitle do
     end
   end
 
+  it 'does not register an offense when using UI::Command.new(variable)' do
+    expect_no_offenses(<<~RUBY)
+      UI::Command.new(variable)
+    RUBY
+  end
+
 end
