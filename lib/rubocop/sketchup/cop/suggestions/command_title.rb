@@ -19,6 +19,7 @@ module RuboCop
 
         def on_send(node)
           return unless init_entity?(node)
+          return if node.arguments.first.str_content.nil?
           return if title_case?(node.arguments.first.str_content)
 
           add_offense(node, message: MESSAGE)
