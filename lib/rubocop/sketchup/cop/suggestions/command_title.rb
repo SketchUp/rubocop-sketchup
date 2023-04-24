@@ -28,20 +28,15 @@ module RuboCop
         private
 
         # REVIEW: Extract to where they can be re-used?
-
-        # Test if string is in title case
-        # (first letter of each word capitalized and no trailing period.)
         def title_case?(text)
-          text == title_case(text) && text[-1] != '.'
+          text == title_case(text)
         end
 
-        # Capitalize the worst letter of each word (including after a hyphen).
         def title_case(text)
-          # Capitalize the first letter of the string, the first letter after
-          # each space and first letter after each hyphen.
           text.gsub(/^(.)/) { ::Regexp.last_match(1).upcase }
               .gsub(/\ (.)/) { " #{::Regexp.last_match(1).upcase}" }
               .gsub(/-(.)/) { "-#{::Regexp.last_match(1).upcase}" }
+              .gsub(/(\.)$/, '')
         end
       end
     end
