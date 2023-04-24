@@ -37,16 +37,8 @@ module RuboCop
 
         # Capitalize the worst letter of each word (including after a hyphen).
         def title_case(text)
-          ### text.gsub(/\b\w/, &:capitalize)
-
           # Capitalize the first letter of the string, the first letter after
           # each space and first letter after each hyphen.
-          #
-          # This code has an identical result as the commented out line above
-          # except that the above line gives false positives for the cop
-          # which is impossible as they both act fucking identically when tested
-          # separetely.
-          # Fuck the whole fucking universe.
           text.gsub(/^(.)/) { ::Regexp.last_match(1).upcase }
               .gsub(/\ (.)/) { " #{::Regexp.last_match(1).upcase}" }
               .gsub(/-(.)/) { "-#{::Regexp.last_match(1).upcase}" }
