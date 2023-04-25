@@ -46,7 +46,7 @@ module RuboCop
 
         def investigate(processed_source)
           if root_file?(processed_source)
-            filename = processed_source.buffer.name
+            filename = processed_source.file_path
             @extension_basename = File.basename(filename, '.*')
           end
         end

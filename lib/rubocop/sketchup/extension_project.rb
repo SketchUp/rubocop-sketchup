@@ -30,7 +30,7 @@ module RuboCop
 
       # @param [RuboCop::ProcessedSource] processed_source
       def path_relative_to_source(processed_source)
-        source_filename = processed_source.buffer.name
+        source_filename = processed_source.file_path
         rel_path = config.path_relative_to_config(source_filename)
         path = Pathname.new(rel_path).expand_path
         path.relative_path_from(source_path)
