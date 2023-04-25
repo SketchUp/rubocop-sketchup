@@ -2,9 +2,7 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupRequirements::SketchupExtension do
-
-  subject(:cop) { described_class.new(config) }
+describe RuboCop::Cop::SketchupRequirements::SketchupExtension, :config do
 
   context 'Default source path' do
 
@@ -141,8 +139,6 @@ describe RuboCop::Cop::SketchupRequirements::SketchupExtension do
   end # context
 
   context 'Custom source path' do
-
-    subject(:cop) { described_class.new(config) }
 
     let(:config) do
       rubocop_config = {

@@ -2,9 +2,7 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupSuggestions::ToolDrawingBounds do
-
-  subject(:cop) { described_class.new }
+describe RuboCop::Cop::SketchupSuggestions::ToolDrawingBounds, :config do
 
   context 'with a draw method' do
 
@@ -17,7 +15,6 @@ describe RuboCop::Cop::SketchupSuggestions::ToolDrawingBounds do
         end
       RUBY
     end
-
 
     it 'does not register an offense when `getExtents` is implemented' do
       expect_no_offenses(<<~RUBY)

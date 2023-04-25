@@ -2,9 +2,7 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupDeprecations::SketchupSet do
-
-  subject(:cop) { described_class.new }
+describe RuboCop::Cop::SketchupDeprecations::SketchupSet, :config do
 
   it 'registers an offense for Sketchup::Set.new' do
     expect_offense(<<~RUBY)

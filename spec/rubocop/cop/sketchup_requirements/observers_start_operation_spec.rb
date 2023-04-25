@@ -2,9 +2,7 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupRequirements::ObserversStartOperation do
-
-  subject(:cop) { described_class.new }
+describe RuboCop::Cop::SketchupRequirements::ObserversStartOperation, :config do
 
   it 'does not register an offense for not starting an operation' do
     expect_no_offenses(<<~RUBY)

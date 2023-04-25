@@ -2,9 +2,7 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupRequirements::DebugMode do
-
-  subject(:cop) { described_class.new }
+describe RuboCop::Cop::SketchupRequirements::DebugMode, :config do
 
   it 'registers an offense when using `Sketchup#debug_mode`' do
     expect_offense(<<~RUBY)

@@ -2,9 +2,7 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupRequirements::InitializeEntity do
-
-  subject(:cop) { described_class.new }
+describe RuboCop::Cop::SketchupRequirements::InitializeEntity, :config do
 
   RuboCop::Cop::SketchupRequirements::InitializeEntity::ENTITY_CLASSES.each do |keyword|
     it "registers an offense when using `Sketchup::#{keyword}.new`" do

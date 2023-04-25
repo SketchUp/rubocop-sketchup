@@ -4,8 +4,6 @@ require 'spec_helper'
 
 describe RuboCop::Cop::SketchupRequirements::ExtensionNamespace, :config do
 
-  subject(:cop) { described_class.new(config) }
-
   it 'registers an offense for multiple top level namespaces' do
     expect_offense(<<~RUBY)
       module Example

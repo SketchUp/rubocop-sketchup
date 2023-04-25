@@ -57,7 +57,6 @@ describe RuboCop::SketchUp::SketchUpTargetRange do
 
   end # context 'cop with minimum sketchup target'
 
-
   context 'cop with maximum sketchup target' do
 
     let(:fake_cop) do
@@ -108,7 +107,6 @@ describe RuboCop::SketchUp::SketchUpTargetRange do
     end # context
 
   end # context 'cop with maximum sketchup target'
-
 
   context 'cop with minimum and maximum sketchup target' do
 

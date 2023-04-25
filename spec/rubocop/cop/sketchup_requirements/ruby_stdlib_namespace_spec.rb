@@ -2,9 +2,7 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupRequirements::RubyStdLibNamespace do
-
-  subject(:cop) { described_class.new }
+describe RuboCop::Cop::SketchupRequirements::RubyStdLibNamespace, :config do
 
   described_class::NAMESPACES_RUBY_STDLIB.each do |namespace|
 

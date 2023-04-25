@@ -2,9 +2,7 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupDeprecations::AddSeparatorToMenu do
-
-  subject(:cop) { described_class.new }
+describe RuboCop::Cop::SketchupDeprecations::AddSeparatorToMenu, :config do
 
   it 'registers an offense for add_separator_to_menus' do
     expect_offense(<<~RUBY)

@@ -2,9 +2,7 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupDeprecations::ShowRubyPanel do
-
-  subject(:cop) { described_class.new }
+describe RuboCop::Cop::SketchupDeprecations::ShowRubyPanel, :config do
 
   it 'registers an offense for show_ruby_panel' do
     expect_offense(<<~RUBY)

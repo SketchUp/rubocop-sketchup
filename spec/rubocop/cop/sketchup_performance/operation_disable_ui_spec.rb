@@ -2,9 +2,7 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupPerformance::OperationDisableUI do
-
-  subject(:cop) { described_class.new }
+describe RuboCop::Cop::SketchupPerformance::OperationDisableUI, :config do
 
   it 'does not register an offense when starting an operation and disabling the UI' do
     expect_no_offenses(<<~RUBY)

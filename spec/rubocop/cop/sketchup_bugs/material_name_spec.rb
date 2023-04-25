@@ -2,13 +2,11 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupBugs::MaterialName do
+describe RuboCop::Cop::SketchupBugs::MaterialName, :config do
 
   context 'when using material.name=' do
 
     context 'affected SketchUp versions' do
-
-      subject(:cop) { described_class.new(config) }
 
       let(:config) do
         sketchup_version_config('SketchUp 2016')
@@ -39,10 +37,7 @@ describe RuboCop::Cop::SketchupBugs::MaterialName do
 
     end # context
 
-
     context 'unaffected SketchUp versions' do
-
-      subject(:cop) { described_class.new(config) }
 
       let(:config) do
         sketchup_version_config('SketchUp 2018')

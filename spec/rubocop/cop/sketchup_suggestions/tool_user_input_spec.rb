@@ -2,9 +2,7 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupSuggestions::ToolUserInput do
-
-  subject(:cop) { described_class.new }
+describe RuboCop::Cop::SketchupSuggestions::ToolUserInput, :config do
 
   context 'with a onUserText method' do
 

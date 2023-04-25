@@ -2,9 +2,7 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupRequirements::Exit do
-
-  subject(:cop) { described_class.new }
+describe RuboCop::Cop::SketchupRequirements::Exit, :config do
 
   it 'registers an offense for exit' do
     expect_offense(<<~RUBY)

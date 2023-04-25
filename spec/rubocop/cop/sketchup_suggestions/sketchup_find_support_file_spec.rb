@@ -2,9 +2,7 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupSuggestions::SketchupFindSupportFile do
-
-  subject(:cop) { described_class.new }
+describe RuboCop::Cop::SketchupSuggestions::SketchupFindSupportFile, :config do
 
   it 'registers an offense when using Sketchup.find_support_file with a string literal' do
     expect_offense(<<~RUBY)

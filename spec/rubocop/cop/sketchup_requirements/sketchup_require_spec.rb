@@ -99,7 +99,6 @@ describe RuboCop::Cop::SketchupRequirements::SketchupRequire do
 
   end
 
-
   context 'encrypted extension' do
 
     let(:config) do
@@ -142,7 +141,6 @@ describe RuboCop::Cop::SketchupRequirements::SketchupRequire do
 
   end
 
-
   context 'SketchupExtension.new' do
 
     it 'registers an offense when using `SketchupExtension.new` with file extension' do
@@ -170,7 +168,6 @@ describe RuboCop::Cop::SketchupRequirements::SketchupRequire do
     end
 
   end
-
 
   context 'requiring files from Tools folder' do
 

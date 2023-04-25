@@ -2,9 +2,7 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupDeprecations::OperationNextTransparent do
-
-  subject(:cop) { described_class.new }
+describe RuboCop::Cop::SketchupDeprecations::OperationNextTransparent, :config do
 
   it 'registers an offense for start_operation third argument' do
     expect_offense(<<~RUBY)

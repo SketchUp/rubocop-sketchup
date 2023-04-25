@@ -2,9 +2,7 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupSuggestions::Sleep do
-
-  subject(:cop) { described_class.new }
+describe RuboCop::Cop::SketchupSuggestions::Sleep, :config do
 
   it 'registers an offense when using kernel `sleep`' do
     expect_offense(<<~RUBY)

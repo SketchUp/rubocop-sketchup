@@ -2,9 +2,7 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupRequirements::GetExtensionLicense do
-
-  subject(:cop) { described_class.new }
+describe RuboCop::Cop::SketchupRequirements::GetExtensionLicense, :config do
 
   context 'string literal extension GUID' do
 

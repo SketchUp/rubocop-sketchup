@@ -2,11 +2,9 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupBugs::RenderMode do
+describe RuboCop::Cop::SketchupBugs::RenderMode, :config do
 
   context 'affected SketchUp versions' do
-
-    subject(:cop) { described_class.new(config) }
 
     let(:config) do
       sketchup_version_config('SketchUp 2018')
@@ -44,10 +42,7 @@ describe RuboCop::Cop::SketchupBugs::RenderMode do
 
   end # context
 
-
   context 'unaffected SketchUp versions' do
-
-    subject(:cop) { described_class.new(config) }
 
     let(:config) do
       sketchup_version_config('SketchUp 2014')
