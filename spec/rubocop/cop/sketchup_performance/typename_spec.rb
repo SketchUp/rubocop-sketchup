@@ -2,9 +2,7 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupPerformance::Typename do
-
-  subject(:cop) { described_class.new }
+describe RuboCop::Cop::SketchupPerformance::Typename, :config do
 
   it 'registers an offense for use of Sketchup::Entity#typename' do
     expect_offense(<<~RUBY)

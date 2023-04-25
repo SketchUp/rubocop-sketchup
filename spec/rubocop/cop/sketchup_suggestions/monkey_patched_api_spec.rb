@@ -2,10 +2,7 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupSuggestions::MonkeyPatchedApi do
-
-  subject(:cop) { described_class.new }
-
+describe RuboCop::Cop::SketchupSuggestions::MonkeyPatchedApi, :config do
 
   context 'Shipped Extensions API monkey-patching' do
 
@@ -32,7 +29,6 @@ describe RuboCop::Cop::SketchupSuggestions::MonkeyPatchedApi do
 
   end # context
 
-
   context 'Shipped Extensions API monkey-patching with variable name context' do
 
     it 'registers an register an offense when using monkey-patched method' do
@@ -53,7 +49,6 @@ describe RuboCop::Cop::SketchupSuggestions::MonkeyPatchedApi do
     end
 
   end # context
-
 
   context 'Shipped Extensions API monkey-patching with instance variable name context' do
 
@@ -93,7 +88,6 @@ describe RuboCop::Cop::SketchupSuggestions::MonkeyPatchedApi do
     end
 
   end # context
-
 
   context 'Shipped Extensions API monkey-patching with class variable name context' do
 

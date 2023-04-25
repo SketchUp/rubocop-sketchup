@@ -2,9 +2,7 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupSuggestions::ToolbarTimer do
-
-  subject(:cop) { described_class.new }
+describe RuboCop::Cop::SketchupSuggestions::ToolbarTimer, :config do
 
   it 'registers an offense when calling .restore within a timer' do
     expect_offense(<<~RUBY)

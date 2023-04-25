@@ -2,9 +2,7 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupDeprecations::RequireAll do
-
-  subject(:cop) { described_class.new }
+describe RuboCop::Cop::SketchupDeprecations::RequireAll, :config do
 
   it 'registers an offense for require_all' do
     expect_offense(<<~RUBY)

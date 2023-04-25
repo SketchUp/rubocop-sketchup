@@ -2,9 +2,7 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupSuggestions::AddGroup do
-
-  subject(:cop) { described_class.new }
+describe RuboCop::Cop::SketchupSuggestions::AddGroup, :config do
 
   it 'registers an offense when creating groups out of existing entities' do
     expect_offense(<<~RUBY)

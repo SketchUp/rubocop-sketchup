@@ -2,9 +2,7 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupRequirements::LanguageHandlerGlobals do
-
-  subject(:cop) { described_class.new }
+describe RuboCop::Cop::SketchupRequirements::LanguageHandlerGlobals, :config do
 
   described_class::LH_GLOBALS.each do |var|
 

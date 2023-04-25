@@ -2,9 +2,7 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupPerformance::SelectionBulkChanges do
-
-  subject(:cop) { described_class.new }
+describe RuboCop::Cop::SketchupPerformance::SelectionBulkChanges, :config do
 
   it 'registers an offense for use of selection.add within each loop' do
     expect_offense(<<~RUBY)

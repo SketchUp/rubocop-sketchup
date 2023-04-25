@@ -2,9 +2,7 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupRequirements::MinimalRegistration do
-
-  subject(:cop) { described_class.new(config) }
+describe RuboCop::Cop::SketchupRequirements::MinimalRegistration, :config do
 
   # Based on file_name_spec.rb
   let(:config) do

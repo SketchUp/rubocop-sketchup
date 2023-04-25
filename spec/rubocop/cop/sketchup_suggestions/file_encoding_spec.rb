@@ -4,8 +4,6 @@ require 'spec_helper'
 
 describe RuboCop::Cop::SketchupSuggestions::FileEncoding, :config do
 
-  subject(:cop) { described_class.new }
-
   it 'registers an offense when using __dir__ in method parameters' do
     expect_offense(<<~RUBY)
       file = File.join(__dir__, "hello.rb")

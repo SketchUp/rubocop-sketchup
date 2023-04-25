@@ -2,9 +2,7 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupRequirements::LoadPath do
-
-  subject(:cop) { described_class.new }
+describe RuboCop::Cop::SketchupRequirements::LoadPath, :config do
 
   it 'registers an offense when setting $LOAD_PATH' do
     expect_offense(<<~RUBY)

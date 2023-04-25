@@ -2,11 +2,9 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupRequirements::ShippedExtensionsNamespace do
+describe RuboCop::Cop::SketchupRequirements::ShippedExtensionsNamespace, :config do
 
   namespace_types = %w[class module].freeze
-
-  subject(:cop) { described_class.new }
 
   described_class::NAMESPACES.each do |var|
 

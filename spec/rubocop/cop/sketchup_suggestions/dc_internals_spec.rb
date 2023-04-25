@@ -2,9 +2,7 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupSuggestions::DynamicComponentInternals do
-
-  subject(:cop) { described_class.new }
+describe RuboCop::Cop::SketchupSuggestions::DynamicComponentInternals, :config do
 
   described_class::DC_GLOBALS.each do |var|
 

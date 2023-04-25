@@ -2,9 +2,7 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupSuggestions::ModelEntities do
-
-  subject(:cop) { described_class.new }
+describe RuboCop::Cop::SketchupSuggestions::ModelEntities, :config do
 
   it 'registers an offense when fetching model.entities' do
     expect_offense(<<~RUBY)

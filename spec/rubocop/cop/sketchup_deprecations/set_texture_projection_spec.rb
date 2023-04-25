@@ -2,9 +2,7 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupDeprecations::SetTextureProjection do
-
-  subject(:cop) { described_class.new }
+describe RuboCop::Cop::SketchupDeprecations::SetTextureProjection, :config do
 
   it 'registers an offense for calling set_texture_projection' do
     expect_offense(<<~RUBY)

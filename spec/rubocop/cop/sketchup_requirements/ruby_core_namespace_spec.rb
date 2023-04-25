@@ -2,12 +2,10 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupRequirements::RubyCoreNamespace do
+describe RuboCop::Cop::SketchupRequirements::RubyCoreNamespace, :config do
 
   namespace_types = %w[class module].freeze
   mutators = %w[include extend].freeze
-
-  subject(:cop) { described_class.new }
 
   described_class::NAMESPACES.each do |var|
 

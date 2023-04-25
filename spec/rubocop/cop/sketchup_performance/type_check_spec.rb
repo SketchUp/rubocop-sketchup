@@ -2,9 +2,7 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupPerformance::TypeCheck do
-
-  subject(:cop) { described_class.new }
+describe RuboCop::Cop::SketchupPerformance::TypeCheck, :config do
 
   it 'registers an offense for type checking by string comparison using ==' do
     expect_offense(<<~RUBY)

@@ -4,8 +4,6 @@ require 'spec_helper'
 
 describe RuboCop::Cop::SketchupSuggestions::OperationName, :config do
 
-  subject(:cop) { described_class.new(config) }
-
   let(:cop_config) { { 'Max' => 25 } }
 
   it 'registers an offense when operations name is too long' do
@@ -14,7 +12,6 @@ describe RuboCop::Cop::SketchupSuggestions::OperationName, :config do
                                                       ^^^^^^ Operation names should not be short and concise. [31/25]
     RUBY
   end
-
 
   context 'Max: 32' do
 
@@ -29,7 +26,6 @@ describe RuboCop::Cop::SketchupSuggestions::OperationName, :config do
     end
 
   end
-
 
   it 'does not register an offense when operation is transparent' do
     expect_no_offenses(<<~RUBY)

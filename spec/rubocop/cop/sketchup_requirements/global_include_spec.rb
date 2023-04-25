@@ -2,9 +2,7 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupRequirements::GlobalInclude do
-
-  subject(:cop) { described_class.new }
+describe RuboCop::Cop::SketchupRequirements::GlobalInclude, :config do
 
   it 'registers an offense for global include' do
     expect_offense(<<~RUBY)
@@ -21,7 +19,6 @@ describe RuboCop::Cop::SketchupRequirements::GlobalInclude do
       end
     RUBY
   end
-
 
   it 'does not register an offense for include in namespaced module' do
     expect_no_offenses(<<~RUBY)

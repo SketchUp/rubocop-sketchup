@@ -2,9 +2,7 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupPerformance::OpenSSL do
-
-  subject(:cop) { described_class.new }
+describe RuboCop::Cop::SketchupPerformance::OpenSSL, :config do
 
   it 'registers an offense for use of OpenSSL' do
     expect_offense(<<~RUBY)

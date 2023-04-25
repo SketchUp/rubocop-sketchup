@@ -2,11 +2,9 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupSuggestions::Compatibility do
+describe RuboCop::Cop::SketchupSuggestions::Compatibility, :config do
 
   context 'incompatible features' do
-
-    subject(:cop) { described_class.new(config) }
 
     let(:config) do
       sketchup_version_config('SketchUp 6')
@@ -96,10 +94,7 @@ describe RuboCop::Cop::SketchupSuggestions::Compatibility do
 
   end
 
-
   context 'compatible features' do
-
-    subject(:cop) { described_class.new(config) }
 
     let(:config) do
       sketchup_version_config('SketchUp 2018')

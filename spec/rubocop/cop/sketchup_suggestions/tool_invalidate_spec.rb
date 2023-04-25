@@ -2,9 +2,7 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupSuggestions::ToolInvalidate do
-
-  subject(:cop) { described_class.new }
+describe RuboCop::Cop::SketchupSuggestions::ToolInvalidate, :config do
 
   context 'with a draw method' do
 

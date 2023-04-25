@@ -2,9 +2,7 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupRequirements::GlobalVariables do
-
-  subject(:cop) { described_class.new }
+describe RuboCop::Cop::SketchupRequirements::GlobalVariables, :config do
 
   it 'registers an offense for $custom' do
     expect_offense(<<~RUBY)

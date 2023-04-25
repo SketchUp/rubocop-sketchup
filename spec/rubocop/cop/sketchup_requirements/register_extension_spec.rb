@@ -2,9 +2,7 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupRequirements::RegisterExtension do
-
-  subject(:cop) { described_class.new }
+describe RuboCop::Cop::SketchupRequirements::RegisterExtension, :config do
 
   it 'does not register an offense for extension set to load by default' do
     expect_no_offenses(<<~RUBY)

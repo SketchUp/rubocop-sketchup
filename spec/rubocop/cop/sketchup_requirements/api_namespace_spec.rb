@@ -2,9 +2,7 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupRequirements::ApiNamespace do
-
-  subject(:cop) { described_class.new }
+describe RuboCop::Cop::SketchupRequirements::ApiNamespace, :config do
 
   described_class::NAMESPACES.each do |var|
 
