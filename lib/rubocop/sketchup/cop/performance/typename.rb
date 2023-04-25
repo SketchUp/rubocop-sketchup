@@ -7,7 +7,7 @@ module RuboCop
       #
       # `entity.typename == 'Face'` is slow because it performs a string
       # comparison. `is_a?` is much faster because it's a simple type check.
-      class Typename < SketchUp::Cop
+      class Typename < SketchUp::Base
         MSG = '`.typename` is very slow, prefer `.is_a?` instead.'
 
         def on_send(node)
@@ -16,7 +16,7 @@ module RuboCop
 
           # TODO(thomthom): Should we try to detect use of #typename
           # in context of comparing against a string?
-          add_offense(node, location: :selector)
+          add_offense(node.loc.selector)
         end
       end
     end

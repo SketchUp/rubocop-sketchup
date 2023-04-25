@@ -9,7 +9,7 @@ module RuboCop
       #
       # Extensions submitted to Extension Warehouse is expected to not modify
       # Ruby StdLib functionality.
-      class RubyStdLibNamespace < SketchUp::Cop
+      class RubyStdLibNamespace < SketchUp::Base
 
         include SketchUp::NoCommentDisable
         include SketchUp::NamespaceChecker

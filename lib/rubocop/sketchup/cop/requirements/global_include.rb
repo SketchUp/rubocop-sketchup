@@ -9,7 +9,7 @@ module RuboCop
       #
       # Extensions submitted to Extension Warehouse is expected to not pollute
       # the global namespace by including mix-in modules.
-      class GlobalInclude < SketchUp::Cop
+      class GlobalInclude < SketchUp::Base
 
         include SketchUp::NoCommentDisable
         include SketchUp
@@ -24,7 +24,7 @@ module RuboCop
         def on_send(node)
           return unless global_include?(node)
 
-          add_offense(node, location: :selector)
+          add_offense(node.loc.selector)
         end
 
         private

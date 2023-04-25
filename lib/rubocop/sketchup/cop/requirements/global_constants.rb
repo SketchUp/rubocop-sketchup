@@ -9,7 +9,7 @@ module RuboCop
       #
       # Extensions submitted to Extension Warehouse is expected to not define
       # global constants.
-      class GlobalConstants < SketchUp::Cop
+      class GlobalConstants < SketchUp::Base
 
         include SketchUp::NoCommentDisable
         include SketchUp
@@ -30,7 +30,7 @@ module RuboCop
           namespace = Namespace.new(node.parent_module_name)
           return unless namespace.top_level?
 
-          add_offense(node, location: :name)
+          add_offense(node.loc.name)
         end
 
       end

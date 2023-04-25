@@ -11,7 +11,7 @@ module RuboCop
       #   AllCops:
       #     SketchUp:
       #       TargetSketchUpVersion: 2016 M1
-      class Compatibility < SketchUp::Cop
+      class Compatibility < SketchUp::Base
 
         include SketchUp::Features
         include SketchUp
@@ -91,19 +91,19 @@ module RuboCop
                     "#{feature_version} which is incompatible with target " \
                     "#{sketchup_target_version}."
           location = find_node_location(node)
-          add_offense(node, location: location, message: message)
+          add_offense(location, message: message)
         end
 
         def find_node_location(node)
           # Highlight the most pertinent piece of the expression.
           if node.const_type?
-            :expression
+            node.source_range
           elsif node.send_type?
-            :selector
+            node.loc.selector
           elsif node.def_type?
-            :name
+            node.loc.name
           else # rubocop:disable Lint/DuplicateBranch
-            :expression
+            node.source_range
           end
         end
 

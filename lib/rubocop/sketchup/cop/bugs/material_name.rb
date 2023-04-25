@@ -66,7 +66,7 @@ module RuboCop
       #     end
       #
       #   end
-      class MaterialName < SketchUp::Cop
+      class MaterialName < SketchUp::Base
 
         include SketchUp::SketchUpTargetRange
 

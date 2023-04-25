@@ -6,7 +6,7 @@ module RuboCop
       # Method is deprecated because it adds the given path to `$LOAD_PATH`.
       # Modifying `$LOAD_PATH` is bad practice because it can cause extensions
       # to inadvertently load the wrong file.
-      class RequireAll < SketchUp::Cop
+      class RequireAll < SketchUp::Base
 
         MSG = 'Method is deprecated because it adds the given path ' \
               'to $LOAD_PATH.'
@@ -19,7 +19,7 @@ module RuboCop
         def on_send(node)
           return unless require_all?(node)
 
-          add_offense(node, location: :selector)
+          add_offense(node.loc.selector)
         end
 
       end

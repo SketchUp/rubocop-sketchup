@@ -12,7 +12,7 @@ module RuboCop
       #
       # Only use this flag if you have no other option, for instance to work
       # around bug in how `Sketchup::Model#place_component` starts operations.
-      class OperationNextTransparent < SketchUp::Cop
+      class OperationNextTransparent < SketchUp::Base
         MSG = 'Third argument is deprecated.'
 
         def on_send(node)

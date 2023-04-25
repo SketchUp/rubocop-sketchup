@@ -17,8 +17,8 @@ describe RuboCop::Cop::SketchupRequirements::FileStructure do
 
     it 'does not register an offense for valid extension structure' do
       Dir.chdir('examples/extensions/valid') do
-        inspect_source('foo(123)', 'examples/extensions/valid/src/hello.rb')
-        expect(cop.offenses).to be_empty
+        offenses = inspect_source('foo(123)', 'examples/extensions/valid/src/hello.rb')
+        expect(offenses).to be_empty
       end
     end
 
@@ -32,8 +32,8 @@ describe RuboCop::Cop::SketchupRequirements::FileStructure do
 
     it 'does not register an offense for valid extension structure with __MACOSX folder' do
       Dir.chdir('examples/extensions/macos_folder') do
-        inspect_source('foo(123)', 'examples/extensions/macos_folder/src/hello.rb')
-        expect(cop.offenses).to be_empty
+        offenses = inspect_source('foo(123)', 'examples/extensions/macos_folder/src/hello.rb')
+        expect(offenses).to be_empty
       end
     end
 
@@ -47,15 +47,15 @@ describe RuboCop::Cop::SketchupRequirements::FileStructure do
 
     it 'registers an offense for invalid extension structure' do
       Dir.chdir('examples/extensions/invalid') do
-        inspect_source('foo(123)', 'examples/extensions/invalid/src/hello.rb')
-        expect(cop.offenses.size).to eq(1)
+        offenses = inspect_source('foo(123)', 'examples/extensions/invalid/src/hello.rb')
+        expect(offenses.size).to eq(1)
       end
     end
 
     it 'registers an offense for case mis-match' do
       Dir.chdir('examples/extensions/invalid_case_mismatch') do
-        inspect_source('foo(123)', 'examples/extensions/valid/src/hello.rb')
-        expect(cop.offenses.size).to eq(1)
+        offenses = inspect_source('foo(123)', 'examples/extensions/valid/src/hello.rb')
+        expect(offenses.size).to eq(1)
       end
     end
 

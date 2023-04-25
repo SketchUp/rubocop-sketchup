@@ -19,8 +19,8 @@ describe RuboCop::Cop::SketchupRequirements::LoadPath, :config do
 
   described_class::MUTATORS.each do |var|
     it "registers an offense when modifying $LOAD_PATH with #{var.inspect}" do
-      inspect_source("$LOAD_PATH.#{var}('dummy')")
-      expect(cop.offenses.size).to eq(1)
+      offenses = inspect_source("$LOAD_PATH.#{var}('dummy')")
+      expect(offenses.size).to eq(1)
     end
   end
 

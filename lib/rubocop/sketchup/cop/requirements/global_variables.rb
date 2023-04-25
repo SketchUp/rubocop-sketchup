@@ -16,7 +16,7 @@ module RuboCop
       # users can allow additional variables via the AllowedVariables option.
       #
       # Note that backreferences like `$1`, `$2`, etc are not global variables.
-      class GlobalVariables < SketchUp::Cop
+      class GlobalVariables < SketchUp::Base
 
         include SketchUp::NoCommentDisable
         include SketchUp::DynamicComponentGlobals
@@ -87,7 +87,7 @@ module RuboCop
 
           return if allowed_var?(global_var)
 
-          add_offense(node, location: :name)
+          add_offense(node.loc.name)
         end
       end
     end

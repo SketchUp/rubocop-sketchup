@@ -10,7 +10,7 @@ module RuboCop
       #
       # @example Workaround for SketchUp versions older than SketchUp 2018
       #     tr = Geom::Transformation.scaling(scale, scale, scale)
-      class UniformScaling < SketchUp::Cop
+      class UniformScaling < SketchUp::Base
 
         include SketchUp::SketchUpTargetRange
 

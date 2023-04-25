@@ -10,7 +10,7 @@ module RuboCop
       #   model.start_operation('Operation Name', true)
       #   # <model changes>
       #   model.commit_operation
-      class OperationDisableUI < SketchUp::Cop
+      class OperationDisableUI < SketchUp::Base
         MSG = 'Operations should disable the UI for performance gain.'
 
         def on_send(node)
@@ -18,7 +18,7 @@ module RuboCop
           return unless method_name == :start_operation
 
           if args.size < 2
-            add_offense(node, location: :selector)
+            add_offense(node.loc.selector)
             return
           end
           argument = args[1]

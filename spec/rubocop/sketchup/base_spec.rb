@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe RuboCop::SketchUp::Cop do
+describe RuboCop::SketchUp::Base do
   subject(:cop) { fake_cop.new(config) }
 
   let(:config) do

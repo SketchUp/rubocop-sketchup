@@ -20,7 +20,7 @@ module RuboCop
       # They only way to ensure extensions doesn't clash is to namespace
       # everything into extension namespace. This means making a copy of the
       # gem you want to use and wrap it in your own namespace.
-      class GemInstall < SketchUp::Cop
+      class GemInstall < SketchUp::Base
 
         include RangeHelp
         include SketchUp::NoCommentDisable
@@ -38,7 +38,7 @@ module RuboCop
           return unless gem_install?(node)
 
           range = range_with_receiver(node)
-          add_offense(node, location: range)
+          add_offense(range)
         end
       end
     end

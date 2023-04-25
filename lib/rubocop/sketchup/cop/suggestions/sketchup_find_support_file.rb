@@ -13,7 +13,7 @@ module RuboCop
       # to your source files. This have the added benefit of allowing you to
       # load your extensions directly from external directories under version
       # control.
-      class SketchupFindSupportFile < SketchUp::Cop
+      class SketchupFindSupportFile < SketchUp::Base
 
         MSG = 'Avoid `Sketchup.find_support_file` to find your ' \
               "extension's files."

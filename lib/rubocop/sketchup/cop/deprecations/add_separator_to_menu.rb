@@ -5,7 +5,7 @@ module RuboCop
     module SketchupDeprecations
       # Avoid adding separators to top level menus. If you require grouping use
       # a sub-menu instead.
-      class AddSeparatorToMenu < SketchUp::Cop
+      class AddSeparatorToMenu < SketchUp::Base
 
         MSG = 'Method is deprecated.'
 
@@ -17,7 +17,7 @@ module RuboCop
         def on_send(node)
           return unless add_separator_to_menu?(node)
 
-          add_offense(node, location: :selector)
+          add_offense(node.loc.selector)
         end
 
       end

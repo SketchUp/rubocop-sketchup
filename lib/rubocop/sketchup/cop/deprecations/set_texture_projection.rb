@@ -6,7 +6,7 @@ module RuboCop
       # Method is deprecated because it creates invalid UV mapping. Saving the
       # model will display a dialog indicating that the model needs to be
       # repaired. Once repaired the UV mapping will visually change.
-      class SetTextureProjection < SketchUp::Cop
+      class SetTextureProjection < SketchUp::Base
 
         MSG = 'Method is deprecated. It can create invalid UV mapping.'
 
@@ -18,7 +18,7 @@ module RuboCop
         def on_send(node)
           return unless set_texture_projection?(node)
 
-          add_offense(node, location: :selector)
+          add_offense(node.loc.selector)
         end
 
       end

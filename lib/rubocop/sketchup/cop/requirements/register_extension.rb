@@ -14,7 +14,7 @@ module RuboCop
       #       file_loaded(__FILE__)
       #     end
       #   end
-      class RegisterExtension < SketchUp::Cop
+      class RegisterExtension < SketchUp::Base
 
         include SketchUp::NoCommentDisable
 
@@ -30,7 +30,7 @@ module RuboCop
         def on_send(node)
           sketchup_register_extension(node).each { |args|
             if args.size < 2
-              add_offense(node, location: :selector)
+              add_offense(node.loc.selector)
               next
             end
             load_arg = args[1]

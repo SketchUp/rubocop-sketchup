@@ -68,7 +68,6 @@ describe RuboCop::Cop::SketchupRequirements::ExtensionNamespace, :config do
         end
       end
     RUBY
-    expect(cop.offenses.size).to eq(1)
   end
 
   it 'does not register an offense for Ruby StdLib namespace objects' do

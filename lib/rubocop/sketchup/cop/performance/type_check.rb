@@ -20,7 +20,7 @@ module RuboCop
       #
       # @example Good performance and idiomatic Ruby convention
       #   entity.is_a?(Sketchup::Face)
-      class TypeCheck < SketchUp::Cop
+      class TypeCheck < SketchUp::Base
 
         # TODO(thomthom): It probably makes sense to eventually merge the
         #   Typename cop into this cop. But until this cop have been
@@ -45,7 +45,7 @@ module RuboCop
         def on_send(node)
           return unless string_class_compare?(node)
 
-          add_offense(node, location: comparison_range(node))
+          add_offense(comparison_range(node))
         end
 
         private

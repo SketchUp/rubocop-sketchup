@@ -11,7 +11,7 @@ describe RuboCop::SketchUp::SketchUpTargetRange do
     let(:fake_cop) do
       stub_const('RuboCop::SketchupBugs', Module.new)
 
-      cop_class = Class.new(RuboCop::SketchUp::Cop) do
+      cop_class = Class.new(RuboCop::SketchUp::Base) do
 
         include RuboCop::SketchUp::SketchUpTargetRange
 
@@ -62,7 +62,7 @@ describe RuboCop::SketchUp::SketchUpTargetRange do
     let(:fake_cop) do
       stub_const('RuboCop::SketchupBugs', Module.new)
 
-      cop_class = Class.new(RuboCop::SketchUp::Cop) do
+      cop_class = Class.new(RuboCop::SketchUp::Base) do
 
         include RuboCop::SketchUp::SketchUpTargetRange
 
@@ -113,7 +113,7 @@ describe RuboCop::SketchUp::SketchUpTargetRange do
     let(:fake_cop) do
       stub_const('RuboCop::SketchupBugs', Module.new)
 
-      cop_class = Class.new(RuboCop::SketchUp::Cop) do
+      cop_class = Class.new(RuboCop::SketchUp::Base) do
 
         include RuboCop::SketchUp::SketchUpTargetRange
 

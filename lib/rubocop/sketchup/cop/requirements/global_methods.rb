@@ -9,7 +9,7 @@ module RuboCop
       #
       # Extensions submitted to Extension Warehouse is expected to not define
       # global methods.
-      class GlobalMethods < SketchUp::Cop
+      class GlobalMethods < SketchUp::Base
 
         include SketchUp::NoCommentDisable
         include SketchUp
@@ -57,7 +57,7 @@ module RuboCop
           end
           return unless namespace.top_level?
 
-          add_offense(node, location: :name)
+          add_offense(node.loc.name)
         end
         alias on_defs on_def
 

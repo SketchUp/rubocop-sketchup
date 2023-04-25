@@ -10,7 +10,7 @@ module RuboCop
       #
       # The `Sketchup::Set` class is much slower than Ruby's own `Set` class
       # and less versatile.
-      class SketchupSet < SketchUp::Cop
+      class SketchupSet < SketchUp::Base
 
         MSG = 'Class is deprecated.'
 

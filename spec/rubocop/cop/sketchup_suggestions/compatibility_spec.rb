@@ -73,23 +73,23 @@ describe RuboCop::Cop::SketchupSuggestions::Compatibility, :config do
     end
 
     it 'does not register an offense when shadowing incompatible module' do
-      inspect_source(<<~RUBY)
+      offenses = inspect_source(<<~RUBY)
         module Example
           module Layout
           end
         end
       RUBY
-      expect(cop.offenses).to be_empty
+      expect(offenses).to be_empty
     end
 
     it 'does not register an offense when shadowing incompatible class' do
-      inspect_source(<<~RUBY)
+      offenses = inspect_source(<<~RUBY)
         module Example
           class Layout
           end
         end
       RUBY
-      expect(cop.offenses).to be_empty
+      expect(offenses).to be_empty
     end
 
   end
@@ -101,33 +101,33 @@ describe RuboCop::Cop::SketchupSuggestions::Compatibility, :config do
     end
 
     it 'does not register an offense when using compatible class' do
-      inspect_source('dialog = UI::HtmlDialog.new')
-      expect(cop.offenses).to be_empty
+      offenses = inspect_source('dialog = UI::HtmlDialog.new')
+      expect(offenses).to be_empty
     end
 
     it 'does not register an offense when using compatible module' do
-      inspect_source('image = Sketchup::ImageRep.new')
-      expect(cop.offenses).to be_empty
+      offenses = inspect_source('image = Sketchup::ImageRep.new')
+      expect(offenses).to be_empty
     end
 
     it 'does not register an offense when using compatible module method' do
-      inspect_source('UI.scale_factor')
-      expect(cop.offenses).to be_empty
+      offenses = inspect_source('UI.scale_factor')
+      expect(offenses).to be_empty
     end
 
     it 'does not register an offense when using compatible instance method' do
-      inspect_source('page.include_in_animation = true')
-      expect(cop.offenses).to be_empty
+      offenses = inspect_source('page.include_in_animation = true')
+      expect(offenses).to be_empty
     end
 
     it 'does not register an offense when using compatible observer method' do
-      inspect_source(<<~RUBY)
+      offenses = inspect_source(<<~RUBY)
         class ExampleObserver < Sketchup::Entities
           def onActiveSectionPlaneChanged(entities)
           end
         end
       RUBY
-      expect(cop.offenses).to be_empty
+      expect(offenses).to be_empty
     end
 
   end

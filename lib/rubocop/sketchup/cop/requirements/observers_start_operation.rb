@@ -27,7 +27,7 @@ module RuboCop
       #       entity.model.commit_operation
       #     end
       #   end
-      class ObserversStartOperation < SketchUp::Cop
+      class ObserversStartOperation < SketchUp::Base
 
         include SketchUp::NoCommentDisable
         include RangeHelp
@@ -131,7 +131,7 @@ module RuboCop
             next unless transparent.nil? || transparent.falsey_literal?
 
             location = operation_location(operation)
-            add_offense(operation, location: location)
+            add_offense(location)
           }
         end
 
@@ -148,7 +148,7 @@ module RuboCop
           if transparent_argument
             range(transparent_argument.source_range)
           else
-            :selector
+            node.loc.selector
           end
         end
 

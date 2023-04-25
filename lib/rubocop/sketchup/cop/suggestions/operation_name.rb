@@ -44,7 +44,7 @@ module RuboCop
       #
       # @example Good - Name is for human reading.
       #   model.start_operation('Example Name', true)
-      class OperationName < SketchUp::Cop
+      class OperationName < SketchUp::Base
 
         include RangeHelp
 
@@ -71,8 +71,7 @@ module RuboCop
           # Check the length of the operation name.
           unless operation_name.size <= max_operation_name_length
             message = format(MSG_MAX, operation_name.size, max_operation_name_length)
-            add_offense(args.first,
-                        location: excess_range(args.first, operation_name),
+            add_offense(excess_range(args.first, operation_name),
                         message: message)
           end
           # Ensure operation name is not empty.

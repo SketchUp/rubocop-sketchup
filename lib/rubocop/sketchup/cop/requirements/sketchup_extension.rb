@@ -14,7 +14,7 @@ module RuboCop
       #       file_loaded(__FILE__)
       #     end
       #   end
-      class SketchupExtension < SketchUp::Cop
+      class SketchupExtension < SketchUp::Base
 
         include SketchUp::NoCommentDisable
         include SketchUp::ExtensionProject
@@ -43,12 +43,10 @@ module RuboCop
             _ ?)
         PATTERN
 
-        def investigate(processed_source)
+        def on_new_investigation
           return unless root_file?(processed_source)
 
           source_node = processed_source.ast
-          # Using range similar to RuboCop::Cop::Naming::Filename (file_name.rb)
-          range = source_range(processed_source.buffer, 1, 0)
 
           # Look for SketchupExtension.new.
           extension_nodes = sketchup_extension_new(source_node).to_a
@@ -60,18 +58,14 @@ module RuboCop
 
           # There should not be multiple instances.
           if extension_nodes.size > 1
-            add_offense(nil,
-                        location: range,
-                        message: MSG_CREATE_ONE)
+            add_global_offense(MSG_CREATE_ONE)
             return
           end
 
           # There should be exactly one.
           extension_node = extension_nodes.first
           if extension_node.nil?
-            add_offense(nil,
-                        location: range,
-                        message: MSG_CREATE_MISSING)
+            add_global_offense(MSG_CREATE_MISSING)
             return
           end
 
@@ -82,8 +76,7 @@ module RuboCop
                       else
                         'Missing required name arguments'
                       end
-            add_offense(extension_node,
-                        message: message)
+            add_offense(extension_node, message: message)
             return
           end
 
@@ -109,9 +102,7 @@ module RuboCop
           registered_var = sketchup_register_extension(source_node).first
           unless registered_var == extension_var
             msg = MSG_REGISTER_MISSING % extension_var.to_s
-            add_offense(nil,
-                        location: range,
-                        message: msg)
+            add_global_offense(msg)
           end
         end
 

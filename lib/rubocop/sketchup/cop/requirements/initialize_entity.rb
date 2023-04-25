@@ -7,7 +7,7 @@ module RuboCop
       # initialized using the `new` constructor. These objects are managed by
       # SketchUp. Instead use the `Sketchup::Entities#add_*` methods to create
       # them.
-      class InitializeEntity < SketchUp::Cop
+      class InitializeEntity < SketchUp::Base
 
         ENTITY_CLASSES = %i[
           ComponentDefinition

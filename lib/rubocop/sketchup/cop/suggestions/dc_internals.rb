@@ -7,7 +7,7 @@ module RuboCop
       # change at any time. If you create an extension that depend on the
       # internal logic of another extension you are at the mercy of change and
       # luck!
-      class DynamicComponentInternals < SketchUp::Cop
+      class DynamicComponentInternals < SketchUp::Base
 
         include SketchUp::DynamicComponentGlobals
 
@@ -25,7 +25,7 @@ module RuboCop
           global_var, = *node
           return unless dc_global_var?(global_var)
 
-          add_offense(node, location: :name, severity: :warning)
+          add_offense(node.loc.name, severity: :warning)
         end
 
       end

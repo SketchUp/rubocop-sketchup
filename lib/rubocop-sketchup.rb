@@ -7,7 +7,7 @@ require 'rubocop/sketchup/inject'
 
 require 'rubocop/sketchup/formatter/extension_review'
 require 'rubocop/sketchup/config'
-require 'rubocop/sketchup/cop'
+require 'rubocop/sketchup/base' # Must be loaded after config.
 require 'rubocop/sketchup/dc_globals'
 require 'rubocop/sketchup/dc_methods'
 require 'rubocop/sketchup/extension_project'

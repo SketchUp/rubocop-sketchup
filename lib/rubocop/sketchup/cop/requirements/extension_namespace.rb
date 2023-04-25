@@ -31,7 +31,7 @@ module RuboCop
       #       end
       #     end
       #   end
-      class ExtensionNamespace < SketchUp::Cop
+      class ExtensionNamespace < SketchUp::Base
 
         include SketchUp::NoCommentDisable
         include SketchUp
@@ -89,7 +89,7 @@ module RuboCop
           @@namespace ||= top
           return if @@namespace == top
 
-          add_offense(node, location: :name)
+          add_offense(node.loc.name, message: message(node))
         end
 
         def reserved?(namespace)

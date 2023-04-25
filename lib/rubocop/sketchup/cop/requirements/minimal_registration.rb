@@ -27,7 +27,7 @@ module RuboCop
       #       file_loaded(__FILE__)
       #     end
       #   end
-      class MinimalRegistration < SketchUp::Cop
+      class MinimalRegistration < SketchUp::Base
 
         include SketchUp::NoCommentDisable
         include SketchUp::ExtensionProject
@@ -44,7 +44,7 @@ module RuboCop
           }
         PATTERN
 
-        def investigate(processed_source)
+        def on_new_investigation
           if root_file?(processed_source)
             filename = processed_source.file_path
             @extension_basename = File.basename(filename, '.*')

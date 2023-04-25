@@ -8,7 +8,7 @@ module RuboCop
       # before the extension best-practices were established. These functions
       # might change or be removed at any time. They will also not work when
       # the extensions are disabled. Avoid using these methods.
-      class MonkeyPatchedApi < SketchUp::Cop
+      class MonkeyPatchedApi < SketchUp::Base
 
         include SketchUp::DynamicComponentMethods
 
@@ -33,8 +33,7 @@ module RuboCop
           path = dc_method[:path]
           message = "#{path}##{name} is not part of the official API. " \
                     "It's a monkey-patched addition by Dynamic Components."
-          add_offense(node,
-                      location: :selector,
+          add_offense(node.loc.selector,
                       severity: :warning,
                       message: message)
         end

@@ -6,7 +6,7 @@ module RuboCop
       # Changing the global SketchUp debug mode can cause warnings from other
       # extensions to be silenced.
       # Don't let your extension change the debug mode in a production setting.
-      class DebugMode < SketchUp::Cop
+      class DebugMode < SketchUp::Base
 
         # @!method sketchup_set_debug?(node)
         def_node_matcher :sketchup_set_debug?, <<-PATTERN

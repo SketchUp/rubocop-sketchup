@@ -9,7 +9,7 @@ module RuboCop
       # This requirement also include adding things into the SketchUp API
       # namespace. The API namespace is reserved for future additions to the
       # API.
-      class ApiNamespace < SketchUp::Cop
+      class ApiNamespace < SketchUp::Base
 
         include SketchUp::NoCommentDisable
         include SketchUp::NamespaceChecker

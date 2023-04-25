@@ -6,7 +6,7 @@ module RuboCop
       # Avoid kernel `sleep` as it freezes up SketchUp.
       # Prefer `UI.start_timer` or a callback from the resource you are waiting
       # for.
-      class Sleep < SketchUp::Cop
+      class Sleep < SketchUp::Base
         MSG = '`sleep` freezes up SketchUp. Prefer `UI.start_timer` or a ' \
               'callback for the resource you are waiting for.'
 

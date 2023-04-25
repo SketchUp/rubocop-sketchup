@@ -6,7 +6,7 @@ module RuboCop
       # Avoid using globals in general, but especially these which are known to
       # be in use by other extensions made by SketchUp.
       # They are still in use due to compatibility reasons.
-      class LanguageHandlerGlobals < SketchUp::Cop
+      class LanguageHandlerGlobals < SketchUp::Base
 
         include SketchUp::NoCommentDisable
 
@@ -37,7 +37,7 @@ module RuboCop
           global_var, = *node
           return unless hl_global_var?(global_var)
 
-          add_offense(node, location: :name)
+          add_offense(node.loc.name)
         end
 
       end

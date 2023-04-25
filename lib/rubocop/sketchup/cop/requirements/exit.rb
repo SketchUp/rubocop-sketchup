@@ -9,7 +9,7 @@ module RuboCop
       # shutting down cleanly.
       #
       # Use `return`, `next`, `break` or `raise` instead.
-      class Exit < SketchUp::Cop
+      class Exit < SketchUp::Base
 
         include SketchUp::NoCommentDisable
 
@@ -26,7 +26,7 @@ module RuboCop
           return unless exit?(node)
 
           message = format(MSG, node.method_name)
-          add_offense(node, location: :selector, message: message)
+          add_offense(node.loc.selector, message: message)
         end
       end
     end

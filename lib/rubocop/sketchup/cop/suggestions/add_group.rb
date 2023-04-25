@@ -26,7 +26,7 @@ module RuboCop
       #   group = model.active_entities.add_group
       #   face1 = group.entities.add_face(points1)
       #   face2 = group.entities.add_face(points2)
-      class AddGroup < Cop
+      class AddGroup < SketchUp::Base
 
         include RangeHelp
 
@@ -41,7 +41,7 @@ module RuboCop
           return unless add_group?(node)
           return if node.arguments.empty?
 
-          add_offense(node, location: arguments_range(node))
+          add_offense(arguments_range(node))
         end
 
       end

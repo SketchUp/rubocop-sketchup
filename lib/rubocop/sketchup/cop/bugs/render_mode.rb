@@ -20,7 +20,7 @@ module RuboCop
       #
       # @example This invalid render mode will crash SketchUp 2017 and newer
       #   Sketchup.active_model.rendering_options["RenderMode"] = 99
-      class RenderMode < SketchUp::Cop
+      class RenderMode < SketchUp::Base
 
         include SketchUp::SketchUpTargetRange
 

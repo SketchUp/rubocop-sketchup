@@ -20,7 +20,7 @@ module RuboCop
       #
       # @example Good - This will work for `.rbe`, `.rbs` and `rb` files.
       #   extension = SketchupExtension.new("Example", "Example/main")
-      class SketchupRequire < SketchUp::Cop
+      class SketchupRequire < SketchUp::Base
 
         include SketchUp::ExtensionProject
         include SketchUp::NoCommentDisable
@@ -106,14 +106,14 @@ module RuboCop
 
           end_pos = node.loc.dot.end_pos
           range = node.receiver.source_range.with(end_pos: end_pos)
-          add_offense(node, location: range, message: MSG_REQUIRE_FOR_BINARY)
+          add_offense(range, message: MSG_REQUIRE_FOR_BINARY)
           true
         end
 
         def check_sketchup_require_filename(node, filename)
           return if valid_filename?(filename)
 
-          add_offense(node, location: file_ext_range(node.arguments.first),
+          add_offense(file_ext_range(node.arguments.first),
                             message: MSG_SKETCHUP_REQUIRE_EXT_NAME)
           true
         end
@@ -121,7 +121,7 @@ module RuboCop
         def check_sketchup_extension_new_filename(node, filename)
           return if valid_filename?(filename)
 
-          add_offense(node, location: file_ext_range(node.arguments.last),
+          add_offense(file_ext_range(node.arguments.last),
                             message: MSG_EXTENSION_NEW_EXT_NAME)
           true
         end
@@ -130,8 +130,8 @@ module RuboCop
           return unless encrypted_extension?
           return unless extension_file?(filename)
 
-          add_offense(node, location: node.loc.selector,
-                            message: MSG_REQUIRE_ENCRYPTED)
+          add_offense(node.loc.selector,
+                      message: MSG_REQUIRE_ENCRYPTED)
           true
         end
 
