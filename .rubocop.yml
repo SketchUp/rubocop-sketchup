@@ -415,6 +415,9 @@ Style/ComparableClamp: # new in 1.44
 Style/ConcatArrayLiterals: # new in 1.41
   Enabled: true
 
+Style/DataInheritance: # new in 1.49
+  Enabled: true
+
 Style/DocumentDynamicEvalDefinition: # new in 1.1
   Enabled: true
 
