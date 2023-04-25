@@ -114,7 +114,7 @@ module RuboCop
           return if valid_filename?(filename)
 
           add_offense(file_ext_range(node.arguments.first),
-                            message: MSG_SKETCHUP_REQUIRE_EXT_NAME)
+                      message: MSG_SKETCHUP_REQUIRE_EXT_NAME)
           true
         end
 
@@ -122,7 +122,7 @@ module RuboCop
           return if valid_filename?(filename)
 
           add_offense(file_ext_range(node.arguments.last),
-                            message: MSG_EXTENSION_NEW_EXT_NAME)
+                      message: MSG_EXTENSION_NEW_EXT_NAME)
           true
         end
 
