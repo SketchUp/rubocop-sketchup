@@ -18,7 +18,7 @@ module RuboCop
         def on_send(node)
           return unless sleep?(node)
 
-          add_offense(node, message: MSG)
+          add_offense(node)
         end
       end
     end
