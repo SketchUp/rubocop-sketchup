@@ -351,6 +351,9 @@ RSpec/IdenticalEqualityAssertion: # new in 2.4
 RSpec/IndexedLet: # new in 2.20
   Enabled: true
 
+RSpec/MatchArray: # new in 2.19
+  Enabled: true
+
 RSpec/NoExpectationExample: # new in 2.13
   Enabled: true
 
