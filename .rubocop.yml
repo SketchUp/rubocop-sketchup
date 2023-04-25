@@ -305,6 +305,9 @@ Performance/Sum: # new in 1.8
   Enabled: true
 
 
+RSpec/BeEmpty: # new in 2.20
+  Enabled: true
+
 RSpec/BeEq: # new in 2.9.0
   Enabled: true
 
