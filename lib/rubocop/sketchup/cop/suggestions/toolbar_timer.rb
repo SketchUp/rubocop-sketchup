@@ -27,10 +27,12 @@ module RuboCop
         MSG = 'Wrapping `toolbar.restore` in `UI.start_timer` is ' \
               'redundant.'
 
+        # @!method toolbar_new?(node)
         def_node_matcher :toolbar_new?, <<-PATTERN
           (send (const (const nil? :UI) :Toolbar) :new _)
         PATTERN
 
+        # @!method ui_start_timer_restore(node)
         def_node_search :ui_start_timer_restore, <<-PATTERN
           (block
             (send

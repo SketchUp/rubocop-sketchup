@@ -39,28 +39,34 @@ module RuboCop
         MSG_REQUIRE_ENCRYPTED = 'Use `Sketchup.require` when loading Ruby ' \
                                 'files for encrypted extensions.'
 
+        # @!method ruby_require(node)
         def_node_matcher :ruby_require, <<-PATTERN
           (send nil? :require (str $_))
         PATTERN
 
+        # @!method ruby_require?(node)
         def_node_matcher :ruby_require?, <<-PATTERN
           (send nil? :require (str _))
         PATTERN
 
 
+        # @!method sketchup_require(node)
         def_node_matcher :sketchup_require, <<-PATTERN
           (send (const nil? :Sketchup) :require (str $_))
         PATTERN
 
+        # @!method sketchup_require?(node)
         def_node_matcher :sketchup_require?, <<-PATTERN
           (send (const nil? :Sketchup) :require (str _))
         PATTERN
 
 
+        # @!method sketchup_extension_new(node)
         def_node_matcher :sketchup_extension_new, <<-PATTERN
           (send (const nil? :SketchupExtension) :new _ (str $_))
         PATTERN
 
+        # @!method sketchup_extension_new?(node)
         def_node_matcher :sketchup_extension_new?, <<-PATTERN
           (send (const nil? :SketchupExtension) :new _ (str _))
         PATTERN

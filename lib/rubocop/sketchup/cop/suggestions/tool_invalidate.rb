@@ -38,6 +38,7 @@ module RuboCop
                                  'call `view.invalidate` when the tool ' \
                                  'becomes inactive.'
 
+        # @!method view_invalidate?(node)
         def_node_search :view_invalidate?, <<-PATTERN
           (send (lvar :view) :invalidate ...)
         PATTERN

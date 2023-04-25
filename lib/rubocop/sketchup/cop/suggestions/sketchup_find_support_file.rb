@@ -20,6 +20,7 @@ module RuboCop
 
         # http://www.rubydoc.info/gems/rubocop/RuboCop/NodePattern
         # https://rubocop.readthedocs.io/en/latest/node_pattern/
+        # @!method sketchup_find_support_file?(node)
         def_node_matcher :sketchup_find_support_file?, <<-PATTERN
           (send
             (const nil? :Sketchup) :find_support_file

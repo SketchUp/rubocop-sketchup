@@ -18,6 +18,7 @@ module RuboCop
 
         MSG = 'Incompatible feature with target SketchUp version'
 
+        # @!method module_definition?(node)
         def_node_matcher :module_definition?, <<~PATTERN
           {class module (casgn _ _ class_constructor?)}
         PATTERN

@@ -74,6 +74,7 @@ module RuboCop
 
         MATERIAL_VARIABLES = %i[material mat].freeze
 
+        # @!method material_set_name?(node)
         def_node_matcher :material_set_name?, <<-PATTERN
           (send #material? :name= _)
         PATTERN

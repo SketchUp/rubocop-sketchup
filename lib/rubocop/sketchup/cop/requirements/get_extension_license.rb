@@ -21,6 +21,7 @@ module RuboCop
 
         MSG_TRAILING_SPACE = 'Extra space in extension GUID'
 
+        # @!method get_extension_license(node)
         def_node_matcher :get_extension_license, <<-PATTERN
           (send
             (const

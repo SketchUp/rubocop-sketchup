@@ -38,6 +38,7 @@ module RuboCop
           4, # kRenderTextureObsolete,
         ].freeze
 
+        # @!method set_render_mode(node)
         def_node_matcher :set_render_mode, <<-PATTERN
           (send _ :[]= (str "RenderMode") (int $_))
         PATTERN

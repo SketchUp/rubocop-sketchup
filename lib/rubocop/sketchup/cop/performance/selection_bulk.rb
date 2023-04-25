@@ -33,12 +33,14 @@ module RuboCop
 
         # http://www.rubydoc.info/gems/rubocop/RuboCop/NodePattern
         # https://rubocop.readthedocs.io/en/latest/node_pattern/
+        # @!method selection?(node)
         def_node_matcher :selection?, <<-PATTERN
           (send
             (send _ {:selection :sel}) {:add :remove :toggle}
             ...)
         PATTERN
 
+        # @!method block_loop?(node)
         def_node_matcher :block_loop?, <<-PATTERN
           (block
             (send
@@ -51,6 +53,7 @@ module RuboCop
               ...)
         PATTERN
 
+        # @!method numeric_loop?(node)
         def_node_matcher :numeric_loop?, <<-PATTERN
           (block
             (send

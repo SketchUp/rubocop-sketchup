@@ -19,10 +19,12 @@ module RuboCop
 
         MSG = 'Beware encoding bug with `__FILE__` and `__dir__`.'
 
+        # @!method file_loaded?(node)
         def_node_matcher :file_loaded?, <<-PATTERN
           (send nil? {:file_loaded? :file_loaded} ...)
         PATTERN
 
+        # @!method magic_dir?(node)
         def_node_matcher :magic_dir?, <<-PATTERN
           (send nil? :__dir__)
         PATTERN
@@ -45,6 +47,7 @@ module RuboCop
         end
 
 
+        # @!method force_encoding(node)
         def_node_search :force_encoding, <<-PATTERN
           (send ({lvar ivar cvar} $_) :force_encoding ...)
         PATTERN

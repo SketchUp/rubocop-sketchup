@@ -9,6 +9,7 @@ module RuboCop
         MSG = 'Method is deprecated. Use `SKETCHUP_CONSOLE.show` ' \
               'instead.'
 
+        # @!method show_ruby_panel?(node)
         def_node_matcher :show_ruby_panel?, <<-PATTERN
           (send nil? :show_ruby_panel)
         PATTERN

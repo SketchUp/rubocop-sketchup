@@ -32,6 +32,7 @@ module RuboCop
 
         MSG = 'Avoid creating groups out of existing entities.'
 
+        # @!method add_group?(node)
         def_node_matcher :add_group?, <<-PATTERN
           (send _ :add_group ...)
         PATTERN

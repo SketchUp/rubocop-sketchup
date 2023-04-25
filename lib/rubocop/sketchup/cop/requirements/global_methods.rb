@@ -26,12 +26,14 @@ module RuboCop
         # def (Example::Foo).bar
         # end
 
+        # @!method class_method?(node)
         def_node_matcher :class_method?, <<-PATTERN
           (defs
             (const _ _) ...
           )
         PATTERN
 
+        # @!method class_method(node)
         def_node_matcher :class_method, <<-PATTERN
           (defs
             {

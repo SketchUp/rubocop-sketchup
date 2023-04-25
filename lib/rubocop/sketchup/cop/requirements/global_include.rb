@@ -16,6 +16,7 @@ module RuboCop
 
         MSG = 'Do not include into global namespace.'
 
+        # @!method is_include?(node)
         def_node_matcher :is_include?, <<-PATTERN
           (send nil? :include ...)
         PATTERN

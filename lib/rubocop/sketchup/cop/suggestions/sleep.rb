@@ -10,6 +10,7 @@ module RuboCop
         MSG = '`sleep` freezes up SketchUp. Prefer `UI.start_timer` or a ' \
               'callback for the resource you are waiting for.'
 
+        # @!method sleep?(node)
         def_node_matcher :sleep?, <<-PATTERN
           (send {(const nil? :Kernel) nil?} :sleep ...)
         PATTERN

@@ -8,6 +8,7 @@ module RuboCop
 
       # Example:
       #   Array.include(Example)
+      # @!method klass_include(node)
       def_node_matcher :klass_include, <<-PATTERN
         (send
           (const nil? $_) { :include | :extend } _)
@@ -17,6 +18,7 @@ module RuboCop
       #   class Array
       #     include Example
       #   end
+      # @!method klass_scope_include(node)
       def_node_matcher :klass_scope_include, <<-PATTERN
         (
           {
@@ -28,6 +30,7 @@ module RuboCop
 
       # Example:
       #   include Example
+      # @!method include_call?(node)
       def_node_matcher :include_call?, <<-PATTERN
         (send nil? { :include | :extend } _)
       PATTERN

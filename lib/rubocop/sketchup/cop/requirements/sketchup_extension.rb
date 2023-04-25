@@ -29,11 +29,13 @@ module RuboCop
         # rubocop:enable Layout/LineLength
 
         # Reference: http://rubocop.readthedocs.io/en/latest/node_pattern/
+        # @!method sketchup_extension_new(node)
         def_node_search :sketchup_extension_new, <<-PATTERN
           (send
             (const {nil? cbase} :SketchupExtension) :new ...)
         PATTERN
 
+        # @!method sketchup_register_extension(node)
         def_node_search :sketchup_register_extension, <<-PATTERN
           (send
             (const {nil? cbase} :Sketchup) :register_extension

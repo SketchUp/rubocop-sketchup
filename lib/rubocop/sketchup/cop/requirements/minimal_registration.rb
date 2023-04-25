@@ -36,6 +36,7 @@ module RuboCop
               'extension.'
 
         # Reference: http://rubocop.readthedocs.io/en/latest/node_pattern/
+        # @!method require_filename(node)
         def_node_matcher :require_filename, <<-PATTERN
           {
             (send {(const nil? :Sketchup) nil?} {:require :load} (str $_))

@@ -10,6 +10,7 @@ module RuboCop
 
         MSG = 'Method is deprecated. It can create invalid UV mapping.'
 
+        # @!method set_texture_projection?(node)
         def_node_matcher :set_texture_projection?, <<-PATTERN
           (send _ :set_texture_projection ...)
         PATTERN

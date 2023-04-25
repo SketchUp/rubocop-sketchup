@@ -9,6 +9,7 @@ module RuboCop
 
         MSG = 'Method is deprecated.'
 
+        # @!method add_separator_to_menu?(node)
         def_node_matcher :add_separator_to_menu?, <<-PATTERN
           (send nil? :add_separator_to_menu _)
         PATTERN

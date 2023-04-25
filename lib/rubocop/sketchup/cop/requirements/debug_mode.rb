@@ -8,6 +8,7 @@ module RuboCop
       # Don't let your extension change the debug mode in a production setting.
       class DebugMode < SketchUp::Cop
 
+        # @!method sketchup_set_debug?(node)
         def_node_matcher :sketchup_set_debug?, <<-PATTERN
           (send (const nil? :Sketchup) :debug_mode= _)
         PATTERN

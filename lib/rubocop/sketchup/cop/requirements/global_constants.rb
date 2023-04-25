@@ -16,6 +16,7 @@ module RuboCop
 
         MSG = 'Do not introduce global constants.'
 
+        # @!method namespaced_constant?(node)
         def_node_matcher :namespaced_constant?, <<-PATTERN
           (casgn
             (const _ _) ...

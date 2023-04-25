@@ -14,6 +14,7 @@ module RuboCop
 
         MSG = 'Class is deprecated.'
 
+        # @!method sketchup_set?(node)
         def_node_matcher :sketchup_set?, <<-PATTERN
           (const (const nil? :Sketchup) :Set)
         PATTERN

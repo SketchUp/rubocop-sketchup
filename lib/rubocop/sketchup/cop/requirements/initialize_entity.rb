@@ -49,6 +49,7 @@ module RuboCop
           Vertex
         ].freeze
 
+        # @!method init_entity?(node)
         def_node_matcher :init_entity?, <<-PATTERN
           (send (const (const nil? :Sketchup) #entity? ) :new ... )
         PATTERN

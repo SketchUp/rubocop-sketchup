@@ -17,6 +17,7 @@ module RuboCop
               '`next`, `break` or `raise` instead.'
 
         # Reference: http://rubocop.readthedocs.io/en/latest/development/
+        # @!method exit?(node)
         def_node_matcher :exit?, <<-PATTERN
           (send {(const nil? :Kernel) nil?} {:abort :exit :exit!} ...)
         PATTERN

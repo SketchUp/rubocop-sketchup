@@ -11,6 +11,7 @@ module RuboCop
         MSG = 'Method is deprecated because it adds the given path ' \
               'to $LOAD_PATH.'
 
+        # @!method require_all?(node)
         def_node_matcher :require_all?, <<-PATTERN
           (send nil? :require_all _)
         PATTERN

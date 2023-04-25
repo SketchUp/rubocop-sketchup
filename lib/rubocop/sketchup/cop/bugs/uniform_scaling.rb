@@ -16,6 +16,7 @@ module RuboCop
 
         define_sketchup_target_max_version 'SketchUp 2017'
 
+        # @!method transformation_scaling?(node)
         def_node_matcher :transformation_scaling?, <<-PATTERN
           (send (const (const nil? :Geom) :Transformation) :scaling _)
         PATTERN

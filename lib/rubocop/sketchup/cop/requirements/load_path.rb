@@ -11,6 +11,7 @@ module RuboCop
 
         MSG = 'Do not modify the load path.'
 
+        # @!method load_path_mutator?(node)
         def_node_matcher :load_path_mutator?, <<-PATTERN
           (send
             (gvar #load_path?) $#mutator?

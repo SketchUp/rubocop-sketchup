@@ -29,6 +29,7 @@ module RuboCop
               'extensions to clash.'
 
         # Reference: http://rubocop.readthedocs.io/en/latest/development/
+        # @!method gem_install?(node)
         def_node_matcher :gem_install?, <<-PATTERN
           (send (const nil? :Gem) :install ...)
         PATTERN

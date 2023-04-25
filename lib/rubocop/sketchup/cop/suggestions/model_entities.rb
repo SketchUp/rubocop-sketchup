@@ -14,11 +14,13 @@ module RuboCop
         MSG = 'Prefer `model.active_entities` over `model.entities`.'
 
         # Reference: http://www.rubydoc.info/gems/rubocop/RuboCop/NodePattern
+        # @!method active_model_entities?(node)
         def_node_matcher :active_model_entities?, <<-PATTERN
           (send
             (send (const nil? :Sketchup) :active_model) :entities)
         PATTERN
 
+        # @!method entities_receiver(node)
         def_node_matcher :entities_receiver, <<-PATTERN
           (send
             ({lvar ivar cvar} $_) :entities)

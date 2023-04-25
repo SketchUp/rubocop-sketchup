@@ -33,6 +33,7 @@ module RuboCop
         MSG = 'String comparisons are very slow, prefer `.is_a?` ' \
               'instead.'
 
+        # @!method string_class_compare?(node)
         def_node_matcher :string_class_compare?, <<-PATTERN
           (send
             (send

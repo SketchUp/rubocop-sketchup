@@ -20,6 +20,7 @@ module RuboCop
 
         # http://www.rubydoc.info/gems/rubocop/RuboCop/NodePattern
         # https://rubocop.readthedocs.io/en/latest/node_pattern/
+        # @!method require(node)
         def_node_matcher :require, <<-PATTERN
           (send nil? :require
             (str $_)
