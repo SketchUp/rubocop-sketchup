@@ -3,6 +3,7 @@ require:
   - rubocop-rake
   - rubocop-rspec
   - rubocop-sketchup
+  - rubocop/cop/internal_affairs
 
 inherit_from: sketchup-style.yml
 
