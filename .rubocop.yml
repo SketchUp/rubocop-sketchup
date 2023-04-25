@@ -317,6 +317,9 @@ RSpec/BeNil: # new in 2.9.0
 RSpec/ChangeByZero: # new in 2.11
   Enabled: true
 
+RSpec/ContainExactly: # new in 2.19
+  Enabled: true
+
 # Too many cases of nested context where this rule doesn't apply.
 RSpec/ContextWording:
   Enabled: false
