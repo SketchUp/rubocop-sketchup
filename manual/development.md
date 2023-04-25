@@ -37,7 +37,7 @@ bundle exec rake
 Running single spec:
 
 ```bash
-bundle exec rake spec SPEC=spec/rubocop/sketchup/requirements/global_methods_spec.rb
+bundle exec rake spec SPEC=spec/rubocop/cop/sketchup_requirements/global_methods_spec.rb
 ```
 
 
