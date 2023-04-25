@@ -4,24 +4,24 @@
 
 Building this gem requires [bundler](http://bundler.io/).
 
-```bash
-gem install bundler
+```console
+$ gem install bundler
 ```
 
 ## Initialize Developer Environment
 
 From the folder where you [cloned](https://help.github.com/articles/cloning-a-repository/) the repository:
 
-```bash
-bundle install
+```console
+$ bundle install
 ```
 
 This will install all the developer dependencies to build the gem.
 
 ## Build
 
-```bash
-bundle exec rake install
+```console
+$ bundle exec rake install
 ```
 
 After running this command `rubocop-sketchup` should be available on your system.
@@ -30,22 +30,33 @@ After running this command `rubocop-sketchup` should be available on your system
 
 Running all tests:
 
-```bash
-bundle exec rake
+```console
+$ bundle exec rake
 ```
 
 Running single spec:
 
-```bash
-bundle exec rake spec SPEC=spec/rubocop/cop/sketchup_requirements/global_methods_spec.rb
+```console
+$ bundle exec rake spec SPEC=spec/rubocop/cop/sketchup_requirements/global_methods_spec.rb
 ```
 
+## Internal RuboCop Inspection
+
+```console
+$ bundle exec rubocop --require rubocop/cop/internal_affairs
+```
+
+Example of using it for auto-fix:
+```console
+$ bundle exec rubocop --require rubocop/cop/internal_affairs \
+  --only InternalAffairs/RedundantDescribedClassAsSubject,Layout/EmptyLines -a spec
+```
 
 # Add a new cop
 
 Use a rake task to generate a cop template.
 
-```sh
+```console
 $ bundle exec rake new_cop[Department/Name]
 Files created:
   - lib/rubocop-sketchup/sketchup/cop/department/name.rb
