@@ -21,7 +21,7 @@ module RuboCop
           return if args.size < 3
 
           argument = args[2]
-          next_transparent = (argument.type == :true)
+          next_transparent = (argument.true_type?)
           add_offense(argument) if next_transparent
         end
       end
