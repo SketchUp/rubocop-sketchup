@@ -11,7 +11,7 @@ describe RuboCop::Cop::SketchupBugs::RenderMode, :config do
     end
 
     described_class::RENDER_MODE_VALID.each do |var|
-      it 'registers an offense for valid rendering mode' do
+      it 'registers no offense for valid rendering mode' do
         expect_no_offenses(<<~RUBY)
           Sketchup.active_model.rendering_options["RenderMode"] = #{var}
         RUBY
@@ -50,7 +50,7 @@ describe RuboCop::Cop::SketchupBugs::RenderMode, :config do
 
     # rubocop:disable RSpec/RepeatedExample
     described_class::RENDER_MODE_VALID.each do |var|
-      it 'registers an offense for valid rendering mode' do
+      it 'registers no offense for valid rendering mode' do
         expect_no_offenses(<<~RUBY)
           Sketchup.active_model.rendering_options["RenderMode"] = #{var}
         RUBY
@@ -58,7 +58,7 @@ describe RuboCop::Cop::SketchupBugs::RenderMode, :config do
     end
 
     described_class::RENDER_MODE_OBSOLETE.each do |var|
-      it 'registers an offense for obsolete rendering mode' do
+      it 'registers no offense for obsolete rendering mode' do
         expect_no_offenses(<<~RUBY)
           Sketchup.active_model.rendering_options["RenderMode"] = #{var}
         RUBY
@@ -66,7 +66,7 @@ describe RuboCop::Cop::SketchupBugs::RenderMode, :config do
     end
     # rubocop:enable RSpec/RepeatedExample
 
-    it 'registers an offense for invalid rendering mode' do
+    it 'registers no offense for invalid rendering mode' do
       expect_no_offenses(<<~RUBY)
         Sketchup.active_model.rendering_options['RenderMode'] = 99
       RUBY

@@ -11,7 +11,7 @@ describe RuboCop::Cop::SketchupRequirements::GlobalInclude, :config do
     RUBY
   end
 
-  it 'does not register an offense for Kernel include' do
+  it 'registers an offense for Kernel include' do
     expect_offense(<<~RUBY)
       module Kernel
         include Math

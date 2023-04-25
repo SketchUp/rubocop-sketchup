@@ -29,7 +29,7 @@ describe RuboCop::Cop::SketchupBugs::MaterialName, :config do
         RUBY
       end
 
-      it 'registers an offense for using `name=` with other variable names' do
+      it 'registers no offense for using `name=` with other variable names' do
         expect_no_offenses(<<~RUBY)
           layer.name = 'Example'
         RUBY
@@ -43,7 +43,7 @@ describe RuboCop::Cop::SketchupBugs::MaterialName, :config do
         sketchup_version_config('SketchUp 2018')
       end
 
-      it 'registers an offense for renaming a material via variable' do
+      it 'registers no offense for renaming a material via variable' do
         expect_no_offenses(<<~RUBY)
           material = get_materials.add('Test')
           name = 'Example'
@@ -51,7 +51,7 @@ describe RuboCop::Cop::SketchupBugs::MaterialName, :config do
         RUBY
       end
 
-      it 'registers an offense for renaming a material via string literal' do
+      it 'registers no offense for renaming a material via string literal' do
         # TODO(thomthom): Might want to add a SketchupSuggestions cop to detect
         # material renaming without going through materials.unique_name.
         expect_no_offenses(<<~RUBY)

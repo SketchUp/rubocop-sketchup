@@ -58,7 +58,7 @@ describe RuboCop::Cop::SketchupRequirements::ExtensionNamespace, :config do
     RUBY
   end
 
-  it 'does not register an offense for nested namespace objects' do
+  it 'registers an offense for nested namespace objects' do
     expect_offense(<<~RUBY)
       module Example
       end

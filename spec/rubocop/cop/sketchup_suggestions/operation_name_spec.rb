@@ -132,7 +132,7 @@ describe RuboCop::Cop::SketchupSuggestions::OperationName, :config do
     RUBY
   end
 
-  it 'handles start_operation without arguments' do
+  it 'registers no offense for start_operation without arguments' do
     expect_no_offenses(<<~RUBY)
       CustomClass.start_operation do
       end
