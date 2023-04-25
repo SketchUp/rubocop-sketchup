@@ -348,6 +348,9 @@ RSpec/FilePath:
 RSpec/IdenticalEqualityAssertion: # new in 2.4
   Enabled: true
 
+RSpec/IndexedLet: # new in 2.20
+  Enabled: true
+
 RSpec/NoExpectationExample: # new in 2.13
   Enabled: true
 
