@@ -74,7 +74,7 @@ module RuboCop
         end
 
         def on_gvar(node)
-          global_var, = *node
+          global_var = node.children.first
           check(node) unless read_allowed?(global_var)
         end
 
@@ -83,7 +83,7 @@ module RuboCop
         end
 
         def check(node)
-          global_var, = *node
+          global_var = node.children.first
 
           return if allowed_var?(global_var)
 

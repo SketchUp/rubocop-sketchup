@@ -34,7 +34,7 @@ module RuboCop
         end
 
         def on_gvasgn(node)
-          global_var, = *node
+          global_var = node.children.first
           return unless hl_global_var?(global_var)
 
           add_offense(node.loc.name)

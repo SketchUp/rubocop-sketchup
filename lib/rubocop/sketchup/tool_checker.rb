@@ -5,10 +5,9 @@ module RuboCop
     module ToolChecker
 
       def on_class(node)
-        name, _base_class, body = *node
-        return unless name.const_name.end_with?('Tool')
+        return unless node.defined_module_name.end_with?('Tool')
 
-        check_body(body, node)
+        check_body(node.body, node)
       end
 
       private

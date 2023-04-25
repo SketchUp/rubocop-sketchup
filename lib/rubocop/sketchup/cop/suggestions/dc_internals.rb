@@ -22,7 +22,7 @@ module RuboCop
         end
 
         def check_global(node)
-          global_var, = *node
+          global_var = node.children.first
           return unless dc_global_var?(global_var)
 
           add_offense(node.loc.name, severity: :warning)

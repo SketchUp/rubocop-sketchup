@@ -52,8 +52,9 @@ module RuboCop
         MSG_MAX = 'Operation names should not be short and concise. [%d/%d]'
 
         def on_send(node)
-          _, method_name, *args = *node
-          return unless method_name == :start_operation
+          return unless node.method?(:start_operation)
+
+          args = node.arguments
           return if args.empty? || !args.first.str_type?
 
           # Ignore transparent operations.

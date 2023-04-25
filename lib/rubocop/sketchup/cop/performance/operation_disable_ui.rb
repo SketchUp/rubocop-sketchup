@@ -14,9 +14,9 @@ module RuboCop
         MSG = 'Operations should disable the UI for performance gain.'
 
         def on_send(node)
-          _, method_name, *args = *node
-          return unless method_name == :start_operation
+          return unless node.method?(:start_operation)
 
+          args = node.arguments
           if args.size < 2
             add_offense(node.loc.selector)
             return

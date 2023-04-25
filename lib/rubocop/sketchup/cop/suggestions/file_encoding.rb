@@ -53,7 +53,7 @@ module RuboCop
         PATTERN
 
         def on_assign(node)
-          lhs, value = *node
+          lhs, value = *node.children
           return unless magic_file_or_dir?(value)
           # After assigning __FILE__ or __dir_ to a variable, check the parent
           # scope to whether .force_encoding is called on the variable.
