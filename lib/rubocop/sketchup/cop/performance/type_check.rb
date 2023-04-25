@@ -55,7 +55,7 @@ module RuboCop
           rhs = node.arguments.first
 
           loc_begin = lhs.receiver.loc.selector.begin_pos
-          loc_end = rhs.loc.expression.end_pos
+          loc_end = rhs.source_range.end_pos
           range_between(loc_begin, loc_end)
         end
       end

@@ -46,7 +46,7 @@ module RuboCop
           if argument.str_type?
             validate_extension_id(argument)
           else
-            location = argument.loc.expression
+            location = argument.source_range
             add_offense(node, location: location, message: MSG_WRONG_TYPE)
           end
         end

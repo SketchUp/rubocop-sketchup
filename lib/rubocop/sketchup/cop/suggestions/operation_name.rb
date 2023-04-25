@@ -86,7 +86,7 @@ module RuboCop
 
         def excess_range(node, operation_name)
           string_start = node.source.index(operation_name)
-          range = node.loc.expression
+          range = node.source_range
           if string_start
             excess_start = range.begin_pos + string_start + max_operation_name_length
             excess_end = range.begin_pos + string_start + operation_name.size

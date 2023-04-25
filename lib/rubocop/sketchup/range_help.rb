@@ -12,7 +12,7 @@ module RuboCop
         loc_begin = if receiver.send_type?
                       receiver.loc.selector.begin_pos
                     else
-                      receiver.loc.expression.begin_pos
+                      receiver.source_range.begin_pos
                     end
         loc_end = node.loc.selector.end_pos
         range_between(loc_begin, loc_end)
@@ -25,15 +25,15 @@ module RuboCop
       end
 
       def arguments_range(node)
-        begin_pos = node.arguments.first.loc.expression.begin_pos
-        end_pos = node.arguments.last.loc.expression.end_pos
+        begin_pos = node.arguments.first.source_range.begin_pos
+        end_pos = node.arguments.last.source_range.end_pos
         range_between(begin_pos, end_pos)
       end
 
       def conditional_range(node)
         if node.modifier_form?
           range_between(node.loc.keyword.begin_pos,
-                        node.loc.expression.end_pos)
+                        node.source_range.end_pos)
         else
           :expression
         end

@@ -105,7 +105,7 @@ module RuboCop
           return unless binary_require?(filename)
 
           end_pos = node.loc.dot.end_pos
-          range = node.receiver.loc.expression.with(end_pos: end_pos)
+          range = node.receiver.source_range.with(end_pos: end_pos)
           add_offense(node, location: range, message: MSG_REQUIRE_FOR_BINARY)
           true
         end

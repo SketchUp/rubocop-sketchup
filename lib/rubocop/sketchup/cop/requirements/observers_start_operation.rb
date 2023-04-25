@@ -146,7 +146,7 @@ module RuboCop
           # name.
           transparent_argument = node.arguments[3]
           if transparent_argument
-            range(transparent_argument.loc.expression)
+            range(transparent_argument.source_range)
           else
             :selector
           end
