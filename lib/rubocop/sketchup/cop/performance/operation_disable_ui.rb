@@ -25,7 +25,7 @@ module RuboCop
           disable_ui = argument.truthy_literal?
           return if disable_ui
 
-          add_offense(argument, location: :expression)
+          add_offense(argument)
         end
       end
     end

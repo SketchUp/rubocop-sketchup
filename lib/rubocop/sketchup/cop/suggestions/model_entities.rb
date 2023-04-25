@@ -36,7 +36,7 @@ module RuboCop
         end
 
         def on_send(node)
-          add_offense(node, location: :expression) if model_entities?(node)
+          add_offense(node) if model_entities?(node)
         end
 
         private

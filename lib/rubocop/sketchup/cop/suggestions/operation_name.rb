@@ -66,7 +66,7 @@ module RuboCop
           # Check the format of the operation name.
           unless acceptable_operation_name?(operation_name)
             msg = %(#{MSG} Expected: `"#{titleize(operation_name)}"`)
-            add_offense(args.first, location: :expression, message: msg)
+            add_offense(args.first, message: msg)
           end
           # Check the length of the operation name.
           unless operation_name.size <= max_operation_name_length
@@ -78,7 +78,7 @@ module RuboCop
           # Ensure operation name is not empty.
           if operation_name.empty?
             msg = 'Operation names should not be empty.'
-            add_offense(args.first, location: :expression, message: msg)
+            add_offense(args.first, message: msg)
           end
         end
 
