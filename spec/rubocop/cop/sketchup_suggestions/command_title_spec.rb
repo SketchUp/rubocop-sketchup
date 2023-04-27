@@ -2,9 +2,7 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupSuggestions::CommandTitle do
-
-  subject(:cop) { described_class.new }
+describe RuboCop::Cop::SketchupSuggestions::CommandTitle, :config do
 
   bad_capitalization = [
     'text',
