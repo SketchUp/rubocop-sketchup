@@ -14,7 +14,7 @@ module RuboCop
           (send (const (const nil? :UI) :Command ) :new ... )
         PATTERN
 
-        MESSAGE = 'Use title case in command titles. '\
+        MESSAGE = 'Use title case in command titles. ' \
                   'In English, capitalize the first letter of each word.'
 
         def on_send(node)
