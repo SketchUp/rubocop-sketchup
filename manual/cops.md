@@ -91,6 +91,7 @@ In the following section you find all available cops:
 #### Department [SketchupSuggestions](cops_suggestions.md)
 
 * [SketchupSuggestions/AddGroup](cops_suggestions.md#sketchupsuggestionsaddgroup)
+* [SketchupSuggestions/CommandTitle](cops_suggestions.md#sketchupsuggestionscommandtitle)
 * [SketchupSuggestions/Compatibility](cops_suggestions.md#sketchupsuggestionscompatibility)
 * [SketchupSuggestions/DynamicComponentInternals](cops_suggestions.md#sketchupsuggestionsdynamiccomponentinternals)
 * [SketchupSuggestions/FileEncoding](cops_suggestions.md#sketchupsuggestionsfileencoding)
