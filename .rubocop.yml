@@ -323,7 +323,7 @@ RSpec/DuplicatedMetadata: # new in 2.16
   Enabled: true
 
 RSpec/ExampleLength:
-  Max: 10
+  Max: 20
 
 RSpec/ExcessiveDocstringSpacing: # new in 2.5
   Enabled: true
