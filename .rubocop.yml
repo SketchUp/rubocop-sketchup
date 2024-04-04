@@ -437,7 +437,7 @@ RSpec/RepeatedSubjectCall: # new in 2.27
   Enabled: true
 
 RSpec/SpecFilePathFormat: # new in 2.24
-  Enabled: true
+  Enabled: false # Not renaming all the files at this point.
 
 RSpec/SpecFilePathSuffix: # new in 2.24
   Enabled: true
