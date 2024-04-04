@@ -302,6 +302,16 @@ Performance/Sum: # new in 1.8
   Enabled: true
 
 
+FactoryBot/ConsistentParenthesesStyle: # new in 2.14
+  Enabled: true
+
+FactoryBot/FactoryNameStyle: # new in 2.16
+  Enabled: true
+
+FactoryBot/SyntaxMethods: # new in 2.7
+  Enabled: true
+
+
 RSpec/BeEq: # new in 2.9.0
   Enabled: true
 
@@ -360,28 +370,20 @@ RSpec/SortMetadata: # new in 2.14
 RSpec/VerifiedDoubleReference: # new in 2.10.0
   Enabled: true
 
-RSpec/FactoryBot/ConsistentParenthesesStyle: # new in 2.14
-  Enabled: true
 
-RSpec/FactoryBot/FactoryNameStyle: # new in 2.16
-  Enabled: true
-
-RSpec/FactoryBot/SyntaxMethods: # new in 2.7
-  Enabled: true
-
-RSpec/Rails/AvoidSetupHook: # new in 2.4
+RSpecRails/AvoidSetupHook: # new in 2.4
   Enabled: false
 
-RSpec/Rails/HaveHttpStatus: # new in 2.12
+RSpecRails/HaveHttpStatus: # new in 2.12
   Enabled: false
 
-RSpec/Rails/InferredSpecType: # new in 2.14
+RSpecRails/InferredSpecType: # new in 2.14
   Enabled: false
 
-RSpec/Rails/MinitestAssertions: # new in 2.17
+RSpecRails/MinitestAssertions: # new in 2.17
   Enabled: false
 
-RSpec/Rails/TravelAround: # new in 2.19
+RSpecRails/TravelAround: # new in 2.19
   Enabled: false
 
 
