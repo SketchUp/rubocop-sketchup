@@ -601,6 +601,10 @@ Style/RedundantHeredocDelimiterQuotes: # new in 1.45
 Style/RedundantInitialize: # new in 1.27
   Enabled: true
 
+Style/RedundantReturn:
+  Exclude:
+  - lib/rubocop/sketchup/cop/requirements/sketchup_require.rb # Nit picking.
+
 Style/RedundantSelfAssignmentBranch: # new in 1.19
   Enabled: true
 
