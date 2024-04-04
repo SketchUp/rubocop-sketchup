@@ -42,6 +42,41 @@ module RuboCop
       FEATURES = [
 
         {
+          version: 'SketchUp 2024.0',
+          types: {
+            method: [
+              'Sketchup::View#graphics_engine',
+            ],
+          },
+        },
+
+        {
+          version: 'LayOut 2023.1',
+          types: {
+            method: [
+              'Layout::Document#render_mode_override',
+              'Layout::Document#render_mode_override=',
+              'Layout::PageInfo#image_display_resolution',
+              'Layout::PageInfo#image_display_resolution=',
+              'Layout::PageInfo#image_output_resolution',
+              'Layout::PageInfo#image_output_resolution=',
+              'Layout::SketchUpModel#output_entities',
+            ],
+          },
+        },
+
+        {
+          version: 'SketchUp 2023.1',
+          types: {
+            method: [
+              'Sketchup::ArcCurve#circular?',
+              'UI.get_clipboard_data',
+              'UI.set_clipboard_data',
+            ],
+          },
+        },
+
+        {
           version: 'LayOut 2023.0',
           types: {
             class: [
@@ -1357,6 +1392,7 @@ module RuboCop
         fov_is_height?
         georeferenced?
         get_classification_value
+        get_clipboard_data
         get_drawingelement_visibility
         get_glued_instances
         get_texture_projection
@@ -1422,6 +1458,7 @@ module RuboCop
         sequence_type
         set_can_close
         set_classification_value
+        set_clipboard_data
         set_download_progress_callback
         set_drawingelement_visibility
         set_full_security
