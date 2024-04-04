@@ -89,8 +89,8 @@ module RuboCop
         private
 
         def binary_require?(filename)
-          return unless extension_binaries?
-          return if extension_binaries.empty?
+          return false unless extension_binaries?
+          return false if extension_binaries.empty?
 
           extension_binaries.include?(filename)
         end

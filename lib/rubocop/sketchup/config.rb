@@ -19,7 +19,7 @@ module RuboCop
 
 
       def sketchup_config_key?(key)
-        return unless all_cops_config.key?('SketchUp')
+        return false unless all_cops_config.key?('SketchUp')
 
         all_cops_config.fetch('SketchUp').key?(key)
       end
