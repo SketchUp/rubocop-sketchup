@@ -26,8 +26,8 @@ RuboCop::SketchUp::Inject.defaults!
 # formatters. Naughty! Naughty!
 class RuboCop::Formatter::FormatterSet
   formatters = BUILTIN_FORMATTERS_FOR_KEYS.dup
-  formatters['extension_review'] =
-      RuboCop::Formatter::ExtensionReviewFormatter
+  formatters['extension_review'] = 'ExtensionReviewFormatter'
+
   verbose = $VERBOSE
   begin
     $VERBOSE = nil
