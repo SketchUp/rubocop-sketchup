@@ -1,10 +1,12 @@
 require:
   - rubocop-performance
   - rubocop-rake
-  - rubocop-rspec
   - rubocop-sketchup
 
 inherit_from: sketchup-style.yml
+
+plugins:
+  - rubocop-rspec
 
 AllCops:
   # RuboCop 1.x uses semantic versioning. However, to avoid the CI build from
@@ -38,10 +40,6 @@ SketchupRequirements:
   Enabled: false
 
 SketchupSuggestions:
-  Enabled: false
-
-
-Capybara:
   Enabled: false
 
 
@@ -317,31 +315,6 @@ Performance/Sum: # new in 1.8
   Enabled: true
 
 
-FactoryBot/ConsistentParenthesesStyle: # new in 2.14
-  Enabled: true
-
-FactoryBot/FactoryNameStyle: # new in 2.16
-  Enabled: true
-
-FactoryBot/SyntaxMethods: # new in 2.7
-  Enabled: true
-
-FactoryBot/AssociationStyle: # new in 2.23
-  Enabled: true
-
-FactoryBot/ExcessiveCreateList: # new in 2.25
-  Enabled: true
-
-FactoryBot/FactoryAssociationWithStrategy: # new in 2.23
-  Enabled: true
-
-FactoryBot/IdSequence: # new in 2.24
-  Enabled: true
-
-FactoryBot/RedundantFactoryOption: # new in 2.23
-  Enabled: true
-
-
 RSpec/BeEq: # new in 2.9.0
   Enabled: true
 
@@ -368,13 +341,13 @@ RSpec/ExampleLength:
 RSpec/ExcessiveDocstringSpacing: # new in 2.5
   Enabled: true
 
-RSpec/FilePath:
-  CustomTransform:
-    DynamicComponentInternals: dc_internals
-    OpenSSL: openssl
-    RubyStdLibNamespace: ruby_stdlib_namespace
-    SketchUp: sketchup
-    SketchUpTargetRange: sketchup_target_range
+# RSpec/FilePath:
+#   CustomTransform:
+#     DynamicComponentInternals: dc_internals
+#     OpenSSL: openssl
+#     RubyStdLibNamespace: ruby_stdlib_namespace
+#     SketchUp: sketchup
+#     SketchUpTargetRange: sketchup_target_range
 
 RSpec/IdenticalEqualityAssertion: # new in 2.4
   Enabled: true
@@ -440,25 +413,6 @@ RSpec/SpecFilePathFormat: # new in 2.24
   Enabled: false # Not renaming all the files at this point.
 
 RSpec/SpecFilePathSuffix: # new in 2.24
-  Enabled: true
-
-
-RSpecRails/AvoidSetupHook: # new in 2.4
-  Enabled: false
-
-RSpecRails/HaveHttpStatus: # new in 2.12
-  Enabled: false
-
-RSpecRails/InferredSpecType: # new in 2.14
-  Enabled: false
-
-RSpecRails/MinitestAssertions: # new in 2.17
-  Enabled: false
-
-RSpecRails/TravelAround: # new in 2.19
-  Enabled: false
-
-RSpecRails/NegationBeValid: # new in 2.23
   Enabled: true
 
 
