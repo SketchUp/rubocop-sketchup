@@ -22,7 +22,7 @@ module RuboCopSketchUp
       content = h2(cop.cop_name, anchor_names(cop.cop_name).last)
       content << properties(config, cop)
       content << "#{description}\n"
-      content << examples(examples_objects) if examples_objects.count > 0
+      content << examples(examples_objects) if examples_objects.any?
       content << configurations(pars)
       content << references(config, cop)
       content

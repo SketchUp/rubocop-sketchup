@@ -15,7 +15,7 @@ describe RuboCop::Cop::SketchupRequirements::RubyCoreNamespace, :config do
     # Picking the correct type isn't really that important, but we'll try in
     # order to keep as close to what they represent as possible.
     type = 'module'
-    if Object.constants.include?(var.intern)
+    if Object.const_defined?(var.intern)
       const = Object.const_get(var)
       type = const.class.name.downcase
       next unless namespace_types.include?(type)
