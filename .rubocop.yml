@@ -1,12 +1,12 @@
 require:
   - rubocop-performance
   - rubocop-rake
-  - rubocop-sketchup
 
 inherit_from: sketchup-style.yml
 
 plugins:
   - rubocop-rspec
+  - rubocop-sketchup
 
 AllCops:
   # RuboCop 1.x uses semantic versioning. However, to avoid the CI build from

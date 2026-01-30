@@ -32,7 +32,8 @@ For more information about the installation process and how to manage your gem d
 Add `.rubocop.yml` in the root of your project:
 
 ```yaml
-require: rubocop-sketchup
+plugins:
+  - rubocop-sketchup
 
 AllCops:
   DisabledByDefault: true

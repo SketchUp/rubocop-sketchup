@@ -14,10 +14,6 @@ This requirement also include adding things into the SketchUp API
 namespace. The API namespace is reserved for future additions to the
 API.
 
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#apinamespace](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#apinamespace)
-
 <a name='debugmode'></a>
 ## SketchupRequirements/DebugMode
 
@@ -28,10 +24,6 @@ Enabled | No
 Changing the global SketchUp debug mode can cause warnings from other
 extensions to be silenced.
 Don't let your extension change the debug mode in a production setting.
-
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#debugmode](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#debugmode)
 
 <a name='exit'></a>
 ## SketchupRequirements/Exit
@@ -46,10 +38,6 @@ console. But `exit!` is not trapped and will terminate SketchUp without
 shutting down cleanly.
 
 Use `return`, `next`, `break` or `raise` instead.
-
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#exit](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#exit)
 
 <a name='extensionnamespace'></a>
 ## SketchupRequirements/ExtensionNamespace
@@ -90,16 +78,6 @@ module MyCompany
 end
 ```
 
-### Configurable attributes
-
-Name | Default value | Configurable values
---- | --- | ---
-Exceptions | `[]` | Array
-
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#extensionnamespace](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#extensionnamespace)
-
 <a name='filestructure'></a>
 ## SketchupRequirements/FileStructure
 
@@ -122,10 +100,6 @@ SketchUp/Plugins
   + main.rb
   + ...
 ```
-
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#filestructure](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#filestructure)
 
 <a name='geminstall'></a>
 ## SketchupRequirements/GemInstall
@@ -152,10 +126,6 @@ They only way to ensure extensions doesn't clash is to namespace
 everything into extension namespace. This means making a copy of the
 gem you want to use and wrap it in your own namespace.
 
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#geminstall](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#geminstall)
-
 <a name='getextensionlicense'></a>
 ## SketchupRequirements/GetExtensionLicense
 
@@ -169,10 +139,6 @@ console. But `exit!` is not trapped and with terminate SketchUp without
 shutting down cleanly.
 
 Use `return`, `next`, `break` or `raise` instead.
-
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#getextensionlicense](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#getextensionlicense)
 
 <a name='globalconstants'></a>
 ## SketchupRequirements/GlobalConstants
@@ -188,10 +154,6 @@ itself to avoid clashing with other extensions.
 Extensions submitted to Extension Warehouse is expected to not define
 global constants.
 
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#globalconstants](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#globalconstants)
-
 <a name='globalinclude'></a>
 ## SketchupRequirements/GlobalInclude
 
@@ -206,10 +168,6 @@ itself to avoid clashing with other extensions.
 Extensions submitted to Extension Warehouse is expected to not pollute
 the global namespace by including mix-in modules.
 
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#globalinclude](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#globalinclude)
-
 <a name='globalmethods'></a>
 ## SketchupRequirements/GlobalMethods
 
@@ -223,10 +181,6 @@ itself to avoid clashing with other extensions.
 
 Extensions submitted to Extension Warehouse is expected to not define
 global methods.
-
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#globalmethods](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#globalmethods)
 
 <a name='globalvariables'></a>
 ## SketchupRequirements/GlobalVariables
@@ -249,10 +203,6 @@ users can allow additional variables via the AllowedVariables option.
 
 Note that backreferences like `$1`, `$2`, etc are not global variables.
 
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#globalvariables](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#globalvariables)
-
 <a name='initializeentity'></a>
 ## SketchupRequirements/InitializeEntity
 
@@ -265,10 +215,6 @@ initialized using the `new` constructor. These objects are managed by
 SketchUp. Instead use the `Sketchup::Entities#add_*` methods to create
 them.
 
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#initializeentity](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#initializeentity)
-
 <a name='languagehandlerglobals'></a>
 ## SketchupRequirements/LanguageHandlerGlobals
 
@@ -280,10 +226,6 @@ Avoid using globals in general, but especially these which are known to
 be in use by other extensions made by SketchUp.
 They are still in use due to compatibility reasons.
 
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#languagehandlerglobals](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#languagehandlerglobals)
-
 <a name='loadpath'></a>
 ## SketchupRequirements/LoadPath
 
@@ -293,10 +235,6 @@ Enabled | No
 
 Do not modify the load path. Modifying `$LOAD_PATH` is bad practice
 because it can cause extensions to inadvertently load the wrong file.
-
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#loadpath](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#loadpath)
 
 <a name='minimalregistration'></a>
 ## SketchupRequirements/MinimalRegistration
@@ -335,10 +273,6 @@ module Example
 end
 ```
 
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#minimalregistration](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#minimalregistration)
-
 <a name='observersstartoperation'></a>
 ## SketchupRequirements/ObserversStartOperation
 
@@ -374,10 +308,6 @@ class ExampleObserver < Sketchup::EntitiesObserver
 end
 ```
 
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#observersstartoperation](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#observersstartoperation)
-
 <a name='registerextension'></a>
 ## SketchupRequirements/RegisterExtension
 
@@ -402,10 +332,6 @@ module Example
 end
 ```
 
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#registerextension](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#registerextension)
-
 <a name='rubycorenamespace'></a>
 ## SketchupRequirements/RubyCoreNamespace
 
@@ -419,10 +345,6 @@ itself to avoid clashing with other extensions.
 
 Extensions submitted to Extension Warehouse is expected to not modify
 core Ruby functionality.
-
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#rubycorenamespace](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#rubycorenamespace)
 
 <a name='rubystdlibnamespace'></a>
 ## SketchupRequirements/RubyStdLibNamespace
@@ -438,10 +360,6 @@ itself to avoid clashing with other extensions.
 Extensions submitted to Extension Warehouse is expected to not modify
 Ruby StdLib functionality.
 
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#rubystdlibnamespace](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#rubystdlibnamespace)
-
 <a name='shippedextensionsnamespace'></a>
 ## SketchupRequirements/ShippedExtensionsNamespace
 
@@ -450,10 +368,6 @@ Enabled by default | Supports autocorrection
 Enabled | No
 
 Don't modify SketchUp's shipped extensions.
-
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#shippedextensionsnamespace](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#shippedextensionsnamespace)
 
 <a name='sketchupextension'></a>
 ## SketchupRequirements/SketchupExtension
@@ -478,10 +392,6 @@ module Example
   end
 end
 ```
-
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#sketchupextension](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#sketchupextension)
 
 <a name='sketchuprequire'></a>
 ## SketchupRequirements/SketchupRequire
@@ -518,7 +428,3 @@ extension = SketchupExtension.new("Example", "Example/main.rb")
 ```ruby
 extension = SketchupExtension.new("Example", "Example/main")
 ```
-
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#sketchuprequire](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#sketchuprequire)

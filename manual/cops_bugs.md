@@ -78,10 +78,6 @@ module Example
 end
 ```
 
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_bugs.md#materialname](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_bugs.md#materialname)
-
 <a name='rendermode'></a>
 ## SketchupBugs/RenderMode
 
@@ -114,10 +110,6 @@ Sketchup.active_model.rendering_options["RenderMode"] = 4
 Sketchup.active_model.rendering_options["RenderMode"] = 99
 ```
 
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_bugs.md#rendermode](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_bugs.md#rendermode)
-
 <a name='uniformscaling'></a>
 ## SketchupBugs/UniformScaling
 
@@ -137,7 +129,3 @@ of exporters and render engines which also doesn't fully handle this.
 ```ruby
 tr = Geom::Transformation.scaling(scale, scale, scale)
 ```
-
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_bugs.md#uniformscaling](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_bugs.md#uniformscaling)

@@ -36,10 +36,6 @@ face1 = group.entities.add_face(points1)
 face2 = group.entities.add_face(points2)
 ```
 
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#addgroup](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#addgroup)
-
 <a name='compatibility'></a>
 ## SketchupSuggestions/Compatibility
 
@@ -61,10 +57,6 @@ AllCops:
     TargetSketchUpVersion: 2016 M1
 ```
 
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#compatibility](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#compatibility)
-
 <a name='dynamiccomponentinternals'></a>
 ## SketchupSuggestions/DynamicComponentInternals
 
@@ -76,10 +68,6 @@ Tapping into the internals of Dynamic Components is risky. It could
 change at any time. If you create an extension that depend on the
 internal logic of another extension you are at the mercy of change and
 luck!
-
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#dynamiccomponentinternals](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#dynamiccomponentinternals)
 
 <a name='fileencoding'></a>
 ## SketchupSuggestions/FileEncoding
@@ -108,10 +96,6 @@ file.force_encoding('UTF-8') if file.respond_to?(:force_encoding)
 basename = File.basename(file, '.*')
 ```
 
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#fileencoding](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#fileencoding)
-
 <a name='modelentities'></a>
 ## SketchupSuggestions/ModelEntities
 
@@ -126,10 +110,6 @@ an opened group or component instance. Because of this, prefer
 `model.active_entities` by default over `model.entities` unless you
 have an explicit reason to work in the root model context.
 
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#modelentities](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#modelentities)
-
 <a name='monkeypatchedapi'></a>
 ## SketchupSuggestions/MonkeyPatchedApi
 
@@ -142,10 +122,6 @@ namespace. This is an unfortunate no-no that was done a long time ago
 before the extension best-practices were established. These functions
 might change or be removed at any time. They will also not work when
 the extensions are disabled. Avoid using these methods.
-
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#monkeypatchedapi](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#monkeypatchedapi)
 
 <a name='operationname'></a>
 ## SketchupSuggestions/OperationName
@@ -215,16 +191,6 @@ model.start_operation('example_name', true)
 model.start_operation('Example Name', true)
 ```
 
-### Configurable attributes
-
-Name | Default value | Configurable values
---- | --- | ---
-Max | `25` | Integer
-
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#operationname](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#operationname)
-
 <a name='sketchupfindsupportfile'></a>
 ## SketchupSuggestions/SketchupFindSupportFile
 
@@ -243,10 +209,6 @@ to your source files. This have the added benefit of allowing you to
 load your extensions directly from external directories under version
 control.
 
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#sketchupfindsupportfile](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#sketchupfindsupportfile)
-
 <a name='sleep'></a>
 ## SketchupSuggestions/Sleep
 
@@ -257,10 +219,6 @@ Enabled | No
 Avoid kernel `sleep` as it freezes up SketchUp.
 Prefer `UI.start_timer` or a callback from the resource you are waiting
 for.
-
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#sleep](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#sleep)
 
 <a name='tooldrawingbounds'></a>
 ## SketchupSuggestions/ToolDrawingBounds
@@ -293,10 +251,6 @@ class ExampleTool
 
 end
 ```
-
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#tooldrawingbounds](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#tooldrawingbounds)
 
 <a name='toolinvalidate'></a>
 ## SketchupSuggestions/ToolInvalidate
@@ -332,10 +286,6 @@ class ExampleTool
 end
 ```
 
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#toolinvalidate](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#toolinvalidate)
-
 <a name='tooluserinput'></a>
 ## SketchupSuggestions/ToolUserInput
 
@@ -362,10 +312,6 @@ class ExampleTool
 
 end
 ```
-
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#tooluserinput](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#tooluserinput)
 
 <a name='toolbartimer'></a>
 ## SketchupSuggestions/ToolbarTimer
@@ -396,7 +342,3 @@ toolbar = UI::Toolbar.new('Example')
 # ...
 toolbar.restore
 ```
-
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#toolbartimer](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#toolbartimer)
