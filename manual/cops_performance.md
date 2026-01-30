@@ -18,10 +18,6 @@ loaded the lag will be minutes.
 
 It also affects `Net::HTTP` if making HTTPS connections.
 
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_performance.md#openssl](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_performance.md#openssl)
-
 <a name='operationdisableui'></a>
 ## SketchupPerformance/OperationDisableUI
 
@@ -39,10 +35,6 @@ model.start_operation('Operation Name', true)
 # <model changes>
 model.commit_operation
 ```
-
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_performance.md#operationdisableui](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_performance.md#operationdisableui)
 
 <a name='selectionbulkchanges'></a>
 ## SketchupPerformance/SelectionBulkChanges
@@ -82,10 +74,6 @@ faces = model.active_entities.grep(Sketchup::Face)
 model.selection.add(faces)
 ```
 
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_performance.md#selectionbulkchanges](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_performance.md#selectionbulkchanges)
-
 <a name='typecheck'></a>
 ## SketchupPerformance/TypeCheck
 
@@ -120,10 +108,6 @@ entity.class == Sketchup::Face
 entity.is_a?(Sketchup::Face)
 ```
 
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_performance.md#typecheck](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_performance.md#typecheck)
-
 <a name='typename'></a>
 ## SketchupPerformance/Typename
 
@@ -135,7 +119,3 @@ Enabled | No
 
 `entity.typename == 'Face'` is slow because it performs a string
 comparison. `is_a?` is much faster because it's a simple type check.
-
-### References
-
-* [https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_performance.md#typename](https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_performance.md#typename)

@@ -24,5 +24,8 @@ Gem::Specification.new do |spec|
       'Gemfile'
   ]
 
-  spec.add_dependency 'rubocop', '>= 1.72', '< 2.0'
+  spec.metadata['default_lint_roller_plugin'] = 'RuboCop::SketchUp::Plugin'
+
+  spec.add_dependency('lint_roller')
+  spec.add_dependency('rubocop', '>= 1.72', '< 2.0')
 end

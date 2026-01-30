@@ -11,7 +11,8 @@ You need to tell RuboCop to load the `rubocop-sketchup` extension. There are a f
 Put this into your `.rubocop.yml` in your project root:
 
 ```yaml
-require: rubocop-sketchup
+plugins:
+  - rubocop-sketchup
 ```
 
 Now you can run `rubocop` and it will automatically load the RuboCop SketchUp cops together with the standard cops.
@@ -21,7 +22,7 @@ Now you can run `rubocop` and it will automatically load the RuboCop SketchUp co
 You can also load it via the command line:
 
 ```sh
-rubocop -r rubocop-sketchup
+rubocop --plugin rubocop-sketchup
 ```
 
 That will run RuboCop with all of it's own cops along with the SketchUp cops.
@@ -29,7 +30,7 @@ That will run RuboCop with all of it's own cops along with the SketchUp cops.
 You can tell it to run specific departments:
 
 ```sh
-rubocop -r rubocop-sketchup --only SketchupRequirements,SketchupDeprecations
+rubocop --plugin rubocop-sketchup --only SketchupRequirements,SketchupDeprecations
 ```
 
 ## Running only cops for Extension Warehouse Technical requirements
@@ -37,7 +38,8 @@ rubocop -r rubocop-sketchup --only SketchupRequirements,SketchupDeprecations
 If you want to focus on only the technical requirements for having your extension hosted on [Extension Warehouse](http://extensions.sketchup.com/) then you can limit the cops to only the `SketchupRequirements` department. This is the most important department which you should not ignore.
 
 ```yaml
-require: rubocop-sketchup
+plugins:
+  - rubocop-sketchup
 
 AllCops:
   DisabledByDefault: true
@@ -51,7 +53,8 @@ SketchupRequirements:
 In addition to the requirements for the Extension Warehouse we have additional cops that looks for common patterns which have room for improvements. To run all of them, without all the RuboCop default cops use this configuration:
 
 ```yaml
-require: rubocop-sketchup
+plugins:
+  - rubocop-sketchup
 
 AllCops:
   DisabledByDefault: true

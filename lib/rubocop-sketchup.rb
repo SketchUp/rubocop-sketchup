@@ -3,10 +3,10 @@
 require 'rubocop'
 require 'rubocop/sketchup'
 require 'rubocop/sketchup/version'
-require 'rubocop/sketchup/inject'
+require 'rubocop/sketchup/config'
+require 'rubocop/sketchup/plugin'
 
 require 'rubocop/sketchup/formatter/extension_review'
-require 'rubocop/sketchup/config'
 require 'rubocop/sketchup/cop'
 require 'rubocop/sketchup/dc_globals'
 require 'rubocop/sketchup/dc_methods'
@@ -19,8 +19,6 @@ require 'rubocop/sketchup/range_help'
 require 'rubocop/sketchup/sketchup_target_range'
 require 'rubocop/sketchup/sketchup_version'
 require 'rubocop/sketchup/tool_checker'
-
-RuboCop::SketchUp::Inject.defaults!
 
 # Monkey patching the built in formatter list to add a short alias for custom
 # formatters. Naughty! Naughty!
