@@ -10,8 +10,8 @@ module RuboCop
             name: 'rubocop-sketchup',
             version: VERSION,
             homepage: 'https://github.com/SketchUp/rubocop-sketchup/',
-            description: 'Rubocop cops for SketchUp - test against our '\
-                         'Extension Warehouse technical requirements and '\
+            description: 'Rubocop cops for SketchUp - test against our ' \
+                         'Extension Warehouse technical requirements and ' \
                          'other pitfalls.'
           )
       end
