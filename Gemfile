@@ -15,7 +15,6 @@ end
 
 group :development do
   gem 'bump', '~> 0.5', require: false
-  gem 'bundler', '>= 1.13', '< 3.0', require: false
   gem 'solargraph', '~> 0.34', require: false
   gem 'yard', '~> 0.9', require: false
 end
