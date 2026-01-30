@@ -20,7 +20,7 @@ describe RuboCop::SketchUp::SketchUpTargetRange do
         def on_send(node)
           return unless valid_for_target_sketchup_version?
 
-          add_offense(node, location: :expression, message: 'I flag everything')
+          add_offense(node.loc.expression, message: 'I flag everything')
         end
       end
       stub_const('RuboCop::SketchupBugs::FakeCop', cop_class)
@@ -71,7 +71,7 @@ describe RuboCop::SketchUp::SketchUpTargetRange do
         def on_send(node)
           return unless valid_for_target_sketchup_version?
 
-          add_offense(node, location: :expression, message: 'I flag everything')
+          add_offense(node.loc.expression, message: 'I flag everything')
         end
       end
       stub_const('RuboCop::SketchupBugs::FakeCop', cop_class)
@@ -123,7 +123,7 @@ describe RuboCop::SketchUp::SketchUpTargetRange do
         def on_send(node)
           return unless valid_for_target_sketchup_version?
 
-          add_offense(node, location: :expression, message: 'I flag everything')
+          add_offense(node.loc.expression, message: 'I flag everything')
         end
       end
       stub_const('RuboCop::SketchupBugs::FakeCop', cop_class)

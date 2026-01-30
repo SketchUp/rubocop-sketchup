@@ -25,7 +25,7 @@ module RuboCop
           global_var, = *node
           return unless dc_global_var?(global_var)
 
-          add_offense(node, location: :name, severity: :warning)
+          add_offense(node.loc.name, severity: :warning)
         end
 
       end

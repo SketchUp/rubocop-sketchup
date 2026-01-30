@@ -23,8 +23,10 @@ describe RuboCop::Cop::SketchupRequirements::SketchupExtension, :config do
     end
 
     it 'registers an offense for missing SketchupExtension in root file' do
-      inspect_source('foo(123)', './src/hello.rb')
-      expect(cop.offenses.size).to eq(1)
+      expect_offense(<<~RUBY, './src/hello.rb')
+        foo(123)
+        ^{} SketchupExtension.new not found.
+      RUBY
     end
 
     it 'registers an offense for missing name argument in SketchupExtension.new' do
@@ -127,13 +129,13 @@ describe RuboCop::Cop::SketchupRequirements::SketchupExtension, :config do
     end
 
     it 'does not throw an error when inspecting source' do
-      inspect_source(<<~RUBY, './src/hello.rb')
+      expect_offense(<<~RUBY, './src/hello.rb')
         module Example
+        ^{} SketchupExtension.new not found.
           msg = "Hello World"
           msg += "Foo Bar"
         end
       RUBY
-      expect(cop.offenses.size).to eq(1)
     end
 
   end # context
@@ -163,8 +165,10 @@ describe RuboCop::Cop::SketchupRequirements::SketchupExtension, :config do
     end
 
     it 'registers an offense for missing SketchupExtension in root file' do
-      inspect_source('foo(123)', './source/hello.rb')
-      expect(cop.offenses.size).to eq(1)
+      expect_offense(<<~RUBY, './source/hello.rb')
+        foo(123)
+        ^{} SketchupExtension.new not found.
+      RUBY
     end
 
     it 'does not register an offense for missing SketchupExtension in support file' do

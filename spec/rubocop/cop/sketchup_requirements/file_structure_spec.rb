@@ -2,23 +2,21 @@
 
 require 'spec_helper'
 
-describe RuboCop::Cop::SketchupRequirements::FileStructure do
+describe RuboCop::Cop::SketchupRequirements::FileStructure, :config do
 
-  subject(:cop) {
+  let(:config) do
+    RuboCop::Config.new({}, '.rubocop.yml')
+  end
+
+  before do
     described_class.reset
-    described_class.new(config)
-  }
+  end
 
   context 'Valid extension' do
 
-    let(:config) do
-      RuboCop::Config.new({}, '.rubocop.yml')
-    end
-
     it 'does not register an offense for valid extension structure' do
       Dir.chdir('examples/extensions/valid') do
-        inspect_source('foo(123)', 'examples/extensions/valid/src/hello.rb')
-        expect(cop.offenses).to be_empty
+        expect_no_offenses('foo(123)', 'examples/extensions/valid/src/hello.rb')
       end
     end
 
@@ -26,14 +24,9 @@ describe RuboCop::Cop::SketchupRequirements::FileStructure do
 
   context 'Valid extension with mac system folder' do
 
-    let(:config) do
-      RuboCop::Config.new({}, '.rubocop.yml')
-    end
-
     it 'does not register an offense for valid extension structure with __MACOSX folder' do
       Dir.chdir('examples/extensions/macos_folder') do
-        inspect_source('foo(123)', 'examples/extensions/macos_folder/src/hello.rb')
-        expect(cop.offenses).to be_empty
+        expect_no_offenses('foo(123)', 'examples/extensions/macos_folder/src/hello.rb')
       end
     end
 
@@ -41,21 +34,21 @@ describe RuboCop::Cop::SketchupRequirements::FileStructure do
 
   context 'Invalid extension' do
 
-    let(:config) do
-      RuboCop::Config.new({}, '.rubocop.yml')
-    end
-
     it 'registers an offense for invalid extension structure' do
       Dir.chdir('examples/extensions/invalid') do
-        inspect_source('foo(123)', 'examples/extensions/invalid/src/hello.rb')
-        expect(cop.offenses.size).to eq(1)
+        expect_offense(<<~RUBY, 'examples/extensions/invalid/src/hello.rb')
+          foo(123)
+          ^{} Extensions must have a support directory matching the name of the root Ruby file. Expected hello, found hello_world
+        RUBY
       end
     end
 
     it 'registers an offense for case mis-match' do
       Dir.chdir('examples/extensions/invalid_case_mismatch') do
-        inspect_source('foo(123)', 'examples/extensions/valid/src/hello.rb')
-        expect(cop.offenses.size).to eq(1)
+        expect_offense(<<~RUBY, 'examples/extensions/valid/src/hello.rb')
+          foo(123)
+          ^{} Extensions must have a support directory matching the name of the root Ruby file. Expected hello, found Hello
+        RUBY
       end
     end
 

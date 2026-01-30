@@ -29,7 +29,7 @@ module RuboCop
           namespace = Namespace.new(node.parent_module_name)
           return unless namespace.top_level?
 
-          add_offense(node, location: :name)
+          add_offense(node.loc.name)
         end
 
       end

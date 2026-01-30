@@ -37,7 +37,7 @@ module RuboCop
           return unless gem_install?(node)
 
           range = range_with_receiver(node)
-          add_offense(node, location: range)
+          add_offense(range)
         end
       end
     end

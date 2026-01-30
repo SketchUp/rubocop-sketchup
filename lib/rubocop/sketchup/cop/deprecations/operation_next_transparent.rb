@@ -22,7 +22,7 @@ module RuboCop
 
           argument = args[2]
           next_transparent = (argument.type == :true)
-          add_offense(argument, location: :expression) if next_transparent
+          add_offense(argument.loc.expression) if next_transparent
         end
       end
     end

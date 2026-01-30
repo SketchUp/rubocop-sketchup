@@ -33,7 +33,7 @@ module RuboCop
           return if filename.nil?
           return unless OPEN_SSL_USAGE.include?(filename.downcase)
 
-          add_offense(node, location: :expression)
+          add_offense(node.loc.expression)
         end
       end
     end

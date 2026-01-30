@@ -24,7 +24,7 @@ module RuboCop
       #     end
       #
       #   end
-      class ToolDrawingBounds < Cop
+      class ToolDrawingBounds < SketchUp::Cop
 
         include SketchUp::ToolChecker
 

@@ -16,7 +16,7 @@ module RuboCop
         def on_send(node)
           return unless show_ruby_panel?(node)
 
-          add_offense(node, location: :expression)
+          add_offense(node.loc.expression)
         end
 
       end

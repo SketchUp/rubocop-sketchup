@@ -63,13 +63,13 @@ module RuboCop
           return unless top_level_include?(node)
         end
 
-        add_offense(node, location: :selector, severity: :error)
+        add_offense(node.loc.selector, severity: :error)
       end
 
       def check_namespace(node)
         return unless in_namespace?(node)
 
-        add_offense(node, location: :name, severity: :error)
+        add_offense(node.loc.name, severity: :error)
       end
 
       def top_level?(node)

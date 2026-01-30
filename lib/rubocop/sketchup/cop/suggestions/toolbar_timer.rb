@@ -20,7 +20,7 @@ module RuboCop
       #   toolbar = UI::Toolbar.new('Example')
       #   # ...
       #   toolbar.restore
-      class ToolbarTimer < Cop
+      class ToolbarTimer < SketchUp::Cop
 
         include RangeHelp
 

@@ -26,7 +26,7 @@ module RuboCop
       #     end
       #
       #   end
-      class ToolInvalidate < Cop
+      class ToolInvalidate < SketchUp::Cop
 
         include SketchUp::ToolChecker
 

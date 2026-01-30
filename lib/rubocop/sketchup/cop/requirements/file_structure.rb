@@ -25,11 +25,8 @@ module RuboCop
           __MACOSX
         ].freeze
 
-        def investigate(processed_source)
+        def on_new_investigation
           return if already_run?
-
-          # Using range similar to RuboCop::Cop::Naming::Filename (file_name.rb)
-          range = source_range(processed_source.buffer, 1, 0)
 
           # Find all root Ruby files in the source directory.
           pattern = "#{source_path}/*.rb"
@@ -39,9 +36,7 @@ module RuboCop
           if root_ruby_files.size != 1
             msg = 'Extensions must have exactly one root Ruby (.rb) file. ' \
                   'Found: %d'
-            add_offense(nil,
-                        location: range,
-                        message: format(msg, root_ruby_files.size))
+            add_global_offense(format(msg, root_ruby_files.size))
             return
           end
 
@@ -56,9 +51,7 @@ module RuboCop
           # Ensure there is only one sub-directory.
           if sub_folders.size != 1
             msg = 'Extensions must have exactly one support directory. Found %d'
-            add_offense(nil,
-                        location: range,
-                        message: format(msg, sub_folders.size))
+            add_global_offense(format(msg, sub_folders.size))
             return
           end
 
@@ -68,9 +61,7 @@ module RuboCop
             msg = 'Extensions must have a support directory matching the ' \
                   'name of the root Ruby file. Expected %s, found %s'
             msg = format(msg, extension_basename, support_directory.basename)
-            add_offense(nil,
-                        location: range,
-                        message: msg)
+            add_global_offense(msg)
           end
         end
 

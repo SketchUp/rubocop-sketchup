@@ -18,14 +18,14 @@ module RuboCop
           return unless method_name == :start_operation
 
           if args.size < 2
-            add_offense(node, location: :selector)
+            add_offense(node.loc.selector)
             return
           end
           argument = args[1]
           disable_ui = argument.truthy_literal?
           return if disable_ui
 
-          add_offense(argument, location: :expression)
+          add_offense(argument.loc.expression)
         end
       end
     end

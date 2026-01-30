@@ -44,7 +44,7 @@ module RuboCop
         def on_send(node)
           return unless string_class_compare?(node)
 
-          add_offense(node, location: comparison_range(node))
+          add_offense(comparison_range(node))
         end
 
         private
