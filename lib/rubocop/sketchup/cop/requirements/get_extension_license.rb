@@ -46,7 +46,7 @@ module RuboCop
             validate_extension_id(argument)
           else
             location = argument.loc.expression
-            add_offense(node, location: location, message: MSG_WRONG_TYPE)
+            add_offense(location, message: MSG_WRONG_TYPE)
           end
         end
 
@@ -75,14 +75,14 @@ module RuboCop
             end_pos = node.loc.end.begin_pos
             begin_pos = node.loc.begin.end_pos + extension_id.rstrip.size
             range = range_between(begin_pos, end_pos)
-            add_offense(node, location: range, message: MSG_TRAILING_SPACE)
+            add_offense(range, message: MSG_TRAILING_SPACE)
             return false
           end
 
           # Invalid format.
           unless EXTENSION_ID_PATTERN.match?(extension_id)
             range = string_contents_range(node)
-            add_offense(node, location: range, message: MSG_INVALID)
+            add_offense(range, message: MSG_INVALID)
             return false
           end
 

@@ -130,7 +130,7 @@ module RuboCop
             next unless transparent.nil? || transparent.falsey_literal?
 
             location = operation_location(operation)
-            add_offense(operation, location: location)
+            add_offense(location)
           }
         end
 
@@ -147,7 +147,7 @@ module RuboCop
           if transparent_argument
             range(transparent_argument.loc.expression)
           else
-            :selector
+            node.loc.selector
           end
         end
 

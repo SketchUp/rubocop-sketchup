@@ -27,7 +27,7 @@ describe RuboCop::SketchUp::Cop do
 
     cop_class = Class.new(described_class) do
       def on_send(node)
-        add_offense(node, location: :expression, message: 'I flag everything')
+        add_offense(node.loc.expression, message: 'I flag everything')
       end
     end
     stub_const('RuboCop::SketchupDeprecations::FakeCop', cop_class)

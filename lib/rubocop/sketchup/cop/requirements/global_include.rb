@@ -23,7 +23,7 @@ module RuboCop
         def on_send(node)
           return unless global_include?(node)
 
-          add_offense(node, location: :selector)
+          add_offense(node.loc.selector)
         end
 
         private

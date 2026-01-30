@@ -3,26 +3,6 @@
 module RuboCop
   module SketchUp
 
-    WorkaroundCop = RuboCop::Cop::Cop.dup
-
-    # Clone of the the normal RuboCop::Cop::Cop class so we can rewrite
-    # the inherited method without breaking functionality
-    class WorkaroundCop
-      # Remove the Cop.inherited method to be a noop. Our SketchUp::Cop
-      # class will invoke the inherited hook instead
-      class << self
-        undef inherited
-        def inherited(*) end # rubocop:disable Lint/MissingSuper
-      end
-
-      # Special case `Module#<` so that the rspec support rubocop exports
-      # is compatible with our subclass
-      def self.<(other)
-        other.equal?(RuboCop::Cop::Cop) || super
-      end
-    end
-    private_constant(:WorkaroundCop)
-
     # @abstract parent class to SketchUp cops
     #
     # The criteria for whether rubocop-sketchup analyzes a certain ruby file
@@ -38,7 +18,7 @@ module RuboCop
     #         Exclude:
     #         - '_test.rb$'
     #         - '(?:^|/)test/'
-    class Cop < WorkaroundCop
+    class Cop < RuboCop::Cop::Base
 
       include SketchUp::Config
 
@@ -49,11 +29,6 @@ module RuboCop
         SketchupBugs: :warning,
         SketchupSuggestions: :convention,
       }.freeze
-
-      # Invoke the original inherited hook so our cops are recognized
-      def self.inherited(subclass) # rubocop:disable Lint/MissingSuper
-        RuboCop::Cop::Cop.inherited(subclass)
-      end
 
       def relevant_file?(file)
         relevant_rubocop_sketchup_file?(file) && super

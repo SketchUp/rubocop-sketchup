@@ -16,7 +16,7 @@ module RuboCop
         def on_send(node)
           return unless add_separator_to_menu?(node)
 
-          add_offense(node, location: :selector)
+          add_offense(node.loc.selector)
         end
 
       end

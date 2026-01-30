@@ -87,7 +87,7 @@ module RuboCop
 
           return if allowed_var?(global_var)
 
-          add_offense(node, location: :name)
+          add_offense(node.loc.name)
         end
       end
     end

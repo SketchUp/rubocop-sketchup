@@ -70,7 +70,7 @@ module RuboCop
           return unless selection?(node)
           return unless node.ancestors.any?(&method(:iterator?))
 
-          add_offense(node, location: range_with_receiver(node))
+          add_offense(range_with_receiver(node))
         end
 
       end

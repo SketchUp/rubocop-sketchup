@@ -89,7 +89,7 @@ module RuboCop
           @@namespace ||= top
           return if @@namespace == top
 
-          add_offense(node, location: :name)
+          add_offense(node.loc.name)
         end
 
         def reserved?(namespace)
@@ -101,8 +101,8 @@ module RuboCop
           false
         end
 
-        def message(node)
-          namespace = Namespace.new(node.defined_module_name).from_root
+        def message(range)
+          namespace = Namespace.new(range.source).from_root
           format('Use a single root namespace. ' \
                  '(Found `%<found>s`; Previously found `%<expected>s`)',
                  found: namespace, expected: @@namespace)

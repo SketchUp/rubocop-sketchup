@@ -19,7 +19,7 @@ module RuboCop
       #     end
       #
       #   end
-      class ToolUserInput < Cop
+      class ToolUserInput < SketchUp::Cop
 
         include SketchUp::ToolChecker
 

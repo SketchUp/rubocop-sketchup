@@ -25,7 +25,7 @@ module RuboCop
           return unless exit?(node)
 
           message = format(MSG, node.method_name)
-          add_offense(node, location: :selector, message: message)
+          add_offense(node.loc.selector, message: message)
         end
       end
     end

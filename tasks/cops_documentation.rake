@@ -40,7 +40,7 @@ module RuboCopSketchUp
       enabled_by_default = config.for_cop(cop).fetch('Enabled')
       content = [[
         enabled_by_default ? 'Enabled' : 'Disabled',
-        cop.new.support_autocorrect? ? 'Yes' : 'No',
+        cop.support_autocorrect? ? 'Yes' : 'No',
       ]]
       "#{to_table(header, content)}\n"
     end
@@ -339,7 +339,7 @@ module RuboCopSketchUp
     def run
       update_default_yml_reference_links
 
-      cops   = RuboCop::Cop::Cop.registry
+      cops   = RuboCop::Cop::Registry.global
       config = RuboCop::ConfigLoader.default_configuration
       # TODO: Load SketchUp config?
 

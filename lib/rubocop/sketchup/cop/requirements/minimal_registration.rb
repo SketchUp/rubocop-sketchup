@@ -43,7 +43,7 @@ module RuboCop
           }
         PATTERN
 
-        def investigate(processed_source)
+        def on_new_investigation
           if root_file?(processed_source)
             filename = processed_source.buffer.name
             @extension_basename = File.basename(filename, '.*')

@@ -19,8 +19,11 @@ describe RuboCop::Cop::SketchupRequirements::LoadPath, :config do
 
   described_class::MUTATORS.each do |var|
     it "registers an offense when modifying $LOAD_PATH with #{var.inspect}" do
-      inspect_source("$LOAD_PATH.#{var}('dummy')")
-      expect(cop.offenses.size).to eq(1)
+      arr = '^' * var.to_s.length
+      expect_offense(<<~RUBY)
+        $LOAD_PATH.#{var}('dummy')
+        ^^^^^^^^^^^#{arr}^^^^^^^^^ Do not modify the load path.
+      RUBY
     end
   end
 

@@ -41,7 +41,7 @@ module RuboCop
           return if file_loaded?(node)
           return if node.arguments.none?(&method(:magic_file_or_dir?))
 
-          add_offense(node, location: :expression)
+          add_offense(node.loc.expression)
         end
 
 
