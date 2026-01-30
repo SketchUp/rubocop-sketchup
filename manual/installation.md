@@ -23,6 +23,6 @@ gem install rubocop-sketchup
 If you use [bundler](http://bundler.io/) to manage you're project's dependencies put this in your Gemfile:
 
 ```ruby
-gem 'rubocop', '>= 0.82', '< 2.0'
-gem 'rubocop-sketchup', '~> 1.5.0'
+gem 'rubocop', '>= 1.72', '< 2.0'
+gem 'rubocop-sketchup', '~> 2.0.0'
 ```

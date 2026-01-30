@@ -36,8 +36,8 @@ source 'https://rubygems.org'
 gemspec
 
 group :development do
-  gem 'rubocop', '>= 0.82', '< 2.0'
-  gem 'rubocop-sketchup', '~> 1.5.0'
+  gem 'rubocop', '>= 1.72', '< 2.0'
+  gem 'rubocop-sketchup', '~> 2.0.0'
   gem 'sketchup-api-stubs' # Not required for rubocop-sketchup, but nice to have
   gem 'solargraph'
 end
