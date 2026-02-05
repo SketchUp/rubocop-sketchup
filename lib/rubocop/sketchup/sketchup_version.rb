@@ -67,6 +67,10 @@ module RuboCop
       #
       # The second item in the array is maintenance annotation
       VALID_VERSIONS = [
+        [2026.1, 0],
+        [2026.0, 0],
+        [2025.0, 2],
+        [2025.0, 0],
         [2024.0, 0],
         [2023.1, 0],
         [2023.0, 0],

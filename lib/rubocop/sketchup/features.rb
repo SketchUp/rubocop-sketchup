@@ -42,6 +42,168 @@ module RuboCop
       FEATURES = [
 
         {
+          version: 'SketchUp 2026.1',
+          types: {
+            method: [
+              'UI.show_extension_warehouse',
+              'UI::HtmlDialog#hide',
+            ],
+          },
+        },
+
+        {
+          version: 'LayOut 2026.0',
+          types: {
+            class: [
+              'Layout::Dictionary',
+            ],
+            method: [
+              'Layout::Dictionary#[]',
+              'Layout::Dictionary#[]=',
+              'Layout::Dictionary#delete_key',
+              'Layout::Dictionary#each',
+              'Layout::Dictionary#each_key',
+              'Layout::Dictionary#each_pair',
+              'Layout::Dictionary#empty?',
+              'Layout::Dictionary#initialize',
+              'Layout::Dictionary#keys',
+              'Layout::Dictionary#length',
+              'Layout::Dictionary#size',
+              'Layout::Dictionary#values',
+              'Layout::Document#attribute_dictionary',
+              'Layout::Document#delete_attribute',
+              'Layout::Document#get_attribute',
+              'Layout::Document#set_attribute',
+              'Layout::Entity#attribute_dictionary',
+              'Layout::Entity#delete_attribute',
+              'Layout::Entity#get_attribute',
+              'Layout::Entity#set_attribute',
+              'Layout::LinearDimension#leader_line_visible?',
+              'Layout::Page#attribute_dictionary',
+              'Layout::Page#delete_attribute',
+              'Layout::Page#get_attribute',
+              'Layout::Page#set_attribute',
+              'Layout::Style#text_strikethrough',
+              'Layout::Style#text_strikethrough=',
+            ],
+          },
+        },
+
+        {
+          version: 'SketchUp 2026.0',
+          types: {
+            method: [
+              'Sketchup::Model#active_section_planes',
+              'Sketchup::Page#active_section_planes',
+              'Sketchup::Pages#unique_name',
+              'Sketchup::Styles#remove_style',
+            ],
+          },
+        },
+
+        {
+          version: 'SketchUp 2025.0.2',
+          types: {
+            method: [
+              'Sketchup::Material#ao_enabled=',
+              'Sketchup::Material#normal_enabled=',
+            ],
+          },
+        },
+
+        {
+          version: 'SketchUp 2025.0',
+          types: {
+            class: [
+              'Sketchup::Environment',
+              'Sketchup::Environments',
+              'Sketchup::EnvironmentsObserver',
+              'Sketchup::Snap',
+            ],
+            method: [
+              'Sketchup::AttributeDictionary#empty?',
+              'Sketchup::ComponentDefinition#load_time',
+              'Sketchup::Entities#add_snap',
+              'Sketchup::Environment#description',
+              'Sketchup::Environment#description=',
+              'Sketchup::Environment#linked_sun=',
+              'Sketchup::Environment#linked_sun?',
+              'Sketchup::Environment#linked_sun_position',
+              'Sketchup::Environment#linked_sun_position=',
+              'Sketchup::Environment#name',
+              'Sketchup::Environment#name=',
+              'Sketchup::Environment#path',
+              'Sketchup::Environment#reflection_exposure',
+              'Sketchup::Environment#reflection_exposure=',
+              'Sketchup::Environment#rotation=',
+              'Sketchup::Environment#skydome_exposure',
+              'Sketchup::Environment#skydome_exposure=',
+              'Sketchup::Environment#thumbnail',
+              'Sketchup::Environment#use_as_skydome=',
+              'Sketchup::Environment#use_as_skydome?',
+              'Sketchup::Environment#use_for_reflections=',
+              'Sketchup::Environment#use_for_reflections?',
+              'Sketchup::Environment#write_hdr',
+              'Sketchup::Environments#[]',
+              'Sketchup::Environments#add',
+              'Sketchup::Environments#add_observer',
+              'Sketchup::Environments#current',
+              'Sketchup::Environments#current=',
+              'Sketchup::Environments#each',
+              'Sketchup::Environments#length',
+              'Sketchup::Environments#purge_unused',
+              'Sketchup::Environments#remove',
+              'Sketchup::Environments#remove_observer',
+              'Sketchup::Environments#size',
+              'Sketchup::EnvironmentsObserver#onEnvironmentAdd',
+              'Sketchup::EnvironmentsObserver#onEnvironmentChange',
+              'Sketchup::EnvironmentsObserver#onEnvironmentRemove',
+              'Sketchup::EnvironmentsObserver#onEnvironmentSetCurrent',
+              'Sketchup::Face#coplanar_with?',
+              'Sketchup::Material#ao_enabled?',
+              'Sketchup::Material#ao_strength',
+              'Sketchup::Material#ao_strength=',
+              'Sketchup::Material#ao_texture',
+              'Sketchup::Material#ao_texture=',
+              'Sketchup::Material#metallic_factor',
+              'Sketchup::Material#metallic_factor=',
+              'Sketchup::Material#metallic_texture',
+              'Sketchup::Material#metallic_texture=',
+              'Sketchup::Material#metalness_enabled=',
+              'Sketchup::Material#metalness_enabled?',
+              'Sketchup::Material#normal_enabled?',
+              'Sketchup::Material#normal_scale',
+              'Sketchup::Material#normal_scale=',
+              'Sketchup::Material#normal_style',
+              'Sketchup::Material#normal_style=',
+              'Sketchup::Material#normal_texture',
+              'Sketchup::Material#normal_texture=',
+              'Sketchup::Material#roughness_enabled=',
+              'Sketchup::Material#roughness_enabled?',
+              'Sketchup::Material#roughness_factor',
+              'Sketchup::Material#roughness_factor=',
+              'Sketchup::Material#roughness_texture',
+              'Sketchup::Material#roughness_texture=',
+              'Sketchup::Material#workflow',
+              'Sketchup::Model#environments',
+              'Sketchup::Page#environment',
+              'Sketchup::Page#environment=',
+              'Sketchup::Page#use_environment=',
+              'Sketchup::Page#use_environment?',
+              'Sketchup::Pages#reorder',
+              'Sketchup::Snap#direction',
+              'Sketchup::Snap#position',
+              'Sketchup::Snap#set',
+              'Sketchup::Snap#up',
+              'Sketchup::Style#path',
+              'Sketchup::View#device_height',
+              'Sketchup::View#device_width',
+              'Sketchup::ViewObserver#onScaleFactorChange',
+            ],
+          },
+        },
+
+        {
           version: 'SketchUp 2024.0',
           types: {
             method: [
@@ -1358,6 +1520,12 @@ module RuboCop
         add_section_plane
         aligned_text_position
         aligned_text_position=
+        ao_enabled?
+        ao_enabled=
+        ao_strength
+        ao_strength=
+        ao_texture
+        ao_texture=
         arc_curve
         arc_curve=
         attached_to
@@ -1377,6 +1545,8 @@ module RuboCop
         count_used_instances
         dash_scale
         days_remaining
+        device_height
+        device_width
         drawing_element_visible?
         each_folder
         each_layer
@@ -1420,6 +1590,10 @@ module RuboCop
         line_style
         line_style=
         line_styles
+        linked_sun?
+        linked_sun=
+        linked_sun_position
+        linked_sun_position=
         live_component?
         load_from_url
         load_on_start?
@@ -1430,6 +1604,12 @@ module RuboCop
         major_color=
         major_spacing=
         menu_text
+        metallic_factor
+        metallic_factor=
+        metallic_texture
+        metallic_texture=
+        metalness_enabled?
+        metalness_enabled=
         minor_color=
         minor_divisions=
         mipmapping?
@@ -1438,6 +1618,14 @@ module RuboCop
         navigation_buttons_enabled=
         no_scale_mask?
         no_scale_mask=
+        normal_enabled?
+        normal_enabled=
+        normal_scale
+        normal_scale=
+        normal_style
+        normal_style=
+        normal_texture
+        normal_texture=
         number_faces
         offset_vector
         offset_vector=
@@ -1445,6 +1633,8 @@ module RuboCop
         owner_type
         persistent_id
         persistent_id_path
+        reflection_exposure
+        reflection_exposure=
         refresh_thumbnail
         remove_classification
         remove_folder
@@ -1452,6 +1642,12 @@ module RuboCop
         reset_effects
         reset_layers
         reset_style
+        roughness_enabled?
+        roughness_enabled=
+        roughness_factor
+        roughness_factor=
+        roughness_texture
+        roughness_texture=
         same_direction?
         scale_2d
         screen_scale_factor
@@ -1466,7 +1662,10 @@ module RuboCop
         set_texture_projection
         set_upload_progress_callback
         set_uv
+        skydome_exposure
+        skydome_exposure=
         show_differences
+        show_extension_warehouse
         show_major=
         show_minor=
         sketch_plane
@@ -1479,6 +1678,10 @@ module RuboCop
         thumbnail_camera
         unit_vector?
         unload_schema
+        use_as_skydome?
+        use_as_skydome=
+        use_for_reflections?
+        use_for_reflections=
         upper_left
         upper_right
         vertex_at
@@ -1486,6 +1689,8 @@ module RuboCop
         visible_on_new_pages=
         winding
         window_pick
+        workflow
+        write_hdr
       ].freeze
 
       OBSERVER_METHODS = %i[
@@ -1494,6 +1699,10 @@ module RuboCop
         onAfterComponentSaveAs
         onBeforeComponentSaveAs
         onElementModified
+        onEnvironmentAdd
+        onEnvironmentChange
+        onEnvironmentRemove
+        onEnvironmentSetCurrent
         onExtensionsLoaded
         onExplode
         onLayerChanged
@@ -1505,6 +1714,7 @@ module RuboCop
         onPlaceComponent
         onPostSaveModel
         onPreSaveModel
+        onScaleFactorChange
         onTextChanged
         onUnloadExtension
       ].freeze
