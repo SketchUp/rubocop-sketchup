@@ -29,9 +29,21 @@ module RuboCop
         # rubocop:enable Layout/LineLength
 
         # Reference: http://rubocop.readthedocs.io/en/latest/node_pattern/
-        def_node_search :sketchup_extension_new, <<-PATTERN
-          (send
-            (const {nil? cbase} :SketchupExtension) :new ...)
+        def_node_matcher :sketchup_extension_assignment, <<-PATTERN
+          {
+            ({lvasgn ivasgn cvasgn gvasgn} $_
+              $(send (const {nil? cbase} :SketchupExtension) :new ...))
+
+            (casgn _ $_
+              $(send (const {nil? cbase} :SketchupExtension) :new ...))
+
+            (or_asgn
+              {
+                ({lvasgn ivasgn cvasgn gvasgn} $_)
+                (casgn _ $_)
+              }
+              $(send (const {nil? cbase} :SketchupExtension) :new ...))
+          }
         PATTERN
 
         def_node_search :sketchup_register_extension, <<-PATTERN
@@ -46,26 +58,33 @@ module RuboCop
 
           source_node = processed_source.ast
 
-          # Look for SketchupExtension.new.
-          extension_nodes = sketchup_extension_new(source_node).to_a
-
-          # Threat instances not assigned to anything as non-existing.
-          extension_nodes.select! { |node|
-            node.parent&.assignment?
-          }
+          # Look for assigned SketchupExtension.new instances.
+          assignment_nodes = source_node.each_descendant(
+              :or_asgn,
+              :lvasgn,
+              :ivasgn,
+              :cvasgn,
+              :gvasgn,
+              :casgn
+            )
+          assignments = assignment_nodes.filter_map do |node|
+            sketchup_extension_assignment(node)
+          end
 
           # There should not be multiple instances.
-          if extension_nodes.size > 1
+          if assignments.size > 1
             add_global_offense(MSG_CREATE_ONE)
             return
           end
 
           # There should be exactly one.
-          extension_node = extension_nodes.first
-          if extension_node.nil?
+          assignment = assignments.first
+          if assignment.nil?
             add_global_offense(MSG_CREATE_MISSING)
             return
           end
+
+          extension_var, extension_node = assignment
 
           # Ensure it have two arguments.
           if extension_node.arguments.size < 2
@@ -77,14 +96,6 @@ module RuboCop
             add_offense(extension_node,
                         message: message)
             return
-          end
-
-          # Find the name of the value SketchupExtension.new was assigned to.
-          assignment_node = extension_node.parent
-          if assignment_node.casgn_type?
-            extension_var = assignment_node.to_a[1]
-          else
-            extension_var = assignment_node.to_a[0]
           end
 
           # Look for Sketchup.register and make sure it register the extension
