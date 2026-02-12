@@ -68,10 +68,30 @@ describe RuboCop::Cop::SketchupRequirements::SketchupExtension, :config do
       RUBY
     end
 
+    it 'does not register an offense for namespaced SketchupExtension in root file assigned to local variable using ||= operator' do
+      expect_no_offenses(<<~RUBY, './src/hello.rb')
+        module Example
+          extension ||= SketchupExtension.new("Extension Name", filename)
+          extension.description = "Hello World"
+          Sketchup.register_extension(extension, true)
+        end
+      RUBY
+    end
+
     it 'does not register an offense for namespaced SketchupExtension in root file assigned to instance variable' do
       expect_no_offenses(<<~RUBY, './src/hello.rb')
         module Example
           @extension = SketchupExtension.new("Extension Name", filename)
+          @extension.description = "Hello World"
+          Sketchup.register_extension(@extension, true)
+        end
+      RUBY
+    end
+
+    it 'does not register an offense for namespaced SketchupExtension in root file assigned to instance variable using ||= operator' do
+      expect_no_offenses(<<~RUBY, './src/hello.rb')
+        module Example
+          @extension ||= SketchupExtension.new("Extension Name", filename)
           @extension.description = "Hello World"
           Sketchup.register_extension(@extension, true)
         end
@@ -88,6 +108,16 @@ describe RuboCop::Cop::SketchupRequirements::SketchupExtension, :config do
       RUBY
     end
 
+    it 'does not register an offense for namespaced SketchupExtension in root file assigned to class variable using ||= operator' do
+      expect_no_offenses(<<~RUBY, './src/hello.rb')
+        module Example
+          @@extension ||= SketchupExtension.new("Extension Name", filename)
+          @@extension.description = "Hello World"
+          Sketchup.register_extension(@@extension, true)
+        end
+      RUBY
+    end
+
     it 'does not register an offense for namespaced SketchupExtension in root file assigned to global variable' do
       expect_no_offenses(<<~RUBY, './src/hello.rb')
         module Example
@@ -98,10 +128,30 @@ describe RuboCop::Cop::SketchupRequirements::SketchupExtension, :config do
       RUBY
     end
 
+    it 'does not register an offense for namespaced SketchupExtension in root file assigned to global variable using ||= operator' do
+      expect_no_offenses(<<~RUBY, './src/hello.rb')
+        module Example
+          $extension ||= SketchupExtension.new("Extension Name", filename)
+          $extension.description = "Hello World"
+          Sketchup.register_extension($extension, true)
+        end
+      RUBY
+    end
+
     it 'does not register an offense for namespaced SketchupExtension in root file assigned to constant' do
       expect_no_offenses(<<~RUBY, './src/hello.rb')
         module Example
           EXTENSION = SketchupExtension.new("Extension Name", filename)
+          EXTENSION.description = "Hello World"
+          Sketchup.register_extension(EXTENSION, true)
+        end
+      RUBY
+    end
+
+    it 'does not register an offense for namespaced SketchupExtension in root file assigned to constant using ||= operator' do
+      expect_no_offenses(<<~RUBY, './src/hello.rb')
+        module Example
+          EXTENSION ||= SketchupExtension.new("Extension Name", filename)
           EXTENSION.description = "Hello World"
           Sketchup.register_extension(EXTENSION, true)
         end
