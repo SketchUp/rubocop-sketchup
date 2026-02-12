@@ -4,7 +4,6 @@
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
-
     {
       "name": "Debug Doc Generation",
       "type": "Ruby",
@@ -16,48 +15,31 @@
       ]
     },
     {
-      "name": "Listen for rdebug-ide",
-      "type": "Ruby",
-      "request": "attach",
-      "cwd": "${workspaceRoot}",
-      "remoteHost": "127.0.0.1",
-      "remotePort": "1234",
-      "remoteWorkspaceRoot": "${workspaceRoot}"
+      "type": "rdbg",
+      "name": "Debug RSpec - All Tests",
+      "request": "launch",
+      "command": "bundle exec rspec",
+      "script": "",
+      "args": [],
+      "askParameters": false
     },
     {
-      "name": "RSpec - all",
-      "type": "Ruby",
+      "type": "rdbg",
+      "name": "Debug RSpec - Current File",
       "request": "launch",
-      "cwd": "${workspaceRoot}",
-      "program": "${workspaceRoot}/bin/rspec",
-      "args": [
-        "-I",
-        "${workspaceRoot}"
-      ]
+      "command": "bundle exec rspec",
+      "script": "${file}",
+      "args": [],
+      "askParameters": false
     },
     {
-      "name": "RSpec - active spec file only",
-      "type": "Ruby",
+      "type": "rdbg",
+      "name": "Debug RSpec - Current Test",
       "request": "launch",
-      "cwd": "${workspaceRoot}",
-      "program": "${workspaceRoot}/bin/rspec",
-      "args": [
-        "-I",
-        "${workspaceRoot}",
-        "${file}"
-      ]
-    },
-    {
-      "name": "RSpec - active test only",
-      "type": "Ruby",
-      "request": "launch",
-      "cwd": "${workspaceRoot}",
-      "program": "${workspaceRoot}/bin/rspec",
-      "args": [
-        "-I",
-        "${workspaceRoot}",
-        "${file}:${lineNumber}"
-      ]
+      "command": "bundle exec rspec",
+      "script": "${file}:${lineNumber}",
+      "args": [],
+      "askParameters": false
     }
   ]
 }
