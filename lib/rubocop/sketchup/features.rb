@@ -40,6 +40,189 @@ module RuboCop
     module Features
 
       FEATURES = [
+        {
+          version: 'SketchUp 2027.0',
+          types: {
+            class: [
+              'Sketchup::CRSLocation',
+              'Sketchup::CRSMapUnit',
+              'Sketchup::HatchPattern',
+              'Sketchup::HatchPatternData',
+              'Sketchup::HatchPatterns',
+              'Sketchup::Procedure',
+              'UI::InputBox',
+            ],
+            method: [
+              'Sketchup.register_procedure',
+              'Sketchup::AppObserver#onCloseModel',
+              'Sketchup::CRSLocation#==',
+              'Sketchup::CRSLocation#calibration_file_name',
+              'Sketchup::CRSLocation#calibration_file_name=',
+              'Sketchup::CRSLocation#description',
+              'Sketchup::CRSLocation#description=',
+              'Sketchup::CRSLocation#eastings',
+              'Sketchup::CRSLocation#eastings=',
+              'Sketchup::CRSLocation#geodetic_datum',
+              'Sketchup::CRSLocation#geodetic_datum=',
+              'Sketchup::CRSLocation#height',
+              'Sketchup::CRSLocation#height=',
+              'Sketchup::CRSLocation#initialize',
+              'Sketchup::CRSLocation#map_projection',
+              'Sketchup::CRSLocation#map_projection=',
+              'Sketchup::CRSLocation#map_unit',
+              'Sketchup::CRSLocation#map_unit=',
+              'Sketchup::CRSLocation#map_zone',
+              'Sketchup::CRSLocation#map_zone=',
+              'Sketchup::CRSLocation#name',
+              'Sketchup::CRSLocation#name=',
+              'Sketchup::CRSLocation#northings',
+              'Sketchup::CRSLocation#northings=',
+              'Sketchup::CRSLocation#scale',
+              'Sketchup::CRSLocation#scale=',
+              'Sketchup::CRSLocation#tgl_id',
+              'Sketchup::CRSLocation#tgl_id=',
+              'Sketchup::CRSLocation#to_s',
+              'Sketchup::CRSLocation#vertical_datum',
+              'Sketchup::CRSLocation#vertical_datum=',
+              'Sketchup::CRSLocation#x_axis',
+              'Sketchup::CRSLocation#x_axis=',
+              'Sketchup::CRSMapUnit#==',
+              'Sketchup::CRSMapUnit#conversion',
+              'Sketchup::CRSMapUnit#initialize',
+              'Sketchup::CRSMapUnit#inspect',
+              'Sketchup::CRSMapUnit#name',
+              'Sketchup::CRSMapUnit#to_s',
+              'Sketchup::ComponentDefinition#attach_procedure',
+              'Sketchup::ComponentDefinition#control_entities',
+              'Sketchup::ComponentDefinition#get_procedure_parameters',
+              'Sketchup::ComponentDefinition#make_non_procedural',
+              'Sketchup::ComponentDefinition#procedural?',
+              'Sketchup::ComponentDefinition#run_procedures',
+              'Sketchup::ComponentDefinition#set_procedure_parameters',
+              'Sketchup::ComponentInstance#hatch_pattern',
+              'Sketchup::ComponentInstance#hatch_pattern=',
+              'Sketchup::Entities#add_copy',
+              'Sketchup::Entities#bounds',
+              'Sketchup::Group#hatch_pattern',
+              'Sketchup::Group#hatch_pattern=',
+              'Sketchup::HatchPattern#clear_fill_pattern',
+              'Sketchup::HatchPattern#clear_fill_texture',
+              'Sketchup::HatchPattern#fill_color',
+              'Sketchup::HatchPattern#fill_color=',
+              'Sketchup::HatchPattern#fill_pattern_file_name',
+              'Sketchup::HatchPattern#fill_texture_file_name',
+              'Sketchup::HatchPattern#fill_texture_image',
+              'Sketchup::HatchPattern#name',
+              'Sketchup::HatchPattern#name=',
+              'Sketchup::HatchPattern#rotation_angle',
+              'Sketchup::HatchPattern#rotation_angle=',
+              'Sketchup::HatchPattern#save_fill_pattern_to_file',
+              'Sketchup::HatchPattern#set_fill_pattern_from_file',
+              'Sketchup::HatchPattern#set_fill_texture_image_and_file_name',
+              'Sketchup::HatchPattern#set_uv_scale',
+              'Sketchup::HatchPattern#thumbnail_image',
+              'Sketchup::HatchPattern#uv_scale',
+              'Sketchup::HatchPattern#write',
+              'Sketchup::HatchPatternData#==',
+              'Sketchup::HatchPatternData#clear_fill_pattern',
+              'Sketchup::HatchPatternData#clear_fill_texture',
+              'Sketchup::HatchPatternData#dup',
+              'Sketchup::HatchPatternData#fill_color',
+              'Sketchup::HatchPatternData#fill_color=',
+              'Sketchup::HatchPatternData#fill_pattern_file_name',
+              'Sketchup::HatchPatternData#fill_texture_file_name',
+              'Sketchup::HatchPatternData#fill_texture_image',
+              'Sketchup::HatchPatternData#initialize',
+              'Sketchup::HatchPatternData#rotation_angle',
+              'Sketchup::HatchPatternData#rotation_angle=',
+              'Sketchup::HatchPatternData#save_fill_pattern_to_file',
+              'Sketchup::HatchPatternData#set_fill_pattern_from_file',
+              'Sketchup::HatchPatternData#set_fill_texture_image_and_file_name',
+              'Sketchup::HatchPatternData#set_uv_scale',
+              'Sketchup::HatchPatternData#uv_scale',
+              'Sketchup::HatchPatterns#[]',
+              'Sketchup::HatchPatterns#add',
+              'Sketchup::HatchPatterns#each',
+              'Sketchup::HatchPatterns#length',
+              'Sketchup::HatchPatterns#purge_unused',
+              'Sketchup::HatchPatterns#remove',
+              'Sketchup::HatchPatterns#selected_hatch_pattern',
+              'Sketchup::HatchPatterns#selected_hatch_pattern=',
+              'Sketchup::HatchPatterns#size',
+              'Sketchup::Material#hatch_pattern',
+              'Sketchup::Material#hatch_pattern=',
+              'Sketchup::Model#crs_location',
+              'Sketchup::Model#crs_location=',
+              'Sketchup::Model#hatch_patterns',
+              'Sketchup::Procedure#declare_params_and_ui',
+              'Sketchup::Procedure#draw',
+              'Sketchup::Procedure#get_extents',
+              'Sketchup::Procedure#get_widget_states',
+              'Sketchup::Procedure#initialize',
+              'Sketchup::Procedure#on_button_clicked',
+              'Sketchup::Procedure#on_open_close',
+              'Sketchup::Procedure#run',
+              'Sketchup::Procedure#validate',
+              'Sketchup::RenderingOptions#hatch_pattern',
+              'Sketchup::RenderingOptions#hatch_pattern=',
+              'Sketchup::SectionPlane#hatch_pattern',
+              'Sketchup::SectionPlane#hatch_pattern=',
+              'UI::InputBox#add_checkbox',
+              'UI::InputBox#add_description',
+              'UI::InputBox#add_dropdown',
+              'UI::InputBox#add_image',
+              'UI::InputBox#add_listbox',
+              'UI::InputBox#add_separator',
+              'UI::InputBox#add_slider',
+              'UI::InputBox#add_textbox',
+              'UI::InputBox#initialize',
+              'UI::InputBox#prompt',
+            ],
+            module: [
+              'UI::InputBox::ValueType',
+            ],
+          },
+        },
+
+        {
+          version: 'LayOut 2027.0',
+          types: {
+            method: [
+              'Layout::Table#size_to_fit',
+            ],
+          },
+        },
+
+        {
+          version: 'LayOut 2026.2',
+          types: {
+            method: [
+              'Layout::Group#clip_mask',
+              'Layout::Group#clip_mask=',
+            ],
+          },
+        },
+
+        {
+          version: 'SketchUp 2026.2',
+          types: {
+            method: [
+              'Sketchup.mdi?',
+              'Sketchup::ComponentDefinition#manifold?',
+              'Sketchup::InstancePath#clear',
+              'Sketchup::InstancePath#clone',
+              'Sketchup::InstancePath#copy',
+              'Sketchup::InstancePath#leaf=',
+              'Sketchup::InstancePath#pop',
+              'Sketchup::InstancePath#push',
+              'Sketchup::Material#duplicate',
+              'Sketchup::Style#duplicate',
+              'Sketchup::Text#font',
+              'Sketchup::Text#font=',
+              'SketchupExtension#load_error',
+            ],
+          },
+        },
 
         {
           version: 'SketchUp 2026.1',
@@ -1511,13 +1694,22 @@ module RuboCop
         active_section_plane
         active_section_plane=
         active_tool
+        add_checkbox
         add_classification
+        add_copy
+        add_description
         add_dimension_linear
         add_dimension_radial
+        add_dropdown
         add_folder
+        add_image
         add_layer
+        add_listbox
         add_matchphoto_page
         add_section_plane
+        add_separator
+        add_slider
+        add_textbox
         aligned_text_position
         aligned_text_position=
         ao_enabled?
@@ -1528,28 +1720,40 @@ module RuboCop
         ao_texture=
         arc_curve
         arc_curve=
+        attach_procedure
         attached_to
         attached_to=
         boundingbox_pick
+        calibration_file_name
+        calibration_file_name=
         camera_modified?
         center_2d
         classifications
+        clear_fill_pattern
+        clear_fill_texture
         clear_texture_position
         clip_to_margins?
         clip_to_margins=
         colorize_deltas
         colorize_type
         colorize_type=
+        control_entities
         count_folders
         count_layers
         count_used_instances
+        crs_location
+        crs_location=
         dash_scale
         days_remaining
+        declare_params_and_ui
         device_height
         device_width
         drawing_element_visible?
+        dup
         each_folder
         each_layer
+        eastings
+        eastings=
         edit_transform
         effects_modified?
         end_attached_to
@@ -1557,18 +1761,29 @@ module RuboCop
         error_description
         expectsStartupModelNotifications
         extension_path
+        fill_pattern_file_name
+        fill_texture_file_name
+        fill_texture_image
         find_entity_by_id
         find_entity_by_persistent_id
         fov_is_height?
+        geodetic_datum
+        geodetic_datum=
         georeferenced?
         get_classification_value
         get_clipboard_data
         get_drawingelement_visibility
+        get_extents
         get_glued_instances
+        get_procedure_parameters
         get_texture_projection
         get_validation_proc
+        get_widget_states
         has_aligned_text?
         has_aligned_text=
+        hatch_pattern
+        hatch_pattern=
+        hatch_patterns
         icon_name
         icon_name=
         icon_tooltip
@@ -1578,6 +1793,7 @@ module RuboCop
         in_front=
         include_in_animation?
         include_in_animation=
+        initialize
         instance_path
         instance_path_from_pid_path
         is_polygon?
@@ -1603,6 +1819,13 @@ module RuboCop
         lower_right
         major_color=
         major_spacing=
+        make_non_procedural
+        map_projection
+        map_projection=
+        map_unit
+        map_unit=
+        map_zone
+        map_zone=
         menu_text
         metallic_factor
         metallic_factor=
@@ -1626,6 +1849,8 @@ module RuboCop
         normal_style=
         normal_texture
         normal_texture=
+        northings
+        northings=
         number_faces
         offset_vector
         offset_vector=
@@ -1633,6 +1858,7 @@ module RuboCop
         owner_type
         persistent_id
         persistent_id_path
+        procedural?
         reflection_exposure
         reflection_exposure=
         refresh_thumbnail
@@ -1642,26 +1868,37 @@ module RuboCop
         reset_effects
         reset_layers
         reset_style
+        rotation_angle
+        rotation_angle=
         roughness_enabled?
         roughness_enabled=
         roughness_factor
         roughness_factor=
         roughness_texture
         roughness_texture=
+        run_procedures
         same_direction?
+        save_fill_pattern_to_file
         scale_2d
         screen_scale_factor
+        selected_hatch_pattern
+        selected_hatch_pattern=
         sequence_type
         set_can_close
         set_classification_value
         set_clipboard_data
         set_download_progress_callback
         set_drawingelement_visibility
+        set_fill_pattern_from_file
+        set_fill_texture_image_and_file_name
         set_full_security
         set_on_closed
+        set_procedure_parameters
         set_texture_projection
         set_upload_progress_callback
         set_uv
+        set_uv_scale
+        size_to_fit
         skydome_exposure
         skydome_exposure=
         show_differences
@@ -1675,7 +1912,10 @@ module RuboCop
         status_bar_text
         style_modified?
         text_bounds
+        tgl_id
+        tgl_id=
         thumbnail_camera
+        thumbnail_image
         unit_vector?
         unload_schema
         use_as_skydome?
@@ -1684,13 +1924,18 @@ module RuboCop
         use_for_reflections=
         upper_left
         upper_right
+        uv_scale
         vertex_at
+        vertical_datum
+        vertical_datum=
         visible_on_new_pages?
         visible_on_new_pages=
         winding
         window_pick
         workflow
         write_hdr
+        x_axis
+        x_axis=
       ].freeze
 
       OBSERVER_METHODS = %i[
@@ -1698,6 +1943,7 @@ module RuboCop
         onActiveSectionPlaneChanged
         onAfterComponentSaveAs
         onBeforeComponentSaveAs
+        onCloseModel
         onElementModified
         onEnvironmentAdd
         onEnvironmentChange
