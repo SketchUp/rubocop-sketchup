@@ -93,6 +93,7 @@ In the following section you find all available cops:
 * [SketchupSuggestions/AddGroup](cops_suggestions.md#sketchupsuggestionsaddgroup)
 * [SketchupSuggestions/Compatibility](cops_suggestions.md#sketchupsuggestionscompatibility)
 * [SketchupSuggestions/DynamicComponentInternals](cops_suggestions.md#sketchupsuggestionsdynamiccomponentinternals)
+* [SketchupSuggestions/DynamicCopyrightYear](cops_suggestions.md#sketchupsuggestionsdynamiccopyrightyear)
 * [SketchupSuggestions/FileEncoding](cops_suggestions.md#sketchupsuggestionsfileencoding)
 * [SketchupSuggestions/ModelEntities](cops_suggestions.md#sketchupsuggestionsmodelentities)
 * [SketchupSuggestions/MonkeyPatchedApi](cops_suggestions.md#sketchupsuggestionsmonkeypatchedapi)

@@ -311,6 +311,16 @@ SketchupSuggestions/DynamicComponentInternals:
   Reference: https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#dynamiccomponentinternals
   Enabled: true
 
+SketchupSuggestions/DynamicCopyrightYear:
+  Description: >-
+                 Avoid dynamically using the current year as extension
+                 copyright year.
+  Details: >-
+             Dynamically setting the copyright year as the current year instead
+             of when you last worked on the extension is misleading.
+  Reference: https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#dynamiccopyrightyear
+  Enabled: true
+
 SketchupSuggestions/FileEncoding:
   Description: Beware encoding bug in Ruby when using `__FILE__` and `__dir__`.
   Details: >-

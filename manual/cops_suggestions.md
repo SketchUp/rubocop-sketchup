@@ -69,6 +69,15 @@ change at any time. If you create an extension that depend on the
 internal logic of another extension you are at the mercy of change and
 luck!
 
+<a name='dynamiccopyrightyear'></a>
+## SketchupSuggestions/DynamicCopyrightYear
+
+Enabled by default | Supports autocorrection
+--- | ---
+Enabled | No
+
+No documentation
+
 <a name='fileencoding'></a>
 ## SketchupSuggestions/FileEncoding
 
