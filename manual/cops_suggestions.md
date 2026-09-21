@@ -76,7 +76,26 @@ Enabled by default | Supports autocorrection
 --- | ---
 Enabled | No
 
-No documentation
+Avoid using the current year as the copyright year of your extension.
+It gives the impression the extension is kept up to date even when it
+is not. Use the year you last worked on the extension instead.
+
+The examples below assume 2026 to be the current year.
+
+### Examples
+
+#### Misleading
+
+```ruby
+extension = SketchupExtension.new('Hello World', 'example/main')
+extension.copyright = "#{Time.now.year} Jane Doe"
+```
+#### Preferred
+
+```ruby
+extension = SketchupExtension.new('Hello World', 'example/main')
+extension.copyright = '2026 Jane Doe'
+```
 
 <a name='fileencoding'></a>
 ## SketchupSuggestions/FileEncoding
@@ -207,7 +226,38 @@ Enabled by default | Supports autocorrection
 --- | ---
 Enabled | No
 
-No documentation
+Keep the copyright year of your extension up to date with the year you
+last worked on it. For a year span, only the last year needs to be up
+to date.
+
+The examples below assume 2026 to be the current year.
+
+### Examples
+
+#### Outdated
+
+```ruby
+extension = SketchupExtension.new('Hello World', 'example/main')
+extension.copyright = '1993 Jane Doe'
+```
+#### Outdated year span
+
+```ruby
+extension = SketchupExtension.new('Hello World', 'example/main')
+extension.copyright = '1993-2016 Jane Doe'
+```
+#### Up to date
+
+```ruby
+extension = SketchupExtension.new('Hello World', 'example/main')
+extension.copyright = '2026 Jane Doe'
+```
+#### Up to date year span
+
+```ruby
+extension = SketchupExtension.new('Hello World', 'example/main')
+extension.copyright = '1993-2026 Jane Doe'
+```
 
 <a name='sketchupfindsupportfile'></a>
 ## SketchupSuggestions/SketchupFindSupportFile
