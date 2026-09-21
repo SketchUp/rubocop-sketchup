@@ -364,6 +364,14 @@ SketchupSuggestions/OperationName:
   Max: 25
   Enabled: true
 
+SketchupSuggestions/OutdatedCopyrightYear:
+  Description: Extension copyright year is outdated.
+  Details: >-
+             Update the copyright year when you make changes to your extension.
+             For a year span only the last year needs to be up to date.
+  Reference: https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#outdatedcopyrightyear
+  Enabled: true
+
 SketchupSuggestions/SketchupFindSupportFile:
   Description: >-
                  Avoid `Sketchup.find_support_file` to find your extension's

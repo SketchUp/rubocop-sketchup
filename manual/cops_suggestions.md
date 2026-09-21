@@ -200,6 +200,15 @@ model.start_operation('example_name', true)
 model.start_operation('Example Name', true)
 ```
 
+<a name='outdatedcopyrightyear'></a>
+## SketchupSuggestions/OutdatedCopyrightYear
+
+Enabled by default | Supports autocorrection
+--- | ---
+Enabled | No
+
+No documentation
+
 <a name='sketchupfindsupportfile'></a>
 ## SketchupSuggestions/SketchupFindSupportFile
 

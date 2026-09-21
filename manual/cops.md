@@ -98,6 +98,7 @@ In the following section you find all available cops:
 * [SketchupSuggestions/ModelEntities](cops_suggestions.md#sketchupsuggestionsmodelentities)
 * [SketchupSuggestions/MonkeyPatchedApi](cops_suggestions.md#sketchupsuggestionsmonkeypatchedapi)
 * [SketchupSuggestions/OperationName](cops_suggestions.md#sketchupsuggestionsoperationname)
+* [SketchupSuggestions/OutdatedCopyrightYear](cops_suggestions.md#sketchupsuggestionsoutdatedcopyrightyear)
 * [SketchupSuggestions/SketchupFindSupportFile](cops_suggestions.md#sketchupsuggestionssketchupfindsupportfile)
 * [SketchupSuggestions/Sleep](cops_suggestions.md#sketchupsuggestionssleep)
 * [SketchupSuggestions/ToolDrawingBounds](cops_suggestions.md#sketchupsuggestionstooldrawingbounds)
