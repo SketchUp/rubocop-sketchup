@@ -410,3 +410,59 @@ toolbar = UI::Toolbar.new('Example')
 # ...
 toolbar.restore
 ```
+
+<a name='unsafeexecutescript'></a>
+## SketchupSuggestions/UnsafeExecuteScript
+
+Enabled by default | Supports autocorrection
+--- | ---
+Enabled | No
+
+Avoid interpolating values straight into JavaScript. Values containing
+quotes, backslashes or newlines produce invalid JavaScript, and values
+from the model or the user can be crafted to execute arbitrary
+JavaScript.
+
+Use `to_json` to convert the Ruby value to its JavaScript
+representation. It escapes the value for you, and works for arrays and
+hashes as well.
+
+(This also goes for values you escape yourself, for instance with
+`gsub`. Hand-rolled escaping is easy to get subtly wrong, leaving a
+value that can break out of its quotes - forgetting to escape the
+backslash itself is a classic. Leave the escaping to `to_json`. Note
+also that `to_json` adds the surrounding quotes itself; adding your own
+quotes around it undoes the protection.)
+
+This check is naive and covers one shape only; use it as guidance
+rather than proof. It inspects string literals interpolated directly
+into the call, and asks nothing more than whether each interpolation
+converts its value. JavaScript assembled anywhere else is invisible to
+it, so a clean run is not evidence that an extension is free of
+injection.
+
+Convert the value where it is interpolated, not earlier. Converting up
+front and interpolating the result reads as safe but cannot be checked
+at the call, and re-converting an already converted value double
+encodes it.
+
+### Examples
+
+#### Bad - The value is interpolated as-is.
+
+```ruby
+dialog.execute_script("showMessage('#{message}')")
+```
+#### Bad - The value is converted too early to tell at the call.
+
+```ruby
+json = message.to_json
+dialog.execute_script("showMessage(#{json})")
+```
+#### Good - The value is converted where it is interpolated.
+
+```ruby
+require 'json'
+
+dialog.execute_script("showMessage(#{message.to_json})")
+```

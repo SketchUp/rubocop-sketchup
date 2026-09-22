@@ -105,5 +105,6 @@ In the following section you find all available cops:
 * [SketchupSuggestions/ToolInvalidate](cops_suggestions.md#sketchupsuggestionstoolinvalidate)
 * [SketchupSuggestions/ToolUserInput](cops_suggestions.md#sketchupsuggestionstooluserinput)
 * [SketchupSuggestions/ToolbarTimer](cops_suggestions.md#sketchupsuggestionstoolbartimer)
+* [SketchupSuggestions/UnsafeExecuteScript](cops_suggestions.md#sketchupsuggestionsunsafeexecutescript)
 
 <!-- END_COP_LIST -->

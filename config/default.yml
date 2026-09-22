@@ -416,3 +416,16 @@ SketchupSuggestions/ToolbarTimer:
   Description: Wrapping `toolbar.restore` in `UI.start_timer` is redundant.
   Reference: https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#toolbartimer
   Enabled: true
+
+SketchupSuggestions/UnsafeExecuteScript:
+  Description: Avoid interpolating values straight into JavaScript.
+  Details: >-
+             Values containing quotes, backslashes or newlines produce invalid
+             JavaScript, and values from the model or the user can be crafted
+             to execute arbitrary JavaScript. Use `to_json` to convert the Ruby
+             value to its JavaScript representation. This check only inspects
+             string literals interpolated directly into the call. JavaScript
+             assembled elsewhere is not covered, so a clean run is not proof
+             that an extension is free of injection.
+  Reference: https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#unsafeexecutescript
+  Enabled: true
