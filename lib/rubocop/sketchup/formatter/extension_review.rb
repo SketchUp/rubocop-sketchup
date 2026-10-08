@@ -14,18 +14,6 @@ module RuboCop
       TEMPLATE_PATH =
           File.expand_path('../../../../assets/output.html.erb', __dir__)
 
-      Color = Struct.new(:red, :green, :blue, :alpha) do
-        def to_s
-          "rgba(#{values.join(', ')})"
-        end
-
-        def fade_out(amount)
-          dup.tap do |color|
-            color.alpha -= amount
-          end
-        end
-      end
-
       attr_reader :categories, :files, :summary
 
       def initialize(output, options = {})
@@ -72,14 +60,6 @@ module RuboCop
       class ERBContext
         include PathUtil
         include TextUtil
-
-        SEVERITY_COLORS = {
-          refactor:   Color.new(0x29, 0x6B, 0xF0, 1.0),
-          convention: Color.new(0x29, 0x6B, 0xF0, 1.0),
-          warning:    Color.new(0xED, 0x9C, 0x28, 1.0),
-          error:      Color.new(0xD2, 0x32, 0x2D, 1.0),
-          fatal:      Color.new(0xD2, 0x32, 0x2D, 1.0),
-        }.freeze
 
         LOGO_IMAGE_PATH =
             File.expand_path('../../../../assets/logo.png', __dir__)

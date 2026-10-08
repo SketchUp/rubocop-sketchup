@@ -6,6 +6,26 @@
     <%# TODO: Clean up the messy markup and style definitions. %>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <style>
+    :root {
+    color-scheme: light;
+    --primary: #0063a3;
+    --primary-content: #ffffff;
+    --secondary: #fbad26;
+    --secondary-content: #000000;
+    --secondary-pale: #fff5e4;
+    --accent: #6a6e79;
+    --accent-content: #ffffff;
+    --neutral: #ffffff;
+    --neutral-content: #171c1e;
+    --surface: #f5f5f8;
+    --surface-subtle: #f5f5f8;
+    --muted: #6a6e79;
+    --border: rgba(106, 110, 121, 0.3);
+    --code-background: #f5f5f8;
+    --code-content: #171c1e;
+    --error: #d2322d;
+    --error-content: #ffffff;
+    }
     * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -16,8 +36,8 @@
     font-size: 62.5%;
     }
     body {
-    background-color: #f3f3f7;
-    color: #363545;
+    background-color: var(--neutral);
+    color: var(--neutral-content);
     font-family: 'Open Sans', sans-serif;
     margin: 0;
     }
@@ -29,12 +49,12 @@
     font-weight: normal;
     }
     a {
-    color: #e72b2d;
+    color: var(--primary);
     text-decoration: none;
     }
     #header {
-    background: #363545;
-    color: #fff;
+    background: var(--primary);
+    color: var(--primary-content);
     height: 60px;
     padding: 0;
     }
@@ -57,7 +77,7 @@
     .information, #offenses {
     width: 100%;
     padding: 20px;
-    color: #333;
+    color: var(--neutral-content);
     }
     #offenses {
     padding: 0 20px;
@@ -65,9 +85,9 @@
 
     .information .infobox {
     border-left: 3px solid;
-    background-color: #fff;
+    background-color: var(--surface);
     padding: 15px;
-    border-color: #e72b2d;
+    border-color: var(--primary);
     font-size: 1.4rem;
     }
     .information .infobox .total {
@@ -88,7 +108,7 @@
 
     #offenses .offense-box {
     margin-bottom: 20px;
-    background-color: #fff;
+    background-color: var(--surface);
     }
     .fixed .box-title {
     position: fixed;
@@ -103,8 +123,8 @@
     display: block;
     }
     #offenses .offense-box .box-title h3, #offenses .offense-box .box-title-placeholder h3 {
-    color: #33353f;
-    background-color: #f6f6f6;
+    color: var(--neutral-content);
+    background-color: var(--surface-subtle);
     font-size: 2rem;
     line-height: 2rem;
     display: block;
@@ -115,7 +135,7 @@
     padding: 0 15px;
     }
     #offenses .offense-box .offense-reports .report {
-    border-bottom: 1px solid #e2e2e7;
+    border-bottom: 1px solid var(--border);
     padding: 15px 0px;
     position: relative;
     font-size: 1.3rem;
@@ -125,8 +145,8 @@
     }
     #offenses .offense-box .offense-reports .report pre code {
     display: block;
-    background: #222;
-    color: #fff;
+    background: var(--code-background);
+    color: var(--code-content);
     padding: 10px 15px;
     line-height: 1.6rem;
     }
@@ -140,44 +160,67 @@
     .severity {
     text-transform: capitalize;
     font-weight: bold;
+    padding: 2px 4px;
+    border-radius: 2px;
     }
     .highlight {
     padding: 2px;
     border-radius: 2px;
     font-weight: bold;
     }
-    <%- SEVERITY_COLORS.each do |severity, color| %>
-    .severity.<%= severity %> {
-    color: <%= color %>;
+    .severity.refactor,
+    .severity.convention {
+    color: var(--accent-content);
+    background-color: var(--accent);
     }
-    .highlight.<%= severity %> {
-    background-color: <%= color.fade_out(0.4) %>;
-    border: 1px solid <%= color.fade_out(0.6) %>;
+    .highlight.refactor,
+    .highlight.convention {
+    color: var(--accent-content);
+    background-color: var(--accent);
+    border: 1px solid var(--accent);
     }
-    <%- end %>
+    .severity.warning {
+    color: var(--secondary-content);
+    background-color: var(--secondary);
+    }
+    .highlight.warning {
+    color: var(--secondary-content);
+    background-color: var(--secondary-pale);
+    border: 1px solid var(--secondary);
+    }
+    .severity.error,
+    .severity.fatal {
+    color: var(--error-content);
+    background-color: var(--error);
+    }
+    .highlight.error,
+    .highlight.fatal {
+    color: var(--error-content);
+    background-color: var(--error);
+    border: 1px solid var(--error);
+    }
     footer {
     margin-bottom: 20px;
     margin-right: 20px;
     font-size: 1.3rem;
-    color: #777;
+    color: var(--muted);
     text-align: right;
     }
     .extra-code {
-      color: #ED9C28
+      color: var(--secondary);
     }
     hr {
       border: none;
-      border-top: 3px solid #e2e2e7;
+      border-top: 3px solid var(--border);
       margin: 20px 0;
     }
     #offenses .offense-box.department {
-    background-color: #f3f3f7;
-    /* border-top: 3px solid #e2e2e7; */
+    background-color: var(--surface-subtle);
     }
     #offenses .offense-box.department .box-title h3,
     #offenses .offense-box.department .box-title-placeholder h3 {
-    background-color: #f3f3f7;
-    color: #363545;
+    background-color: var(--surface-subtle);
+    color: var(--neutral-content);
     font-weight: bold;
     }
     #offenses .offense-box.department .offense-reports .report {
