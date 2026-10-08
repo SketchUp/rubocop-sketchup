@@ -235,13 +235,13 @@
       <div class="infobox">
         <div class="total">
           <%= pluralize(files.count, 'file') %> inspected,
-          <%= pluralize(summary.offense_count, 'offense', no_for_zero: true) %> detected:
+          <%= pluralize(summary.offense_count, 'finding', no_for_zero: true) %> detected:
         </div>
         <ul class="offenses-list">
           <% categories.each do |category, offenses| %>
             <li>
               <a href="#<%= cop_anchor(category) %>">
-                <%= category %> <%= pluralize(offenses.count, 'offense') %>
+                <%= category %> <%= pluralize(offenses.count, 'finding') %>
               </a>
             </li>
           <% end %>
@@ -256,7 +256,7 @@
           <div class="box-title">
             <h3>
               <%= department(category) %> -
-              <%= pluralize(department_offense_count(category), 'offense') %>
+              <%= pluralize(department_offense_count(category), 'finding') %>
             </h3>
           </div>
           <div class="offense-reports">
@@ -270,7 +270,7 @@
       <% end %>
       <div class="offense-box" id="<%= cop_anchor(category) %>">
         <div class="box-title-placeholder"><h3>&nbsp;</h3></div>
-        <div class="box-title"><h3><%= category %> - <%= pluralize(offenses.count, 'offense') %></h3></div>
+        <div class="box-title"><h3><%= category %> - <%= pluralize(offenses.count, 'finding') %></h3></div>
         <div class="offense-reports">
           <% offenses.each do |report| %>
           <% offense = report.offense %>
