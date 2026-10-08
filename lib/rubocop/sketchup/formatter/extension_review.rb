@@ -72,6 +72,8 @@ module RuboCop
           SketchupBugs
         ].freeze
 
+        SEVERITY_ORDER = %i[fatal error warning convention refactor info].freeze
+
         DEPARTMENT_DESCRIPTIONS = {
           'SketchupRequirements' => <<-DESCRIPTION,
             This is the most important set of checks. They represent a large
@@ -147,6 +149,19 @@ module RuboCop
             count += offenses.size
           }
           count
+        end
+
+        def severity_summary
+          counts = categories.values.flatten.each_with_object(Hash.new(0)) do |report, totals|
+            totals[report.offense.severity.name] += 1
+          end
+          severities = SEVERITY_ORDER + (counts.keys - SEVERITY_ORDER).sort
+          labels = severities.each_with_object([]) do |severity, items|
+            count = counts[severity]
+            items << pluralize(count, severity.to_s) unless count.zero?
+          end
+
+          labels.empty? ? 'no findings detected' : "#{labels.join(', ')} detected"
         end
 
         def new_department?(cop_name)

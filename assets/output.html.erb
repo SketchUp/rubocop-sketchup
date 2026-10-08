@@ -277,8 +277,7 @@
     <div class="information">
       <div class="infobox">
         <div class="total">
-          <%= pluralize(files.count, 'file') %> inspected,
-          <%= pluralize(summary.offense_count, 'finding', no_for_zero: true) %> detected:
+          <%= pluralize(files.count, 'file') %> inspected: <%= severity_summary %>
         </div>
         <ul class="offenses-list">
           <% categories.each do |category, offenses| %>
