@@ -153,6 +153,38 @@
     #offenses .offense-box .offense-reports .report .location {
     font-weight: bold;
     }
+    .location-list {
+    color: var(--muted);
+    margin: 0 0 15px;
+    list-style: none;
+    padding-left: 0;
+    }
+    .location-list li {
+    margin: 3px 0;
+    }
+    .location-list summary {
+    cursor: pointer;
+    font-weight: bold;
+    }
+    .location-code-list {
+    margin: 8px 0 12px;
+    }
+    .location-code-list .location-line {
+    color: var(--muted);
+    display: block;
+    font-size: 1.2rem;
+    margin-top: 8px;
+    }
+    .location-toggle {
+    background: var(--primary);
+    border: 0;
+    border-radius: 2px;
+    color: var(--primary-content);
+    cursor: pointer;
+    font: inherit;
+    margin: 0 0 8px;
+    padding: 6px 10px;
+    }
     #offenses .offense-box .offense-reports .report .message code {
     padding: 0.3em;
     background-color: rgba(0,0,0,0.07);
@@ -244,6 +276,39 @@
         for (var i = 0; i < boxes.length; i++)
           // need to add scrollY because the page might be somewhere other than the top when loaded.
           boxPositions[i] = boxes[i].getBoundingClientRect().top + scrollY;
+        var locationToggles = document.querySelectorAll('.location-toggle');
+        for (var j = 0; j < locationToggles.length; j++) {
+          (function(toggle) {
+            var details = toggle.parentNode.querySelectorAll('.location-list details');
+            var updateToggle = function() {
+              var allOpen = details.length > 0;
+              for (var k = 0; k < details.length; k++) {
+                if (!details[k].open) {
+                  allOpen = false;
+                  break;
+                }
+              }
+              toggle.setAttribute('aria-expanded', allOpen ? 'true' : 'false');
+              toggle.textContent = allOpen ? 'Collapse all code' : 'Expand all code';
+            };
+            toggle.addEventListener('click', function() {
+              var shouldOpen = false;
+              for (var k = 0; k < details.length; k++) {
+                if (!details[k].open) {
+                  shouldOpen = true;
+                  break;
+                }
+              }
+              for (var k = 0; k < details.length; k++) {
+                details[k].open = shouldOpen;
+              }
+              updateToggle();
+            });
+            for (var k = 0; k < details.length; k++) {
+              details[k].addEventListener('toggle', updateToggle);
+            }
+          })(locationToggles[j]);
+        }
         loaded = true;
       };
 
@@ -280,10 +345,11 @@
           <%= pluralize(files.count, 'file') %> inspected: <%= severity_summary %>
         </div>
         <ul class="offenses-list">
-          <% categories.each do |category, offenses| %>
+          <% categories.each do |category, groups| %>
             <li>
               <a href="#<%= cop_anchor(category) %>">
-                <%= category %> <%= pluralize(offenses.count, 'finding') %>
+                <%= category %> - <%= pluralize(category_issue_count(category), 'finding') %>,
+                <%= pluralize(category_location_count(category), 'location') %>
               </a>
             </li>
           <% end %>
@@ -291,14 +357,15 @@
       </div>
     </div>
     <div id="offenses">
-      <% categories.each do |category, offenses| %>
+      <% categories.each do |category, groups| %>
       <% if new_department?(category) %>
         <hr>
         <div class="offense-box department">
           <div class="box-title">
             <h3>
               <%= department(category) %> -
-              <%= pluralize(department_offense_count(category), 'finding') %>
+              <%= pluralize(department_issue_count(category), 'finding') %>,
+              <%= pluralize(department_location_count(category), 'location') %>
             </h3>
           </div>
           <div class="offense-reports">
@@ -312,21 +379,38 @@
       <% end %>
       <div class="offense-box" id="<%= cop_anchor(category) %>">
         <div class="box-title-placeholder"><h3>&nbsp;</h3></div>
-        <div class="box-title"><h3><%= category %> - <%= pluralize(offenses.count, 'finding') %></h3></div>
+        <div class="box-title"><h3><%= category %> - <%= pluralize(category_issue_count(category), 'finding') %>, <%= pluralize(category_location_count(category), 'location') %></h3></div>
         <div class="offense-reports">
-          <% offenses.each do |report| %>
+          <% groups.each do |reports| %>
+          <% report = reports.first %>
           <% offense = report.offense %>
           <div class="report">
             <div class="meta">
               <span class="severity <%= offense.severity %>"><%= offense.severity %>:</span>
-              <span class="location">
-                <%= relative_path(report.path) %>:<%= offense.location.line %>
-              </span> –
+              <span class="location"><%= pluralize(reports.count, 'location') %></span> –
               <span class="message"><%= decorated_message(offense) %></span>
             </div>
-            <% unless offense.location.source_line.strip.empty? %>
-            <pre><code><%= highlighted_source_line(offense) %></code></pre>
+            <% if reports.count > 1 %>
+            <button class="location-toggle" type="button" aria-expanded="false">Expand all code</button>
             <% end %>
+            <ul class="location-list">
+              <% locations_for(reports).each do |location| %>
+              <li>
+                <details>
+                  <summary><%= relative_path(location.path) %>: <%= location.lines.join(', ') %></summary>
+                  <div class="location-code-list">
+                    <% location.reports.each do |location_report| %>
+                    <% location_offense = location_report.offense %>
+                    <% unless location_offense.location.source_line.strip.empty? %>
+                    <span class="location-line">Line <%= location_offense.location.line %></span>
+                    <pre><code><%= highlighted_source_line(location_offense) %></code></pre>
+                    <% end %>
+                    <% end %>
+                  </div>
+                </details>
+              </li>
+              <% end %>
+            </ul>
           </div>
           <% end %>
         </div>

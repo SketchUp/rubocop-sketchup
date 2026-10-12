@@ -125,7 +125,8 @@ module RuboCop
         attr_reader :categories, :files, :summary
 
         def initialize(categories, files, summary)
-          @categories = sort_categories(categories)
+          @raw_categories = categories
+          @categories = sort_categories(group_categories(categories))
           @files = files.sort
           @summary = summary
         end
@@ -140,19 +141,41 @@ module RuboCop
           format_plain_text(text)
         end
 
-        def department_offense_count(cop_name)
+        def department_issue_count(cop_name)
           dep = department(cop_name)
-          count = 0
-          categories.each { |category, offenses|
-            next unless department(category) == dep
-
-            count += offenses.size
+          categories.sum { |category, groups|
+            department(category) == dep ? groups.size : 0
           }
-          count
+        end
+
+        def department_location_count(cop_name)
+          dep = department(cop_name)
+          @raw_categories.sum { |category, reports|
+            department(category) == dep ? reports.size : 0
+          }
+        end
+
+        def category_issue_count(category)
+          categories.fetch(category).size
+        end
+
+        def category_location_count(category)
+          @raw_categories.fetch(category).size
+        end
+
+        def locations_for(reports)
+          reports.group_by(&:path).sort_by { |path, _| path.to_s }.map { |path, items|
+            sorted_items = items.sort_by { |item| item.offense.location.line }
+            OpenStruct.new(
+              path: path,
+              reports: sorted_items,
+              lines: sorted_items.map { |item| item.offense.location.line }.uniq
+            )
+          }
         end
 
         def severity_summary
-          counts = categories.values.flatten.each_with_object(Hash.new(0)) do |report, totals|
+          counts = @raw_categories.values.flatten.each_with_object(Hash.new(0)) do |report, totals|
             totals[report.offense.severity.name] += 1
           end
           severities = SEVERITY_ORDER + (counts.keys - SEVERITY_ORDER).sort
@@ -199,6 +222,14 @@ module RuboCop
             # Them sort by name if departments match.
             n == 0 ? a_name <=> b_name : n
           }.to_h
+        end
+
+        def group_categories(categories)
+          categories.transform_values do |reports|
+            reports.group_by { |report|
+              [report.offense.severity.name, report.offense.message]
+            }.values
+          end
         end
 
         # Make Kernel#binding public.
