@@ -165,13 +165,15 @@ module RuboCop
         end
 
         def locations_for(reports)
-          reports.group_by(&:path).sort_by { |path, _| path.to_s }.map { |path, items|
+          file_groups = reports.group_by(&:path).sort_by { |path, _| path.to_s }
+          file_groups.map { |path, items|
             sorted_items = items.sort_by { |item| item.offense.location.line }
+            lines = sorted_items.map { |item| item.offense.location.line }.uniq
             OpenStruct.new(
-              path: path,
-              reports: sorted_items,
-              lines: sorted_items.map { |item| item.offense.location.line }.uniq
-            )
+                path: path,
+                reports: sorted_items,
+                lines: lines
+              )
           }
         end
 
