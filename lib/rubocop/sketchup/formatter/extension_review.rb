@@ -141,11 +141,12 @@ module RuboCop
           format_plain_text(text)
         end
 
-        def department_issue_count(cop_name)
+        def department_severity_counts(cop_name)
           dep = department(cop_name)
-          categories.sum { |category, groups|
-            department(category) == dep ? groups.size : 0
-          }
+          reports = @raw_categories.select { |category, _|
+            department(category) == dep
+          }.values.flatten
+          severity_counts(reports)
         end
 
         def department_location_count(cop_name)
@@ -155,8 +156,8 @@ module RuboCop
           }
         end
 
-        def category_issue_count(category)
-          categories.fetch(category).size
+        def category_severity_counts(category)
+          severity_counts(@raw_categories.fetch(category))
         end
 
         def category_location_count(category)
@@ -175,7 +176,12 @@ module RuboCop
         end
 
         def severity_summary
-          counts = @raw_categories.values.flatten.each_with_object(Hash.new(0)) do |report, totals|
+          labels = severity_counts(@raw_categories.values.flatten)
+          labels.empty? ? 'no findings detected' : "#{labels} detected"
+        end
+
+        def severity_counts(reports)
+          counts = reports.each_with_object(Hash.new(0)) do |report, totals|
             totals[report.offense.severity.name] += 1
           end
           severities = SEVERITY_ORDER + (counts.keys - SEVERITY_ORDER).sort
@@ -184,7 +190,7 @@ module RuboCop
             items << pluralize(count, severity.to_s) unless count.zero?
           end
 
-          labels.empty? ? 'no findings detected' : "#{labels.join(', ')} detected"
+          labels.join(', ')
         end
 
         def new_department?(cop_name)

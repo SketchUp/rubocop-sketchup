@@ -348,7 +348,7 @@
           <% categories.each do |category, groups| %>
             <li>
               <a href="#<%= cop_anchor(category) %>">
-                <%= category %> - <%= pluralize(category_issue_count(category), 'finding') %>,
+                <%= category %> - <%= category_severity_counts(category) %>,
                 <%= pluralize(category_location_count(category), 'location') %>
               </a>
             </li>
@@ -364,7 +364,7 @@
           <div class="box-title">
             <h3>
               <%= department(category) %> -
-              <%= pluralize(department_issue_count(category), 'finding') %>,
+              <%= department_severity_counts(category) %>,
               <%= pluralize(department_location_count(category), 'location') %>
             </h3>
           </div>
@@ -379,7 +379,7 @@
       <% end %>
       <div class="offense-box" id="<%= cop_anchor(category) %>">
         <div class="box-title-placeholder"><h3>&nbsp;</h3></div>
-        <div class="box-title"><h3><%= category %> - <%= pluralize(category_issue_count(category), 'finding') %>, <%= pluralize(category_location_count(category), 'location') %></h3></div>
+        <div class="box-title"><h3><%= category %> - <%= category_severity_counts(category) %>, <%= pluralize(category_location_count(category), 'location') %></h3></div>
         <div class="offense-reports">
           <% groups.each do |reports| %>
           <% report = reports.first %>
