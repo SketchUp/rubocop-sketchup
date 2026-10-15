@@ -396,7 +396,7 @@
             <ul class="location-list">
               <% locations_for(reports).each do |location| %>
               <li>
-                <details>
+                <details<%= reports.count == 1 ? ' open' : '' %>>
                   <summary><%= relative_path(location.path) %>: <%= location.lines.join(', ') %></summary>
                   <div class="location-code-list">
                     <% location.reports.each do |location_report| %>
