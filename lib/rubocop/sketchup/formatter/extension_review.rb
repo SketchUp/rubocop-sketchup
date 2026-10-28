@@ -14,18 +14,6 @@ module RuboCop
       TEMPLATE_PATH =
           File.expand_path('../../../../assets/output.html.erb', __dir__)
 
-      Color = Struct.new(:red, :green, :blue, :alpha) do
-        def to_s
-          "rgba(#{values.join(', ')})"
-        end
-
-        def fade_out(amount)
-          dup.tap do |color|
-            color.alpha -= amount
-          end
-        end
-      end
-
       attr_reader :categories, :files, :summary
 
       def initialize(output, options = {})
@@ -73,14 +61,6 @@ module RuboCop
         include PathUtil
         include TextUtil
 
-        SEVERITY_COLORS = {
-          refactor:   Color.new(0x29, 0x6B, 0xF0, 1.0),
-          convention: Color.new(0x29, 0x6B, 0xF0, 1.0),
-          warning:    Color.new(0xED, 0x9C, 0x28, 1.0),
-          error:      Color.new(0xD2, 0x32, 0x2D, 1.0),
-          fatal:      Color.new(0xD2, 0x32, 0x2D, 1.0),
-        }.freeze
-
         LOGO_IMAGE_PATH =
             File.expand_path('../../../../assets/logo.png', __dir__)
 
@@ -91,6 +71,8 @@ module RuboCop
           SketchupSuggestions
           SketchupBugs
         ].freeze
+
+        SEVERITY_ORDER = %i[fatal error warning convention refactor info].freeze
 
         DEPARTMENT_DESCRIPTIONS = {
           'SketchupRequirements' => <<-DESCRIPTION,
@@ -143,7 +125,8 @@ module RuboCop
         attr_reader :categories, :files, :summary
 
         def initialize(categories, files, summary)
-          @categories = sort_categories(categories)
+          @raw_categories = categories
+          @categories = sort_categories(group_categories(categories))
           @files = files.sort
           @summary = summary
         end
@@ -158,15 +141,58 @@ module RuboCop
           format_plain_text(text)
         end
 
-        def department_offense_count(cop_name)
+        def department_severity_counts(cop_name)
           dep = department(cop_name)
-          count = 0
-          categories.each { |category, offenses|
-            next unless department(category) == dep
+          reports = @raw_categories.select { |category, _|
+            department(category) == dep
+          }.values.flatten
+          severity_counts(reports)
+        end
 
-            count += offenses.size
+        def department_location_count(cop_name)
+          dep = department(cop_name)
+          @raw_categories.sum { |category, reports|
+            department(category) == dep ? reports.size : 0
           }
-          count
+        end
+
+        def category_severity_counts(category)
+          severity_counts(@raw_categories.fetch(category))
+        end
+
+        def category_location_count(category)
+          @raw_categories.fetch(category).size
+        end
+
+        def locations_for(reports)
+          file_groups = reports.group_by(&:path).sort_by { |path, _| path.to_s }
+          file_groups.map { |path, items|
+            sorted_items = items.sort_by { |item| item.offense.location.line }
+            lines = sorted_items.map { |item| item.offense.location.line }.uniq
+            OpenStruct.new(
+                path: path,
+                reports: sorted_items,
+                lines: lines
+              )
+          }
+        end
+
+        def severity_summary
+          labels = severity_counts(@raw_categories.values.flatten)
+          labels.empty? ? 'no findings detected' : "#{labels} detected"
+        end
+
+        def severity_counts(reports)
+          counts = reports.each_with_object(Hash.new(0)) do |report, totals|
+            totals[report.offense.severity.name] += 1
+          end
+          severities = SEVERITY_ORDER + (counts.keys - SEVERITY_ORDER).sort
+          labels = severities.each_with_object([]) do |severity, items|
+            count = counts[severity]
+            items << pluralize(count, severity.to_s) unless count.zero?
+          end
+
+          labels.join(', ')
         end
 
         def new_department?(cop_name)
@@ -204,6 +230,14 @@ module RuboCop
             # Them sort by name if departments match.
             n == 0 ? a_name <=> b_name : n
           }.to_h
+        end
+
+        def group_categories(categories)
+          categories.transform_values do |reports|
+            reports.group_by { |report|
+              [report.offense.severity.name, report.offense.message]
+            }.values
+          end
         end
 
         # Make Kernel#binding public.
