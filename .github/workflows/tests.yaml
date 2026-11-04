@@ -5,9 +5,10 @@ on:
     branches: [ main, master, dev/github-actions ]
     paths-ignore:
       - '**.md'
+  # No path filters on pull requests: "All tests passed" is meant to be a
+  # required check on main, and a skipped workflow would leave it pending and
+  # block the merge.
   pull_request:
-    paths-ignore:
-      - '**.md'
   workflow_dispatch:
 
 permissions:
@@ -21,9 +22,6 @@ jobs:
       CI: true
 
     runs-on: ${{ matrix.os }}
-    if: |
-      !(   contains(github.event.pull_request.title,  '[ci skip]')
-        || contains(github.event.pull_request.title,  '[skip ci]'))
     strategy:
       fail-fast: false
       matrix:
@@ -46,3 +44,13 @@ jobs:
       - name: Run rake
         timeout-minutes: 10
         run: bundle exec rake ci
+
+  # Single check to require on main, so the test matrix can change without
+  # updating the ruleset. Passes only if every job in the matrix passed.
+  all-tests-passed:
+    name: All tests passed
+    if: always()
+    needs: [ tests ]
+    runs-on: ubuntu-latest
+    steps:
+      - run: test "${{ needs.tests.result }}" = "success"
