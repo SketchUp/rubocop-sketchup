@@ -34,6 +34,13 @@ describe RuboCop::Cop::SketchupRequirements::SketchupRequire do
       RUBY
     end
 
+    it 'escapes the suggested path to keep it valid Ruby' do
+      expect_offense(<<~'RUBY')
+        Sketchup.require('Example/it\'s_main.rb')
+                                            ^^^ Do not hard code file extensions with `Sketchup.require`. Extension Warehouse encrypts `.rb` files to `.rbe` and this file would then fail to load. Use `Sketchup.require('Example/it\'s_main')` instead.
+      RUBY
+    end
+
     it 'registers an offense when using `Sketchup::require` with file extension' do
       expect_offense(<<~RUBY)
         Sketchup::require("filename.rb")
@@ -117,6 +124,13 @@ describe RuboCop::Cop::SketchupRequirements::SketchupRequire do
       expect_offense(<<~RUBY)
         require 'Example/main.rb'
         ^^^^^^^ Use `Sketchup.require` when loading Ruby files for encrypted extensions. Extension Warehouse encrypts `.rb` files to `.rbe`, which Ruby's `require` cannot load. Use `Sketchup.require('Example/main')` instead.
+      RUBY
+    end
+
+    it 'keeps dots in the file name that are not a Ruby file extension' do
+      expect_offense(<<~RUBY)
+        require "Example/main.v2"
+        ^^^^^^^ Use `Sketchup.require` when loading Ruby files for encrypted extensions. Extension Warehouse encrypts `.rb` files to `.rbe`, which Ruby's `require` cannot load. Use `Sketchup.require("Example/main.v2")` instead.
       RUBY
     end
 

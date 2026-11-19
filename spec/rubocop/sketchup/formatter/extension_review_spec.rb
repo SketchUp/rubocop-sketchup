@@ -205,6 +205,28 @@ describe RuboCop::Formatter::ExtensionReviewFormatter do
 
   end
 
+  context 'with source-derived HTML in the message' do
+
+    let(:payload) { '<img src=x onerror=alert(1)>' }
+    let(:offenses) do
+      [offense(:error, 'SketchupRequirements/SketchupRequire',
+               "Use `SketchupExtension.new(\"#{payload}\")` instead.", 1)]
+    end
+
+    it 'does not output the raw markup' do
+      expect(html).not_to include(payload)
+    end
+
+    it 'outputs the escaped markup' do
+      expect(html).to include('&lt;img src=x onerror=alert(1)&gt;')
+    end
+
+    it 'still formats code spans' do
+      expect(html).to match(%r{<code>SketchupExtension\.new\(.*\)</code>})
+    end
+
+  end
+
   context 'with a fatal error' do
 
     let(:offenses) do

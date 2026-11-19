@@ -63,6 +63,8 @@ module RuboCop
           (send (const nil? :SketchupExtension) :new _ (str $_))
         PATTERN
 
+        RUBY_FILE_EXT = /\.(?:rb|rbe|rbs)\z/.freeze
+
         TOOLS_RUBY_FILES = %w[extensions.rb langhandler.rb sketchup.rb].freeze
 
 
@@ -123,11 +125,17 @@ module RuboCop
           return unless encrypted_extension?
           return unless extension_file?(filename)
 
-          path = without_file_ext(filename)
+          path = without_ruby_ext(filename)
           path = string_literal_like(node.first_argument, path)
           message = format(MSG_REQUIRE_ENCRYPTED, path: path)
           add_offense(node.loc.selector, message: message)
           true
+        end
+
+        # `require` doesn't need a file extension, so only strip the ones Ruby
+        # files can have. Other dots belong to the name, as in `main.v2`.
+        def without_ruby_ext(filename)
+          filename.sub(RUBY_FILE_EXT, '')
         end
 
         def first_directory(path)
