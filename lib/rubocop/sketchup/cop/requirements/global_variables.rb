@@ -10,16 +10,27 @@ module RuboCop
       # Extensions submitted to Extension Warehouse is expected to not define
       # global variables.
       #
-      # This cops looks for uses of global variables.
-      # It does not report offenses for built-in global variables.
-      # Built-in global variables are allowed by default. Additionally
-      # users can allow additional variables via the AllowedVariables option.
+      # This cop looks for assignments to global variables. Reading existing
+      # global variables, such as those defined by SketchUp or Ruby, is
+      # allowed. It does not report offenses for assigning built-in global
+      # variables.
       #
       # Note that backreferences like `$1`, `$2`, etc are not global variables.
+      #
+      # @example
+      #   # bad
+      #   $example_counter = 0
+      #
+      #   # good
+      #   module Example
+      #     @counter = 0
+      #   end
+      #
+      #   # good - reading an existing global variable
+      #   puts $dc_extension
       class GlobalVariables < SketchUp::Cop
 
         include SketchUp::NoCommentDisable
-        include SketchUp::DynamicComponentGlobals
 
         MSG = 'Do not introduce global variables.'
 
@@ -58,24 +69,11 @@ module RuboCop
           $loaded_files
         ].freeze
 
-        # Some globals, like DC's, are being read from so often that it's better
-        # to ignore these to reduce noise.
-        READ_ONLY_VARS = DC_GLOBALS
-
         ALLOWED_VARS = BUILT_IN_VARS | SKETCHUP_VARS
 
 
         def allowed_var?(global_var)
           ALLOWED_VARS.include?(global_var)
-        end
-
-        def read_allowed?(global_var)
-          READ_ONLY_VARS.include?(global_var)
-        end
-
-        def on_gvar(node)
-          global_var, = *node
-          check(node) unless read_allowed?(global_var)
         end
 
         def on_gvasgn(node)

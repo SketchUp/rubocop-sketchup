@@ -57,7 +57,6 @@ In the following section you find all available cops:
 
 #### Department [SketchupPerformance](cops_performance.md)
 
-* [SketchupPerformance/OpenSSL](cops_performance.md#sketchupperformanceopenssl)
 * [SketchupPerformance/OperationDisableUI](cops_performance.md#sketchupperformanceoperationdisableui)
 * [SketchupPerformance/SelectionBulkChanges](cops_performance.md#sketchupperformanceselectionbulkchanges)
 * [SketchupPerformance/TypeCheck](cops_performance.md#sketchupperformancetypecheck)
@@ -93,7 +92,6 @@ In the following section you find all available cops:
 * [SketchupSuggestions/AddGroup](cops_suggestions.md#sketchupsuggestionsaddgroup)
 * [SketchupSuggestions/Compatibility](cops_suggestions.md#sketchupsuggestionscompatibility)
 * [SketchupSuggestions/DynamicComponentInternals](cops_suggestions.md#sketchupsuggestionsdynamiccomponentinternals)
-* [SketchupSuggestions/FileEncoding](cops_suggestions.md#sketchupsuggestionsfileencoding)
 * [SketchupSuggestions/ModelEntities](cops_suggestions.md#sketchupsuggestionsmodelentities)
 * [SketchupSuggestions/MonkeyPatchedApi](cops_suggestions.md#sketchupsuggestionsmonkeypatchedapi)
 * [SketchupSuggestions/OperationName](cops_suggestions.md#sketchupsuggestionsoperationname)
@@ -102,6 +100,5 @@ In the following section you find all available cops:
 * [SketchupSuggestions/ToolDrawingBounds](cops_suggestions.md#sketchupsuggestionstooldrawingbounds)
 * [SketchupSuggestions/ToolInvalidate](cops_suggestions.md#sketchupsuggestionstoolinvalidate)
 * [SketchupSuggestions/ToolUserInput](cops_suggestions.md#sketchupsuggestionstooluserinput)
-* [SketchupSuggestions/ToolbarTimer](cops_suggestions.md#sketchupsuggestionstoolbartimer)
 
 <!-- END_COP_LIST -->

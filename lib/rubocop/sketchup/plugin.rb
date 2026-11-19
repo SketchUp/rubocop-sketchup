@@ -21,11 +21,23 @@ module RuboCop
       end
 
       def rules(_context)
+        register_obsoletions
+
         LintRoller::Rules.new(
             type: :path,
             config_format: :rubocop,
             value: CONFIG_DEFAULT
           )
+      end
+
+      private
+
+      # Lets RuboCop explain why a removed cop is no longer available when a
+      # user's configuration still refers to it.
+      def register_obsoletions
+        files = RuboCop::ConfigObsoletion.files
+        path = CONFIG_OBSOLETION.to_s
+        files << path unless files.include?(path)
       end
     end
   end

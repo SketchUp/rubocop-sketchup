@@ -25,6 +25,8 @@
     --code-content: #171c1e;
     --error: #d2322d;
     --error-content: #ffffff;
+    --success: #2e7d32;
+    --success-content: #ffffff;
     }
     * {
     -webkit-box-sizing: border-box;
@@ -83,6 +85,51 @@
     padding: 0 20px;
     }
 
+    .information .verdict {
+    border-left: 6px solid;
+    padding: 15px 20px;
+    font-size: 1.4rem;
+    }
+    .information .verdict.reject {
+    border-color: var(--error);
+    background-color: var(--surface);
+    }
+    .information .verdict.pass {
+    border-color: var(--success);
+    background-color: var(--surface);
+    }
+    .information .verdict .verdict-title {
+    font-size: 2.2rem;
+    margin: 0 0 0.4em;
+    font-weight: bold;
+    }
+    .information .verdict.reject .verdict-title {
+    color: var(--error);
+    }
+    .information .verdict.pass .verdict-title {
+    color: var(--success);
+    }
+    .information .verdict p {
+    margin: 0 0 0.8em;
+    }
+    .information .verdict .blocking-list {
+    margin: 0;
+    padding-left: 20px;
+    }
+    .information .verdict .blocking-list li {
+    margin-bottom: 0.4em;
+    line-height: 2rem;
+    }
+    .information .verdict .blocking-list .cop-name {
+    font-weight: bold;
+    }
+    #offenses .suggestions-note {
+    border-left: 3px solid var(--accent);
+    background-color: var(--surface);
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    }
     .information .infobox {
     border-left: 3px solid;
     background-color: var(--surface);
@@ -344,6 +391,28 @@
       <h1 class="title">SketchUp Extension RuboCop Inspection Report</h1>
     </div>
     <div class="information">
+      <div class="verdict <%= blocking? ? 'reject' : 'pass' %>">
+        <h2 class="verdict-title"><%= blocking_summary %></h2>
+        <% if blocking? %>
+        <p>
+          Extension Warehouse rejects extensions with these issues, so fix them
+          before submitting.
+        </p>
+        <ul class="blocking-list">
+          <% blocking_cop_names.each do |cop_name| %>
+          <li><a class="cop-name" href="#<%= cop_anchor(cop_name) %>"><%= cop_name %></a></li>
+          <% end %>
+        </ul>
+        <% else %>
+        <p>
+          No errors were found. Any warnings or conventions listed below are
+          only suggestions for improving your code. They won't cause a
+          rejection. A reviewer may still find other issues.
+        </p>
+        <% end %>
+      </div>
+    </div>
+    <div class="information">
       <div class="infobox">
         <div class="total">
           <%= pluralize(files.count, 'file') %> inspected: <%= severity_summary %>
@@ -362,6 +431,7 @@
     </div>
     <div id="offenses">
       <% categories.each do |category, groups| %>
+      <%= suggestions_note if suggestions_note_due?(groups.first) %>
       <% if new_department?(category) %>
         <hr>
         <div class="offense-box department">
@@ -386,6 +456,7 @@
         <div class="box-title"><h3><%= category %> - <%= category_severity_counts(category) %>, <%= pluralize(category_location_count(category), 'location') %></h3></div>
         <div class="offense-reports">
           <% groups.each do |reports| %>
+          <%= suggestions_note if suggestions_note_due?(reports) %>
           <% report = reports.first %>
           <% offense = report.offense %>
           <div class="report">

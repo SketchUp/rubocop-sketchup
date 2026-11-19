@@ -52,6 +52,17 @@ The `SketchupSuggestions/Compatibility` cop checks for usage of the SketchUp API
 
 Currently the default is `SketchUp 2016`.
 
+The cop is disabled by default. Enable it after setting the target version to the oldest SketchUp version your extension supports:
+
+```yml
+AllCops:
+  SketchUp:
+    TargetSketchUpVersion: 2021
+
+SketchupSuggestions/Compatibility:
+  Enabled: true
+```
+
 ```
 rubocop --only SketchupSuggestions/Compatibility
 Inspecting 30 files

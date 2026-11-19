@@ -26,63 +26,55 @@ module RuboCop
         include SketchUp::NoCommentDisable
         include RangeHelp
 
+        ENCRYPTED = 'Extension Warehouse encrypts `.rb` files to `.rbe`'
+
         MSG_SKETCHUP_REQUIRE_EXT_NAME = 'Do not hard code file extensions ' \
-                                        'with `Sketchup.require`.'
+                                        'with `Sketchup.require`. ' \
+                                        "#{ENCRYPTED} and this file would " \
+                                        'then fail to load. Use ' \
+                                        '`Sketchup.require(%<path>s)` instead.'
 
         MSG_EXTENSION_NEW_EXT_NAME = 'Do not hard code file extensions ' \
-                                     'with `SketchupExtension.new`.'
+                                     'with `SketchupExtension.new`. ' \
+                                     "#{ENCRYPTED} and the extension would " \
+                                     'then fail to load. Use ' \
+                                     '`SketchupExtension.new(%<name>s, ' \
+                                     '%<path>s)` instead.'
 
         MSG_REQUIRE_FOR_BINARY = 'Use `require` instead of ' \
                                  '`Sketchup.require` to load binary Ruby ' \
-                                 'libraries.'
+                                 'libraries. Use `require(%<path>s)` instead.'
 
         MSG_REQUIRE_ENCRYPTED = 'Use `Sketchup.require` when loading Ruby ' \
-                                'files for encrypted extensions.'
+                                'files for encrypted extensions. ' \
+                                "#{ENCRYPTED}, which Ruby's `require` " \
+                                'cannot load. Use ' \
+                                '`Sketchup.require(%<path>s)` instead.'
 
         def_node_matcher :ruby_require, <<-PATTERN
           (send nil? :require (str $_))
         PATTERN
 
-        def_node_matcher :ruby_require?, <<-PATTERN
-          (send nil? :require (str _))
-        PATTERN
-
-
         def_node_matcher :sketchup_require, <<-PATTERN
           (send (const nil? :Sketchup) :require (str $_))
         PATTERN
-
-        def_node_matcher :sketchup_require?, <<-PATTERN
-          (send (const nil? :Sketchup) :require (str _))
-        PATTERN
-
 
         def_node_matcher :sketchup_extension_new, <<-PATTERN
           (send (const nil? :SketchupExtension) :new _ (str $_))
         PATTERN
 
-        def_node_matcher :sketchup_extension_new?, <<-PATTERN
-          (send (const nil? :SketchupExtension) :new _ (str _))
-        PATTERN
-
-
         TOOLS_RUBY_FILES = %w[extensions.rb langhandler.rb sketchup.rb].freeze
 
 
         def on_send(node)
-          if sketchup_require?(node)
-            filename = sketchup_require(node)
+          if (filename = sketchup_require(node))
             return if check_binary_sketchup_require(node, filename)
-            return if check_sketchup_require_filename(node, filename)
 
-          elsif ruby_require?(node)
-            filename = ruby_require(node)
-            return if check_encrypted_require(node, filename)
-
-          elsif sketchup_extension_new?(node)
-            filename = sketchup_extension_new(node)
-            return if check_sketchup_extension_new_filename(node, filename)
-
+            check_sketchup_require_filename(node, filename)
+          elsif (filename = ruby_require(node))
+            check_encrypted_require(node, filename)
+          elsif (filename = sketchup_extension_new(node))
+            check_sketchup_extension_new_filename(node, filename)
           end
         end
 
@@ -100,23 +92,30 @@ module RuboCop
 
           end_pos = node.loc.dot.end_pos
           range = node.receiver.loc.expression.with(end_pos: end_pos)
-          add_offense(range, message: MSG_REQUIRE_FOR_BINARY)
+          path = string_literal_like(node.first_argument, filename)
+          message = format(MSG_REQUIRE_FOR_BINARY, path: path)
+          add_offense(range, message: message)
           true
         end
 
         def check_sketchup_require_filename(node, filename)
           return if valid_filename?(filename)
 
-          add_offense(file_ext_range(node.arguments.first),
-                      message: MSG_SKETCHUP_REQUIRE_EXT_NAME)
+          argument = node.first_argument
+          path = string_literal_like(argument, without_file_ext(filename))
+          message = format(MSG_SKETCHUP_REQUIRE_EXT_NAME, path: path)
+          add_offense(file_ext_range(argument), message: message)
           true
         end
 
         def check_sketchup_extension_new_filename(node, filename)
           return if valid_filename?(filename)
 
-          add_offense(file_ext_range(node.arguments.last),
-                      message: MSG_EXTENSION_NEW_EXT_NAME)
+          argument = node.last_argument
+          path = string_literal_like(argument, without_file_ext(filename))
+          message = format(MSG_EXTENSION_NEW_EXT_NAME,
+                           name: node.first_argument.source, path: path)
+          add_offense(file_ext_range(argument), message: message)
           true
         end
 
@@ -124,8 +123,10 @@ module RuboCop
           return unless encrypted_extension?
           return unless extension_file?(filename)
 
-          add_offense(node.loc.selector,
-                      message: MSG_REQUIRE_ENCRYPTED)
+          path = without_file_ext(filename)
+          path = string_literal_like(node.first_argument, path)
+          message = format(MSG_REQUIRE_ENCRYPTED, path: path)
+          add_offense(node.loc.selector, message: message)
           true
         end
 

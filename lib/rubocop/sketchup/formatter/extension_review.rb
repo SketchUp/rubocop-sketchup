@@ -74,6 +74,9 @@ module RuboCop
 
         SEVERITY_ORDER = %i[fatal error warning convention refactor info].freeze
 
+        # Findings at these severities cause an extension to be rejected.
+        BLOCKING_SEVERITIES = %i[fatal error].freeze
+
         DEPARTMENT_DESCRIPTIONS = {
           'SketchupRequirements' => <<-DESCRIPTION,
             This is the most important set of checks. They represent a large
@@ -104,9 +107,7 @@ module RuboCop
           DESCRIPTION
           'SketchupSuggestions' => <<-DESCRIPTION,
             This department is a collection of suggestions for best practices
-            that aim to improve the general quality of your extension. Some of
-            these might be more noisy than the rest of the cops. Disable as
-            needed after reviewing the suggestions.
+            that aim to improve the general quality of your extension.
 
             This department is not a requirement for submission to
             Extension Warehouse.
@@ -177,6 +178,50 @@ module RuboCop
           }
         end
 
+        def blocking_count
+          @raw_categories.values.flatten.count { |report|
+            blocking_offense?(report.offense)
+          }
+        end
+
+        def blocking?
+          blocking_count.positive?
+        end
+
+        def blocking_offense?(offense)
+          BLOCKING_SEVERITIES.include?(offense.severity.name)
+        end
+
+        # True once, for the first finding that doesn't block the extension, if
+        # there are also blocking findings. The banner at the top of the report
+        # explains this itself when there are none.
+        def suggestions_note_due?(reports)
+          return false if @suggestions_note_shown || !blocking?
+          return false if blocking_offense?(reports.first.offense)
+
+          @suggestions_note_shown = true
+        end
+
+        def suggestions_note
+          '<div class="suggestions-note">The warnings and conventions below ' \
+            'are only suggestions for improving your code. They won\'t ' \
+            'cause a rejection.</div>'
+        end
+
+        def blocking_summary
+          return 'No issues' unless blocking?
+
+          "Will be rejected: #{pluralize(blocking_count, 'issue')} " \
+            'to fix'
+        end
+
+        # The cops with blocking findings, in the same order as the report.
+        def blocking_cop_names
+          categories.select { |_cop_name, groups|
+            groups.any? { |reports| blocking_offense?(reports.first.offense) }
+          }.keys
+        end
+
         def severity_summary
           labels = severity_counts(@raw_categories.values.flatten)
           labels.empty? ? 'no findings detected' : "#{labels} detected"
@@ -232,12 +277,20 @@ module RuboCop
           }.to_h
         end
 
+        # Groups identical findings. Within a cop the most severe come first.
         def group_categories(categories)
           categories.transform_values do |reports|
-            reports.group_by { |report|
+            groups = reports.group_by { |report|
               [report.offense.severity.name, report.offense.message]
             }.values
+            groups.sort_by.with_index { |group, index|
+              [severity_rank(group.first.offense), index]
+            }
           end
+        end
+
+        def severity_rank(offense)
+          SEVERITY_ORDER.index(offense.severity.name) || SEVERITY_ORDER.size
         end
 
         # Make Kernel#binding public.

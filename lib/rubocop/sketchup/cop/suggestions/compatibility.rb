@@ -7,10 +7,17 @@ module RuboCop
       # SketchUp. You can configure your target SketchUp version and be notified
       # if you use features introduced in newer versions.
       #
+      # This cop is disabled by default because it is only useful once
+      # `TargetSketchUpVersion` is set to the oldest version your extension
+      # supports. Enable it along with that setting.
+      #
       # @example Add this to your .rubocop.yml
       #   AllCops:
       #     SketchUp:
       #       TargetSketchUpVersion: 2016 M1
+      #
+      #   SketchupSuggestions/Compatibility:
+      #     Enabled: true
       class Compatibility < SketchUp::Cop
 
         include SketchUp::Features

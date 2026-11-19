@@ -9,7 +9,7 @@ describe RuboCop::Cop::SketchupSuggestions::OperationName, :config do
   it 'registers an offense when operations name is too long' do
     expect_offense(<<~RUBY)
       model.start_operation("Some Really Long Operation Name")
-                                                      ^^^^^^ Operation names should not be short and concise. [31/25]
+                                                      ^^^^^^ Operation names should be short and concise. [31/25]
     RUBY
   end
 

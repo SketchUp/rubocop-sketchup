@@ -39,6 +39,19 @@ module RuboCop
         end
       end
 
+      # Returns a string literal with the given content, using the same quote
+      # style as `node`.
+      def string_literal_like(node, content)
+        loc = node.loc
+        return content.inspect unless loc.respond_to?(:begin) && loc.begin
+
+        "#{loc.begin.source}#{content}#{loc.end.source}"
+      end
+
+      def without_file_ext(filename)
+        filename.delete_suffix(File.extname(filename))
+      end
+
       def file_ext_range(argument_node)
         filename = argument_node.str_content
         ext_size = File.extname(filename).size

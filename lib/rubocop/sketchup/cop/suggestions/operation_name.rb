@@ -7,9 +7,12 @@ module RuboCop
       # visible to the user in the Edit > Undo menu. Make sure to give it a
       # short human readable name, similar to SketchUp's own operation names.
       #
-      # This cop make some very naive assumptions and will have more false
-      # positives than most of the other cops. It's purpose is mainly to enable
-      # awareness.
+      # Transparent operations (fourth argument `true`) are hidden from the
+      # user and are not checked.
+      #
+      # The capitalization check is a heuristic and may report names that are
+      # acceptable, such as ones with intentional lowercase words. Use it as
+      # guidance.
       #
       # @example Bad - Ends with a punctuation. Inconsistent with SketchUp.
       #   model.start_operation('Example.', true)
@@ -49,7 +52,7 @@ module RuboCop
         include RangeHelp
 
         MSG = 'Operation name should be a short capitalized description.'
-        MSG_MAX = 'Operation names should not be short and concise. [%d/%d]'
+        MSG_MAX = 'Operation names should be short and concise. [%d/%d]'
 
         def on_send(node)
           _, method_name, *args = *node
