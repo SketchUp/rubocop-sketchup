@@ -6,9 +6,14 @@ describe RuboCop::SketchUp::Plugin do
 
   let(:project_path) { File.expand_path('../../..', __dir__) }
   let(:obsoletion_path) { File.join(project_path, 'config', 'obsoletion.yml') }
-  let(:removed_cops) { YAML.safe_load_file(obsoletion_path).fetch('removed') }
+  # `YAML.safe_load_file` isn't available in the older Rubies we support.
+  let(:removed_cops) { load_yaml(obsoletion_path).fetch('removed') }
   let(:default_config) do
-    YAML.safe_load_file(File.join(project_path, 'config', 'default.yml'))
+    load_yaml(File.join(project_path, 'config', 'default.yml'))
+  end
+
+  def load_yaml(path)
+    YAML.safe_load(File.read(path))
   end
 
   describe 'config/obsoletion.yml' do
