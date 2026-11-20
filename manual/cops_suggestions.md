@@ -47,6 +47,10 @@ It's easy to lose track of what API feature was added in what version or
 SketchUp. You can configure your target SketchUp version and be notified
 if you use features introduced in newer versions.
 
+This cop is disabled by default because it is only useful once
+`TargetSketchUpVersion` is set to the oldest version your extension
+supports. Enable it along with that setting.
+
 ### Examples
 
 #### Add this to your .rubocop.yml
@@ -55,6 +59,9 @@ if you use features introduced in newer versions.
 AllCops:
   SketchUp:
     TargetSketchUpVersion: 2016 M1
+
+SketchupSuggestions/Compatibility:
+  Enabled: true
 ```
 
 <a name='dynamiccomponentinternals'></a>
@@ -69,33 +76,6 @@ change at any time. If you create an extension that depend on the
 internal logic of another extension you are at the mercy of change and
 luck!
 
-<a name='fileencoding'></a>
-## SketchupSuggestions/FileEncoding
-
-Enabled by default | Supports autocorrection
---- | ---
-Enabled | No
-
-When using __FILE__ and __dir__, beware that Ruby doesn't apply the
-correct encoding to the strings under Windows. When they contain
-non-english characters it will lead to exceptions being raised when the
-strings are used. Force encoding to work around this.
-
-### Examples
-
-#### Might fail
-
-```ruby
-basename = File.basename(__FILE__, '.*')
-```
-#### Workaround
-
-```ruby
-file = __FILE__.dup
-file.force_encoding('UTF-8') if file.respond_to?(:force_encoding)
-basename = File.basename(file, '.*')
-```
-
 <a name='modelentities'></a>
 ## SketchupSuggestions/ModelEntities
 
@@ -109,6 +89,9 @@ Most tools/actions act upon the active entities context. This could be
 an opened group or component instance. Because of this, prefer
 `model.active_entities` by default over `model.entities` unless you
 have an explicit reason to work in the root model context.
+
+This cop is disabled by default because working in the root model
+context is often intentional.
 
 <a name='monkeypatchedapi'></a>
 ## SketchupSuggestions/MonkeyPatchedApi
@@ -134,9 +117,12 @@ Operation name should be a short capitalized description. It will be
 visible to the user in the Edit > Undo menu. Make sure to give it a
 short human readable name, similar to SketchUp's own operation names.
 
-This cop make some very naive assumptions and will have more false
-positives than most of the other cops. It's purpose is mainly to enable
-awareness.
+Transparent operations (fourth argument `true`) are hidden from the
+user and are not checked.
+
+The capitalization check is a heuristic and may report names that are
+acceptable, such as ones with intentional lowercase words. Use it as
+guidance.
 
 ### Examples
 
@@ -311,34 +297,4 @@ class ExampleTool
   end
 
 end
-```
-
-<a name='toolbartimer'></a>
-## SketchupSuggestions/ToolbarTimer
-
-Enabled by default | Supports autocorrection
---- | ---
-Enabled | No
-
-Wrapping `toolbar.restore` in `UI.start_timer` is redundant. It was a
-workaround for an issue in a very old version of SketchUp. There is no
-need to still be using this workaround.
-
-### Examples
-
-#### Creating a new toolbar
-
-```ruby
-# bad
-toolbar = UI::Toolbar.new('Example')
-# ...
-toolbar.restore
-UI.start_timer(0.1, false) {
-  toolbar.restore
-}
-
-# good
-toolbar = UI::Toolbar.new('Example')
-# ...
-toolbar.restore
 ```

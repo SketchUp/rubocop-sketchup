@@ -131,4 +131,22 @@ describe RuboCop::Cop::SketchupRequirements::GetExtensionLicense, :config do
 
   end
 
+  context 'severity' do
+
+    it 'reports invalid extension GUIDs as errors' do
+      expect_offense(<<~RUBY, severity: :error)
+        Sketchup::Licensing.get_extension_license("4e215280-dd23-40c4-babb-b8a8dd29d5e")
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Invalid extension GUID
+      RUBY
+    end
+
+    it 'reports extension GUIDs not from local string literals as warnings' do
+      expect_offense(<<~RUBY, severity: :warning)
+        license = Sketchup::Licensing.get_extension_license(EXTENSION_ID)
+                                                            ^^^^^^^^^^^^ Only pass in extension GUID from local string literals.
+      RUBY
+    end
+
+  end
+
 end

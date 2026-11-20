@@ -39,6 +39,22 @@ module RuboCop
         end
       end
 
+      # Returns a string literal with the given content. Keeps the single quote
+      # style of `node`, escaping the content as needed. Anything else, such as
+      # double quotes or percent literals, is written as a double quoted
+      # literal, so the result is always valid Ruby with the same value.
+      def string_literal_like(node, content)
+        loc = node.loc
+        return content.inspect unless loc.respond_to?(:begin) && loc.begin
+        return content.inspect unless loc.begin.source == "'"
+
+        "'#{content.gsub(/[\\']/) { |char| "\\#{char}" }}'"
+      end
+
+      def without_file_ext(filename)
+        filename.delete_suffix(File.extname(filename))
+      end
+
       def file_ext_range(argument_node)
         filename = argument_node.str_content
         ext_size = File.extname(filename).size

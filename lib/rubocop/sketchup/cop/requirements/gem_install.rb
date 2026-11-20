@@ -6,8 +6,8 @@ module RuboCop
       # It's tempting to use gems in an extension. However, there are issues if
       # consuming them via Gem.install;
       #
-      # * Net::HTTP is unreliable. (SSL certificate issues, OpenSSL performance
-      #   freeze under Windows)
+      # * Net::HTTP is unreliable for this. (SSL certificate issues, proxies,
+      #   firewalls)
       # * Compiled extensions cannot be installed like this as they require
       #   DevKit.
       # * While downloading and installing SketchUp freezes. (Bad thing if done

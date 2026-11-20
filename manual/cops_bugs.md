@@ -32,6 +32,10 @@ name cache was introduced to speed up the lookup and generation of
 unique names. Unfortunately this got out of sync between changing name
 via the UI versus via the API. This has been fixed in SketchUp 2019.
 
+This cop is disabled by default because it only applies when targeting
+SketchUp 2017 or older. Enable it if your extension supports those
+versions.
+
 ### Examples
 
 #### Pattern for setting material name from SketchUp 2018
@@ -121,6 +125,10 @@ Until SketchUp 2018 `Geom::Transformation.scaling(scale)` modified the
 16th value in the transformation matrix. This way of scaling the matrix
 isn't fully accounted in all places in SketchUp. There are also a number
 of exporters and render engines which also doesn't fully handle this.
+
+This cop is disabled by default because it only applies when targeting
+SketchUp 2017 or older. Enable it if your extension supports those
+versions.
 
 ### Examples
 
