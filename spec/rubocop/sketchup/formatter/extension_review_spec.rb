@@ -227,6 +227,38 @@ describe RuboCop::Formatter::ExtensionReviewFormatter do
 
   end
 
+  context 'with a syntax error' do
+
+    let(:offenses) do
+      [
+        offense(:fatal, 'Lint/Syntax', 'unexpected token $end', 3),
+        offense(:warning, 'SketchupDeprecations/ShowRubyPanel', 'Warn.', 1),
+      ]
+    end
+
+    it 'does not report the extension as having no issues' do
+      expect(html).not_to include('No issues')
+    end
+
+    it 'reports the extension as rejected' do
+      expect(banner_text).to include('Will be rejected: 1 issue to fix')
+    end
+
+    it 'lists the syntax error' do
+      expect(page).to include('unexpected token $end')
+    end
+
+    it 'lists the syntax error before the other cops' do
+      expect(html.index('Lint/Syntax'))
+        .to be < html.index('SketchupDeprecations/ShowRubyPanel')
+    end
+
+    it 'does not say that no errors were found' do
+      expect(page).not_to include('No errors were found')
+    end
+
+  end
+
   context 'with a fatal error' do
 
     let(:offenses) do

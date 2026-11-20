@@ -11,6 +11,9 @@ module RuboCop
     # This formatter saves the output as an html file.
     class ExtensionReviewFormatter < BaseFormatter
       ELLIPSES = '<span class="extra-code">...</span>'
+      # Code that can't be parsed can't be checked by the SketchUp cops, so
+      # these must be reported even though they aren't SketchUp cops.
+      SYNTAX_COP_NAME = 'Lint/Syntax'
       TEMPLATE_PATH =
           File.expand_path('../../../../assets/output.html.erb', __dir__)
 
@@ -30,8 +33,8 @@ module RuboCop
       def file_finished(file, offenses)
         files << file
         offenses.each { |offense|
-          # Report only SketchUp related cops.
-          next unless offense.cop_name.start_with?('Sketchup')
+          # Report only SketchUp related cops, and syntax errors.
+          next unless report_offense?(offense)
 
           report = OpenStruct.new(path: file, offense: offense)
           categories[offense.cop_name] ||= []
@@ -39,6 +42,12 @@ module RuboCop
           summary.offense_count += 1
         }
       end
+
+      def report_offense?(offense)
+        offense.cop_name.start_with?('Sketchup') ||
+          offense.cop_name == SYNTAX_COP_NAME
+      end
+      private :report_offense?
 
       def finished(inspected_files)
         summary.inspected_files = inspected_files
@@ -65,6 +74,7 @@ module RuboCop
             File.expand_path('../../../../assets/logo.png', __dir__)
 
         SORT_ORDER = %w[
+          Lint
           SketchupRequirements
           SketchupDeprecations
           SketchupPerformance
@@ -78,6 +88,10 @@ module RuboCop
         BLOCKING_SEVERITIES = %i[fatal error].freeze
 
         DEPARTMENT_DESCRIPTIONS = {
+          'Lint' => <<-DESCRIPTION,
+            These files could not be parsed because of syntax errors. The
+            other checks can't be run on them, so fix these first.
+          DESCRIPTION
           'SketchupRequirements' => <<-DESCRIPTION,
             This is the most important set of checks. They represent a large
             part of the technical requirements an extension must pass in order
