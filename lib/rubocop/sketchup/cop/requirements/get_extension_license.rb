@@ -3,12 +3,25 @@
 module RuboCop
   module Cop
     module SketchupRequirements
-      # Don't attempt to kill the Ruby interpreter by calling `exit` or `exit!`.
-      # SketchUp will trap `exit` and prevent that, with a message in the
-      # console. But `exit!` is not trapped and with terminate SketchUp without
-      # shutting down cleanly.
+      # Pass a valid extension GUID to `Sketchup::Licensing.get_extension_license`.
       #
-      # Use `return`, `next`, `break` or `raise` instead.
+      # An invalid GUID, or one with extra whitespace, will make the license
+      # check fail and is reported as an error.
+      #
+      # It's also recommended to hardcode the extension GUID as a local string
+      # literal within the method doing the license check, since constants and
+      # other variables can be overwritten in Ruby. This is reported as a
+      # warning.
+      #
+      # @example Bad - Invalid GUID
+      #   Sketchup::Licensing.get_extension_license("4e215280-dd23-40c4")
+      #
+      # @example Not recommended - GUID can be overwritten
+      #   Sketchup::Licensing.get_extension_license(EXTENSION_ID)
+      #
+      # @example Good
+      #   ext_id = "4e215280-dd23-40c4-babb-b8a8dd29d5ee"
+      #   Sketchup::Licensing.get_extension_license(ext_id)
       class GetExtensionLicense < SketchUp::Cop
 
         include RangeHelp
@@ -46,7 +59,7 @@ module RuboCop
             validate_extension_id(argument)
           else
             location = argument.loc.expression
-            add_offense(location, message: MSG_WRONG_TYPE)
+            add_offense(location, message: MSG_WRONG_TYPE, severity: :warning)
           end
         end
 

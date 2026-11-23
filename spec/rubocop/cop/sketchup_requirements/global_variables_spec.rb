@@ -4,9 +4,30 @@ require 'spec_helper'
 
 describe RuboCop::Cop::SketchupRequirements::GlobalVariables, :config do
 
-  it 'registers an offense for $custom' do
+  it 'registers an offense for assigning to $custom' do
+    expect_offense(<<~RUBY)
+      $custom = 123
+      ^^^^^^^ Do not introduce global variables.
+    RUBY
+  end
+
+  it 'registers an offense for operator-assigning to $custom' do
+    expect_offense(<<~RUBY)
+      $custom ||= 123
+      ^^^^^^^ Do not introduce global variables.
+    RUBY
+  end
+
+  it 'registers an offense for reading $custom' do
     expect_offense(<<~RUBY)
       puts $custom
+           ^^^^^^^ Do not introduce global variables.
+    RUBY
+  end
+
+  it 'registers an offense for calling method on $custom' do
+    expect_offense(<<~RUBY)
+      puts $custom.foo
            ^^^^^^^ Do not introduce global variables.
     RUBY
   end
@@ -25,6 +46,12 @@ describe RuboCop::Cop::SketchupRequirements::GlobalVariables, :config do
       RUBY
     end
 
+  end
+
+  it 'does not register an offense for assigning built-in variable $stdout' do
+    expect_no_offenses(<<~RUBY)
+      $stdout = StringIO.new
+    RUBY
   end
 
   it 'does not register an offense for backrefs like $1' do

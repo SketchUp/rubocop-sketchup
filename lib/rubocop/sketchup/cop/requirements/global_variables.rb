@@ -10,12 +10,25 @@ module RuboCop
       # Extensions submitted to Extension Warehouse is expected to not define
       # global variables.
       #
-      # This cops looks for uses of global variables.
-      # It does not report offenses for built-in global variables.
-      # Built-in global variables are allowed by default. Additionally
-      # users can allow additional variables via the AllowedVariables option.
+      # This cop looks for uses of global variables, both assigning to and
+      # reading them. It does not report offenses for built-in global
+      # variables, which are allowed by default. Reading the global variables
+      # of Dynamic Components is also allowed, as that is very common.
       #
       # Note that backreferences like `$1`, `$2`, etc are not global variables.
+      #
+      # @example
+      #   # bad
+      #   $example_counter = 0
+      #   puts $example_counter
+      #
+      #   # good
+      #   module Example
+      #     @counter = 0
+      #   end
+      #
+      #   # good - reading a Dynamic Components global
+      #   puts $dc_observers
       class GlobalVariables < SketchUp::Cop
 
         include SketchUp::NoCommentDisable

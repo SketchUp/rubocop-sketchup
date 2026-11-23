@@ -9,6 +9,9 @@ module RuboCop
       # an opened group or component instance. Because of this, prefer
       # `model.active_entities` by default over `model.entities` unless you
       # have an explicit reason to work in the root model context.
+      #
+      # This cop is disabled by default because working in the root model
+      # context is often intentional.
       class ModelEntities < SketchUp::Cop
 
         MSG = 'Prefer `model.active_entities` over `model.entities`.'

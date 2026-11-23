@@ -8,6 +8,10 @@ module RuboCop
       # isn't fully accounted in all places in SketchUp. There are also a number
       # of exporters and render engines which also doesn't fully handle this.
       #
+      # This cop is disabled by default because it only applies when targeting
+      # SketchUp 2017 or older. Enable it if your extension supports those
+      # versions.
+      #
       # @example Workaround for SketchUp versions older than SketchUp 2018
       #     tr = Geom::Transformation.scaling(scale, scale, scale)
       class UniformScaling < SketchUp::Cop

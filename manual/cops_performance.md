@@ -1,31 +1,16 @@
 # SketchupPerformance
 
-<a name='openssl'></a>
-## SketchupPerformance/OpenSSL
-
-Enabled by default | Supports autocorrection
---- | ---
-Enabled | No
-
-There are performance issue with the OpenSSL library that Ruby ship. In
-a clean SU session, default model there is a small delay observed in the
-Windows version of SU.
-
-But with a larger model loaded, or session that have had larger files
-loaded the lag will be minutes.
-
-`SecureRandom` is  also affected by this, as it uses OpenSSL to seed.
-
-It also affects `Net::HTTP` if making HTTPS connections.
-
 <a name='operationdisableui'></a>
 ## SketchupPerformance/OperationDisableUI
 
 Enabled by default | Supports autocorrection
 --- | ---
-Enabled | No
+Disabled | No
 
 Operations should disable the UI for performance gain.
+
+This cop is disabled by default because disabling the UI is not always
+desirable, for example for small or interactive operations.
 
 ### Examples
 

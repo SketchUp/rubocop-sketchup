@@ -5,6 +5,9 @@ module RuboCop
     module SketchupPerformance
       # Operations should disable the UI for performance gain.
       #
+      # This cop is disabled by default because disabling the UI is not always
+      # desirable, for example for small or interactive operations.
+      #
       # @example
       #   model = Sketchup.active_model
       #   model.start_operation('Operation Name', true)
