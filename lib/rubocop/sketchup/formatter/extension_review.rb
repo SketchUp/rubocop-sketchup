@@ -193,7 +193,7 @@ module RuboCop
         end
 
         def blocking_count
-          @raw_categories.values.flatten.count { |report|
+          @blocking_count ||= @raw_categories.values.flatten.count { |report|
             blocking_offense?(report.offense)
           }
         end
@@ -210,8 +210,9 @@ module RuboCop
         # there are also blocking findings. The banner at the top of the report
         # explains this itself when there are none.
         def suggestions_note_due?(reports)
-          return false if @suggestions_note_shown || !blocking?
+          return false if @suggestions_note_shown
           return false if blocking_offense?(reports.first.offense)
+          return false unless blocking?
 
           @suggestions_note_shown = true
         end
