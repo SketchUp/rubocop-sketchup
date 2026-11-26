@@ -111,8 +111,8 @@ Enabled | No
 It's tempting to use gems in an extension. However, there are issues if
 consuming them via Gem.install;
 
-* Net::HTTP is unreliable. (SSL certificate issues, OpenSSL performance
-  freeze under Windows)
+* Net::HTTP is unreliable for this. (SSL certificate issues, proxies,
+  firewalls)
 * Compiled extensions cannot be installed like this as they require
   DevKit.
 * While downloading and installing SketchUp freezes. (Bad thing if done
@@ -133,12 +133,34 @@ Enabled by default | Supports autocorrection
 --- | ---
 Enabled | No
 
-Don't attempt to kill the Ruby interpreter by calling `exit` or `exit!`.
-SketchUp will trap `exit` and prevent that, with a message in the
-console. But `exit!` is not trapped and with terminate SketchUp without
-shutting down cleanly.
+Pass a valid extension GUID to `Sketchup::Licensing.get_extension_license`.
 
-Use `return`, `next`, `break` or `raise` instead.
+An invalid GUID, or one with extra whitespace, will make the license
+check fail and is reported as an error.
+
+It's also recommended to hardcode the extension GUID as a local string
+literal within the method doing the license check, since constants and
+other variables can be overwritten in Ruby. This is reported as a
+warning.
+
+### Examples
+
+#### Bad - Invalid GUID
+
+```ruby
+Sketchup::Licensing.get_extension_license("4e215280-dd23-40c4")
+```
+#### Not recommended - GUID can be overwritten
+
+```ruby
+Sketchup::Licensing.get_extension_license(EXTENSION_ID)
+```
+#### Good
+
+```ruby
+ext_id = "4e215280-dd23-40c4-babb-b8a8dd29d5ee"
+Sketchup::Licensing.get_extension_license(ext_id)
+```
 
 <a name='globalconstants'></a>
 ## SketchupRequirements/GlobalConstants
@@ -196,12 +218,28 @@ itself to avoid clashing with other extensions.
 Extensions submitted to Extension Warehouse is expected to not define
 global variables.
 
-This cops looks for uses of global variables.
-It does not report offenses for built-in global variables.
-Built-in global variables are allowed by default. Additionally
-users can allow additional variables via the AllowedVariables option.
+This cop looks for uses of global variables, both assigning to and
+reading them. It does not report offenses for built-in global
+variables, which are allowed by default. Reading the global variables
+of Dynamic Components is also allowed.
 
 Note that backreferences like `$1`, `$2`, etc are not global variables.
+
+### Examples
+
+```ruby
+# bad
+$example_counter = 0
+puts $example_counter
+
+# good
+module Example
+  @counter = 0
+end
+
+# good - reading a Dynamic Components global
+puts $dc_observers
+```
 
 <a name='initializeentity'></a>
 ## SketchupRequirements/InitializeEntity

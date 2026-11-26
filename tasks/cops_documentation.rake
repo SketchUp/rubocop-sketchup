@@ -336,12 +336,25 @@ module RuboCopSketchUp
       department.to_s.downcase.sub(/^sketchup/, '')
     end
 
+    # The RuboCop defaults with whether each SketchUp cop is enabled by default
+    # applied on top, as users of the extension get it. Only `Enabled` is taken
+    # from the SketchUp defaults, the rest of the manual is generated from the
+    # cop documentation.
+    def sketchup_default_configuration
+      path = "#{Dir.pwd}/config/default.yml"
+      defaults = RuboCop::ConfigLoader.default_configuration
+      sketchup = YAML.safe_load(File.read(path))
+      enabled = sketchup.select { |_name, cop| cop.key?('Enabled') }
+                        .transform_values { |cop| cop.slice('Enabled') }
+      merged = RuboCop::ConfigLoader.merge(defaults.to_h, enabled)
+      RuboCop::Config.new(merged, path)
+    end
+
     def run
       update_default_yml_reference_links
 
       cops   = RuboCop::Cop::Registry.global
-      config = RuboCop::ConfigLoader.default_configuration
-      # TODO: Load SketchUp config?
+      config = sketchup_default_configuration
 
       assert_all_cops_have_config(cops)
 

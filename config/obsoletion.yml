@@ -1,0 +1,14 @@
+# Configuration of obsolete/deprecated cops used by `ConfigObsoletion`.
+#
+# See: https://docs.rubocop.org/rubocop/extensions.html#config-obsoletions
+
+# Cops that were removed
+removed:
+  SketchupPerformance/OpenSSL:
+    reason: >-
+      the OpenSSL performance issue it guarded against only affected the
+      Ruby versions shipped with SketchUp 2016 and older
+  SketchupSuggestions/ToolbarTimer:
+    reason: >-
+      the toolbar issue it guarded against only affected very old versions of
+      SketchUp

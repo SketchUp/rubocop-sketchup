@@ -81,6 +81,9 @@ correct encoding to the strings under Windows. When they contain
 non-english characters it will lead to exceptions being raised when the
 strings are used. Force encoding to work around this.
 
+This was fixed in Ruby 2.7, which shipped with SketchUp 2021.1. The cop
+only applies when targeting SketchUp 2020 or older.
+
 ### Examples
 
 #### Might fail
@@ -110,6 +113,9 @@ an opened group or component instance. Because of this, prefer
 `model.active_entities` by default over `model.entities` unless you
 have an explicit reason to work in the root model context.
 
+Working in the root model context is sometimes intentional. This cop is
+a heads-up, so disable it where that is the case.
+
 <a name='monkeypatchedapi'></a>
 ## SketchupSuggestions/MonkeyPatchedApi
 
@@ -134,9 +140,12 @@ Operation name should be a short capitalized description. It will be
 visible to the user in the Edit > Undo menu. Make sure to give it a
 short human readable name, similar to SketchUp's own operation names.
 
-This cop make some very naive assumptions and will have more false
-positives than most of the other cops. It's purpose is mainly to enable
-awareness.
+Transparent operations (fourth argument `true`) are hidden from the
+user and are not checked.
+
+The capitalization check is a heuristic and may report names that are
+acceptable, such as ones with intentional lowercase words. Use it as
+guidance.
 
 ### Examples
 
@@ -311,34 +320,4 @@ class ExampleTool
   end
 
 end
-```
-
-<a name='toolbartimer'></a>
-## SketchupSuggestions/ToolbarTimer
-
-Enabled by default | Supports autocorrection
---- | ---
-Enabled | No
-
-Wrapping `toolbar.restore` in `UI.start_timer` is redundant. It was a
-workaround for an issue in a very old version of SketchUp. There is no
-need to still be using this workaround.
-
-### Examples
-
-#### Creating a new toolbar
-
-```ruby
-# bad
-toolbar = UI::Toolbar.new('Example')
-# ...
-toolbar.restore
-UI.start_timer(0.1, false) {
-  toolbar.restore
-}
-
-# good
-toolbar = UI::Toolbar.new('Example')
-# ...
-toolbar.restore
 ```

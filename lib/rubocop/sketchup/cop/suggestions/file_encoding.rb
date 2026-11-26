@@ -8,6 +8,9 @@ module RuboCop
       # non-english characters it will lead to exceptions being raised when the
       # strings are used. Force encoding to work around this.
       #
+      # This was fixed in Ruby 2.7, which shipped with SketchUp 2021.1. The cop
+      # only applies when targeting SketchUp 2020 or older.
+      #
       # @example Might fail
       #   basename = File.basename(__FILE__, '.*')
       #
@@ -16,6 +19,10 @@ module RuboCop
       #   file.force_encoding('UTF-8') if file.respond_to?(:force_encoding)
       #   basename = File.basename(file, '.*')
       class FileEncoding < SketchUp::Cop
+
+        include SketchUp::SketchUpTargetRange
+
+        define_sketchup_target_max_version 'SketchUp 2020'
 
         MSG = 'Beware encoding bug with `__FILE__` and `__dir__`.'
 
@@ -38,6 +45,7 @@ module RuboCop
         end
 
         def on_send(node)
+          return unless valid_for_target_sketchup_version?
           return if file_loaded?(node)
           return if node.arguments.none?(&method(:magic_file_or_dir?))
 
@@ -50,6 +58,8 @@ module RuboCop
         PATTERN
 
         def on_assign(node)
+          return unless valid_for_target_sketchup_version?
+
           lhs, value = *node
           return unless magic_file_or_dir?(value)
           # After assigning __FILE__ or __dir_ to a variable, check the parent

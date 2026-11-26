@@ -100,21 +100,10 @@ SketchupDeprecations/SketchupSet:
   Enabled: true
 
 
-SketchupPerformance/OpenSSL:
-  Description: Avoid using Ruby's OpenSSL within SketchUp.
-  Details: >-
-             A flaw in how it obtain random bits under Windows can severely
-             affect performance, freezing SketchUp for many minutes. This also
-             affects SecureRandom and anything else that depend on OpenSSL.
-             Net::HTTP is affected if connecting via HTTPS. Connecting via
-             plain HTTP is unaffected.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_performance.md#openssl
-  Enabled: true
-
 SketchupPerformance/OperationDisableUI:
   Description: Operations should disable the UI for performance gain.
   Reference: https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_performance.md#operationdisableui
-  Enabled: true
+  Enabled: false
 
 SketchupPerformance/SelectionBulkChanges:
   Description: >-
@@ -154,7 +143,7 @@ SketchupRequirements/Exit:
   Description: Exit attempts to kill the Ruby interpreter.
   Details: >-
              SketchUp will trap `exit` and prevent that, with a message in the
-             console. But `exit!` is not trapped and with terminate SketchUp
+             console. But `exit!` is not trapped and will terminate SketchUp
              without shutting down cleanly. Use `return`, `next` or `break`
              instead.
   Reference: https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_requirements.md#exit
@@ -348,8 +337,8 @@ SketchupSuggestions/OperationName:
                  Check that operation names are human friendly and consistent
                  with SketchUp.
   Details: >-
-             This check is very naive and might produce false positives. Use as
-             guidance only.
+             Operation names are visible to the user in the Undo and Redo menu
+             items. The capitalization check is a heuristic, use as guidance.
   Reference: https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#operationname
   Max: 25
   Enabled: true
@@ -392,9 +381,4 @@ SketchupSuggestions/ToolUserInput:
                  When a tool is accepting user input, make sure to define
                  enableVCB?.
   Reference: https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#tooluserinput
-  Enabled: true
-
-SketchupSuggestions/ToolbarTimer:
-  Description: Wrapping `toolbar.restore` in `UI.start_timer` is redundant.
-  Reference: https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#toolbartimer
   Enabled: true

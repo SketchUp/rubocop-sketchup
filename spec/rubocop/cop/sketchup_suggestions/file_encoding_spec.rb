@@ -98,4 +98,18 @@ describe RuboCop::Cop::SketchupSuggestions::FileEncoding, :config do
     RUBY
   end
 
+  context 'when targeting a SketchUp version with the Ruby fix' do
+
+    let(:config) do
+      sketchup_version_config('SketchUp 2021.1')
+    end
+
+    it 'does not register an offense for __FILE__ in method parameters' do
+      expect_no_offenses(<<~RUBY)
+        path = File.dirname(__FILE__)
+      RUBY
+    end
+
+  end
+
 end
