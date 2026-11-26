@@ -41,15 +41,11 @@ face2 = group.entities.add_face(points2)
 
 Enabled by default | Supports autocorrection
 --- | ---
-Disabled | No
+Enabled | No
 
 It's easy to lose track of what API feature was added in what version or
 SketchUp. You can configure your target SketchUp version and be notified
 if you use features introduced in newer versions.
-
-This cop is disabled by default because it is only useful once
-`TargetSketchUpVersion` is set to the oldest version your extension
-supports. Enable it along with that setting.
 
 ### Examples
 
@@ -59,9 +55,6 @@ supports. Enable it along with that setting.
 AllCops:
   SketchUp:
     TargetSketchUpVersion: 2016 M1
-
-SketchupSuggestions/Compatibility:
-  Enabled: true
 ```
 
 <a name='dynamiccomponentinternals'></a>
@@ -76,12 +69,42 @@ change at any time. If you create an extension that depend on the
 internal logic of another extension you are at the mercy of change and
 luck!
 
+<a name='fileencoding'></a>
+## SketchupSuggestions/FileEncoding
+
+Enabled by default | Supports autocorrection
+--- | ---
+Enabled | No
+
+When using __FILE__ and __dir__, beware that Ruby doesn't apply the
+correct encoding to the strings under Windows. When they contain
+non-english characters it will lead to exceptions being raised when the
+strings are used. Force encoding to work around this.
+
+This was fixed in Ruby 2.7, which shipped with SketchUp 2021.1. The cop
+only applies when targeting SketchUp 2020 or older.
+
+### Examples
+
+#### Might fail
+
+```ruby
+basename = File.basename(__FILE__, '.*')
+```
+#### Workaround
+
+```ruby
+file = __FILE__.dup
+file.force_encoding('UTF-8') if file.respond_to?(:force_encoding)
+basename = File.basename(file, '.*')
+```
+
 <a name='modelentities'></a>
 ## SketchupSuggestions/ModelEntities
 
 Enabled by default | Supports autocorrection
 --- | ---
-Disabled | No
+Enabled | No
 
 Prefer `model.active_entities` over `model.entities`.
 
@@ -90,8 +113,8 @@ an opened group or component instance. Because of this, prefer
 `model.active_entities` by default over `model.entities` unless you
 have an explicit reason to work in the root model context.
 
-This cop is disabled by default because working in the root model
-context is often intentional.
+Working in the root model context is sometimes intentional. This cop is
+a heads-up, so disable it where that is the case.
 
 <a name='monkeypatchedapi'></a>
 ## SketchupSuggestions/MonkeyPatchedApi

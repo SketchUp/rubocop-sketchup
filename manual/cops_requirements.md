@@ -221,7 +221,7 @@ global variables.
 This cop looks for uses of global variables, both assigning to and
 reading them. It does not report offenses for built-in global
 variables, which are allowed by default. Reading the global variables
-of Dynamic Components is also allowed, as that is very common.
+of Dynamic Components is also allowed.
 
 Note that backreferences like `$1`, `$2`, etc are not global variables.
 

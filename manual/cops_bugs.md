@@ -5,7 +5,7 @@
 
 Enabled by default | Supports autocorrection
 --- | ---
-Disabled | No
+Enabled | No
 
 Prior to SketchUp 2018 it was possible for the Ruby API to cause
 materials to have duplicate names. This is not a valid SketchUp model
@@ -31,10 +31,6 @@ Note that in SketchUp 2018 there was also a second bug introduced. A
 name cache was introduced to speed up the lookup and generation of
 unique names. Unfortunately this got out of sync between changing name
 via the UI versus via the API. This has been fixed in SketchUp 2019.
-
-This cop is disabled by default because it only applies when targeting
-SketchUp 2017 or older. Enable it if your extension supports those
-versions.
 
 ### Examples
 
@@ -119,16 +115,12 @@ Sketchup.active_model.rendering_options["RenderMode"] = 99
 
 Enabled by default | Supports autocorrection
 --- | ---
-Disabled | No
+Enabled | No
 
 Until SketchUp 2018 `Geom::Transformation.scaling(scale)` modified the
 16th value in the transformation matrix. This way of scaling the matrix
 isn't fully accounted in all places in SketchUp. There are also a number
 of exporters and render engines which also doesn't fully handle this.
-
-This cop is disabled by default because it only applies when targeting
-SketchUp 2017 or older. Enable it if your extension supports those
-versions.
 
 ### Examples
 

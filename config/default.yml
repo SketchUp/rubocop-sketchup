@@ -36,7 +36,7 @@ SketchupBugs/MaterialName:
                  SketchUp 2017 did not protect against the Ruby API creating
                  duplicated material names.
   Reference: https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_bugs.md#materialname
-  Enabled: false
+  Enabled: true
 
 SketchupBugs/RenderMode:
   Description: >-
@@ -50,7 +50,7 @@ SketchupBugs/UniformScaling:
                  `Geom::Transformation.scaling(scale)` might yield unexpected
                  behavior.
   Reference: https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_bugs.md#uniformscaling
-  Enabled: false
+  Enabled: true
 
 
 SketchupDeprecations/AddSeparatorToMenu:
@@ -291,13 +291,24 @@ SketchupSuggestions/AddGroup:
 SketchupSuggestions/Compatibility:
   Description: Incompatible feature with target SketchUp version.
   Reference: https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#compatibility
-  Enabled: false
+  Enabled: true
 
 SketchupSuggestions/DynamicComponentInternals:
   Description: >-
                  Avoid relying on internal logic of Dynamic Components. It's
                  behavior might change between versions.
   Reference: https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#dynamiccomponentinternals
+  Enabled: true
+
+SketchupSuggestions/FileEncoding:
+  Description: Beware encoding bug in Ruby when using `__FILE__` and `__dir__`.
+  Details: >-
+             When using `__FILE__` and `__dir__`, beware that Ruby doesn't
+             apply the correct encoding to the strings under Windows. When they
+             contain non-english characters it will lead to exceptions being
+             raised when the strings are used. Force encoding to work around
+             this.
+  Reference: https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#fileencoding
   Enabled: true
 
 SketchupSuggestions/ModelEntities:
@@ -309,7 +320,7 @@ SketchupSuggestions/ModelEntities:
              instance (`model.active_entities`). `model.entities` refer to the
              model root.
   Reference: https://github.com/SketchUp/rubocop-sketchup/tree/main/manual/cops_suggestions.md#modelentities
-  Enabled: false
+  Enabled: true
 
 SketchupSuggestions/MonkeyPatchedApi:
   Description: >-

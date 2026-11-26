@@ -28,10 +28,6 @@ module RuboCop
       # unique names. Unfortunately this got out of sync between changing name
       # via the UI versus via the API. This has been fixed in SketchUp 2019.
       #
-      # This cop is disabled by default because it only applies when targeting
-      # SketchUp 2017 or older. Enable it if your extension supports those
-      # versions.
-      #
       # @example Pattern for setting material name from SketchUp 2018
       #   material.name = model.materials.unique_name('Example')
       #

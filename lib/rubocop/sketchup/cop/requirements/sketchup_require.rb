@@ -62,8 +62,9 @@ module RuboCop
           (send (const nil? :SketchupExtension) :new _ (str $_))
         PATTERN
 
-        # Only these are extensions SketchUp adds or swaps when loading. Other
-        # dots belong to the file name, as in `main.v2`.
+        # Extensions that denote a Ruby file. SketchUp appends `.rb` when none
+        # is given, and loads the encrypted `.rbe`/`.rbs` variant in its place.
+        # Any other dot is part of the file name, as in `main.v2`.
         RUBY_FILE_EXTS = %w[.rb .rbe .rbs].freeze
 
         TOOLS_RUBY_FILES = %w[extensions.rb langhandler.rb sketchup.rb].freeze
